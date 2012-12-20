@@ -1,4 +1,4 @@
-!function ($) {
+;(function ($) {
 
     var domEvents = $.require('DOMEvents')
 
@@ -30,28 +30,30 @@
         return id
     }
 
-
     function Page () {
         this.scrollLast = 0
         this.content = new Content()
         this.nav = $('nav')
-        this.addEventListener()
-        this.menuLast = $()
+        this.addEventListeners()
+        this.active = $()
     }
 
-    Page.prototype.addEventListener = function () {
-        domEvents.addListener(document, 'scroll', this.onScroll.bind(this))
+    Page.prototype.addEventListeners = function () {
+        $(document).on('scroll', this.onScroll.bind(this))
+        this.nav.find('ul:first-child > li').on('click', function(e, element){
+            $(this).toggleClass('open')
+        })
     }
 
     Page.prototype.menu = function () {
         var id = this.content.getActive()
           , item = this.nav.find('a[href="#' + id + '"]')
 
-        this.menuLast.removeClass('active open')
+        this.active.removeClass('active open')
         
         item.addClass('active')
-        this.menuLast = item.parents('li').addClass('open')
-        this.menuLast.push(item.get(0))
+        this.active = item.parents('li').addClass('open')
+        this.active.push(item.get(0))
     }
 
     Page.prototype.onScroll = function (event) {
@@ -63,4 +65,4 @@
 
     new Page()
 
-}(Rye)
+})(Rye)
