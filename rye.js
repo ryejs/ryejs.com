@@ -795,6 +795,7 @@ Rye.define('EventEmitter', function(){
 
     function EventEmitter () {
         this.events = {}
+        this.context = null
     }
 
     // Adds a handler to the events list
@@ -845,7 +846,7 @@ Rye.define('EventEmitter', function(){
 
         if (handlers) {
             for (i = 0; fn = handlers[i++]; ){
-                fn.apply(this, args)
+                fn.apply(this.context || this, args)
             }
         }
     }
@@ -897,6 +898,7 @@ Rye.define('DOMEvents', function(){
     function DOMEventEmitter (element) {
         EventEmitter.call(this)
         this.element = element
+        this.context = element
         this.proxied = {}
     }
 
@@ -904,20 +906,19 @@ Rye.define('DOMEvents', function(){
 
     DOMEventEmitter.prototype.delegateProxy = function (event_id, selector) {
         return function (evt) {
-            var match = query.getClosestNode(evt.target || this.element, 'parentNode', selector)
-            if ((match && match !== document) || query.matches(evt.target, selector)){
-                this.emit(event_id, evt)
+            var matched = query.getClosestNode(evt.target || this.element, 'parentNode', selector)
+            if ((matched && matched !== document) || query.matches(evt.target, selector)){
+                this.context = matched
+                this.emit(event_id, evt, element)
             }
         }.bind(this)
     }
-
-    DOMEventEmitter.prototype._proxy = EventEmitter.prototype.proxy
 
     DOMEventEmitter.prototype.proxy = function (event_id, selector) {
         return this.proxied[event_id] || (this.proxied[event_id] =
             selector
                 ? this.delegateProxy(event_id, selector)
-                : this._proxy(event_id)
+                : EventEmitter.prototype.proxy.call(this, event_id)
         )
     }
 
