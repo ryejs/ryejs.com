@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>Rye</title>
+    <link rel="stylesheet" href="rye.css">
+</head>
+<body>
+    <header>
+        <h1 class="logo">Rye</h1>
+        <p class="version">alpha</p>
+    </header>
+
+    <div id="main">
+        <p><strong>Rye</strong> is a light javascript library for DOM manipulation and events with support for all modern browsers including IE9+.
+
+</p>
+<div class="buttons">
+    <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=watch&amp;count=true&amp;size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="152" height="30"></iframe>
+    <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=fork&amp;count=true&amp;size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="152" height="30"></iframe>
+</div>
+
+<h2>API</h2>
+<p>The API is similar to jQuery but not totally compatible. Inconsistencies like <code>.map()</code> behavior, <code>map/each()</code> argument ordering are fixed in Rye.
+
+</p>
+<p>It doesn&#39;t do any trickery to subclass <code>Array</code>, elements are stored in the <code>.elements</code> property instead. This means that array methods ran on a <code>Rye</code> instance return another <code>Rye</code> instance, while methods ran on <code>.get()</code> or <code>.elements</code> return instances of <code>Array</code> (ex: <code>$(&#39;li&#39;).each()</code> vs <code>$(&#39;li&#39;).get().forEach()</code>).
+
+</p>
+<h4>Traversing</h4>
+<ul>
+<li><code>find()</code></li>
+<li><code>filter()</code></li>
+<li><code>has()</code></li>
+<li><code>is()</code></li>
+<li><code>not()</code></li>
+<li><code>add()</code></li>
+<li><code>next()</code></li>
+<li><code>prev()</code></li>
+<li><code>first()</code></li>
+<li><code>last()</code></li>
+<li><code>siblings()</code></li>
+<li><code>parent()</code></li>
+<li><code>closest()</code></li>
+<li><code>parents()</code></li>
+<li><code>children()</code></li>
+</ul>
+<h4>Collection methods</h4>
+<ul>
+<li><code>get()</code></li>
+<li><code>eq()</code></li>
+<li><code>forEach()</code></li>
+<li><code>each()</code></li>
+<li><code>reduce()</code></li>
+<li><code>reduceRight()</code></li>
+<li><code>indexOf()</code></li>
+<li><code>map()</code></li>
+<li><code>sort()</code></li>
+<li><code>push()</code></li>
+<li><code>slice()</code></li>
+<li><code>concat()</code></li>
+</ul>
+<h4>Manipulation</h4>
+<ul>
+<li><code>html()</code></li>
+<li><code>text()</code></li>
+<li><code>append()</code></li>
+<li><code>prepend()</code></li>
+<li><code>after()</code></li>
+<li><code>before()</code></li>
+</ul>
+<h4>Style</h4>
+<ul>
+<li><code>show()</code></li>
+<li><code>hide()</code></li>
+<li><code>css()</code></li>
+<li><code>hasClass()</code></li>
+<li><code>addClass()</code></li>
+<li><code>removeClass()</code></li>
+<li><code>toggleClass()</code></li>
+</ul>
+<h2>API wishlist</h2>
+<ul>
+<li><code>attr()</code>, <code>val()</code>, <code>prop()</code> ?</li>
+</ul>
+<h3>Events</h3>
+<ul>
+<li><code>on</code> | <code>addEventListener</code></li>
+<li><code>off</code> | <code>removeEventListener</code></li>
+<li><code>trigger</code> | <code>emit</code> | <code>dispatchEvent</code></li>
+<li><code>hasEventListener</code></li>
+</ul>
+<h2>Components wishlist</h2>
+<ul>
+<li>ajax and serialize</li>
+<li>gestures</li>
+<li>data storage</li>
+</ul>
+<h2>Browser compatiblity</h2>
+<table>
+    <tr>
+        <th>Chrome</th>
+        <td>6+</td>
+    </tr>
+    <tr>
+        <th>Safari</th>
+        <td>5+</td>
+    </tr>
+    <tr>
+        <th>Firefox</th>
+        <td>6+</td>
+    </tr>
+    <tr>
+        <th>IE</th>
+        <td>9+</td>
+    </tr>
+    <tr>
+        <th>Opera</th>
+        <td>11.5+</td>
+    </tr>
+</table>
+
+<h4>Mobile</h4>
+<table>
+    <tr>
+        <th>iOS</th>
+        <td>4.1+</td>
+    </tr>
+    <tr>
+        <th>Android</th>
+        <td>4.0+</td>
+    </tr>
+    <tr>
+        <th>Blackberry</th>
+        <td>10+</td>
+    </tr>
+    <tr>
+        <th>Opera Mobile</th>
+        <td>11.1+</td>
+    </tr>
+    <tr>
+        <th>Chrome (Android)</th>
+        <td>18+</td>
+    </tr>
+    <tr>
+        <th>Firefox (Android)</th>
+        <td>15+</td>
+    </tr>
+</table>
+
+<h2>Not going to happen</h2>
+<ul>
+<li>event aliases like delegate, live, click, focus</li>
+<li>cancel bubbling and prevent default by returning false</li>
+<li>effects and animation - do it with CSS</li>
+<li>defining global <code>$</code></li>
+<li>end() or other chain-aware methods</li>
+</ul>
+<hr>
+
+<p>Loosely based on Zepto and Ender.
+
+</p>
+<p>by <a href="http://github.com/jcemer"><img src="http://gravatar.com/avatar/c5df370a883b65279af5a7ca94a5eed7?s=25" width="25" height="25" alt="Jean Carlo Emer">jcemer</a> and <a href="http://github.com/ricardobeat"><img src="http://gravatar.com/avatar/47923b1f334d8e3f7a00506ac3c7a636?s=25" width="25" height="25" alt="Ricardo Tomasi">ricardobeat</a>
+</p>
+
+    </div>
+
+    <footer>
+    </footer>
+</body>
+</html>

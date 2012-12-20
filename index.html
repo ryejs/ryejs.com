@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>Rye</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header class="wrapper">
+        <h1 class="logo">Rye</h1>
+        <p class="version">alpha</p>
+    </header>
+    
+    <div class="navigation wrapper">
+        <nav>
+<ul>
+<li><a href="#api">API</a>
+<ul><li><a href="#api.browsercompatiblity">Browser compatiblity</a></li>
+<li><a href="#api.notgoingtohappen">Not going to happen</a></li></ul></li>
+<li><a href="#rye">Rye</a>
+<ul><li><a href="#rye.rye">Rye()</a></li>
+<li><a href="#rye.ryedefine">Rye.define</a></li>
+<li><a href="#rye.ryerequire">Rye.require</a></li></ul></li>
+<li><a href="#util">Util</a>
+<ul><li><a href="#util.utilextend">Util.extend</a></li>
+<li><a href="#util.utilinherits">Util.inherits</a></li>
+<li><a href="#util.utiliselement">Util.isElement</a></li>
+<li><a href="#util.utilisnodelist">Util.isNodeList</a></li>
+<li><a href="#util.utilunique">Util.unique</a></li>
+<li><a href="#util.utilpluck">Util.pluck</a></li>
+<li><a href="#util.utilput">Util.put</a></li>
+<li><a href="#util.utilprefix">Util.prefix</a></li>
+<li><a href="#util.utilapplier">Util.applier</a></li>
+<li><a href="#util.utilapplierleft">Util.applierLeft</a></li>
+<li><a href="#util.utilcurry">Util.curry</a></li>
+<li><a href="#util.utilgetuid">Util.getUid</a></li></ul></li>
+<li><a href="#data">Data</a>
+<ul><li><a href="#data.data">data</a></li>
+<li><a href="#data.dataset">Data.set</a></li>
+<li><a href="#data.dataget">Data.get</a></li></ul></li>
+<li><a href="#query">Query</a>
+<ul><li><a href="#query.find">find</a></li>
+<li><a href="#query.filter">filter</a></li>
+<li><a href="#query.has">has</a></li>
+<li><a href="#query.is">is</a></li>
+<li><a href="#query.not">not</a></li>
+<li><a href="#query.index">index</a></li>
+<li><a href="#query.add">add</a></li>
+<li><a href="#query.plucknode">pluckNode</a></li>
+<li><a href="#query.pluck">pluck</a></li>
+<li><a href="#query.next">next</a></li>
+<li><a href="#query.prev">prev</a></li>
+<li><a href="#query.first">first</a></li>
+<li><a href="#query.last">last</a></li>
+<li><a href="#query.siblings">siblings</a></li>
+<li><a href="#query.parent">parent</a></li>
+<li><a href="#query.parents">parents</a></li>
+<li><a href="#query.closest">closest</a></li>
+<li><a href="#query.children">children</a></li>
+<li><a href="#query.querymatches">Query.matches</a></li>
+<li><a href="#query.queryqsa">Query.qsa</a></li>
+<li><a href="#query.querygetclosestnode">Query.getClosestNode</a></li></ul></li>
+<li><a href="#collection">Collection</a>
+<ul><li><a href="#collection.get">get</a></li>
+<li><a href="#collection.eq">eq</a></li>
+<li><a href="#collection.foreach">forEach</a></li>
+<li><a href="#collection.reduce">reduce</a></li>
+<li><a href="#collection.reduceright">reduceRight</a></li>
+<li><a href="#collection.indexof">indexOf</a></li>
+<li><a href="#collection.map">map</a></li>
+<li><a href="#collection.sort">sort</a></li>
+<li><a href="#collection.each">each</a></li>
+<li><a href="#collection.iterate">iterate</a></li>
+<li><a href="#collection.push">push</a></li>
+<li><a href="#collection.slice">slice</a></li>
+<li><a href="#collection.concat">concat</a></li>
+<li><a href="#collection._update">_update</a></li></ul></li>
+<li><a href="#manipulation">Manipulation</a>
+<ul><li><a href="#manipulation.text">text</a></li>
+<li><a href="#manipulation.html">html</a></li>
+<li><a href="#manipulation.empty">empty</a></li>
+<li><a href="#manipulation.append">append</a></li>
+<li><a href="#manipulation.prepend">prepend</a></li>
+<li><a href="#manipulation.after">after</a></li>
+<li><a href="#manipulation.before">before</a></li>
+<li><a href="#manipulation.clone">clone</a></li>
+<li><a href="#manipulation.val">val</a></li>
+<li><a href="#manipulation.attr">attr</a></li>
+<li><a href="#manipulation.manipulationgetvalue">Manipulation.getValue</a></li>
+<li><a href="#manipulation.manipulationgetattribute">Manipulation.getAttribute</a></li></ul></li>
+<li><a href="#style">Style</a>
+<ul><li><a href="#style.show">show</a></li>
+<li><a href="#style.hide">hide</a></li>
+<li><a href="#style.css">css</a></li>
+<li><a href="#style.hasclass">hasClass</a></li>
+<li><a href="#style.addclass">addClass</a></li>
+<li><a href="#style.removeclass">removeClass</a></li>
+<li><a href="#style.toggleclass">toggleClass</a></li>
+<li><a href="#style.stylegetcss">Style.getCSS</a></li>
+<li><a href="#style.stylesetcss">Style.setCSS</a></li>
+<li><a href="#style.stylehasclass">Style.hasClass</a></li>
+<li><a href="#style.styleaddclass">Style.addClass</a></li>
+<li><a href="#style.styleremoveclass">Style.removeClass</a></li></ul></li>
+<li><a href="#eventemitter">Event Emitter</a>
+<ul><li><a href="#eventemitter.addlisteneron">addListener (on)</a></li>
+<li><a href="#eventemitter.once">once</a></li>
+<li><a href="#eventemitter.removelistener">removeListener</a></li>
+<li><a href="#eventemitter.emit">emit</a></li>
+<li><a href="#eventemitter.proxy">proxy</a></li>
+<li><a href="#eventemitter.ryesubscribe">Rye.subscribe</a></li>
+<li><a href="#eventemitter.ryeunsubscribe">Rye.unsubscribe</a></li>
+<li><a href="#eventemitter.ryepublish">Rye.publish</a></li></ul></li>
+<li><a href="#domevents">DOM Events</a>
+<ul><li><a href="#domevents.addeventlisteneron">addEventListener (on)</a></li>
+<li><a href="#domevents.removeeventlisteneroff">removeEventListener (off)</a></li>
+<li><a href="#domevents.trigger">trigger</a></li>
+<li><a href="#domevents.domeventsgetemitter">DOMEvents.getEmitter</a></li>
+<li><a href="#domevents.domeventsaddlistener">DOMEvents.addListener</a></li>
+<li><a href="#domevents.domeventsremovelisten">DOMEvents.removeListen</a></li>
+<li><a href="#domevents.domeventstrigger">DOMEvents.trigger</a></li>
+<li><a href="#domevents.domeventscreateevent">DOMEvents.createEvent</a></li></ul></li>
+<li><a href="#touchevents">Touch Events</a></li>
+</ul>
+        </nav>
+    </div>
+
+    <div class="main">
+<article><div class="wrapper"><p><strong>Rye</strong> is a light javascript library for DOM manipulation and events with support for all modern browsers including IE9+.</p>
+
+<div class="buttons">
+    <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="30"></iframe>
+    <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=fork&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="30"></iframe>
+</div>
+
+<h1 id="api">API</h1>
+
+<p>The API is similar to jQuery but not totally compatible. Inconsistencies like <code>.map()</code> behavior, <code>map/each()</code> argument ordering are fixed in Rye.</p>
+
+<p>It doesn't do any trickery to subclass <code>Array</code>, elements are stored in the <code>.elements</code> property instead. This means that array methods ran on a Rye instance return another <code>Rye</code> instance, while methods ran on <code>.get()</code> or <code>.elements</code> return instances of <code>Array</code> (ex: <code>$('li').each()</code> vs <code>$('li').get().forEach()</code>).</p>
+
+<h2 id="api.browsercompatiblity">Browser compatiblity</h2>
+
+<table>
+<thead>
+<tr>
+<th id="browser" style="text-align:left;"> Browser </th>
+<th id="version" style="text-align:left;"> Version </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"> Chrome  </td>
+<td style="text-align:left;">6+       </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Safari  </td>
+<td style="text-align:left;">5+       </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Firefox </td>
+<td style="text-align:left;">6+       </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> IE      </td>
+<td style="text-align:left;">9+       </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Opera   </td>
+<td style="text-align:left;">11.5+    </td>
+</tr>
+
+</tbody>
+</table>
+
+<h3 id="api.browsercompatiblity.mobile">Mobile</h3>
+
+<table>
+<thead>
+<tr>
+<th id="browser" style="text-align:left;"> Browser           </th>
+<th id="version" style="text-align:left;"> Version </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"> iOS               </td>
+<td style="text-align:left;"> 4.1+    </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Android           </td>
+<td style="text-align:left;"> 4.0+    </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Blackberry        </td>
+<td style="text-align:left;"> 10+     </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Opera Mobile      </td>
+<td style="text-align:left;"> 11.1+   </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Chrome (Android)  </td>
+<td style="text-align:left;"> 18+     </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Firefox (Android) </td>
+<td style="text-align:left;"> 15+     </td>
+</tr>
+
+</tbody>
+</table>
+
+<h2 id="api.notgoingtohappen">Not going to happen</h2>
+
+<ul>
+<li>event aliases like <code>delegate</code>, <code>live</code>, <code>click</code>, <code>focus</code></li>
+<li>cancel bubbling and prevent default by returning <code>false</code></li>
+<li>effects and animation - do it with CSS</li>
+<li>defining global <code>$</code></li>
+<li>traditional event namespacing</li>
+<li><code>end()</code> or other chain-aware methods</li>
+</ul></div></article>
+<article><div class="wrapper"><h1 id="rye">Rye</h1>
+
+<h2 id="rye.rye">Rye()</h2>
+
+<h2 id="rye.ryedefine">Rye.define</h2>
+
+<h2 id="rye.ryerequire">Rye.require</h2></div></article>
+<article><div class="wrapper"><h1 id="util">Util</h1>
+
+<h2 id="util.utilextend">Util.extend</h2>
+
+<h2 id="util.utilinherits">Util.inherits</h2>
+
+<h2 id="util.utiliselement">Util.isElement</h2>
+
+<h2 id="util.utilisnodelist">Util.isNodeList</h2>
+
+<h2 id="util.utilunique">Util.unique</h2>
+
+<h2 id="util.utilpluck">Util.pluck</h2>
+
+<h2 id="util.utilput">Util.put</h2>
+
+<h2 id="util.utilprefix">Util.prefix</h2>
+
+<h2 id="util.utilapplier">Util.applier</h2>
+
+<h2 id="util.utilapplierleft">Util.applierLeft</h2>
+
+<h2 id="util.utilcurry">Util.curry</h2>
+
+<h2 id="util.utilgetuid">Util.getUid</h2></div></article>
+<article><div class="wrapper"><h1 id="data">Data</h1>
+
+<h2 id="data.data">data</h2>
+
+<h2 id="data.dataset">Data.set</h2>
+
+<h2 id="data.dataget">Data.get</h2></div></article>
+<article><div class="wrapper"><h1 id="query">Query</h1>
+
+<h2 id="query.find">find</h2>
+
+<h2 id="query.filter">filter</h2>
+
+<h2 id="query.has">has</h2>
+
+<h2 id="query.is">is</h2>
+
+<h2 id="query.not">not</h2>
+
+<h2 id="query.index">index</h2>
+
+<h2 id="query.add">add</h2>
+
+<h2 id="query.plucknode">pluckNode</h2>
+
+<h2 id="query.pluck">pluck</h2>
+
+<h2 id="query.next">next</h2>
+
+<h2 id="query.prev">prev</h2>
+
+<h2 id="query.first">first</h2>
+
+<h2 id="query.last">last</h2>
+
+<h2 id="query.siblings">siblings</h2>
+
+<h2 id="query.parent">parent</h2>
+
+<h2 id="query.parents">parents</h2>
+
+<h2 id="query.closest">closest</h2>
+
+<h2 id="query.children">children</h2>
+
+<h2 id="query.querymatches">Query.matches</h2>
+
+<h2 id="query.queryqsa">Query.qsa</h2>
+
+<h2 id="query.querygetclosestnode">Query.getClosestNode</h2></div></article>
+<article><div class="wrapper"><h1 id="collection">Collection</h1>
+
+<h2 id="collection.get">get</h2>
+
+<h2 id="collection.eq">eq</h2>
+
+<h2 id="collection.foreach">forEach</h2>
+
+<h2 id="collection.reduce">reduce</h2>
+
+<h2 id="collection.reduceright">reduceRight</h2>
+
+<h2 id="collection.indexof">indexOf</h2>
+
+<h2 id="collection.map">map</h2>
+
+<h2 id="collection.sort">sort</h2>
+
+<h2 id="collection.each">each</h2>
+
+<h2 id="collection.iterate">iterate</h2>
+
+<h2 id="collection.push">push</h2>
+
+<h2 id="collection.slice">slice</h2>
+
+<h2 id="collection.concat">concat</h2>
+
+<h2 id="collection._update">_update</h2></div></article>
+<article><div class="wrapper"><h1 id="manipulation">Manipulation</h1>
+
+<h2 id="manipulation.text">text</h2>
+
+<h2 id="manipulation.html">html</h2>
+
+<h2 id="manipulation.empty">empty</h2>
+
+<h2 id="manipulation.append">append</h2>
+
+<h2 id="manipulation.prepend">prepend</h2>
+
+<h2 id="manipulation.after">after</h2>
+
+<h2 id="manipulation.before">before</h2>
+
+<h2 id="manipulation.clone">clone</h2>
+
+<h2 id="manipulation.val">val</h2>
+
+<h2 id="manipulation.attr">attr</h2>
+
+<h2 id="manipulation.manipulationgetvalue">Manipulation.getValue</h2>
+
+<h2 id="manipulation.manipulationgetattribute">Manipulation.getAttribute</h2></div></article>
+<article><div class="wrapper"><h1 id="style">Style</h1>
+
+<h2 id="style.show">show</h2>
+
+<h2 id="style.hide">hide</h2>
+
+<h2 id="style.css">css</h2>
+
+<h2 id="style.hasclass">hasClass</h2>
+
+<h2 id="style.addclass">addClass</h2>
+
+<h2 id="style.removeclass">removeClass</h2>
+
+<h2 id="style.toggleclass">toggleClass</h2>
+
+<h2 id="style.stylegetcss">Style.getCSS</h2>
+
+<h2 id="style.stylesetcss">Style.setCSS</h2>
+
+<h2 id="style.stylehasclass">Style.hasClass</h2>
+
+<h2 id="style.styleaddclass">Style.addClass</h2>
+
+<h2 id="style.styleremoveclass">Style.removeClass</h2></div></article>
+<article><div class="wrapper"><h1 id="eventemitter">Event Emitter</h1>
+
+<h2 id="eventemitter.addlisteneron">addListener (on)</h2>
+
+<h2 id="eventemitter.once">once</h2>
+
+<h2 id="eventemitter.removelistener">removeListener</h2>
+
+<h2 id="eventemitter.emit">emit</h2>
+
+<h2 id="eventemitter.proxy">proxy</h2>
+
+<h2 id="eventemitter.ryesubscribe">Rye.subscribe</h2>
+
+<h2 id="eventemitter.ryeunsubscribe">Rye.unsubscribe</h2>
+
+<h2 id="eventemitter.ryepublish">Rye.publish</h2></div></article>
+<article><div class="wrapper"><h1 id="domevents">DOM Events</h1>
+
+<h2 id="domevents.addeventlisteneron">addEventListener (on)</h2>
+
+<h2 id="domevents.removeeventlisteneroff">removeEventListener (off)</h2>
+
+<h2 id="domevents.trigger">trigger</h2>
+
+<h2 id="domevents.domeventsgetemitter">DOMEvents.getEmitter</h2>
+
+<h2 id="domevents.domeventsaddlistener">DOMEvents.addListener</h2>
+
+<h2 id="domevents.domeventsremovelisten">DOMEvents.removeListen</h2>
+
+<h2 id="domevents.domeventstrigger">DOMEvents.trigger</h2>
+
+<h2 id="domevents.domeventscreateevent">DOMEvents.createEvent</h2></div></article>
+<article><div class="wrapper"><h1 id="touchevents">Touch Events</h1>
+
+<ul>
+<li><code>tap</code></li>
+<li><code>doubletap</code></li>
+<li><code>swipe</code></li>
+<li><code>swipeleft</code></li>
+<li><code>swiperight</code></li>
+<li><code>swipeup</code></li>
+<li><code>swipedown</code></li>
+<li><code>longtap</code></li>
+<li><code>singletap</code></li>
+</ul></div></article>
+    </div>
+
+    <footer class="wrapper">
+        <p> 
+            by <a href="http://github.com/jcemer"><img src="http://gravatar.com/avatar/c5df370a883b65279af5a7ca94a5eed7?s=25" width="25" height="25" alt="Jean Carlo Emer">jcemer</a>
+            and <a href="http://github.com/ricardobeat"><img src="http://gravatar.com/avatar/47923b1f334d8e3f7a00506ac3c7a636?s=25" width="25" height="25" alt="Ricardo Tomasi">ricardobeat</a>
+        </p>
+    </footer>
+    
+    <script src="rye.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
