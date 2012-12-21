@@ -21,19 +21,6 @@
 <ul><li><a href="#rye-constructor">Constructor</a></li>
 <li><a href="#rye-ryedefine">Rye.define</a></li>
 <li><a href="#rye-ryerequire">Rye.require</a></li></ul></li>
-<li><a href="#util">Util</a>
-<ul><li><a href="#util-extend">extend</a></li>
-<li><a href="#util-inherits">inherits</a></li>
-<li><a href="#util-iselement">isElement</a></li>
-<li><a href="#util-isnodelist">isNodeList</a></li>
-<li><a href="#util-unique">unique</a></li>
-<li><a href="#util-pluck">pluck</a></li>
-<li><a href="#util-put">put</a></li>
-<li><a href="#util-prefix">prefix</a></li>
-<li><a href="#util-applier">applier</a></li>
-<li><a href="#util-applierleft">applierLeft</a></li>
-<li><a href="#util-curry">curry</a></li>
-<li><a href="#util-getuid">getUid</a></li></ul></li>
 <li><a href="#data">Data</a>
 <ul><li><a href="#data-data">data</a></li>
 <li><a href="#data-dataset">Data.set</a></li>
@@ -122,6 +109,19 @@
 <li><a href="#domevents-domeventstrigger">DOMEvents.trigger</a></li>
 <li><a href="#domevents-domeventscreateevent">DOMEvents.createEvent</a></li></ul></li>
 <li><a href="#touchevents">Touch Events</a></li>
+<li><a href="#util">Util</a>
+<ul><li><a href="#util-extend">extend</a></li>
+<li><a href="#util-inherits">inherits</a></li>
+<li><a href="#util-iselement">isElement</a></li>
+<li><a href="#util-isnodelist">isNodeList</a></li>
+<li><a href="#util-unique">unique</a></li>
+<li><a href="#util-pluck">pluck</a></li>
+<li><a href="#util-put">put</a></li>
+<li><a href="#util-prefix">prefix</a></li>
+<li><a href="#util-applier">applier</a></li>
+<li><a href="#util-applierleft">applierLeft</a></li>
+<li><a href="#util-curry">curry</a></li>
+<li><a href="#util-getuid">getUid</a></li></ul></li>
 </ul>
         </nav>
     </div>
@@ -252,81 +252,6 @@ Rye(elements) <span>⇒ rye collection</span>
 <div class="api">Rye.require(name) <span>⇒ function</span></div>
 
 <p>Requires the function stored. All code in Rye is allocated as modules.</p></div></article>
-<article><div class="wrapper"><h1 id="util">Util</h1>
-
-<p>This module only contains methods to support common tasks.</p>
-
-<h2 id="util-extend">extend</h2>
-
-<div class="api">extend(destination, source) <span>⇒ destination</span></div>
-
-<p>Merge the contents of two objects together.</p>
-
-<h2 id="util-inherits">inherits</h2>
-
-<div class="api">inherits(child, parent) <span>⇒ child</span></div>
-
-<p>Gets prototype inheritance trought super-class method calling.</p>
-
-<h2 id="util-iselement">isElement</h2>
-
-<div class="api">isElement(element) <span>⇒ boolean</span></div>
-
-<p>Checks if element is a <code>node element</code> or <code>document element</code>.</p>
-
-<h2 id="util-isnodelist">isNodeList</h2>
-
-<div class="api">isNodeList(elements) <span>⇒ boolean</span></div>
-
-<p>Checks if elements are a <code>node list</code> or <code>html collection</code>.</p>
-
-<h2 id="util-unique">unique</h2>
-
-<div class="api">unique(array) <span>⇒ array</span></div>
-
-<p>Produces a duplicate-free version of the array.</p>
-
-<h2 id="util-pluck">pluck</h2>
-
-<div class="api">pluck(array, property) <span>⇒ array</span></div>
-
-<p>Produces an array with the content of property of items.</p>
-
-<h2 id="util-put">put</h2>
-
-<div class="api">put(array, property, value) <span>⇒ array</span></div>
-
-<p>Adds a value in all properties of array items.</p>
-
-<h2 id="util-prefix">prefix</h2>
-
-<div class="api">prefix(property, obj) <span>⇒ mixed</span></div>
-
-<p>Finds a property in an object using prefixes: <em>moz</em>, <em>webkit</em>, <em>ms</em> and <em>o</em>. </p>
-
-<h2 id="util-applier">applier</h2>
-
-<div class="api">applier(fn, context, args) <span>⇒ function</span></div>
-
-<p>Returns a function thats wrap a call to <code>fn</code> with <code>this</code> setted to <code>context</code> and <code>args</code> added to the end of params.</p>
-
-<h2 id="util-applierleft">applierLeft</h2>
-
-<div class="api">applierLeft(fn, context, args) <span>⇒ function</span></div>
-
-<p>Works like <em>applier</em> except that <code>args</code> are added to the begining of params.</p>
-
-<h2 id="util-curry">curry</h2>
-
-<div class="api">curry(fn) <span>⇒ function</span></div>
-
-<p>It is a <em>applierLeft</em> thats keep the <code>this</code> to the same value that the call already has.</p>
-
-<h2 id="util-getuid">getUid</h2>
-
-<div class="api">getUid(element) <span>⇒ number</span></div>
-
-<p>Gets an unique identifier to an element.</p></div></article>
 <article><div class="wrapper"><h1 id="data">Data</h1>
 
 <p>Store arbitrary data associated with the matched elements.</p>
@@ -524,6 +449,81 @@ Rye(elements) <span>⇒ rye collection</span>
 <li><code>longtap</code></li>
 <li><code>singletap</code></li>
 </ul></div></article>
+<article><div class="wrapper"><h1 id="util">Util</h1>
+
+<p>This module only contains methods to support common tasks.</p>
+
+<h2 id="util-extend">extend</h2>
+
+<div class="api">extend(destination, source) <span>⇒ destination</span></div>
+
+<p>Merge the contents of two objects together.</p>
+
+<h2 id="util-inherits">inherits</h2>
+
+<div class="api">inherits(child, parent) <span>⇒ child</span></div>
+
+<p>Gets prototype inheritance trought super-class method calling.</p>
+
+<h2 id="util-iselement">isElement</h2>
+
+<div class="api">isElement(element) <span>⇒ boolean</span></div>
+
+<p>Checks if element is a <code>node element</code> or <code>document element</code>.</p>
+
+<h2 id="util-isnodelist">isNodeList</h2>
+
+<div class="api">isNodeList(elements) <span>⇒ boolean</span></div>
+
+<p>Checks if elements are a <code>node list</code> or <code>html collection</code>.</p>
+
+<h2 id="util-unique">unique</h2>
+
+<div class="api">unique(array) <span>⇒ array</span></div>
+
+<p>Produces a duplicate-free version of the array.</p>
+
+<h2 id="util-pluck">pluck</h2>
+
+<div class="api">pluck(array, property) <span>⇒ array</span></div>
+
+<p>Produces an array with the content of property of items.</p>
+
+<h2 id="util-put">put</h2>
+
+<div class="api">put(array, property, value) <span>⇒ array</span></div>
+
+<p>Adds a value in all properties of array items.</p>
+
+<h2 id="util-prefix">prefix</h2>
+
+<div class="api">prefix(property, obj) <span>⇒ mixed</span></div>
+
+<p>Finds a property in an object using prefixes: <em>moz</em>, <em>webkit</em>, <em>ms</em> and <em>o</em>. </p>
+
+<h2 id="util-applier">applier</h2>
+
+<div class="api">applier(fn, context, args) <span>⇒ function</span></div>
+
+<p>Returns a function thats wrap a call to <code>fn</code> with <code>this</code> setted to <code>context</code> and <code>args</code> added to the end of params.</p>
+
+<h2 id="util-applierleft">applierLeft</h2>
+
+<div class="api">applierLeft(fn, context, args) <span>⇒ function</span></div>
+
+<p>Works like <em>applier</em> except that <code>args</code> are added to the begining of params.</p>
+
+<h2 id="util-curry">curry</h2>
+
+<div class="api">curry(fn) <span>⇒ function</span></div>
+
+<p>It is a <em>applierLeft</em> thats keep the <code>this</code> to the same value that the call already has.</p>
+
+<h2 id="util-getuid">getUid</h2>
+
+<div class="api">getUid(element) <span>⇒ number</span></div>
+
+<p>Gets an unique identifier to an element.</p></div></article>
     </div>
 
     <footer class="footer">
