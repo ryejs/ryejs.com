@@ -5,15 +5,20 @@ html, body {
     margin: 0;
     padding: 0;
 }
-html {
-    height: 100%;
-}
 
 // 10, 12, 14, 16, 19, 23, 32, 48
 @text: Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif;
 @titles: Palatino, "Palatino Linotype", "Hoefler Text", Times, "Times New Roman", serif;
 @sans: "Helvetica Neue", "Helvetica", Arial, sans-serif;
 @monospace: Monaco, Consolas, "Lucida Console", monospace;
+
+@color1: #fff5e3;
+@color2: #F0DFC3;
+
+html {
+    height: 100%;
+    background: url(../images/top.jpg) @color1 center top no-repeat;
+}
 
 body {
     font-family: @sans;
@@ -33,7 +38,7 @@ h1 {
     position: relative;
     font-size: 1.6em;
     margin-top: 1.6em;
-    border-bottom: 1px solid darken(white, 6);
+    border-bottom: 1px solid @color2;
 }
 
 h2 {
@@ -49,23 +54,23 @@ h3 {
 code {
     font-size: 12px;
     line-height: 18px;
-    background: #fff;
-    outline: 1px solid #d7ecd9;
+    background: lighten(@color1, 2);
+    outline: 1px solid @color2;
     padding: 0 4px;
 }
 
 table {
-    background: #f6f6f6;
+    background: lighten(@color1, 2);
     font-size: 95%;
     th {
         text-align: left;
     }
     th, td {
         padding: 2px .5em;
-        border: 1px solid #ddd;
+        border: 1px solid @color2;
     }
     th {
-        background: #f5f5f5;
+        background: lighten(@color1, 1);
     }
 }
 
@@ -74,6 +79,7 @@ table {
     position: relative;
     padding-top: 20px;
     overflow: hidden;
+    padding: 30px 0;
 }
 
 .logo {
@@ -129,7 +135,7 @@ table {
 li {
     code {
         background: #ffe780;
-        border: 0;
+        outline: none;
         padding: 2px 4px;
         margin-right: 2px;
         &:hover {
@@ -140,8 +146,10 @@ li {
 }
 
 footer {
-    padding-top: 60px;
+    margin-top: 60px;
+    padding-top: 20px;
     padding-bottom: 20px;
+    border-top: 1px solid @color2;
     img {
         border-radius: 50%;
         vertical-align: middle;

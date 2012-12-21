@@ -2,16 +2,23 @@
     position: absolute;
     right: 0;
     width: 200px;
+    .home {
+        padding-left: 20px;
+        font-family: @sans;
+        display: block;
+        line-height: 3;
+    }
 }
-nav {
+.navigation .content {
     position: fixed;
-    padding-top: 20px;
     top: 0;
     bottom: 0;
     z-index: 1;
     width: 198px;
     overflow: auto;
-    background: darken(white, 5);
+    background: @color2;
+}
+nav {
     ul {
         padding: 0;
         margin: 0;
@@ -26,7 +33,10 @@ nav {
     }
     li {
         line-height: 2;
-        border-top: 1px solid white;
+        border-top: 1px solid @color1;
+        &:hover {
+            background: lighten(@color2, 2);
+        }
     }
     ul ul {
         display: none;
@@ -37,15 +47,18 @@ nav {
         li {
             border: 0;
             line-height: 1.6;
+            &:hover {
+                background: mix(@color1, black, 98);
+            }
         }
     }
     .open {
-        background: white;
+        background: @color1;
         a {
-            background: lighten(#ffd75f, 10);
+            background: #ffe780;
         }
         ul {
-            background: white;
+            background: @color1;
             display: block;
             li:last-child {
                 padding-bottom: 6px;
@@ -55,7 +68,7 @@ nav {
             }
             .active, .open {
                 position: relative;
-                background: lighten(#ffd75f, 20);
+                background: lighten(#ffe780, 8)
             }
         }
     }
