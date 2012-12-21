@@ -57,11 +57,11 @@ nav ul ul{display:none;}nav ul ul a{font-size:.8em;font-weight:normal;padding-le
 nav .open{background:white;}nav .open .active{background:#dafbe8;}
 nav .open ul{display:block;padding-bottom:10px;}
 .buttons{text-align:center;}
-.main{line-height:1.5;}.main .sintax{margin-top:-20px;font-size:.9em;color:#990066;font-family:monospace, serif;}.main .sintax span{color:#999;}
+.main{line-height:1.5;}.main .sintax{margin-top:-22px;font-size:.9em;color:#990066;font-family:monospace, serif;}.main .sintax span{color:#999;}
 article:first-child{border:none;}article:first-child p:first-child{font-size:1.4em;text-align:center;}
-h1{position:relative;font-size:1.8em;margin-top:1.6em;border-bottom:1px solid #f0f0f0;}
-h2{font-size:1.4em;margin-top:1.2em;}
-h3{font-size:1em;margin-top:0.8em;}
+h1{position:relative;font-size:1.8em;padding-top:1.6em;border-bottom:1px solid #f0f0f0;}
+h2{font-size:1.4em;padding-top:1em;}
+h3{font-size:1em;padding-top:.6em;}
 a:link,a:visited{color:#419741;}
 a:hover{color:#327332;}
 code{font-size:85%;background:#e3e8e8;border:1px solid #d4d8d8;padding:0 4px;}
