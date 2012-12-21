@@ -21,19 +21,6 @@
 <ul><li><a href="#rye-constructor">Constructor</a></li>
 <li><a href="#rye-ryedefine">Rye.define</a></li>
 <li><a href="#rye-ryerequire">Rye.require</a></li></ul></li>
-<li><a href="#util">Util</a>
-<ul><li><a href="#util-extend">extend</a></li>
-<li><a href="#util-inherits">inherits</a></li>
-<li><a href="#util-iselement">isElement</a></li>
-<li><a href="#util-isnodelist">isNodeList</a></li>
-<li><a href="#util-unique">unique</a></li>
-<li><a href="#util-pluck">pluck</a></li>
-<li><a href="#util-put">put</a></li>
-<li><a href="#util-prefix">prefix</a></li>
-<li><a href="#util-applier">applier</a></li>
-<li><a href="#util-applierleft">applierLeft</a></li>
-<li><a href="#util-curry">curry</a></li>
-<li><a href="#util-getuid">getUid</a></li></ul></li>
 <li><a href="#data">Data</a>
 <ul><li><a href="#data-data">data</a></li>
 <li><a href="#data-dataset">Data.set</a></li>
@@ -122,6 +109,19 @@
 <li><a href="#domevents-domeventstrigger">DOMEvents.trigger</a></li>
 <li><a href="#domevents-domeventscreateevent">DOMEvents.createEvent</a></li></ul></li>
 <li><a href="#touchevents">Touch Events</a></li>
+<li><a href="#util">Util</a>
+<ul><li><a href="#util-extend">extend</a></li>
+<li><a href="#util-inherits">inherits</a></li>
+<li><a href="#util-iselement">isElement</a></li>
+<li><a href="#util-isnodelist">isNodeList</a></li>
+<li><a href="#util-unique">unique</a></li>
+<li><a href="#util-pluck">pluck</a></li>
+<li><a href="#util-put">put</a></li>
+<li><a href="#util-prefix">prefix</a></li>
+<li><a href="#util-applier">applier</a></li>
+<li><a href="#util-applierleft">applierLeft</a></li>
+<li><a href="#util-curry">curry</a></li>
+<li><a href="#util-getuid">getUid</a></li></ul></li>
 </ul>
         </nav>
     </div>
@@ -252,103 +252,6 @@ Rye(elements) <span>⇒ rye collection</span>
 <div class="api">Rye.require(name) <span>⇒ function</span></div>
 
 <p>Requires the function stored. All code in Rye is allocated as modules.</p></div></article>
-<article><div class="wrapper"><h1 id="util">Util</h1>
-
-<p>Utility methods. Use with <code>var util = Rye.require('Util')</code>.</p>
-
-<h2 id="util-extend">extend</h2>
-
-<div class="api">extend(destination, source) <span>⇒ destination</span></div>
-
-<p>Merge the contents of two objects together.</p>
-
-<h2 id="util-inherits">inherits</h2>
-
-<div class="api">inherits(child, parent) <span>⇒ child</span></div>
-
-<p>Sets up prototypal inheritance through a ghost constructor.</p>
-
-<h2 id="util-iselement">isElement</h2>
-
-<div class="api">isElement(element) <span>⇒ boolean</span></div>
-
-<p>Checks if <code>element</code> is a <code>NODE_ELEMENT</code> or <code>DOCUMENT_ELEMENT</code>.</p>
-
-<h2 id="util-isnodelist">isNodeList</h2>
-
-<div class="api">isNodeList(elements) <span>⇒ boolean</span></div>
-
-<p>Checks if <code>elements</code> is a <code>NodeList</code> or <code>HTMLCollection</code>.</p>
-
-<h2 id="util-unique">unique</h2>
-
-<div class="api">unique(array) <span>⇒ array</span></div>
-
-<p>Produces a duplicate-free version of the array.</p>
-
-<h2 id="util-pluck">pluck</h2>
-
-<div class="api">pluck(array, property) <span>⇒ array</span></div>
-
-<p>Pluck an attribute from each item in <code>array</code>.</p>
-
-<h2 id="util-put">put</h2>
-
-<div class="api">put(array, property, value) <span>⇒ array</span></div>
-
-<p>Opposite of pluck. Set <code>property</code> for each item in <code>array</code>.</p>
-
-<h2 id="util-prefix">prefix</h2>
-
-<div class="api">prefix(property, obj) <span>⇒ mixed</span></div>
-
-<p>Returns a standard <em>or</em> browser-prefixed methods (<code>moz</code>, <code>webkit</code>, <code>ms</code>, <code>o</code>) if found.</p>
-
-<h2 id="util-applier">applier</h2>
-
-<div class="api">applier(fn, context, args) <span>⇒ function</span></div>
-
-<p>Returns a function that calls <code>fn.apply(context, ...)</code>. The <code>args</code> array is right-joined to the function call parameters.</p>
-
-<h2 id="util-applierleft">applierLeft</h2>
-
-<div class="api">applierLeft(fn, context, args) <span>⇒ function</span></div>
-
-<p>The same as <code>applier</code> but <code>args</code> are left-joined to the function parameters.</p>
-
-<h2 id="util-curry">curry</h2>
-
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-
-<div class="sintax">util.curry(fn, ...) <span>⇒ function</span></div>
-
-<p>=======</p>
-
-<div class="api">curry(fn) <span>⇒ function</span></div>
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>57c7e9f1f12124ada7bbbc90b33b9f799d7e0daf</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
-
-<p>Returns a <a href="http://en.wikipedia.org/wiki/Currying">curried</a>/partially-applied function with the rest of the arguments.</p>
-
-<h2 id="util-getuid">getUid</h2>
-
-<div class="api">getUid(element) <span>⇒ number</span></div>
-
-<p>Gets an unique identifier for an element.</p></div></article>
 <article><div class="wrapper"><h1 id="data">Data</h1>
 
 <p>Store arbitrary data associated with the matched elements.</p>
@@ -546,6 +449,81 @@ Rye(elements) <span>⇒ rye collection</span>
 <li><code>longtap</code></li>
 <li><code>singletap</code></li>
 </ul></div></article>
+<article><div class="wrapper"><h1 id="util">Util</h1>
+
+<p>Utility methods. Use with <code>var util = Rye.require('Util')</code>.</p>
+
+<h2 id="util-extend">extend</h2>
+
+<div class="api">util.extend(destination, source) <span>⇒ destination</span></div>
+
+<p>Merge the contents of two objects together.</p>
+
+<h2 id="util-inherits">inherits</h2>
+
+<div class="api">util.inherits(child, parent) <span>⇒ child</span></div>
+
+<p>Sets up prototypal inheritance through a ghost constructor.</p>
+
+<h2 id="util-iselement">isElement</h2>
+
+<div class="api">util.isElement(element) <span>⇒ boolean</span></div>
+
+<p>Checks if <code>element</code> is a <code>NODE_ELEMENT</code> or <code>DOCUMENT_ELEMENT</code>.</p>
+
+<h2 id="util-isnodelist">isNodeList</h2>
+
+<div class="api">util.isNodeList(elements) <span>⇒ boolean</span></div>
+
+<p>Checks if <code>elements</code> is a <code>NodeList</code> or <code>HTMLCollection</code>.</p>
+
+<h2 id="util-unique">unique</h2>
+
+<div class="api">util.unique(array) <span>⇒ array</span></div>
+
+<p>Produces a duplicate-free version of the array.</p>
+
+<h2 id="util-pluck">pluck</h2>
+
+<div class="api">util.pluck(array, property) <span>⇒ array</span></div>
+
+<p>Pluck an attribute from each item in <code>array</code>.</p>
+
+<h2 id="util-put">put</h2>
+
+<div class="api">util.put(array, property, value) <span>⇒ array</span></div>
+
+<p>Opposite of pluck. Set <code>property</code> for each item in <code>array</code>.</p>
+
+<h2 id="util-prefix">prefix</h2>
+
+<div class="api">util.prefix(property, obj) <span>⇒ mixed</span></div>
+
+<p>Returns a standard <em>or</em> browser-prefixed methods (<code>moz</code>, <code>webkit</code>, <code>ms</code>, <code>o</code>) if found.</p>
+
+<h2 id="util-applier">applier</h2>
+
+<div class="api">util.applier(fn, context, args) <span>⇒ function</span></div>
+
+<p>Returns a function that calls <code>fn.apply(context, ...)</code>. The <code>args</code> array is right-joined to the function call parameters.</p>
+
+<h2 id="util-applierleft">applierLeft</h2>
+
+<div class="api">util.applierLeft(fn, context, args) <span>⇒ function</span></div>
+
+<p>The same as <code>applier</code> but <code>args</code> are left-joined to the function parameters.</p>
+
+<h2 id="util-curry">curry</h2>
+
+<div class="api">util.curry(fn, ...) <span>⇒ function</span></div>
+
+<p>Returns a <a href="http://en.wikipedia.org/wiki/Currying">curried</a>/partially-applied function with the rest of the arguments.</p>
+
+<h2 id="util-getuid">getUid</h2>
+
+<div class="api">util.getUid(element) <span>⇒ number</span></div>
+
+<p>Gets an unique identifier for an element.</p></div></article>
     </div>
 
     <footer class="footer">
