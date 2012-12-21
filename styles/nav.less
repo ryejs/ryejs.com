@@ -1,8 +1,6 @@
 .navigation {
     position: absolute;
     right: 0;
-    top: 0;
-    bottom: 0;
     width: 200px;
 }
 nav {
@@ -48,18 +46,16 @@ nav {
         }
         ul {
             background: white;
-            a {
-                background: transparent;
-            }
-        }
-        .active, .open {
-            position: relative;
-            background: lighten(#ffd75f, 20);
-        }
-        ul {
             display: block;
             li:last-child {
                 padding-bottom: 6px;
+            }
+            a {
+                background: transparent;
+            }
+            .active, .open {
+                position: relative;
+                background: lighten(#ffd75f, 20);
             }
         }
     }
