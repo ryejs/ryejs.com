@@ -3,7 +3,7 @@ Rye
 
 Constructor
 ------------------
-<div class="sintax">
+<div class="api">
 Rye(selector[, context]) <span>⇒ rye collection</span><br>
 Rye(element) <span>⇒ rye collection</span><br>
 Rye(elements) <span>⇒ rye collection</span>
@@ -14,14 +14,14 @@ Creates a Rye collection object.
 
 Rye.define
 ------------------
-<div class="sintax">Rye.define(name, fn)</div>
+<div class="api">Rye.define(name, fn)</div>
 
 Stores the function named by a string.
 
 
 Rye.require
 ------------------
-<div class="sintax">Rye.require(name) <span>⇒ function</span></div>
+<div class="api">Rye.require(name) <span>⇒ function</span></div>
 
 Requires the function stored. All code in Rye is allocated as modules.
 
