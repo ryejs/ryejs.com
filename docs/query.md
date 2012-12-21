@@ -187,7 +187,7 @@ Query
 
 Element query methods. Use with var query = Rye.require('Query').
 
-matches
+@matches
 ------------------
 <div class="api">
     query.matches(element, selector) <span>⇒ boolean</span><br>
@@ -198,7 +198,7 @@ matches
 Checks if a element match with `selector`, is equal to `element` or with some element of `rye collection`.
 
 
-qsa
+@qsa
 ------------------
 <div class="api">
     query.qsa(element, selector) <span>⇒ array</span>
@@ -207,7 +207,7 @@ qsa
 Performs and optimized `.querySelectorAll` and returns an array to ease after manipulation.
 
 
-getClosestNode
+@getClosestNode
 ------------------
 <div class="api">
     query.getClosestNode(element, method[, selector]) <span>⇒ element</span>

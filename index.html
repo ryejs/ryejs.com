@@ -15,10 +15,6 @@
             </ol>
             <button type="button">Download Rye 0.0.1</button>
         </div>
-        <div class="buttons">
-            <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="30"></iframe>
-            <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=fork&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="30"></iframe>
-        </div>
     </header>
     
     <div class="navigation">
@@ -32,8 +28,8 @@
 <li><a href="#rye-ryerequire">Rye.require</a></li></ul></li>
 <li><a href="#data">Data</a>
 <ul><li><a href="#data-data">data</a></li>
-<li><a href="#data-dataset">Data.set</a></li>
-<li><a href="#data-dataget">Data.get</a></li></ul></li>
+<li><a href="#data-set">@set</a></li>
+<li><a href="#data-get">@get</a></li></ul></li>
 <li><a href="#traversal">Traversal</a>
 <ul><li><a href="#traversal-find">find</a></li>
 <li><a href="#traversal-index">index</a></li>
@@ -55,9 +51,9 @@
 <li><a href="#filter-first">first</a></li>
 <li><a href="#filter-last">last</a></li></ul></li>
 <li><a href="#query">Query</a>
-<ul><li><a href="#query-matches">matches</a></li>
-<li><a href="#query-qsa">qsa</a></li>
-<li><a href="#query-getclosestnode">getClosestNode</a></li></ul></li>
+<ul><li><a href="#query-matches">@matches</a></li>
+<li><a href="#query-qsa">@qsa</a></li>
+<li><a href="#query-getclosestnode">@getClosestNode</a></li></ul></li>
 <li><a href="#collection">Collection</a>
 <ul><li><a href="#collection-get">get</a></li>
 <li><a href="#collection-eq">eq</a></li>
@@ -83,8 +79,8 @@
 <li><a href="#manipulation-clone">clone</a></li>
 <li><a href="#manipulation-val">val</a></li>
 <li><a href="#manipulation-attr">attr</a></li>
-<li><a href="#manipulation-manipulationgetvalue">Manipulation.getValue</a></li>
-<li><a href="#manipulation-manipulationgetattribute">Manipulation.getAttribute</a></li></ul></li>
+<li><a href="#manipulation-getvalue">@getValue</a></li>
+<li><a href="#manipulation-getattribute">@getAttribute</a></li></ul></li>
 <li><a href="#style">Style</a>
 <ul><li><a href="#style-show">show</a></li>
 <li><a href="#style-hide">hide</a></li>
@@ -93,11 +89,11 @@
 <li><a href="#style-addclass">addClass</a></li>
 <li><a href="#style-removeclass">removeClass</a></li>
 <li><a href="#style-toggleclass">toggleClass</a></li>
-<li><a href="#style-stylegetcss">Style.getCSS</a></li>
-<li><a href="#style-stylesetcss">Style.setCSS</a></li>
-<li><a href="#style-stylehasclass">Style.hasClass</a></li>
-<li><a href="#style-styleaddclass">Style.addClass</a></li>
-<li><a href="#style-styleremoveclass">Style.removeClass</a></li></ul></li>
+<li><a href="#style-getcss">@getCSS</a></li>
+<li><a href="#style-setcss">@setCSS</a></li>
+<li><a href="#style-hasclass">@hasClass</a></li>
+<li><a href="#style-addclass">@addClass</a></li>
+<li><a href="#style-removeclass">@removeClass</a></li></ul></li>
 <li><a href="#eventemitter">Event Emitter</a>
 <ul><li><a href="#eventemitter-addlisteneron">addListener (on)</a></li>
 <li><a href="#eventemitter-once">once</a></li>
@@ -111,25 +107,25 @@
 <ul><li><a href="#domevents-addeventlisteneron">addEventListener (on)</a></li>
 <li><a href="#domevents-removeeventlisteneroff">removeEventListener (off)</a></li>
 <li><a href="#domevents-trigger">trigger</a></li>
-<li><a href="#domevents-domeventsgetemitter">DOMEvents.getEmitter</a></li>
-<li><a href="#domevents-domeventsaddlistener">DOMEvents.addListener</a></li>
-<li><a href="#domevents-domeventsremovelisten">DOMEvents.removeListen</a></li>
-<li><a href="#domevents-domeventstrigger">DOMEvents.trigger</a></li>
-<li><a href="#domevents-domeventscreateevent">DOMEvents.createEvent</a></li></ul></li>
+<li><a href="#domevents-getemitter">@getEmitter</a></li>
+<li><a href="#domevents-addlistener">@addListener</a></li>
+<li><a href="#domevents-removelisten">@removeListen</a></li>
+<li><a href="#domevents-trigger">@trigger</a></li>
+<li><a href="#domevents-createevent">@createEvent</a></li></ul></li>
 <li><a href="#touchevents">Touch Events</a></li>
 <li><a href="#util">Util</a>
-<ul><li><a href="#util-extend">extend</a></li>
-<li><a href="#util-inherits">inherits</a></li>
-<li><a href="#util-iselement">isElement</a></li>
-<li><a href="#util-isnodelist">isNodeList</a></li>
-<li><a href="#util-unique">unique</a></li>
-<li><a href="#util-pluck">pluck</a></li>
-<li><a href="#util-put">put</a></li>
-<li><a href="#util-prefix">prefix</a></li>
-<li><a href="#util-applier">applier</a></li>
-<li><a href="#util-applierleft">applierLeft</a></li>
-<li><a href="#util-curry">curry</a></li>
-<li><a href="#util-getuid">getUid</a></li></ul></li>
+<ul><li><a href="#util-extend">@extend</a></li>
+<li><a href="#util-inherits">@inherits</a></li>
+<li><a href="#util-iselement">@isElement</a></li>
+<li><a href="#util-isnodelist">@isNodeList</a></li>
+<li><a href="#util-unique">@unique</a></li>
+<li><a href="#util-pluck">@pluck</a></li>
+<li><a href="#util-put">@put</a></li>
+<li><a href="#util-prefix">@prefix</a></li>
+<li><a href="#util-applier">@applier</a></li>
+<li><a href="#util-applierleft">@applierLeft</a></li>
+<li><a href="#util-curry">@curry</a></li>
+<li><a href="#util-getuid">@getUid</a></li></ul></li>
 </ul>
             </nav>
         </div>
@@ -137,6 +133,11 @@
 
     <section class="intro">
 <p><strong>Rye</strong> is a lightweight javascript library for DOM manipulation and events with support for <strong>all modern browsers</strong> including IE9+. It has support for <strong>touch events/gestures</strong>, an <strong>even emitter</strong> which you can use to extend your own objects, and a <strong>jQuery-compatible</strong> API.</p>
+
+<div class="buttons">
+    <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+    <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=fork&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+</div>
 
 <h1 id="introduction">Introduction</h1>
 
@@ -278,7 +279,7 @@
 
 <p>Allows to attach and get data of any type to DOM elements.</p>
 
-<h2 id="data-dataset">Data.set</h2>
+<h2 id="data-set">@set</h2>
 
 <div class="api">
     data.set(element, key, value)
@@ -286,7 +287,7 @@
 
 <p>Stores <code>value</code> in <code>key</code> of one <code>element</code>.</p>
 
-<h2 id="data-dataget">Data.get</h2>
+<h2 id="data-get">@get</h2>
 
 <div class="api">
     data.get(element, key) <span>⇒ mixed</span>
@@ -459,7 +460,7 @@
 
 <p>Element query methods. Use with var query = Rye.require('Query').</p>
 
-<h2 id="query-matches">matches</h2>
+<h2 id="query-matches">@matches</h2>
 
 <div class="api">
     query.matches(element, selector) <span>⇒ boolean</span><br>
@@ -469,7 +470,7 @@
 
 <p>Checks if a element match with <code>selector</code>, is equal to <code>element</code> or with some element of <code>rye collection</code>.</p>
 
-<h2 id="query-qsa">qsa</h2>
+<h2 id="query-qsa">@qsa</h2>
 
 <div class="api">
     query.qsa(element, selector) <span>⇒ array</span>
@@ -477,7 +478,7 @@
 
 <p>Performs and optimized <code>.querySelectorAll</code> and returns an array to ease after manipulation.</p>
 
-<h2 id="query-getclosestnode">getClosestNode</h2>
+<h2 id="query-getclosestnode">@getClosestNode</h2>
 
 <div class="api">
     query.getClosestNode(element, method[, selector]) <span>⇒ element</span>
@@ -686,7 +687,7 @@
 
 <p>When <code>value</code> is given or an object with name as key is passing, sets the attribute to that <code>value</code> on each element in the collection.</p>
 
-<h2 id="manipulation-manipulationgetvalue">Manipulation.getValue</h2>
+<h2 id="manipulation-getvalue">@getValue</h2>
 
 <div class="api">
     manipulation.getValue(element) <span>⇒ string</span>
@@ -694,7 +695,7 @@
 
 <p>Gets a field <code>value</code> of a given <code>element</code>.</p>
 
-<h2 id="manipulation-manipulationgetattribute">Manipulation.getAttribute</h2>
+<h2 id="manipulation-getattribute">@getAttribute</h2>
 
 <div class="api">
     manipulation.getAttribute(element, name) <span>⇒ string</span>
@@ -717,15 +718,15 @@
 
 <h2 id="style-toggleclass">toggleClass</h2>
 
-<h2 id="style-stylegetcss">Style.getCSS</h2>
+<h2 id="style-getcss">@getCSS</h2>
 
-<h2 id="style-stylesetcss">Style.setCSS</h2>
+<h2 id="style-setcss">@setCSS</h2>
 
-<h2 id="style-stylehasclass">Style.hasClass</h2>
+<h2 id="style-hasclass">@hasClass</h2>
 
-<h2 id="style-styleaddclass">Style.addClass</h2>
+<h2 id="style-addclass">@addClass</h2>
 
-<h2 id="style-styleremoveclass">Style.removeClass</h2></div></article>
+<h2 id="style-removeclass">@removeClass</h2></div></article>
 <article><div class="wrapper"><h1 id="eventemitter">Event Emitter</h1>
 
 <h2 id="eventemitter-addlisteneron">addListener (on)</h2>
@@ -751,15 +752,15 @@
 
 <h2 id="domevents-trigger">trigger</h2>
 
-<h2 id="domevents-domeventsgetemitter">DOMEvents.getEmitter</h2>
+<h2 id="domevents-getemitter">@getEmitter</h2>
 
-<h2 id="domevents-domeventsaddlistener">DOMEvents.addListener</h2>
+<h2 id="domevents-addlistener">@addListener</h2>
 
-<h2 id="domevents-domeventsremovelisten">DOMEvents.removeListen</h2>
+<h2 id="domevents-removelisten">@removeListen</h2>
 
-<h2 id="domevents-domeventstrigger">DOMEvents.trigger</h2>
+<h2 id="domevents-trigger">@trigger</h2>
 
-<h2 id="domevents-domeventscreateevent">DOMEvents.createEvent</h2></div></article>
+<h2 id="domevents-createevent">@createEvent</h2></div></article>
 <article><div class="wrapper"><h1 id="touchevents">Touch Events</h1>
 
 <ul>
@@ -777,7 +778,7 @@
 
 <p>Utility methods. Use with <code>var util = Rye.require('Util')</code>.</p>
 
-<h2 id="util-extend">extend</h2>
+<h2 id="util-extend">@extend</h2>
 
 <div class="api">
     util.extend(destination, source) <span>⇒ destination</span>
@@ -785,7 +786,7 @@
 
 <p>Merge the contents of two objects together.</p>
 
-<h2 id="util-inherits">inherits</h2>
+<h2 id="util-inherits">@inherits</h2>
 
 <div class="api">
     util.inherits(child, parent) <span>⇒ child</span>
@@ -793,7 +794,7 @@
 
 <p>Sets up prototypal inheritance through a ghost constructor.</p>
 
-<h2 id="util-iselement">isElement</h2>
+<h2 id="util-iselement">@isElement</h2>
 
 <div class="api">
     util.isElement(element) <span>⇒ boolean</span>
@@ -801,7 +802,7 @@
 
 <p>Checks if <code>element</code> is a <code>NODE_ELEMENT</code> or <code>DOCUMENT_ELEMENT</code>.</p>
 
-<h2 id="util-isnodelist">isNodeList</h2>
+<h2 id="util-isnodelist">@isNodeList</h2>
 
 <div class="api">
     util.isNodeList(elements) <span>⇒ boolean</span>
@@ -809,7 +810,7 @@
 
 <p>Checks if <code>elements</code> is a <code>NodeList</code> or <code>HTMLCollection</code>.</p>
 
-<h2 id="util-unique">unique</h2>
+<h2 id="util-unique">@unique</h2>
 
 <div class="api">
     util.unique(array) <span>⇒ array</span>
@@ -817,7 +818,7 @@
 
 <p>Produces a duplicate-free version of the array.</p>
 
-<h2 id="util-pluck">pluck</h2>
+<h2 id="util-pluck">@pluck</h2>
 
 <div class="api">
     util.pluck(array, property) <span>⇒ array</span>
@@ -825,7 +826,7 @@
 
 <p>Pluck an attribute from each item in <code>array</code>.</p>
 
-<h2 id="util-put">put</h2>
+<h2 id="util-put">@put</h2>
 
 <div class="api">
     util.put(array, property, value) <span>⇒ array</span>
@@ -833,7 +834,7 @@
 
 <p>Opposite of pluck. Set <code>property</code> for each item in <code>array</code>.</p>
 
-<h2 id="util-prefix">prefix</h2>
+<h2 id="util-prefix">@prefix</h2>
 
 <div class="api">
     util.prefix(property, obj) <span>⇒ mixed</span>
@@ -841,7 +842,7 @@
 
 <p>Returns a standard <em>or</em> browser-prefixed methods (<code>moz</code>, <code>webkit</code>, <code>ms</code>, <code>o</code>) if found.</p>
 
-<h2 id="util-applier">applier</h2>
+<h2 id="util-applier">@applier</h2>
 
 <div class="api">
     util.applier(fn, context, args) <span>⇒ function</span>
@@ -849,7 +850,7 @@
 
 <p>Returns a function that calls <code>fn.apply(context, ...)</code>. The <code>args</code> array is right-joined to the function call parameters.</p>
 
-<h2 id="util-applierleft">applierLeft</h2>
+<h2 id="util-applierleft">@applierLeft</h2>
 
 <div class="api">
     util.applierLeft(fn, context, args) <span>⇒ function</span>
@@ -857,7 +858,7 @@
 
 <p>The same as <code>applier</code> but <code>args</code> are left-joined to the function parameters.</p>
 
-<h2 id="util-curry">curry</h2>
+<h2 id="util-curry">@curry</h2>
 
 <div class="api">
     util.curry(fn, ...) <span>⇒ function</span>
@@ -865,7 +866,7 @@
 
 <p>Returns a <a href="http://en.wikipedia.org/wiki/Currying">curried</a>/partially-applied function with the rest of the arguments.</p>
 
-<h2 id="util-getuid">getUid</h2>
+<h2 id="util-getuid">@getUid</h2>
 
 <div class="api">
     util.getUid(element) <span>⇒ number</span>

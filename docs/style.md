@@ -22,17 +22,17 @@ removeClass
 toggleClass
 ------------------
 
-Style.getCSS
+@getCSS
 ------------------
 
-Style.setCSS
+@setCSS
 ------------------
 
-Style.hasClass
+@hasClass
 ------------------
 
-Style.addClass
+@addClass
 ------------------
 
-Style.removeClass
+@removeClass
 ------------------

@@ -1,4 +1,9 @@
 **Rye** is a lightweight javascript library for DOM manipulation and events with support for **all modern browsers** including IE9+. It has support for **touch events/gestures**, an **even emitter** which you can use to extend your own objects, and a **jQuery-compatible** API.
+          
+<div class="buttons">
+    <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+    <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=fork&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+</div>
 
 Introduction
 ==================

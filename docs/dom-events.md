@@ -10,17 +10,17 @@ removeEventListener (off)
 trigger
 ------------------
 
-DOMEvents.getEmitter
+@getEmitter
 ------------------
 
-DOMEvents.addListener
+@addListener
 ------------------
 
-DOMEvents.removeListen
+@removeListen
 ------------------
 
-DOMEvents.trigger
+@trigger
 ------------------
 
-DOMEvents.createEvent
+@createEvent
 ------------------

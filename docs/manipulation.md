@@ -104,7 +104,7 @@ When no `value` is given, reads specified attribute from the first element in th
 When `value` is given or an object with name as key is passing, sets the attribute to that `value` on each element in the collection.
 
 
-Manipulation.getValue
+@getValue
 ------------------
 <div class="api">
     manipulation.getValue(element) <span>⇒ string</span>
@@ -113,7 +113,7 @@ Manipulation.getValue
 Gets a field `value` of a given `element`.
 
 
-Manipulation.getAttribute
+@getAttribute
 ------------------
 <div class="api">
     manipulation.getAttribute(element, name) <span>⇒ string</span>

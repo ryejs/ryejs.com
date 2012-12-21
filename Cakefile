@@ -25,15 +25,17 @@ task 'build:docs', ->
     intro = converter.makeHtml get 'docs/manifesto.md'
 
     content = docs.map((doc) ->
-        '<article><div class="wrapper">' + (converter.makeHtml get "docs/#{doc}.md") + '</div></article>'
+        "<section class=\"section-#{doc}\">#{converter.makeHtml get "docs/#{doc}.md"}</section>"
     ).join "\n"
 
     menu = ''
     section = []
     content = content.replace /<h(\d)\s*id="(\w+)">(.+)<\/h\1>/g, (match, weight, id, title) ->
-        section[weight-1] = id
+        section[weight-1] = title.replace(/[^\w\@]/g, '').toLowerCase()
         id = section.slice(0, weight).join '-'
-        menu += "#{['', '  '][weight-1]}- [#{title}](##{id})\n" if weight <= 2
+        classAttr = ' class="module" ' if '@' in title
+        link = "<a href=\"##{id}\"#{[classAttr]}>#{title}</a>"
+        menu += "#{['', '  '][weight-1]}- #{link}\n" if weight <= 2
         return "<h#{weight} id=\"#{id}\">#{title}</h#{weight}>"
 
     menu = converter.makeHtml menu

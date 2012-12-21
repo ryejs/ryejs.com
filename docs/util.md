@@ -3,7 +3,7 @@ Util
 
 Utility methods. Use with `var util = Rye.require('Util')`.
 
-extend
+@extend
 ------------------
 <div class="api">
     util.extend(destination, source) <span>⇒ destination</span>
@@ -12,7 +12,7 @@ extend
 Merge the contents of two objects together.
 
 
-inherits
+@inherits
 ------------------
 <div class="api">
     util.inherits(child, parent) <span>⇒ child</span>
@@ -21,7 +21,7 @@ inherits
 Sets up prototypal inheritance through a ghost constructor.
 
 
-isElement
+@isElement
 ------------------
 <div class="api">
     util.isElement(element) <span>⇒ boolean</span>
@@ -30,7 +30,7 @@ isElement
 Checks if `element` is a `NODE_ELEMENT` or `DOCUMENT_ELEMENT`.
 
 
-isNodeList
+@isNodeList
 ------------------
 <div class="api">
     util.isNodeList(elements) <span>⇒ boolean</span>
@@ -39,7 +39,7 @@ isNodeList
 Checks if `elements` is a `NodeList` or `HTMLCollection`.
 
 
-unique
+@unique
 ------------------
 <div class="api">
     util.unique(array) <span>⇒ array</span>
@@ -48,7 +48,7 @@ unique
 Produces a duplicate-free version of the array.
 
 
-pluck
+@pluck
 ------------------
 <div class="api">
     util.pluck(array, property) <span>⇒ array</span>
@@ -57,7 +57,7 @@ pluck
 Pluck an attribute from each item in `array`.
 
 
-put
+@put
 ------------------
 <div class="api">
     util.put(array, property, value) <span>⇒ array</span>
@@ -66,7 +66,7 @@ put
 Opposite of pluck. Set `property` for each item in `array`.
 
 
-prefix
+@prefix
 ------------------
 <div class="api">
     util.prefix(property, obj) <span>⇒ mixed</span>
@@ -75,7 +75,7 @@ prefix
 Returns a standard *or* browser-prefixed methods (`moz`, `webkit`, `ms`, `o`) if found.
 
 
-applier
+@applier
 ------------------
 <div class="api">
     util.applier(fn, context, args) <span>⇒ function</span>
@@ -84,7 +84,7 @@ applier
 Returns a function that calls `fn.apply(context, ...)`. The `args` array is right-joined to the function call parameters.
 
 
-applierLeft
+@applierLeft
 ------------------
 <div class="api">
     util.applierLeft(fn, context, args) <span>⇒ function</span>
@@ -93,7 +93,7 @@ applierLeft
 The same as `applier` but `args` are left-joined to the function parameters.
 
 
-curry
+@curry
 ------------------
 <div class="api">
     util.curry(fn, ...) <span>⇒ function</span>
@@ -102,7 +102,7 @@ curry
 Returns a [curried](http://en.wikipedia.org/wiki/Currying)/partially-applied function with the rest of the arguments.
 
 
-getUid
+@getUid
 ------------------
 <div class="api">
     util.getUid(element) <span>⇒ number</span>
