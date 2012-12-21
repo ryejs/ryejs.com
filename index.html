@@ -71,8 +71,7 @@
 <li><a href="#collection-iterate">iterate</a></li>
 <li><a href="#collection-push">push</a></li>
 <li><a href="#collection-slice">slice</a></li>
-<li><a href="#collection-concat">concat</a></li>
-<li><a href="#collection-_update">_update</a></li></ul></li>
+<li><a href="#collection-concat">concat</a></li></ul></li>
 <li><a href="#manipulation">Manipulation</a>
 <ul><li><a href="#manipulation-text">text</a></li>
 <li><a href="#manipulation-html">html</a></li>
@@ -489,31 +488,109 @@
 
 <h2 id="collection-get">get</h2>
 
+<div class="api">
+    .get(index) <span>⇒ element</span><br>
+    .get() <span>⇒ array</span>
+</div>
+
+<p>Returns the element that have the <code>index</code> in collection. If called without argument returns a copy of elements array.</p>
+
 <h2 id="collection-eq">eq</h2>
+
+<div class="api">
+    .eq(index) <span>⇒ rye collection</span><br>
+    .eq() <span>⇒ empty rye collection</span>
+</div>
+
+<p>Performs <code>.get()</code> and wrap the element result in a <code>rye collection</code>. If called without argument returns empty <code>rye collection</code>.</p>
 
 <h2 id="collection-foreach">forEach</h2>
 
+<div class="api">
+    .forEach(callback[, thisArg]) <span>⇒ array</span>
+</div>
+
+<p>Performs <code>Array.prototype.forEach</code> in elements of collection. The <code>callback</code> is invoked with: <code>element value</code>, <code>element index</code> and <code>array</code>.</p>
+
 <h2 id="collection-reduce">reduce</h2>
+
+<div class="api">
+    .reduce(callback[, initialValue]) <span>⇒ array</span>
+</div>
+
+<p>Performs <code>Array.prototype.reduce</code> in elements of collection. The <code>callback</code> is invoked with: <code>previous value returned</code>, <code>current element</code>, <code>element index</code> and <code>array</code>.</p>
 
 <h2 id="collection-reduceright">reduceRight</h2>
 
+<div class="api">
+    .reduceRight(callback[, initialValue]) <span>⇒ array</span>
+</div>
+
+<p>Same as <code>.reduce()</code> except that performs in the right to left in array values.</p>
+
 <h2 id="collection-indexof">indexOf</h2>
+
+<div class="api">
+    .indexOf(element[, fromIndex]) <span>⇒ array</span>
+</div>
+
+<p>Performs <code>Array.prototype.indexOf</code> in elements of collection. Returns the first index at which a given element can be found in elements, or -1 if it is not present.</p>
 
 <h2 id="collection-map">map</h2>
 
+<div class="api">
+    .map(callback[, thisArg]) <span>⇒ rye collection</span>
+</div>
+
+<p>Creates a new <code>rye collection</code> with the results of calling <code>callback</code> on every element in collection. The <code>callback</code> is invoked with: <code>element value</code>, <code>element index</code> and <code>array</code>.</p>
+
 <h2 id="collection-sort">sort</h2>
+
+<div class="api">
+    .sort([fn]) <span>⇒ rye collection</span>
+</div>
+
+<p>Creates a sorted <code>rye collection</code>, optionally ordered by <code>fn</code>.</p>
 
 <h2 id="collection-each">each</h2>
 
+<div class="api">
+    .each(callback) <span>⇒ self</span>
+</div>
+
+<p>Performs <code>Array.prototype.forEach</code> in elements of collection. The <code>callback</code> is invoked with: <code>element value</code>, <code>element index</code> and <code>array</code>.</p>
+
 <h2 id="collection-iterate">iterate</h2>
+
+<div class="api">
+    .iterate(fn, context) <span>⇒ function</span>
+</div>
+
+<p>Returns a funcion that will call <code>fn</code> in given <code>context</code> passing each one element of collection as first parameter follow by arguments.</p>
 
 <h2 id="collection-push">push</h2>
 
+<div class="api">
+    .push(element) <span>⇒ index</span>
+</div>
+
+<p>Add an element to collection and returns it <code>index</code>. This method changes the <code>rye collection</code>.</p>
+
 <h2 id="collection-slice">slice</h2>
+
+<div class="api">
+    .slice(start, end) <span>⇒ rye collection</span>
+</div>
+
+<p>Returns a new sliced <code>rye collection</code>.</p>
 
 <h2 id="collection-concat">concat</h2>
 
-<h2 id="collection-_update">_update</h2></div></article>
+<div class="api">
+    .concat(elements, ...) <span>⇒ rye collection</span>
+</div>
+
+<p>Concats array of elements or rye collections into a single <code>rye collection</code>.</p></div></article>
 <article><div class="wrapper"><h1 id="manipulation">Manipulation</h1>
 
 <h2 id="manipulation-text">text</h2>
