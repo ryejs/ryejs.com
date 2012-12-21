@@ -595,27 +595,112 @@
 
 <h2 id="manipulation-text">text</h2>
 
+<div class="api">
+    .text(text) <span>⇒ self</span><br>
+    .text() <span>⇒ text</span>
+</div>
+
+<p>Sets the text content of all elements. When no content is given, returns the text content of the first element in the collection.</p>
+
 <h2 id="manipulation-html">html</h2>
+
+<div class="api">
+    .html(html) <span>⇒ self</span><br>
+    .html() <span>⇒ html</span>
+</div>
+
+<p>Sets the inner html of all elements. When no html is given, returns the inner html of the first element in the collection.</p>
 
 <h2 id="manipulation-empty">empty</h2>
 
+<div class="api">
+    .empty() <span>⇒ self</span>
+</div>
+
+<p>Sets to empty the inner html of all elements.</p>
+
 <h2 id="manipulation-append">append</h2>
+
+<div class="api">
+    .append(html) <span>⇒ self</span><br>
+    .append(element) <span>⇒ self</span>
+</div>
+
+<p>Insert <code>html</code> or <code>element</code> to the end of each element in the collection.</p>
 
 <h2 id="manipulation-prepend">prepend</h2>
 
+<div class="api">
+    .prepend(html) <span>⇒ self</span><br>
+    .prepend(element) <span>⇒ self</span>
+</div>
+
+<p>Insert <code>html</code> or <code>element</code> to the beginning of each element in the collection.</p>
+
 <h2 id="manipulation-after">after</h2>
+
+<div class="api">
+    .after(html) <span>⇒ self</span><br>
+    .after(element) <span>⇒ self</span>
+</div>
+
+<p>Insert <code>html</code> or <code>element</code> after each element in the collection.</p>
 
 <h2 id="manipulation-before">before</h2>
 
+<div class="api">
+    .before(html) <span>⇒ self</span><br>
+    .before(element) <span>⇒ self</span>
+</div>
+
+<p>Insert <code>html</code> or <code>element</code> before each element in the collection.</p>
+
 <h2 id="manipulation-clone">clone</h2>
+
+<div class="api">
+    .clone() <span>⇒ rye collection</span>
+</div>
+
+<p>Duplicate all elements in the collection via deep clone.</p>
 
 <h2 id="manipulation-val">val</h2>
 
+<div class="api">
+    .val() <span>⇒ string</span><br>
+    .val(value) <span>⇒ self</span>
+</div>
+
+<p>When no value is given, return the value of the first element. For <code>&lt;select multiple&gt;</code>, an array of values is returend. </p>
+
+<p>When a <code>value</code> is given, set all elements to this value.</p>
+
 <h2 id="manipulation-attr">attr</h2>
+
+<div class="api">
+    .attr(name) <span>⇒ string</span><br>
+    .attr(name, value) <span>⇒ self</span><br>
+    .attr({name: value, ...}) <span>⇒ self</span>
+</div>
+
+<p>When no <code>value</code> is given, reads specified attribute from the first element in the collection. </p>
+
+<p>When <code>value</code> is given or an object with name as key is passing, sets the attribute to that <code>value</code> on each element in the collection.</p>
 
 <h2 id="manipulation-manipulationgetvalue">Manipulation.getValue</h2>
 
-<h2 id="manipulation-manipulationgetattribute">Manipulation.getAttribute</h2></div></article>
+<div class="api">
+    manipulation.getValue(element) <span>⇒ string</span>
+</div>
+
+<p>Gets a field <code>value</code> of a given <code>element</code>.</p>
+
+<h2 id="manipulation-manipulationgetattribute">Manipulation.getAttribute</h2>
+
+<div class="api">
+    manipulation.getAttribute(element, name) <span>⇒ string</span>
+</div>
+
+<p>Gets an attribute <code>name</code> of a given <code>element</code>. This method fallbacks to <code>getValue()</code> for value attribute.</p></div></article>
 <article><div class="wrapper"><h1 id="style">Style</h1>
 
 <h2 id="style-show">show</h2>
