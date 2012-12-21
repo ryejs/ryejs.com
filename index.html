@@ -55,9 +55,9 @@
 <li><a href="#filter-first">first</a></li>
 <li><a href="#filter-last">last</a></li></ul></li>
 <li><a href="#query">Query</a>
-<ul><li><a href="#query-querymatches">Query.matches</a></li>
-<li><a href="#query-queryqsa">Query.qsa</a></li>
-<li><a href="#query-querygetclosestnode">Query.getClosestNode</a></li></ul></li>
+<ul><li><a href="#query-matches">matches</a></li>
+<li><a href="#query-qsa">qsa</a></li>
+<li><a href="#query-getclosestnode">getClosestNode</a></li></ul></li>
 <li><a href="#collection">Collection</a>
 <ul><li><a href="#collection-get">get</a></li>
 <li><a href="#collection-eq">eq</a></li>
@@ -366,7 +366,7 @@
 <h2 id="traversal-parent">parent</h2>
 
 <div class="api">
-    .parent(selector) <span>⇒ rye collection</span>
+    .parent([selector]) <span>⇒ rye collection</span>
 </div>
 
 <p>Get the parent of each element in collection, optionally filtered by a <code>selector</code>.</p>
@@ -374,7 +374,7 @@
 <h2 id="traversal-parents">parents</h2>
 
 <div class="api">
-    .parents(selector) <span>⇒ rye collection</span>
+    .parents([selector]) <span>⇒ rye collection</span>
 </div>
 
 <p>Get the ancestors of each element in collection, optionally filtered by a <code>selector</code>.</p>
@@ -390,7 +390,7 @@
 <h2 id="traversal-children">children</h2>
 
 <div class="api">
-    .children(selector) <span>⇒ rye collection</span>
+    .children([selector]) <span>⇒ rye collection</span>
 </div>
 
 <p>Get the children of each element in collection, optionally filtered by a <code>selector</code>.</p>
@@ -399,23 +399,92 @@
 
 <h2 id="filter-filter">filter</h2>
 
+<div class="api">
+    .filter(selector[, inverse]) <span>⇒ rye collection</span><br>
+    .filter(element[, inverse]) <span>⇒ rye collection</span><br>
+    .filter(Rye[, inverse]) <span>⇒ rye collection</span><br>
+    .filter(fn[, inverse]) <span>⇒ rye collection</span>
+</div>
+
+<p>Returns a new collection keeping elements those that match the <code>selector</code>, <code>element</code>, <code>Rye</code> or pass the <code>function's</code> test.</p>
+
+<p>Provide a truthy value to <code>inverse</code> makes that unmatch elements remains.</p>
+
 <h2 id="filter-has">has</h2>
+
+<div class="api">
+    .has(selector) <span>⇒ rye collection</span>
+</div>
+
+<p>Returns a new collection keeping elements those that have a descendant that matches the <code>selector</code>.</p>
 
 <h2 id="filter-is">is</h2>
 
+<div class="api">
+    .is(selector) <span>⇒ boolean</span><br>
+    .is(element[, inverse]) <span>⇒ boolean</span><br>
+    .is(Rye[, inverse]) <span>⇒ boolean</span><br>
+    .is(fn[, inverse]) <span>⇒ boolean</span>
+</div>
+
+<p>Peform a <code>.filter()</code> and checks if it return elements.</p>
+
 <h2 id="filter-not">not</h2>
+
+<div class="api">
+    .not(selector[, inverse]) <span>⇒ rye collection</span><br>
+    .not(element[, inverse]) <span>⇒ rye collection</span><br>
+    .not(Rye[, inverse]) <span>⇒ rye collection</span><br>
+    .not(fn[, inverse]) <span>⇒ rye collection</span>
+</div>
+
+<p>Just a wrap to inverse <code>.filter()</code>.</p>
 
 <h2 id="filter-first">first</h2>
 
+<div class="api">
+    .first() <span>⇒ rye collection</span>
+</div>
+
+<p>Reduce the colletion to the first elements.</p>
+
 <h2 id="filter-last">last</h2>
+
+<div class="api">
+    .last() <span>⇒ rye collection</span>
+</div>
+
+<p>Reduce the colletion to the last elements.</p>
 
 <h1 id="query">Query</h1>
 
-<h2 id="query-querymatches">Query.matches</h2>
+<p>Element query methods. Use with var query = Rye.require('Query').</p>
 
-<h2 id="query-queryqsa">Query.qsa</h2>
+<h2 id="query-matches">matches</h2>
 
-<h2 id="query-querygetclosestnode">Query.getClosestNode</h2></div></article>
+<div class="api">
+    query.matches(element, selector) <span>⇒ boolean</span><br>
+    query.matches(element, element) <span>⇒ boolean</span><br>
+    query.matches(element, Rye) <span>⇒ boolean</span>
+</div>
+
+<p>Checks if a element match with <code>selector</code>, is equal to <code>element</code> or with some element of <code>rye collection</code>.</p>
+
+<h2 id="query-qsa">qsa</h2>
+
+<div class="api">
+    query.qsa(element, selector) <span>⇒ array</span>
+</div>
+
+<p>Performs and optimized <code>.querySelectorAll</code> and returns an array to ease after manipulation.</p>
+
+<h2 id="query-getclosestnode">getClosestNode</h2>
+
+<div class="api">
+    query.getClosestNode(element, method[, selector]) <span>⇒ element</span>
+</div>
+
+<p>The method avoids return not elements with traversing DOM methods, optionally filtered by a <code>selector</code>.</p></div></article>
 <article><div class="wrapper"><h1 id="collection">Collection</h1>
 
 <h2 id="collection-get">get</h2>

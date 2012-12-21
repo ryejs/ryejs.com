@@ -79,7 +79,7 @@ Get the siblings of each element in collection.
 parent
 ------------------
 <div class="api">
-    .parent(selector) <span>⇒ rye collection</span>
+    .parent([selector]) <span>⇒ rye collection</span>
 </div>
 
 Get the parent of each element in collection, optionally filtered by a `selector`.
@@ -88,7 +88,7 @@ Get the parent of each element in collection, optionally filtered by a `selector
 parents
 ------------------
 <div class="api">
-    .parents(selector) <span>⇒ rye collection</span>
+    .parents([selector]) <span>⇒ rye collection</span>
 </div>
 
 Get the ancestors of each element in collection, optionally filtered by a `selector`.
@@ -106,7 +106,7 @@ For each element in collection, get the first element that matches the `selector
 children
 ------------------
 <div class="api">
-    .children(selector) <span>⇒ rye collection</span>
+    .children([selector]) <span>⇒ rye collection</span>
 </div>
 
 Get the children of each element in collection, optionally filtered by a `selector`.
@@ -118,30 +118,100 @@ Filter
 
 filter
 ------------------
+<div class="api">
+    .filter(selector[, inverse]) <span>⇒ rye collection</span><br>
+    .filter(element[, inverse]) <span>⇒ rye collection</span><br>
+    .filter(Rye[, inverse]) <span>⇒ rye collection</span><br>
+    .filter(fn[, inverse]) <span>⇒ rye collection</span>
+</div>
+
+Returns a new collection keeping elements those that match the `selector`, `element`, `Rye` or pass the `function's` test.
+
+Provide a truthy value to `inverse` makes that unmatch elements remains.
+
 
 has
 ------------------
+<div class="api">
+    .has(selector) <span>⇒ rye collection</span>
+</div>
+
+Returns a new collection keeping elements those that have a descendant that matches the `selector`.
+
 
 is
 ------------------
+<div class="api">
+    .is(selector) <span>⇒ boolean</span><br>
+    .is(element[, inverse]) <span>⇒ boolean</span><br>
+    .is(Rye[, inverse]) <span>⇒ boolean</span><br>
+    .is(fn[, inverse]) <span>⇒ boolean</span>
+</div>
+
+Peform a `.filter()` and checks if it return elements.
+
 
 not
 ------------------
+<div class="api">
+    .not(selector[, inverse]) <span>⇒ rye collection</span><br>
+    .not(element[, inverse]) <span>⇒ rye collection</span><br>
+    .not(Rye[, inverse]) <span>⇒ rye collection</span><br>
+    .not(fn[, inverse]) <span>⇒ rye collection</span>
+</div>
+
+Just a wrap to inverse `.filter()`.
+
 
 first
 ------------------
+<div class="api">
+    .first() <span>⇒ rye collection</span>
+</div>
+
+Reduce the colletion to the first elements.
+
 
 last
 ------------------
+<div class="api">
+    .last() <span>⇒ rye collection</span>
+</div>
+
+Reduce the colletion to the last elements.
+
+
 
 Query
 ==================
 
-Query.matches
-------------------
+Element query methods. Use with var query = Rye.require('Query').
 
-Query.qsa
+matches
 ------------------
+<div class="api">
+    query.matches(element, selector) <span>⇒ boolean</span><br>
+    query.matches(element, element) <span>⇒ boolean</span><br>
+    query.matches(element, Rye) <span>⇒ boolean</span>
+</div>
 
-Query.getClosestNode
+Checks if a element match with `selector`, is equal to `element` or with some element of `rye collection`.
+
+
+qsa
 ------------------
+<div class="api">
+    query.qsa(element, selector) <span>⇒ array</span>
+</div>
+
+Performs and optimized `.querySelectorAll` and returns an array to ease after manipulation.
+
+
+getClosestNode
+------------------
+<div class="api">
+    query.getClosestNode(element, method[, selector]) <span>⇒ element</span>
+</div>
+
+The method avoids return not elements with traversing DOM methods, optionally filtered by a `selector`.
+
