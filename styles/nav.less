@@ -43,12 +43,18 @@ nav {
     }
     .open {
         background: white;
+        a {
+            background: lighten(#ffd75f, 10);
+        }
         ul {
             background: white;
+            a {
+                background: transparent;
+            }
         }
         .active, .open {
             position: relative;
-            background: #B5F7D2;
+            background: lighten(#ffd75f, 20);
         }
         ul {
             display: block;

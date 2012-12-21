@@ -62,8 +62,9 @@ nav a{padding-left:20px;display:block;font-family:"Helvetica Neue","Helvetica",A
 nav li{line-height:2;border-top:1px solid white;}
 nav ul ul{display:none;}nav ul ul a{font-weight:normal;padding-left:24px;}
 nav ul ul li{border:0;line-height:1.6;}
-nav .open{background:white;}nav .open ul{background:white;}
-nav .open .active,nav .open .open{position:relative;background:#B5F7D2;}
+nav .open{background:white;}nav .open a{background:#ffe492;}
+nav .open ul{background:white;}nav .open ul a{background:transparent;}
+nav .open .active,nav .open .open{position:relative;background:#fff1c5;}
 nav .open ul{display:block;}nav .open ul li:last-child{padding-bottom:6px;}
 .main .api{font-size:12px;color:#990066;font-family:Monaco,Consolas,"Lucida Console",monospace;}.main .api span{color:#999;}
 .main h2{font-family:"Helvetica Neue","Helvetica",Arial,sans-serif;font-size:18px;line-height:2;margin-bottom:0;}
