@@ -17,7 +17,12 @@ html, body {
 
 html {
     height: 100%;
-    background: url(../images/top.jpg) @color1 center top no-repeat;
+    //background: url(../images/top.jpg) @color1 repeat-x;
+    background-color: @color1;
+    background-image: -webkit-linear-gradient(top, #f1e7d2 0, @color1 30%);
+    background-image: -moz-linear-gradient(top, #f1e7d2 0, @color1 30%);
+    background-image: linear-gradient(top, #f1e7d2 0, @color1 30%);
+    background-repeat: repeat-x;
 }
 
 body {
