@@ -8,14 +8,21 @@
 <body>
     <header class="wrapper">
         <h1 class="logo">Rye</h1>
-        <p class="version">alpha</p>
+        <div class="buttons">
+            <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="30"></iframe>
+            <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=fork&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="30"></iframe>
+        </div>
     </header>
     
     <div class="navigation wrapper">
         <nav>
 <ul>
 <li><a href="#rye">Rye</a>
+<<<<<<< HEAD
 <ul><li><a href="#rye-rye">Rye()</a></li>
+=======
+<ul><li><a href="#rye-constructor">Constructor</a></li>
+>>>>>>> Layout
 <li><a href="#rye-ryedefine">Rye.define</a></li>
 <li><a href="#rye-ryerequire">Rye.require</a></li></ul></li>
 <li><a href="#util">Util</a>
@@ -123,10 +130,119 @@
         </nav>
     </div>
 
+<<<<<<< HEAD
     <div class="main">
 <section class="rye"><h1 id="rye">Rye</h1>
 
 <h2 id="rye-rye">Rye()</h2>
+=======
+    <section class="intro">
+<p><strong>Rye</strong> is a lightweight javascript library for DOM manipulation and events with support for <strong>all modern browsers</strong> including IE9+. It has support for <strong>touch events/gestures</strong>, an <strong>even emitter</strong> which you can use to extend your own objects, and a <strong>jQuery-compatible</strong> API.</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Rye's API is similar to jQuery but not totally compatible. Inconsistencies like <code>.map()</code> behavior, and <code>map/each()</code> argument ordering are fixed in Rye.</p>
+
+<p>It doesn't do any gymnastics to subclass <code>Array</code>, instead elements are stored in the <code>.elements</code> property. This means that array methods on a Rye instance return another <code>Rye</code> instance, but you can access the elements array directly with <code>.get()</code> or <code>.elements</code> and use all the native <code>Array</code> methods (ex: <code>$('li').each()</code> vs <code>$('li').get().forEach()</code>).</p>
+
+<h2 id="browsercompatibility">Browser compatibility</h2>
+
+<table>
+<thead>
+<tr>
+<th id="browser" style="text-align:left;"> Browser </th>
+<th id="version" style="text-align:left;"> Version </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"> Chrome  </td>
+<td style="text-align:left;">6+       </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Safari  </td>
+<td style="text-align:left;">5+       </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Firefox </td>
+<td style="text-align:left;">6+       </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> IE      </td>
+<td style="text-align:left;">9+       </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Opera   </td>
+<td style="text-align:left;">11.5+    </td>
+</tr>
+
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th id="browser" style="text-align:left;"> Browser           </th>
+<th id="version" style="text-align:left;"> Version </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"> iOS               </td>
+<td style="text-align:left;"> 4.1+    </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Android           </td>
+<td style="text-align:left;"> 4.0+    </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Blackberry        </td>
+<td style="text-align:left;"> 10+     </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Opera Mobile      </td>
+<td style="text-align:left;"> 11.1+   </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Chrome (Android)  </td>
+<td style="text-align:left;"> 18+     </td>
+</tr>
+
+<tr>
+<td style="text-align:left;"> Firefox (Android) </td>
+<td style="text-align:left;"> 15+     </td>
+</tr>
+
+</tbody>
+</table>
+
+<h2 id="notgoingtohappen">Not going to happen</h2>
+
+<ul>
+<li>event aliases like <code>delegate</code>, <code>live</code>, <code>click</code>, <code>focus</code></li>
+<li>cancel bubbling and prevent default by returning <code>false</code></li>
+<li>effects and animation - do it with CSS</li>
+<li>defining global <code>$</code></li>
+<li>traditional event namespacing</li>
+<li><code>end()</code> or other chain-aware methods</li>
+</ul>
+    </section>
+
+    <div class="main">
+<section class="rye"><h1 id="rye">Rye</h1>
+
+<h2 id="rye-constructor">Constructor</h2>
+>>>>>>> Layout
 
 <div class="sintax">
 Rye(selector[, context]) <span>⇒ rye collection</span><br>
@@ -213,7 +329,11 @@ Rye(elements) <span>⇒ rye collection</span>
 
 <h2 id="util-utilcurry">Util.curry</h2>
 
+<<<<<<< HEAD
 <div class="sintax">util.curry(fn) <span>⇒ function</span></div>
+=======
+<div class="sintax">curry(fn) <span>⇒ function</span></div>
+>>>>>>> Layout
 
 <p>It is a <em>applierLeft</em> thats keep the <code>this</code> to the same value that the call already has.</p>
 
@@ -224,6 +344,7 @@ Rye(elements) <span>⇒ rye collection</span>
 <p>Gets an unique identifier to an element.</p></section>
 <section class="data"><h1 id="data">Data</h1>
 
+<<<<<<< HEAD
 <p>Store arbitrary data associated with the matched elements.</p>
 
 <h2 id="data-data">data</h2>
@@ -246,6 +367,13 @@ Rye(elements) <span>⇒ rye collection</span>
 <div class="sintax">data.get(element, key) <span>⇒ mixed</span></div>
 
 <p>Returns the value in <code>key</code> of one <code>element</code>.</p></section>
+=======
+<h2 id="data-data">data</h2>
+
+<h2 id="data-dataset">Data.set</h2>
+
+<h2 id="data-dataget">Data.get</h2></section>
+>>>>>>> Layout
 <section class="query"><h1 id="traversal">Traversal</h1>
 
 <h2 id="traversal-find">find</h2>

@@ -1,7 +1,7 @@
 Rye
 ==================
 
-Rye()
+Constructor
 ------------------
 <div class="sintax">
 Rye(selector[, context]) <span>⇒ rye collection</span><br>

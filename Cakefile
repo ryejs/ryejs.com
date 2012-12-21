@@ -7,7 +7,6 @@ get = (f)      -> fs.readFileSync(f).toString()
 put = (f, str) -> fs.writeFileSync(f, str)
 
 docs = [
-    'manifesto'
     'rye'
     'util'
     'data'
@@ -23,6 +22,8 @@ docs = [
 task 'build:docs', ->
     converter = new showdown.converter extensions: [showdown.table]
 
+    intro = converter.makeHtml get 'docs/manifesto.md'
+
     content = docs.map((doc) ->
         '<article><div class="wrapper">' + (converter.makeHtml get "docs/#{doc}.md") + '</div></article>'
     ).join "\n"
@@ -31,12 +32,14 @@ task 'build:docs', ->
     section = []
     content = content.replace /<h(\d)\s*id="(\w+)">(.+)<\/h\1>/g, (match, weight, id, title) ->
         section[weight-1] = id
-        id = section.slice(0, weight).join '.'
+        id = section.slice(0, weight).join '-'
         menu += "#{['', '  '][weight-1]}- [#{title}](##{id})\n" if weight <= 2
         return "<h#{weight} id=\"#{id}\">#{title}</h#{weight}>"
+
     menu = converter.makeHtml menu
 
     output = (get 'template/index.html')
+        .replace('{{intro}}', intro)
         .replace('{{content}}', content)
         .replace('{{menu}}', menu)
 

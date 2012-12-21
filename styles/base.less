@@ -12,13 +12,19 @@ html {
 // 10, 12, 14, 16, 19, 23, 32, 48
 @text: Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif;
 @titles: Palatino, "Palatino Linotype", "Hoefler Text", Times, "Times New Roman", serif;
+<<<<<<< HEAD
+=======
+@sans: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+@monospace: Monaco, Consolas, "Lucida Console", monospace;
+>>>>>>> Layout
 
 body {
-    font-family: @text;
+    font-family: @sans;
     min-height: 100%;
     color: #222;
     position: relative;
     overflow: hidden;
+<<<<<<< HEAD
 }
 
 .wrapper {
@@ -26,133 +32,40 @@ body {
     padding-right: 240px;
     .box-sizing(border-box);
     margin: 0 auto;
-}
-
-
-header {
-    padding-top: 20px;
-}
-
-.logo {
-    .IR;
-    .square(250px);
-    background: url(../images/rye.png);
-    margin: 20px auto 0;
-}
-
-.version {
-    position: absolute;
-    left: -40px;
-    top: 0;
-    .rotate(-45deg);
-    color: #333;
-    font-size: 1.2em;
-    font-weight: bold;
-    padding: 8px 50px;
-    background: darken(white, 2);
-}
-
-nav {
-    position: fixed;
-    z-index: 1;
-    background: darken(white, 2);
-    top: 0;
-    left: 50%;
-    margin: 0 0 0 230px;
-    height: 100%;
-    width: 198px;
-    overflow: auto;
-    ul {
-        padding: 0;
-        margin: 0;
-    }
-    a {
-        text-decoration: none;
-        padding-left: 20px;
-        display: block;
-        font-weight: bold;
-    }
-    li {
-        line-height: 2;
-    }
-    > ul {
-        margin-top: 20px;
-    }
-    ul ul {
-        display: none;
-        a {
-            font-size: .8em;
-            font-weight: normal;
-            padding-left: 24px;
-        }
-    }
-    .open {
-        background: white;
-        .active {
-            background: lighten(#b5f7d2, 8);
-        }
-        ul {
-            display: block;
-            padding-bottom: 10px;
-        }
-    }
-}
-
-.buttons {
-    text-align: center;
-}
-
-.main {
+=======
+    padding: 0 240px 0 20px;
+    max-width: 720px;
+    min-width: 400px;
+    margin:0 auto;
+    font-size: 14px;
     line-height: 1.5;
-
-    .sintax {
-        margin-top: -22px;
-        font-size: .9em;
-        color: #990066;
-        font-family: monospace, serif;
-        span {
-            color: #999;
-        }
-    }
-}
-
-article:first-child {
-    border: none;
-    p:first-child {
-        font-size: 1.4em;
-        text-align: center;
-    }
 }
 
 h1 {
     position: relative;
-    font-size: 1.8em;
-    padding-top: 1.6em;
+    font-size: 1.6em;
+    margin-top: 1.6em;
     border-bottom: 1px solid darken(white, 6);
 }
 
 h2 {
     font-size: 1.4em;
-    padding-top: 1em;
+    margin-top: 1.2em;
 }
 
 h3 {
     font-size: 1em;
-    padding-top: .6em;
+    margin-top: 0.8em;
+>>>>>>> Layout
 }
 
-a {
-    &:link, &:visited {
-        color: #419741;
-    }
-    &:hover {
-        color: darken(#419741, 10);
-    }
-}
 
+<<<<<<< HEAD
+header {
+=======
 code {
     font-size: 85%;
-    background: #e3e8e8;
+    //background: #e6eae9;
     border: 1px solid #d4d8d8;
     padding: 0 4px;
 }
@@ -169,6 +82,64 @@ table {
     }
     th {
         background: #f5f5f5;
+    }
+}
+
+.header {
+    margin: 0 auto;
+    position: relative;
+>>>>>>> Layout
+    padding-top: 20px;
+    overflow: hidden;
+}
+
+.logo {
+    .IR;
+    .size(160px, 250px);
+    background: url(../images/rye_v.png);
+    margin: 0 0 0 -24px;
+}
+
+.buttons {
+    float: left;
+}
+
+.version {
+    position: absolute;
+    left: -40px;
+    top: 0;
+    .rotate(-45deg);
+    color: #333;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 4px 50px;
+    background: #eee;
+}
+
+@import "nav";
+
+.main {
+    .sintax {
+        font-size: 12px;
+        color: #990066;
+        font-family: @monospace;
+        span {
+            color: #999;
+        }
+    }
+    h2 {
+        font-family: @sans;
+        font-size: 18px;
+        line-height: 2;
+        margin-bottom: 0;
+    }
+}
+
+.intro {
+    table {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 20px;
     }
 }
 
