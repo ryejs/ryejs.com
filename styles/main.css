@@ -48,7 +48,7 @@ body{font-family:"Helvetica Neue","Helvetica",Arial,sans-serif;min-height:100%;c
 h1{position:relative;font-size:1.6em;margin-top:1.6em;border-bottom:1px solid #f0f0f0;}
 h2{font-size:1.4em;margin-top:1.2em;}
 h3{font-size:1em;margin-top:0.8em;}
-code{font-size:85%;border:1px solid #d4d8d8;padding:0 4px;}
+code{font-size:12px;line-height:18px;background:#fff;outline:1px solid #d7ecd9;padding:0 4px;}
 table{background:#f6f6f6;font-size:95%;}table th{text-align:left;}
 table th,table td{padding:2px .5em;border:1px solid #ddd;}
 table th{background:#f5f5f5;}
