@@ -57,14 +57,14 @@ table th{background:#f5f5f5;}
 .buttons{float:left;}
 .version{position:absolute;left:-40px;top:0;-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-ms-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);color:#333;font-size:1em;font-weight:bold;padding:4px 50px;background:#eee;}
 .navigation{position:absolute;right:0;top:0;bottom:0;width:200px;}
-nav{position:fixed;padding-top:20px;top:0;bottom:0;z-index:1;width:198px;overflow:auto;background:#f7f7f7;}nav ul{padding:0;margin:0;}
+nav{position:fixed;padding-top:20px;top:0;bottom:0;z-index:1;width:198px;overflow:auto;background:#f2f2f2;}nav ul{padding:0;margin:0;}
 nav a{padding-left:20px;display:block;font-family:"Helvetica Neue","Helvetica",Arial,sans-serif;font-weight:700;color:#565 !important;text-decoration:none;}
 nav li{line-height:2;border-top:1px solid white;}
 nav ul ul{display:none;}nav ul ul a{font-weight:normal;padding-left:24px;}
 nav ul ul li{border:0;line-height:1.6;}
 nav .open{background:white;}nav .open ul{background:white;}
 nav .open .active,nav .open .open{position:relative;background:#B5F7D2;}
-nav .open ul{display:block;padding-top:4px;}nav .open ul li:last-child{padding-bottom:4px;}
+nav .open ul{display:block;}nav .open ul li:last-child{padding-bottom:6px;}
 .main .api{font-size:12px;color:#990066;font-family:Monaco,Consolas,"Lucida Console",monospace;}.main .api span{color:#999;}
 .main h2{font-family:"Helvetica Neue","Helvetica",Arial,sans-serif;font-size:18px;line-height:2;margin-bottom:0;}
 .intro table{display:inline-block;vertical-align:top;margin-right:20px;}
