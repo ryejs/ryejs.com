@@ -12,7 +12,7 @@ data
 
 Allows to attach and get data of any type to DOM elements.
 
-Data.set
+@set
 ------------------
 <div class="api">
     data.set(element, key, value)
@@ -21,7 +21,7 @@ Data.set
 Stores `value` in `key` of one `element`.
 
 
-Data.get
+@get
 ------------------
 <div class="api">
     data.get(element, key) <span>⇒ mixed</span>

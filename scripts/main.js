@@ -1,7 +1,5 @@
 ;(function ($) {
 
-    var domEvents = $.require('DOMEvents')
-
     function Content () {
         this.sections = this.getSections()
     }
@@ -34,13 +32,17 @@
         this.scrollLast = 0
         this.content = new Content()
         this.nav = $('nav')
-        this.addEventListeners()
         this.active = $()
+    }
+
+    Page.prototype.init = function () {
+        this.addEventListeners()
+        return this
     }
 
     Page.prototype.addEventListeners = function () {
         $(document).on('scroll', this.onScroll.bind(this))
-        this.nav.find('ul:first-child > li').on('click', function(e, element){
+        this.nav.find('ul:first-child > li').on('click', function(){
             $(this).toggleClass('open')
         })
     }
@@ -63,6 +65,6 @@
         }
     }
 
-    new Page()
+    var page = new Page().init()
 
 })(Rye)
