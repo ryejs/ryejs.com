@@ -244,22 +244,26 @@
 <h2 id="rye-constructor">Constructor</h2>
 
 <div class="api">
-Rye(selector[, context]) <span>⇒ rye collection</span><br>
-Rye(element) <span>⇒ rye collection</span><br>
-Rye(elements) <span>⇒ rye collection</span>
+    Rye(selector[, context]) <span>⇒ rye collection</span><br>
+    Rye(element) <span>⇒ rye collection</span><br>
+    Rye(elements) <span>⇒ rye collection</span>
 </div>
 
 <p>Creates a Rye collection object.</p>
 
 <h2 id="rye-ryedefine">Rye.define</h2>
 
-<div class="api">Rye.define(name, fn)</div>
+<div class="api">
+    Rye.define(name, fn)
+</div>
 
 <p>Stores the function named by a string.</p>
 
 <h2 id="rye-ryerequire">Rye.require</h2>
 
-<div class="api">Rye.require(name) <span>⇒ function</span></div>
+<div class="api">
+    Rye.require(name) <span>⇒ function</span>
+</div>
 
 <p>Requires the function stored. All code in Rye is allocated as modules.</p></div></article>
 <article><div class="wrapper"><h1 id="data">Data</h1>
@@ -269,48 +273,127 @@ Rye(elements) <span>⇒ rye collection</span>
 <h2 id="data-data">data</h2>
 
 <div class="api">
-.data(key[, value]) <span>⇒ self</span><br>
-.data({property: value, ...}) <span>⇒ self</span><br>
+    .data(key[, value]) <span>⇒ self</span><br>
+    .data({property: value, ...}) <span>⇒ self</span><br>
 </div>
 
 <p>Allows to attach and get data of any type to DOM elements.</p>
 
 <h2 id="data-dataset">Data.set</h2>
 
-<div class="api">data.set(element, key, value)</div>
+<div class="api">
+    data.set(element, key, value)
+</div>
 
 <p>Stores <code>value</code> in <code>key</code> of one <code>element</code>.</p>
 
 <h2 id="data-dataget">Data.get</h2>
 
-<div class="api">data.get(element, key) <span>⇒ mixed</span></div>
+<div class="api">
+    data.get(element, key) <span>⇒ mixed</span>
+</div>
 
 <p>Returns the value in <code>key</code> of one <code>element</code>.</p></div></article>
 <article><div class="wrapper"><h1 id="traversal">Traversal</h1>
 
 <h2 id="traversal-find">find</h2>
 
+<div class="api">
+    .find(selector) <span>⇒ rye collection</span>
+</div>
+
+<p>Get the descendants of each element in collection, filtered by a string <code>selector</code>.</p>
+
 <h2 id="traversal-index">index</h2>
+
+<div class="api">
+    .index(selector) <span>⇒ number</span>
+</div>
+
+<p>Search for a given <code>selector</code> from among the collection. </p>
+
+<p>If no argument is passed, the return value is the position number of the first element in collection relative to its sibling.</p>
 
 <h2 id="traversal-add">add</h2>
 
+<div class="api">
+    .add(elements) <span>⇒ rye collection</span><br>
+    .add(selector, context) <span>⇒ rye collection</span>
+</div>
+
+<p>Add elements to the set and returns a new collection. </p>
+
 <h2 id="traversal-plucknode">pluckNode</h2>
+
+<div class="api">
+    .pluckNode(property) <span>⇒ rye collection</span>
+</div>
+
+<p>Using to create a new collection based in elements properties that returns a node. The method avoids return not elements and is called by <code>.next()</code> and <code>.prev()</code>.</p>
 
 <h2 id="traversal-pluck">pluck</h2>
 
+<div class="api">
+    .pluck(property) <span>⇒ array</span>
+</div>
+
+<p>It is just a wrap to <code>util.pluck(elements, property)</code> that iterate over collection.</p>
+
 <h2 id="traversal-next">next</h2>
+
+<div class="api">
+    .next() <span>⇒ rye collection</span>
+</div>
+
+<p>Get the immediately following sibling of each element in collection.</p>
 
 <h2 id="traversal-prev">prev</h2>
 
+<div class="api">
+    .prev() <span>⇒ rye collection</span>
+</div>
+
+<p>Get the immediately preceding sibling of each element in collection.</p>
+
 <h2 id="traversal-siblings">siblings</h2>
+
+<div class="api">
+    .siblings() <span>⇒ rye collection</span>
+</div>
+
+<p>Get the siblings of each element in collection.</p>
 
 <h2 id="traversal-parent">parent</h2>
 
+<div class="api">
+    .parent(selector) <span>⇒ rye collection</span>
+</div>
+
+<p>Get the parent of each element in collection, optionally filtered by a <code>selector</code>.</p>
+
 <h2 id="traversal-parents">parents</h2>
+
+<div class="api">
+    .parents(selector) <span>⇒ rye collection</span>
+</div>
+
+<p>Get the ancestors of each element in collection, optionally filtered by a <code>selector</code>.</p>
 
 <h2 id="traversal-closest">closest</h2>
 
+<div class="api">
+    .closest(selector) <span>⇒ rye collection</span>
+</div>
+
+<p>For each element in collection, get the first element that matches the <code>selector</code> by testing the element itself and traversing up through its ancestors.</p>
+
 <h2 id="traversal-children">children</h2>
+
+<div class="api">
+    .children(selector) <span>⇒ rye collection</span>
+</div>
+
+<p>Get the children of each element in collection, optionally filtered by a <code>selector</code>.</p>
 
 <h1 id="filter">Filter</h1>
 
@@ -465,73 +548,97 @@ Rye(elements) <span>⇒ rye collection</span>
 
 <h2 id="util-extend">extend</h2>
 
-<div class="api">util.extend(destination, source) <span>⇒ destination</span></div>
+<div class="api">
+    util.extend(destination, source) <span>⇒ destination</span>
+</div>
 
 <p>Merge the contents of two objects together.</p>
 
 <h2 id="util-inherits">inherits</h2>
 
-<div class="api">util.inherits(child, parent) <span>⇒ child</span></div>
+<div class="api">
+    util.inherits(child, parent) <span>⇒ child</span>
+</div>
 
 <p>Sets up prototypal inheritance through a ghost constructor.</p>
 
 <h2 id="util-iselement">isElement</h2>
 
-<div class="api">util.isElement(element) <span>⇒ boolean</span></div>
+<div class="api">
+    util.isElement(element) <span>⇒ boolean</span>
+</div>
 
 <p>Checks if <code>element</code> is a <code>NODE_ELEMENT</code> or <code>DOCUMENT_ELEMENT</code>.</p>
 
 <h2 id="util-isnodelist">isNodeList</h2>
 
-<div class="api">util.isNodeList(elements) <span>⇒ boolean</span></div>
+<div class="api">
+    util.isNodeList(elements) <span>⇒ boolean</span>
+</div>
 
 <p>Checks if <code>elements</code> is a <code>NodeList</code> or <code>HTMLCollection</code>.</p>
 
 <h2 id="util-unique">unique</h2>
 
-<div class="api">util.unique(array) <span>⇒ array</span></div>
+<div class="api">
+    util.unique(array) <span>⇒ array</span>
+</div>
 
 <p>Produces a duplicate-free version of the array.</p>
 
 <h2 id="util-pluck">pluck</h2>
 
-<div class="api">util.pluck(array, property) <span>⇒ array</span></div>
+<div class="api">
+    util.pluck(array, property) <span>⇒ array</span>
+</div>
 
 <p>Pluck an attribute from each item in <code>array</code>.</p>
 
 <h2 id="util-put">put</h2>
 
-<div class="api">util.put(array, property, value) <span>⇒ array</span></div>
+<div class="api">
+    util.put(array, property, value) <span>⇒ array</span>
+</div>
 
 <p>Opposite of pluck. Set <code>property</code> for each item in <code>array</code>.</p>
 
 <h2 id="util-prefix">prefix</h2>
 
-<div class="api">util.prefix(property, obj) <span>⇒ mixed</span></div>
+<div class="api">
+    util.prefix(property, obj) <span>⇒ mixed</span>
+</div>
 
 <p>Returns a standard <em>or</em> browser-prefixed methods (<code>moz</code>, <code>webkit</code>, <code>ms</code>, <code>o</code>) if found.</p>
 
 <h2 id="util-applier">applier</h2>
 
-<div class="api">util.applier(fn, context, args) <span>⇒ function</span></div>
+<div class="api">
+    util.applier(fn, context, args) <span>⇒ function</span>
+</div>
 
 <p>Returns a function that calls <code>fn.apply(context, ...)</code>. The <code>args</code> array is right-joined to the function call parameters.</p>
 
 <h2 id="util-applierleft">applierLeft</h2>
 
-<div class="api">util.applierLeft(fn, context, args) <span>⇒ function</span></div>
+<div class="api">
+    util.applierLeft(fn, context, args) <span>⇒ function</span>
+</div>
 
 <p>The same as <code>applier</code> but <code>args</code> are left-joined to the function parameters.</p>
 
 <h2 id="util-curry">curry</h2>
 
-<div class="api">util.curry(fn, ...) <span>⇒ function</span></div>
+<div class="api">
+    util.curry(fn, ...) <span>⇒ function</span>
+</div>
 
 <p>Returns a <a href="http://en.wikipedia.org/wiki/Currying">curried</a>/partially-applied function with the rest of the arguments.</p>
 
 <h2 id="util-getuid">getUid</h2>
 
-<div class="api">util.getUid(element) <span>⇒ number</span></div>
+<div class="api">
+    util.getUid(element) <span>⇒ number</span>
+</div>
 
 <p>Gets an unique identifier for an element.</p></div></article>
     </div>
