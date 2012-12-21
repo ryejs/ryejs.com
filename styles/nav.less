@@ -11,10 +11,11 @@ nav {
     top: 0;
     bottom: 0;
     z-index: 1;
-    background: #eee;
     width: 198px;
     overflow: auto;
+    background: darken(white, 6);
     ul {
+        background: darken(white, 3);
         padding: 0;
         margin: 0;
     }
@@ -28,14 +29,11 @@ nav {
     }
     li {
         line-height: 2;
-        border-bottom: 1px solid #ddd;
+        border-top: 1px solid darken(white, 6);
     }
-    > ul {
-        border-top: 1px solid #ddd;
-    }
-
     ul ul {
         display: none;
+        background: white;
         a {
             font-weight: normal;
             padding-left: 24px;
