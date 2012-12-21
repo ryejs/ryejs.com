@@ -45,9 +45,10 @@ table{border-collapse:collapse;border-spacing:0;}
 html,body{margin:0;padding:0;}
 html{height:100%;background:url(../images/top.jpg) #fff5e3 center top no-repeat;}
 body{font-family:"Helvetica Neue","Helvetica",Arial,sans-serif;min-height:100%;color:#222;position:relative;overflow:hidden;padding:0 240px 0 20px;max-width:640px;min-width:400px;margin:0 auto;font-size:14px;line-height:1.5;}
-h1{position:relative;font-size:1.6em;margin-top:1.6em;border-bottom:1px solid #f3e6cf;}
-h2{font-size:1.4em;margin-top:1.2em;}
-h3{font-size:1em;margin-top:0.8em;}
+h1,h2,h3{margin-top:0;}
+h1{position:relative;font-size:1.6em;padding-top:1.6em;border-bottom:1px solid #f3e6cf;}
+h2{font-size:1.4em;padding-top:1em;}
+h3{font-size:1em;padding-top:0.6em;}
 code{font-size:12px;line-height:18px;background:#fff9ed;outline:1px solid #f3e6cf;padding:0 4px;}
 table{background:#fff9ed;font-size:95%;}table th{text-align:left;}
 table th,table td{padding:2px .5em;border:1px solid #f3e6cf;}
