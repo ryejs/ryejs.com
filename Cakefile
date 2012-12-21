@@ -8,7 +8,6 @@ put = (f, str) -> fs.writeFileSync(f, str)
 
 docs = [
     'rye'
-    'util'
     'data'
     'query'
     'collection'
@@ -17,6 +16,7 @@ docs = [
     'events'
     'dom-events'
     'touch-events'
+    'util'
 ]
 
 task 'build:docs', ->
