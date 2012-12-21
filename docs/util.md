@@ -1,7 +1,7 @@
 Util
 ==================
 
-This module only contains methods to support common tasks.
+Utility methods. Use with `var util = Rye.require('Util')`.
 
 extend
 ------------------
@@ -14,21 +14,21 @@ inherits
 ------------------
 <div class="sintax">util.inherits(child, parent) <span>⇒ child</span></div>
 
-Gets prototype inheritance trought super-class method calling.
+Sets up prototypal inheritance through a ghost constructor.
 
 
 isElement
 ------------------
 <div class="sintax">util.isElement(element) <span>⇒ boolean</span></div>
 
-Checks if element is a `node element` or `document element`.
+Checks if `element` is a `NODE_ELEMENT` or `DOCUMENT_ELEMENT`.
 
 
 isNodeList
 ------------------
 <div class="sintax">util.isNodeList(elements) <span>⇒ boolean</span></div>
 
-Checks if elements are a `node list` or `html collection`.
+Checks if `elements` is a `NodeList` or `HTMLCollection`.
 
 
 unique
@@ -42,46 +42,46 @@ pluck
 ------------------
 <div class="sintax">util.pluck(array, property) <span>⇒ array</span></div>
 
-Produces an array with the content of property of items.
+Pluck an attribute from each item in `array`.
 
 
 put
 ------------------
 <div class="sintax">util.put(array, property, value) <span>⇒ array</span></div>
 
-Adds a value in all properties of array items.
+Opposite of pluck. Set `property` for each item in `array`.
 
 
 prefix
 ------------------
 <div class="sintax">util.prefix(property, obj) <span>⇒ mixed</span></div>
 
-Finds a property in an object using prefixes: *moz*, *webkit*, *ms* and *o*. 
+Returns a standard *or* browser-prefixed methods (`moz`, `webkit`, `ms`, `o`) if found.
 
 
 applier
 ------------------
 <div class="sintax">util.applier(fn, context, args) <span>⇒ function</span></div>
 
-Returns a function thats wrap a call to `fn` with `this` setted to `context` and `args` added to the end of params.
+Returns a function that calls `fn.apply(context, ...)`. The `args` array is right-joined to the function call parameters.
 
 
 applierLeft
 ------------------
 <div class="sintax">util.applierLeft(fn, context, args) <span>⇒ function</span></div>
 
-Works like *applier* except that `args` are added to the begining of params.
+The same as `applier` but `args` are left-joined to the function parameters.
 
 
 curry
 ------------------
-<div class="sintax">util.curry(fn) <span>⇒ function</span></div>
+<div class="sintax">util.curry(fn, ...) <span>⇒ function</span></div>
 
-It is a *applierLeft* thats keep the `this` to the same value that the call already has.
+Returns a [curried](http://en.wikipedia.org/wiki/Currying)/partially-applied function with the rest of the arguments.
 
 
 getUid
 ------------------
 <div class="sintax">util.getUid(element) <span>⇒ number</span></div>
 
-Gets an unique identifier to an element.
+Gets an unique identifier for an element.
