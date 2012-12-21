@@ -40,15 +40,6 @@ pluckNode
 Using to create a new collection based in elements properties that returns a node. The method avoids return not elements and is called by `.next()` and `.prev()`.
 
 
-pluck
-------------------
-<div class="api">
-    .pluck(property) <span>⇒ array</span>
-</div>
-
-It is just a wrap to `util.pluck(elements, property)` that iterate over collection.
-
-
 next
 ------------------
 <div class="api">

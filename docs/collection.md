@@ -118,3 +118,21 @@ concat
 </div>
 
 Concats array of elements or rye collections into a single `rye collection`.
+
+
+pluck
+------------------
+<div class="api">
+    .pluck(property) <span>⇒ array</span>
+</div>
+
+It is just a wrap to `util.pluck(elements, property)` that iterate over collection.
+
+
+put
+------------------
+<div class="api">
+    .put(property, value) <span>⇒ array</span>
+</div>
+
+It is just a wrap to `util.put(elements, property)` that iterate over collection.

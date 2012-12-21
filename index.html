@@ -28,14 +28,13 @@
 <li><a href="#rye-ryerequire">Rye.require</a></li></ul></li>
 <li><a href="#data">Data</a>
 <ul><li><a href="#data-data">data</a></li>
-<li><a href="#data-set">@set</a></li>
-<li><a href="#data-get">@get</a></li></ul></li>
+<li><a href="#data-@set" class="module" >@set</a></li>
+<li><a href="#data-@get" class="module" >@get</a></li></ul></li>
 <li><a href="#traversal">Traversal</a>
 <ul><li><a href="#traversal-find">find</a></li>
 <li><a href="#traversal-index">index</a></li>
 <li><a href="#traversal-add">add</a></li>
 <li><a href="#traversal-plucknode">pluckNode</a></li>
-<li><a href="#traversal-pluck">pluck</a></li>
 <li><a href="#traversal-next">next</a></li>
 <li><a href="#traversal-prev">prev</a></li>
 <li><a href="#traversal-siblings">siblings</a></li>
@@ -51,9 +50,9 @@
 <li><a href="#filter-first">first</a></li>
 <li><a href="#filter-last">last</a></li></ul></li>
 <li><a href="#query">Query</a>
-<ul><li><a href="#query-matches">@matches</a></li>
-<li><a href="#query-qsa">@qsa</a></li>
-<li><a href="#query-getclosestnode">@getClosestNode</a></li></ul></li>
+<ul><li><a href="#query-@matches" class="module" >@matches</a></li>
+<li><a href="#query-@qsa" class="module" >@qsa</a></li>
+<li><a href="#query-@getclosestnode" class="module" >@getClosestNode</a></li></ul></li>
 <li><a href="#collection">Collection</a>
 <ul><li><a href="#collection-get">get</a></li>
 <li><a href="#collection-eq">eq</a></li>
@@ -67,7 +66,9 @@
 <li><a href="#collection-iterate">iterate</a></li>
 <li><a href="#collection-push">push</a></li>
 <li><a href="#collection-slice">slice</a></li>
-<li><a href="#collection-concat">concat</a></li></ul></li>
+<li><a href="#collection-concat">concat</a></li>
+<li><a href="#collection-pluck">pluck</a></li>
+<li><a href="#collection-put">put</a></li></ul></li>
 <li><a href="#manipulation">Manipulation</a>
 <ul><li><a href="#manipulation-text">text</a></li>
 <li><a href="#manipulation-html">html</a></li>
@@ -79,8 +80,9 @@
 <li><a href="#manipulation-clone">clone</a></li>
 <li><a href="#manipulation-val">val</a></li>
 <li><a href="#manipulation-attr">attr</a></li>
-<li><a href="#manipulation-getvalue">@getValue</a></li>
-<li><a href="#manipulation-getattribute">@getAttribute</a></li></ul></li>
+<li><a href="#manipulation-prop">prop</a></li>
+<li><a href="#manipulation-@getvalue" class="module" >@getValue</a></li>
+<li><a href="#manipulation-@getattribute" class="module" >@getAttribute</a></li></ul></li>
 <li><a href="#style">Style</a>
 <ul><li><a href="#style-show">show</a></li>
 <li><a href="#style-hide">hide</a></li>
@@ -89,11 +91,11 @@
 <li><a href="#style-addclass">addClass</a></li>
 <li><a href="#style-removeclass">removeClass</a></li>
 <li><a href="#style-toggleclass">toggleClass</a></li>
-<li><a href="#style-getcss">@getCSS</a></li>
-<li><a href="#style-setcss">@setCSS</a></li>
-<li><a href="#style-hasclass">@hasClass</a></li>
-<li><a href="#style-addclass">@addClass</a></li>
-<li><a href="#style-removeclass">@removeClass</a></li></ul></li>
+<li><a href="#style-@getcss" class="module" >@getCSS</a></li>
+<li><a href="#style-@setcss" class="module" >@setCSS</a></li>
+<li><a href="#style-@hasclass" class="module" >@hasClass</a></li>
+<li><a href="#style-@addclass" class="module" >@addClass</a></li>
+<li><a href="#style-@removeclass" class="module" >@removeClass</a></li></ul></li>
 <li><a href="#eventemitter">Event Emitter</a>
 <ul><li><a href="#eventemitter-addlisteneron">addListener (on)</a></li>
 <li><a href="#eventemitter-once">once</a></li>
@@ -107,25 +109,25 @@
 <ul><li><a href="#domevents-addeventlisteneron">addEventListener (on)</a></li>
 <li><a href="#domevents-removeeventlisteneroff">removeEventListener (off)</a></li>
 <li><a href="#domevents-trigger">trigger</a></li>
-<li><a href="#domevents-getemitter">@getEmitter</a></li>
-<li><a href="#domevents-addlistener">@addListener</a></li>
-<li><a href="#domevents-removelisten">@removeListen</a></li>
-<li><a href="#domevents-trigger">@trigger</a></li>
-<li><a href="#domevents-createevent">@createEvent</a></li></ul></li>
+<li><a href="#domevents-@getemitter" class="module" >@getEmitter</a></li>
+<li><a href="#domevents-@addlistener" class="module" >@addListener</a></li>
+<li><a href="#domevents-@removelisten" class="module" >@removeListen</a></li>
+<li><a href="#domevents-@trigger" class="module" >@trigger</a></li>
+<li><a href="#domevents-@createevent" class="module" >@createEvent</a></li></ul></li>
 <li><a href="#touchevents">Touch Events</a></li>
 <li><a href="#util">Util</a>
-<ul><li><a href="#util-extend">@extend</a></li>
-<li><a href="#util-inherits">@inherits</a></li>
-<li><a href="#util-iselement">@isElement</a></li>
-<li><a href="#util-isnodelist">@isNodeList</a></li>
-<li><a href="#util-unique">@unique</a></li>
-<li><a href="#util-pluck">@pluck</a></li>
-<li><a href="#util-put">@put</a></li>
-<li><a href="#util-prefix">@prefix</a></li>
-<li><a href="#util-applier">@applier</a></li>
-<li><a href="#util-applierleft">@applierLeft</a></li>
-<li><a href="#util-curry">@curry</a></li>
-<li><a href="#util-getuid">@getUid</a></li></ul></li>
+<ul><li><a href="#util-@extend" class="module" >@extend</a></li>
+<li><a href="#util-@inherits" class="module" >@inherits</a></li>
+<li><a href="#util-@iselement" class="module" >@isElement</a></li>
+<li><a href="#util-@isnodelist" class="module" >@isNodeList</a></li>
+<li><a href="#util-@unique" class="module" >@unique</a></li>
+<li><a href="#util-@pluck" class="module" >@pluck</a></li>
+<li><a href="#util-@put" class="module" >@put</a></li>
+<li><a href="#util-@prefix" class="module" >@prefix</a></li>
+<li><a href="#util-@applier" class="module" >@applier</a></li>
+<li><a href="#util-@applierleft" class="module" >@applierLeft</a></li>
+<li><a href="#util-@curry" class="module" >@curry</a></li>
+<li><a href="#util-@getuid" class="module" >@getUid</a></li></ul></li>
 </ul>
             </nav>
         </div>
@@ -239,7 +241,7 @@
     </section>
 
     <div class="main">
-<article><div class="wrapper"><h1 id="rye">Rye</h1>
+<section class="section-rye"><h1 id="rye">Rye</h1>
 
 <h2 id="rye-constructor">Constructor</h2>
 
@@ -265,8 +267,8 @@
     Rye.require(name) <span>⇒ function</span>
 </div>
 
-<p>Requires the function stored. All code in Rye is allocated as modules.</p></div></article>
-<article><div class="wrapper"><h1 id="data">Data</h1>
+<p>Requires the function stored. All code in Rye is allocated as modules.</p></section>
+<section class="section-data"><h1 id="data">Data</h1>
 
 <p>Store arbitrary data associated with the matched elements.</p>
 
@@ -279,7 +281,7 @@
 
 <p>Allows to attach and get data of any type to DOM elements.</p>
 
-<h2 id="data-set">@set</h2>
+<h2 id="data-@set">@set</h2>
 
 <div class="api">
     data.set(element, key, value)
@@ -287,14 +289,14 @@
 
 <p>Stores <code>value</code> in <code>key</code> of one <code>element</code>.</p>
 
-<h2 id="data-get">@get</h2>
+<h2 id="data-@get">@get</h2>
 
 <div class="api">
     data.get(element, key) <span>⇒ mixed</span>
 </div>
 
-<p>Returns the value in <code>key</code> of one <code>element</code>.</p></div></article>
-<article><div class="wrapper"><h1 id="traversal">Traversal</h1>
+<p>Returns the value in <code>key</code> of one <code>element</code>.</p></section>
+<section class="section-query"><h1 id="traversal">Traversal</h1>
 
 <h2 id="traversal-find">find</h2>
 
@@ -330,14 +332,6 @@
 </div>
 
 <p>Using to create a new collection based in elements properties that returns a node. The method avoids return not elements and is called by <code>.next()</code> and <code>.prev()</code>.</p>
-
-<h2 id="traversal-pluck">pluck</h2>
-
-<div class="api">
-    .pluck(property) <span>⇒ array</span>
-</div>
-
-<p>It is just a wrap to <code>util.pluck(elements, property)</code> that iterate over collection.</p>
 
 <h2 id="traversal-next">next</h2>
 
@@ -460,7 +454,7 @@
 
 <p>Element query methods. Use with var query = Rye.require('Query').</p>
 
-<h2 id="query-matches">@matches</h2>
+<h2 id="query-@matches">@matches</h2>
 
 <div class="api">
     query.matches(element, selector) <span>⇒ boolean</span><br>
@@ -470,7 +464,7 @@
 
 <p>Checks if a element match with <code>selector</code>, is equal to <code>element</code> or with some element of <code>rye collection</code>.</p>
 
-<h2 id="query-qsa">@qsa</h2>
+<h2 id="query-@qsa">@qsa</h2>
 
 <div class="api">
     query.qsa(element, selector) <span>⇒ array</span>
@@ -478,14 +472,14 @@
 
 <p>Performs and optimized <code>.querySelectorAll</code> and returns an array to ease after manipulation.</p>
 
-<h2 id="query-getclosestnode">@getClosestNode</h2>
+<h2 id="query-@getclosestnode">@getClosestNode</h2>
 
 <div class="api">
     query.getClosestNode(element, method[, selector]) <span>⇒ element</span>
 </div>
 
-<p>The method avoids return not elements with traversing DOM methods, optionally filtered by a <code>selector</code>.</p></div></article>
-<article><div class="wrapper"><h1 id="collection">Collection</h1>
+<p>The method avoids return not elements with traversing DOM methods, optionally filtered by a <code>selector</code>.</p></section>
+<section class="section-collection"><h1 id="collection">Collection</h1>
 
 <h2 id="collection-get">get</h2>
 
@@ -591,8 +585,24 @@
     .concat(elements, ...) <span>⇒ rye collection</span>
 </div>
 
-<p>Concats array of elements or rye collections into a single <code>rye collection</code>.</p></div></article>
-<article><div class="wrapper"><h1 id="manipulation">Manipulation</h1>
+<p>Concats array of elements or rye collections into a single <code>rye collection</code>.</p>
+
+<h2 id="collection-pluck">pluck</h2>
+
+<div class="api">
+    .pluck(property) <span>⇒ array</span>
+</div>
+
+<p>It is just a wrap to <code>util.pluck(elements, property)</code> that iterate over collection.</p>
+
+<h2 id="collection-put">put</h2>
+
+<div class="api">
+    .put(property, value) <span>⇒ array</span>
+</div>
+
+<p>It is just a wrap to <code>util.put(elements, property)</code> that iterate over collection.</p></section>
+<section class="section-manipulation"><h1 id="manipulation">Manipulation</h1>
 
 <h2 id="manipulation-text">text</h2>
 
@@ -687,7 +697,17 @@
 
 <p>When <code>value</code> is given or an object with name as key is passing, sets the attribute to that <code>value</code> on each element in the collection.</p>
 
-<h2 id="manipulation-getvalue">@getValue</h2>
+<h2 id="manipulation-prop">prop</h2>
+
+<div class="api">
+    .prop(name) <span>⇒ string</span><br>
+    .prop(name, value) <span>⇒ self</span><br>
+    .prop({name: value, ...}) <span>⇒ self</span>
+</div>
+
+<p>It is just a wrap to <code>util.pluck(elements, property)</code> that iterate over collection.</p>
+
+<h2 id="manipulation-@getvalue">@getValue</h2>
 
 <div class="api">
     manipulation.getValue(element) <span>⇒ string</span>
@@ -695,14 +715,14 @@
 
 <p>Gets a field <code>value</code> of a given <code>element</code>.</p>
 
-<h2 id="manipulation-getattribute">@getAttribute</h2>
+<h2 id="manipulation-@getattribute">@getAttribute</h2>
 
 <div class="api">
     manipulation.getAttribute(element, name) <span>⇒ string</span>
 </div>
 
-<p>Gets an attribute <code>name</code> of a given <code>element</code>. This method fallbacks to <code>getValue()</code> for value attribute.</p></div></article>
-<article><div class="wrapper"><h1 id="style">Style</h1>
+<p>Gets an attribute <code>name</code> of a given <code>element</code>. This method fallbacks to <code>getValue()</code> for value attribute.</p></section>
+<section class="section-style"><h1 id="style">Style</h1>
 
 <h2 id="style-show">show</h2>
 
@@ -718,16 +738,16 @@
 
 <h2 id="style-toggleclass">toggleClass</h2>
 
-<h2 id="style-getcss">@getCSS</h2>
+<h2 id="style-@getcss">@getCSS</h2>
 
-<h2 id="style-setcss">@setCSS</h2>
+<h2 id="style-@setcss">@setCSS</h2>
 
-<h2 id="style-hasclass">@hasClass</h2>
+<h2 id="style-@hasclass">@hasClass</h2>
 
-<h2 id="style-addclass">@addClass</h2>
+<h2 id="style-@addclass">@addClass</h2>
 
-<h2 id="style-removeclass">@removeClass</h2></div></article>
-<article><div class="wrapper"><h1 id="eventemitter">Event Emitter</h1>
+<h2 id="style-@removeclass">@removeClass</h2></section>
+<section class="section-events"><h1 id="eventemitter">Event Emitter</h1>
 
 <h2 id="eventemitter-addlisteneron">addListener (on)</h2>
 
@@ -743,8 +763,8 @@
 
 <h2 id="eventemitter-ryeunsubscribe">Rye.unsubscribe</h2>
 
-<h2 id="eventemitter-ryepublish">Rye.publish</h2></div></article>
-<article><div class="wrapper"><h1 id="domevents">DOM Events</h1>
+<h2 id="eventemitter-ryepublish">Rye.publish</h2></section>
+<section class="section-dom-events"><h1 id="domevents">DOM Events</h1>
 
 <h2 id="domevents-addeventlisteneron">addEventListener (on)</h2>
 
@@ -752,16 +772,16 @@
 
 <h2 id="domevents-trigger">trigger</h2>
 
-<h2 id="domevents-getemitter">@getEmitter</h2>
+<h2 id="domevents-@getemitter">@getEmitter</h2>
 
-<h2 id="domevents-addlistener">@addListener</h2>
+<h2 id="domevents-@addlistener">@addListener</h2>
 
-<h2 id="domevents-removelisten">@removeListen</h2>
+<h2 id="domevents-@removelisten">@removeListen</h2>
 
-<h2 id="domevents-trigger">@trigger</h2>
+<h2 id="domevents-@trigger">@trigger</h2>
 
-<h2 id="domevents-createevent">@createEvent</h2></div></article>
-<article><div class="wrapper"><h1 id="touchevents">Touch Events</h1>
+<h2 id="domevents-@createevent">@createEvent</h2></section>
+<section class="section-touch-events"><h1 id="touchevents">Touch Events</h1>
 
 <ul>
 <li><code>tap</code></li>
@@ -773,12 +793,12 @@
 <li><code>swipedown</code></li>
 <li><code>longtap</code></li>
 <li><code>singletap</code></li>
-</ul></div></article>
-<article><div class="wrapper"><h1 id="util">Util</h1>
+</ul></section>
+<section class="section-util"><h1 id="util">Util</h1>
 
 <p>Utility methods. Use with <code>var util = Rye.require('Util')</code>.</p>
 
-<h2 id="util-extend">@extend</h2>
+<h2 id="util-@extend">@extend</h2>
 
 <div class="api">
     util.extend(destination, source) <span>⇒ destination</span>
@@ -786,7 +806,7 @@
 
 <p>Merge the contents of two objects together.</p>
 
-<h2 id="util-inherits">@inherits</h2>
+<h2 id="util-@inherits">@inherits</h2>
 
 <div class="api">
     util.inherits(child, parent) <span>⇒ child</span>
@@ -794,7 +814,7 @@
 
 <p>Sets up prototypal inheritance through a ghost constructor.</p>
 
-<h2 id="util-iselement">@isElement</h2>
+<h2 id="util-@iselement">@isElement</h2>
 
 <div class="api">
     util.isElement(element) <span>⇒ boolean</span>
@@ -802,7 +822,7 @@
 
 <p>Checks if <code>element</code> is a <code>NODE_ELEMENT</code> or <code>DOCUMENT_ELEMENT</code>.</p>
 
-<h2 id="util-isnodelist">@isNodeList</h2>
+<h2 id="util-@isnodelist">@isNodeList</h2>
 
 <div class="api">
     util.isNodeList(elements) <span>⇒ boolean</span>
@@ -810,7 +830,7 @@
 
 <p>Checks if <code>elements</code> is a <code>NodeList</code> or <code>HTMLCollection</code>.</p>
 
-<h2 id="util-unique">@unique</h2>
+<h2 id="util-@unique">@unique</h2>
 
 <div class="api">
     util.unique(array) <span>⇒ array</span>
@@ -818,7 +838,7 @@
 
 <p>Produces a duplicate-free version of the array.</p>
 
-<h2 id="util-pluck">@pluck</h2>
+<h2 id="util-@pluck">@pluck</h2>
 
 <div class="api">
     util.pluck(array, property) <span>⇒ array</span>
@@ -826,7 +846,7 @@
 
 <p>Pluck an attribute from each item in <code>array</code>.</p>
 
-<h2 id="util-put">@put</h2>
+<h2 id="util-@put">@put</h2>
 
 <div class="api">
     util.put(array, property, value) <span>⇒ array</span>
@@ -834,7 +854,7 @@
 
 <p>Opposite of pluck. Set <code>property</code> for each item in <code>array</code>.</p>
 
-<h2 id="util-prefix">@prefix</h2>
+<h2 id="util-@prefix">@prefix</h2>
 
 <div class="api">
     util.prefix(property, obj) <span>⇒ mixed</span>
@@ -842,7 +862,7 @@
 
 <p>Returns a standard <em>or</em> browser-prefixed methods (<code>moz</code>, <code>webkit</code>, <code>ms</code>, <code>o</code>) if found.</p>
 
-<h2 id="util-applier">@applier</h2>
+<h2 id="util-@applier">@applier</h2>
 
 <div class="api">
     util.applier(fn, context, args) <span>⇒ function</span>
@@ -850,7 +870,7 @@
 
 <p>Returns a function that calls <code>fn.apply(context, ...)</code>. The <code>args</code> array is right-joined to the function call parameters.</p>
 
-<h2 id="util-applierleft">@applierLeft</h2>
+<h2 id="util-@applierleft">@applierLeft</h2>
 
 <div class="api">
     util.applierLeft(fn, context, args) <span>⇒ function</span>
@@ -858,7 +878,7 @@
 
 <p>The same as <code>applier</code> but <code>args</code> are left-joined to the function parameters.</p>
 
-<h2 id="util-curry">@curry</h2>
+<h2 id="util-@curry">@curry</h2>
 
 <div class="api">
     util.curry(fn, ...) <span>⇒ function</span>
@@ -866,13 +886,13 @@
 
 <p>Returns a <a href="http://en.wikipedia.org/wiki/Currying">curried</a>/partially-applied function with the rest of the arguments.</p>
 
-<h2 id="util-getuid">@getUid</h2>
+<h2 id="util-@getuid">@getUid</h2>
 
 <div class="api">
     util.getUid(element) <span>⇒ number</span>
 </div>
 
-<p>Gets an unique identifier for an element.</p></div></article>
+<p>Gets an unique identifier for an element.</p></section>
     </div>
 
     <footer class="footer">
