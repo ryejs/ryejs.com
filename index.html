@@ -262,82 +262,99 @@ Rye(elements) <span>⇒ rye collection</span>
 
 <h2 id="util.utilextend">Util.extend</h2>
 
-<div class="sintax">extend(destination, source) <span>⇒ destination</span></div>
+<div class="sintax">util.extend(destination, source) <span>⇒ destination</span></div>
 
 <p>Merge the contents of two objects together.</p>
 
 <h2 id="util.utilinherits">Util.inherits</h2>
 
-<div class="sintax">inherits(child, parent) <span>⇒ child</span></div>
+<div class="sintax">util.inherits(child, parent) <span>⇒ child</span></div>
 
 <p>Gets prototype inheritance trought super-class method calling.</p>
 
 <h2 id="util.utiliselement">Util.isElement</h2>
 
-<div class="sintax">isElement(element) <span>⇒ boolean</span></div>
+<div class="sintax">util.isElement(element) <span>⇒ boolean</span></div>
 
 <p>Checks if element is a <code>node element</code> or <code>document element</code>.</p>
 
 <h2 id="util.utilisnodelist">Util.isNodeList</h2>
 
-<div class="sintax">isNodeList(elements) <span>⇒ boolean</span></div>
+<div class="sintax">util.isNodeList(elements) <span>⇒ boolean</span></div>
 
 <p>Checks if elements are a <code>node list</code> or <code>html collection</code>.</p>
 
 <h2 id="util.utilunique">Util.unique</h2>
 
-<div class="sintax">unique(array) <span>⇒ array</span></div>
+<div class="sintax">util.unique(array) <span>⇒ array</span></div>
 
 <p>Produces a duplicate-free version of the array.</p>
 
 <h2 id="util.utilpluck">Util.pluck</h2>
 
-<div class="sintax">pluck(array, property) <span>⇒ array</span></div>
+<div class="sintax">util.pluck(array, property) <span>⇒ array</span></div>
 
 <p>Produces an array with the content of property of items.</p>
 
 <h2 id="util.utilput">Util.put</h2>
 
-<div class="sintax">put(array, property, value) <span>⇒ array</span></div>
+<div class="sintax">util.put(array, property, value) <span>⇒ array</span></div>
 
 <p>Adds a value in all properties of array items.</p>
 
 <h2 id="util.utilprefix">Util.prefix</h2>
 
-<div class="sintax">prefix(property, obj) <span>⇒ mixed</span></div>
+<div class="sintax">util.prefix(property, obj) <span>⇒ mixed</span></div>
 
 <p>Finds a property in an object using prefixes: <em>moz</em>, <em>webkit</em>, <em>ms</em> and <em>o</em>. </p>
 
 <h2 id="util.utilapplier">Util.applier</h2>
 
-<div class="sintax">applier(fn, context, args) <span>⇒ function</span></div>
+<div class="sintax">util.applier(fn, context, args) <span>⇒ function</span></div>
 
 <p>Returns a function thats wrap a call to <code>fn</code> with <code>this</code> setted to <code>context</code> and <code>args</code> added to the end of params.</p>
 
 <h2 id="util.utilapplierleft">Util.applierLeft</h2>
 
-<div class="sintax">applierLeft(fn, context, args) <span>⇒ function</span></div>
+<div class="sintax">util.applierLeft(fn, context, args) <span>⇒ function</span></div>
 
 <p>Works like <em>applier</em> except that <code>args</code> are added to the begining of params.</p>
 
 <h2 id="util.utilcurry">Util.curry</h2>
 
-<div class="sintax">curry(fn) <span>⇒ function</span></div>
+<div class="sintax">util.curry(fn) <span>⇒ function</span></div>
 
 <p>It is a <em>applierLeft</em> thats keep the <code>this</code> to the same value that the call already has.</p>
 
 <h2 id="util.utilgetuid">Util.getUid</h2>
 
-<div class="sintax">getUid(element) <span>⇒ number</span></div>
+<div class="sintax">util.getUid(element) <span>⇒ number</span></div>
 
 <p>Gets an unique identifier to an element.</p></div></article>
 <article><div class="wrapper"><h1 id="data">Data</h1>
 
+<p>Store arbitrary data associated with the matched elements.</p>
+
 <h2 id="data.data">data</h2>
+
+<div class="sintax">
+.data(key[, value]) <span>⇒ self</span><br>
+.data({property: value, ...}) <span>⇒ self</span><br>
+</div>
+
+<p>Allows to attach and get data of any type to DOM elements.</p>
 
 <h2 id="data.dataset">Data.set</h2>
 
-<h2 id="data.dataget">Data.get</h2></div></article>
+<div class="sintax">data.set(element, key, value)</div>
+
+<p>Stores <code>value</code> in <code>key</code> of one <code>element</code>.</p>
+
+<h2 id="data.dataget">Data.get</h2>
+
+<div class="sintax">data.get(element, key) <span>⇒ mixed</span></div>
+
+<p>Returns the value in <code>key</code> of one <code>element</code>.</p></div></article>
 <article><div class="wrapper"><h1 id="traversal">Traversal</h1>
 
 <h2 id="traversal.find">find</h2>
