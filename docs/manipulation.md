@@ -8,7 +8,7 @@ text
     .text() <span>⇒ text</span>
 </div>
 
-Sets the text content of all elements. When no content is given, returns the text content of the first element in the collection.
+Sets or gets `textContent`. If no argument given it returns only the first element's value.
 
 
 html
@@ -18,7 +18,7 @@ html
     .html() <span>⇒ html</span>
 </div>
 
-Sets the inner html of all elements. When no html is given, returns the inner html of the first element in the collection.
+Sets or gets `innerHTML`. If no argument given it returns only the first element's value.
 
 
 empty
@@ -27,7 +27,7 @@ empty
     .empty() <span>⇒ self</span>
 </div>
 
-Sets to empty the inner html of all elements.
+Sets `innerHTML` to an empty string `''` for all elements.
 
 
 append
@@ -37,7 +37,7 @@ append
     .append(element) <span>⇒ self</span>
 </div>
 
-Insert `html` or `element` to the end of each element in the collection.
+Appends `html` or `element` to each element in the collection. If the argument is an HTML element, it is cloned before appending.
 
 
 prepend
@@ -47,7 +47,7 @@ prepend
     .prepend(element) <span>⇒ self</span>
 </div>
 
-Insert `html` or `element` to the beginning of each element in the collection.
+Prepends 'html' or 'element' to each element in the collection.
 
 
 after
@@ -57,7 +57,7 @@ after
     .after(element) <span>⇒ self</span>
 </div>
 
-Insert `html` or `element` after each element in the collection.
+Inserts `html` or `element` after each element in the collection.
 
 
 before
@@ -67,16 +67,16 @@ before
     .before(element) <span>⇒ self</span>
 </div>
 
-Insert `html` or `element` before each element in the collection.
+Inserts `html` or `element` before each element in the collection.
 
 
 clone
 ------------------
 <div class="api">
-    .clone() <span>⇒ rye collection</span>
+    .clone(deep) <span>⇒ rye collection</span>
 </div>
 
-Duplicate all elements in the collection via deep clone.
+Duplicate all elements with [`cloneNode(deep)`](https://developer.mozilla.org/en-US/docs/DOM/Node.cloneNode). `deep` defaults to true (copy all child nodes).
 
 
 val
@@ -86,9 +86,7 @@ val
     .val(value) <span>⇒ self</span>
 </div>
 
-When no value is given, return the value of the first element. For `<select multiple>`, an array of values is returend. 
-
-When a `value` is given, set all elements to this value.
+Gets or sets the `value` property for all elements. If no argument given, returns value for the first element only. For a `<select multiple>` an array of values is returned.
 
 
 attr
