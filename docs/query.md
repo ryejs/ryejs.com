@@ -25,7 +25,8 @@ add
 ------------------
 <div class="api">
     .add(elements) <span>⇒ rye collection</span><br>
-    .add(selector, context) <span>⇒ rye collection</span>
+    .add(Rye) <span>⇒ rye collection</span><br>
+    .add(selector[, context]) <span>⇒ rye collection</span>
 </div>
 
 Add elements to the set and returns a new collection. 
