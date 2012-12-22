@@ -102,6 +102,17 @@ When no `value` is given, reads specified attribute from the first element in th
 When `value` is given or an object with name as key is passing, sets the attribute to that `value` on each element in the collection.
 
 
+prop
+------------------
+<div class="api">
+    .prop(name) <span>⇒ string</span><br>
+    .prop(name, value) <span>⇒ self</span><br>
+    .prop({name: value, ...}) <span>⇒ self</span>
+</div>
+
+It is just a wrap to `util.pluck(elements, property)` that iterate over collection.
+
+
 @getValue
 ------------------
 <div class="api">

@@ -43,7 +43,7 @@ table{border-collapse:collapse;border-spacing:0;}
 .IR{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;}
 .input-block-level{display:block;width:100%;min-height:28px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;}
 html,body{margin:0;padding:0;}
-html{height:100%;background-color:#fff5e3;background-image:-webkit-linear-gradient(top, #f1e7d2 0, #fff5e3 30%);background-image:-moz-linear-gradient(top, #f1e7d2 0, #fff5e3 30%);background-image:linear-gradient(top, #f1e7d2 0, #fff5e3 30%);background-repeat:repeat-x;}
+html{height:100%;background-color:#fff5e3;background-image:-webkit-linear-gradient(top, #f3e6cf 0, #fff5e3 20%);background-image:-moz-linear-gradient(top, #f3e6cf 0, #fff5e3 20%);background-image:linear-gradient(top, #f3e6cf 0, #fff5e3 20%);background-repeat:repeat-x;}
 body{font-family:"Helvetica Neue","Helvetica",Arial,sans-serif;min-height:100%;color:#222;position:relative;overflow:hidden;padding:0 240px 0 20px;max-width:640px;min-width:400px;margin:0 auto;font-size:14px;line-height:1.5;}
 h1,h2,h3{margin-top:0;}
 h1{position:relative;font-size:1.6em;padding-top:1.6em;border-bottom:1px solid #f3e6cf;}
