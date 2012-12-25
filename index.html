@@ -105,15 +105,22 @@
 <li><a href="#eventemitter-ryesubscribe">Rye.subscribe</a></li>
 <li><a href="#eventemitter-ryeunsubscribe">Rye.unsubscribe</a></li>
 <li><a href="#eventemitter-ryepublish">Rye.publish</a></li></ul></li>
-<li><a href="#domevents">DOM Events</a>
-<ul><li><a href="#domevents-addeventlisteneron">addEventListener (on)</a></li>
-<li><a href="#domevents-removeeventlisteneroff">removeEventListener (off)</a></li>
-<li><a href="#domevents-trigger">trigger</a></li>
-<li><a href="#domevents-@getemitter" class="module" >@getEmitter</a></li>
-<li><a href="#domevents-@addlistener" class="module" >@addListener</a></li>
-<li><a href="#domevents-@removelisten" class="module" >@removeListen</a></li>
-<li><a href="#domevents-@trigger" class="module" >@trigger</a></li>
-<li><a href="#domevents-@createevent" class="module" >@createEvent</a></li></ul></li>
+<li><a href="#domeventemitter">DOM Event Emitter</a>
+<ul><li><a href="#domeventemitter-addlisteneron">addListener (on)</a></li>
+<li><a href="#domeventemitter-onceone">once (one)</a></li>
+<li><a href="#domeventemitter-removelisteneroff">removeListener (off)</a></li>
+<li><a href="#domeventemitter-trigger">trigger</a></li>
+<li><a href="#domeventemitter-prototypeaddlisteneron">prototype.addListener (on)</a></li>
+<li><a href="#domeventemitter-prototypeonceone">prototype.once (one)</a></li>
+<li><a href="#domeventemitter-prototyperemovelisteneroff">prototype.removeListener (off)</a></li>
+<li><a href="#domeventemitter-prototypedestroy">prototype.destroy</a></li>
+<li><a href="#domeventemitter-prototypetrigger">prototype.trigger</a></li>
+<li><a href="#domeventemitter-@addlisteneron" class="module" >@addListener (on)</a></li>
+<li><a href="#domeventemitter-@onceone" class="module" >@once (one)</a></li>
+<li><a href="#domeventemitter-@removelisteneroff" class="module" >@removeListener (off)</a></li>
+<li><a href="#domeventemitter-@trigger" class="module" >@trigger</a></li>
+<li><a href="#domeventemitter-@getemitter" class="module" >@getEmitter</a></li>
+<li><a href="#domeventemitter-@createevent" class="module" >@createEvent</a></li></ul></li>
 <li><a href="#touchevents">Touch Events</a></li>
 <li><a href="#util">Util</a>
 <ul><li><a href="#util-@extend" class="module" >@extend</a></li>
@@ -125,16 +132,17 @@
 <li><a href="#util-@put" class="module" >@put</a></li>
 <li><a href="#util-@prefix" class="module" >@prefix</a></li>
 <li><a href="#util-@applier" class="module" >@applier</a></li>
-<li><a href="#util-@applierleft" class="module" >@applierLeft</a></li>
 <li><a href="#util-@curry" class="module" >@curry</a></li>
-<li><a href="#util-@getuid" class="module" >@getUid</a></li></ul></li>
+<li><a href="#util-@getuid" class="module" >@getUid</a></li>
+<li><a href="#util-@type" class="module" >@type</a></li>
+<li><a href="#util-@is" class="module" >@is</a></li></ul></li>
 </ul>
             </nav>
         </div>
     </div>
 
-    <section class="intro">
-<p><strong>Rye</strong> is a lightweight javascript library for DOM manipulation and events with support for <strong>all modern browsers</strong> including IE9+. It has support for <strong>touch events/gestures</strong>, an <strong>even emitter</strong> which you can use to extend your own objects, and a <strong>jQuery-compatible</strong> API.</p>
+    <section class="manifesto">
+<p><p><strong>Rye</strong> is a lightweight javascript library for DOM manipulation and events with support for <strong>all modern browsers</strong> including IE9+. It has support for <strong>touch events/gestures</strong>, an <strong>even emitter</strong> which you can use to extend your own objects, and a <strong>jQuery-compatible</strong> API.</p></p>
 
 <div class="buttons">
     <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
@@ -149,7 +157,7 @@
 
 <h2 id="browsercompatibility">Browser compatibility</h2>
 
-<table>
+<p><table>
 <thead>
 <tr>
 <th id="browser" style="text-align:left;"> Browser </th>
@@ -226,7 +234,7 @@
 </tr>
 
 </tbody>
-</table>
+</table></p>
 
 <h2 id="notgoingtohappen">Not going to happen</h2>
 
@@ -765,23 +773,107 @@
 <h2 id="eventemitter-ryeunsubscribe">Rye.unsubscribe</h2>
 
 <h2 id="eventemitter-ryepublish">Rye.publish</h2></section>
-<section class="section-dom-events"><h1 id="domevents">DOM Events</h1>
+<section class="section-dom-events"><h1 id="domeventemitter">DOM Event Emitter</h1>
 
-<h2 id="domevents-addeventlisteneron">addEventListener (on)</h2>
+<h2 id="domeventemitter-addlisteneron">addListener (on)</h2>
 
-<h2 id="domevents-removeeventlisteneroff">removeEventListener (off)</h2>
+<div class="api">
+    .addListener(name, fn) <span>⇒ self</span><br>
+    .on(name, fn) <span>⇒ self</span>
+</div>
 
-<h2 id="domevents-trigger">trigger</h2>
+<h2 id="domeventemitter-onceone">once (one)</h2>
 
-<h2 id="domevents-@getemitter">@getEmitter</h2>
+<div class="api">
+    .once(name, fn) <span>⇒ self</span><br>
+    .one(name, fn) <span>⇒ self</span>
+</div>
 
-<h2 id="domevents-@addlistener">@addListener</h2>
+<h2 id="domeventemitter-removelisteneroff">removeListener (off)</h2>
 
-<h2 id="domevents-@removelisten">@removeListen</h2>
+<div class="api">
+    .removeListener(name[, fn]) <span>⇒ self</span><br>
+    .off(name[, fn]) <span>⇒ self</span>
+</div>
 
-<h2 id="domevents-@trigger">@trigger</h2>
+<h2 id="domeventemitter-trigger">trigger</h2>
 
-<h2 id="domevents-@createevent">@createEvent</h2></section>
+<div class="api">
+    .trigger(name[, data]) <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-prototypeaddlisteneron">prototype.addListener (on)</h2>
+
+<div class="api">
+    emitter.addListener(name, fn) <span>⇒ self</span><br>
+    emitter.on(element, name, fn) <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-prototypeonceone">prototype.once (one)</h2>
+
+<div class="api">
+    emitter.once(name, fn) <span>⇒ self</span><br>
+    emitter.one(name, fn) <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-prototyperemovelisteneroff">prototype.removeListener (off)</h2>
+
+<div class="api">
+    emitter.removeListener(name[, fn]) <span>⇒ self</span><br>
+    emitter.off(name[, fn]) <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-prototypedestroy">prototype.destroy</h2>
+
+<div class="api">
+    emitter.destroy() <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-prototypetrigger">prototype.trigger</h2>
+
+<div class="api">
+    emitter.trigger(name[, data]) <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-@addlisteneron">@addListener (on)</h2>
+
+<div class="api">
+    DOMEventEMitter.addListener(element, name, fn) <span>⇒ self</span><br>
+    DOMEventEMitter.on(element, name, fn) <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-@onceone">@once (one)</h2>
+
+<div class="api">
+    DOMEventEMitter.once(element, name, fn) <span>⇒ self</span><br>
+    DOMEventEMitter.one(element, name, fn) <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-@removelisteneroff">@removeListener (off)</h2>
+
+<div class="api">
+    DOMEventEMitter.removeListener(element, name[, fn]) <span>⇒ self</span><br>
+    DOMEventEMitter.off(element, name[, fn]) <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-@trigger">@trigger</h2>
+
+<div class="api">
+    DOMEventEMitter.trigger(element, name[, data]) <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-@getemitter">@getEmitter</h2>
+
+<div class="api">
+    DOMEventEMitter.getEmitter(element) <span>⇒ DOMEventEMitter</span>
+</div>
+
+<h2 id="domeventemitter-@createevent">@createEvent</h2>
+
+<div class="api">
+    DOMEventEMitter.createEvent(type[, properties]) <span>⇒ Event</span>
+    DOMEventEMitter.createEvent(obj[, properties]) <span>⇒ Event</span>
+</div></section>
 <section class="section-touch-events"><h1 id="touchevents">Touch Events</h1>
 
 <ul>
@@ -866,18 +958,12 @@
 <h2 id="util-@applier">@applier</h2>
 
 <div class="api">
-    util.applier(fn, context, args) <span>⇒ function</span>
+    util.applier(direction, fn, context, args) <span>⇒ function</span>
+    util.applier('left', fn, context, args) <span>⇒ function</span>
+    util.applier('right', fn, context, args) <span>⇒ function</span>
 </div>
 
-<p>Returns a function that calls <code>fn.apply(context, ...)</code>. The <code>args</code> array is right-joined to the function call parameters.</p>
-
-<h2 id="util-@applierleft">@applierLeft</h2>
-
-<div class="api">
-    util.applierLeft(fn, context, args) <span>⇒ function</span>
-</div>
-
-<p>The same as <code>applier</code> but <code>args</code> are left-joined to the function parameters.</p>
+<p>Returns a function that calls <code>fn.apply(context, ...)</code>. The <code>args</code> array is (right or left)-joined to the function call parameters.</p>
 
 <h2 id="util-@curry">@curry</h2>
 
@@ -893,7 +979,19 @@
     util.getUid(element) <span>⇒ number</span>
 </div>
 
-<p>Gets an unique identifier for an element.</p></section>
+<p>Gets an unique identifier for an element.</p>
+
+<h2 id="util-@type">@type</h2>
+
+<div class="api">
+    util.type(obj) <span>⇒ string</span>
+</div>
+
+<h2 id="util-@is">@is</h2>
+
+<div class="api">
+    util.is(obj, type) <span>⇒ boolean</span>
+</div></section>
     </div>
 
     <footer class="footer">
