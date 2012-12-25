@@ -20,8 +20,9 @@ api = [
     'collection'
     'manipulation'
     'style'
+    'event-emitter'
+    'dom-event-emitter'
     'events'
-    'dom-events'
     'touch-events'
     'util'
 ]
@@ -62,7 +63,7 @@ task 'build:readme', ->
         if weight is 1
             content += "\n### #{title}\n"
         else
-            content += "- [#{title}](http://ryejs.com##{id})\n"
+            content += "- [`#{title}`](http://ryejs.com##{id})\n"
 
     output = (get 'template/README.md')
         .replace('{{about}}', docs.get 'about')
