@@ -60,7 +60,7 @@ task 'build:readme', ->
     content = ''
     sections (weight, id, title) ->
         if weight is 1
-            content += "### #{title}\n"
+            content += "\n### #{title}\n"
         else
             content += "- [#{title}](http://ryejs.com##{id})\n"
 

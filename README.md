@@ -90,14 +90,17 @@ Browser compatiblity
 API
 ---
 
+
 ### Rye
 - [Constructor](http://ryejs.com#rye-constructor)
 - [Rye.define](http://ryejs.com#rye-ryedefine)
 - [Rye.require](http://ryejs.com#rye-ryerequire)
+
 ### Data
 - [data](http://ryejs.com#data-data)
 - [@set](http://ryejs.com#data-@set)
 - [@get](http://ryejs.com#data-@get)
+
 ### Traversal
 - [find](http://ryejs.com#traversal-find)
 - [index](http://ryejs.com#traversal-index)
@@ -110,6 +113,7 @@ API
 - [parents](http://ryejs.com#traversal-parents)
 - [closest](http://ryejs.com#traversal-closest)
 - [children](http://ryejs.com#traversal-children)
+
 ### Filter
 - [filter](http://ryejs.com#filter-filter)
 - [has](http://ryejs.com#filter-has)
@@ -117,10 +121,12 @@ API
 - [not](http://ryejs.com#filter-not)
 - [first](http://ryejs.com#filter-first)
 - [last](http://ryejs.com#filter-last)
+
 ### Query
 - [@matches](http://ryejs.com#query-@matches)
 - [@qsa](http://ryejs.com#query-@qsa)
 - [@getClosestNode](http://ryejs.com#query-@getclosestnode)
+
 ### Collection
 - [get](http://ryejs.com#collection-get)
 - [eq](http://ryejs.com#collection-eq)
@@ -137,6 +143,7 @@ API
 - [concat](http://ryejs.com#collection-concat)
 - [pluck](http://ryejs.com#collection-pluck)
 - [put](http://ryejs.com#collection-put)
+
 ### Manipulation
 - [text](http://ryejs.com#manipulation-text)
 - [html](http://ryejs.com#manipulation-html)
@@ -151,6 +158,7 @@ API
 - [prop](http://ryejs.com#manipulation-prop)
 - [@getValue](http://ryejs.com#manipulation-@getvalue)
 - [@getAttribute](http://ryejs.com#manipulation-@getattribute)
+
 ### Style
 - [show](http://ryejs.com#style-show)
 - [hide](http://ryejs.com#style-hide)
@@ -164,6 +172,7 @@ API
 - [@hasClass](http://ryejs.com#style-@hasclass)
 - [@addClass](http://ryejs.com#style-@addclass)
 - [@removeClass](http://ryejs.com#style-@removeclass)
+
 ### Event Emitter
 - [addListener (on)](http://ryejs.com#eventemitter-addlisteneron)
 - [once](http://ryejs.com#eventemitter-once)
@@ -173,6 +182,7 @@ API
 - [Rye.subscribe](http://ryejs.com#eventemitter-ryesubscribe)
 - [Rye.unsubscribe](http://ryejs.com#eventemitter-ryeunsubscribe)
 - [Rye.publish](http://ryejs.com#eventemitter-ryepublish)
+
 ### DOM Event Emitter
 - [addListener (on)](http://ryejs.com#domeventemitter-addlisteneron)
 - [once (one)](http://ryejs.com#domeventemitter-onceone)
@@ -189,7 +199,9 @@ API
 - [@trigger](http://ryejs.com#domeventemitter-@trigger)
 - [@getEmitter](http://ryejs.com#domeventemitter-@getemitter)
 - [@createEvent](http://ryejs.com#domeventemitter-@createevent)
+
 ### Touch Events
+
 ### Util
 - [@extend](http://ryejs.com#util-@extend)
 - [@inherits](http://ryejs.com#util-@inherits)
