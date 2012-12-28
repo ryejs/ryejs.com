@@ -9,9 +9,8 @@ put = (f, str) -> fs.writeFileSync(f, str)
 converter = new showdown.converter extensions: [showdown.table]
 docs =
     get: (f) -> get "docs/#{f}.md"
-    html: (f) -> 
-        html = converter.makeHtml docs.get f
-        html.replace /{{(\w+?)\.md}}/g, (m, f) -> docs.html f
+    text: (f) -> (docs.get f).replace /{{(\w+?)\.md}}/g, (m, f) -> docs.text f
+    html: (f) -> converter.makeHtml docs.text f
 
 api = [
     'rye'
