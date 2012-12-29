@@ -130,10 +130,10 @@ filter not
 Just a wrap to inverse `.filter()`.
 
 
-has
+contains
 ------------------
 <div class="api">
-    .has(selector) <span>⇒ rye collection</span>
+    .contains(selector) <span>⇒ rye collection</span>
 </div>
 
 Returns a new collection keeping elements those that have a descendant that matches the `selector`.

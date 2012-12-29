@@ -117,7 +117,7 @@ API
 ### Filter
 - [`filter`](http://ryejs.com#filter-filter)
 - [`filter not`](http://ryejs.com#filter-filternot)
-- [`has`](http://ryejs.com#filter-has)
+- [`contains`](http://ryejs.com#filter-contains)
 - [`is`](http://ryejs.com#filter-is)
 - [`first`](http://ryejs.com#filter-first)
 - [`last`](http://ryejs.com#filter-last)
