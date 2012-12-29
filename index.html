@@ -44,9 +44,9 @@
 <li><a href="#traversal-children">children</a></li></ul></li>
 <li><a href="#filter">Filter</a>
 <ul><li><a href="#filter-filter">filter</a></li>
+<li><a href="#filter-filternot">filter not</a></li>
 <li><a href="#filter-has">has</a></li>
 <li><a href="#filter-is">is</a></li>
-<li><a href="#filter-not">not</a></li>
 <li><a href="#filter-first">first</a></li>
 <li><a href="#filter-last">last</a></li></ul></li>
 <li><a href="#query">Query</a>
@@ -416,6 +416,14 @@
 
 <p>Provide a truthy value to <code>inverse</code> makes that unmatch elements remains.</p>
 
+<h2 id="filter-filternot">filter not</h2>
+
+<div class="api">
+    .filter('!' + selector) <span>⇒ rye collection</span>
+</div>
+
+<p>Just a wrap to inverse <code>.filter()</code>.</p>
+
 <h2 id="filter-has">has</h2>
 
 <div class="api">
@@ -434,17 +442,6 @@
 </div>
 
 <p>Peform a <code>.filter()</code> and checks if it return elements.</p>
-
-<h2 id="filter-not">not</h2>
-
-<div class="api">
-    .not(selector[, inverse]) <span>⇒ rye collection</span><br>
-    .not(element[, inverse]) <span>⇒ rye collection</span><br>
-    .not(Rye[, inverse]) <span>⇒ rye collection</span><br>
-    .not(fn[, inverse]) <span>⇒ rye collection</span>
-</div>
-
-<p>Just a wrap to inverse <code>.filter()</code>.</p>
 
 <h2 id="filter-first">first</h2>
 

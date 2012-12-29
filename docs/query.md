@@ -121,6 +121,14 @@ Returns a new collection keeping elements those that match the `selector`, `elem
 
 Provide a truthy value to `inverse` makes that unmatch elements remains.
 
+filter not
+------------------
+<div class="api">
+    .filter('!' + selector) <span>⇒ rye collection</span>
+</div>
+
+Just a wrap to inverse `.filter()`.
+
 
 has
 ------------------
@@ -141,18 +149,6 @@ is
 </div>
 
 Peform a `.filter()` and checks if it return elements.
-
-
-not
-------------------
-<div class="api">
-    .not(selector[, inverse]) <span>⇒ rye collection</span><br>
-    .not(element[, inverse]) <span>⇒ rye collection</span><br>
-    .not(Rye[, inverse]) <span>⇒ rye collection</span><br>
-    .not(fn[, inverse]) <span>⇒ rye collection</span>
-</div>
-
-Just a wrap to inverse `.filter()`.
 
 
 first

@@ -47,7 +47,7 @@ nav {
         line-height: 2;
         border-top: 1px solid @color1;
         &:hover {
-            background: lighten(@color2, 2);
+            background: lighten(@color2, -2);
         }
     }
     ul ul {
@@ -67,7 +67,7 @@ nav {
     .open {
         background: @color1;
         a {
-            background: #ffe780;
+            background: darken(#ffe780, 2);
         }
         ul {
             background: @color1;
@@ -80,7 +80,7 @@ nav {
             }
             .active, .open {
                 position: relative;
-                background: lighten(#ffe780, 8)
+                background: lighten(#ffe780, 6)
             }
         }
     }
