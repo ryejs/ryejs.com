@@ -125,6 +125,15 @@
 <li><a href="#events-ryeunsubscribe">Rye.unsubscribe</a></li>
 <li><a href="#events-ryepublish">Rye.publish</a></li></ul></li>
 <li><a href="#touchevents">Touch Events</a></li>
+<li><a href="#request">Request</a>
+<ul><li><a href="#request-ryerequest">Rye.request()</a></li>
+<li><a href="#request-ryeget">Rye.get()</a></li>
+<li><a href="#request-ryepost">Rye.post()</a></li>
+<li><a href="#request-@query" class="module" >@query</a></li>
+<li><a href="#request-@appendquery" class="module" >@appendQuery</a></li>
+<li><a href="#request-@defaults" class="module" >@defaults</a></li>
+<li><a href="#request-@get" class="module" >@get</a></li>
+<li><a href="#request-@post" class="module" >@post</a></li></ul></li>
 <li><a href="#util">Util</a>
 <ul><li><a href="#util-@extend" class="module" >@extend</a></li>
 <li><a href="#util-@inherits" class="module" >@inherits</a></li>
@@ -937,6 +946,69 @@
 <li><code>longtap</code></li>
 <li><code>singletap</code></li>
 </ul></section>
+<section class="section-request"><h1 id="request">Request</h1>
+
+<h2 id="request-ryerequest">Rye.request()</h2>
+
+<div class="api">
+    Rye.request(url, callback) <span>⇒ xhr</span><br>
+    Rye.request(settings, callback) <span>⇒ xhr</span><br>
+    Rye.request(settings) <span>⇒ xhr</span><br>
+</div>
+
+<h2 id="request-ryeget">Rye.get()</h2>
+
+<div class="api">
+    Rye.get(url, callback) <span>⇒ xhr</span><br>
+    Rye.get(settings, callback) <span>⇒ xhr</span><br>
+    Rye.get(settings) <span>⇒ xhr</span><br>
+</div>
+
+<h2 id="request-ryepost">Rye.post()</h2>
+
+<div class="api">
+    Rye.post(url, callback) <span>⇒ xhr</span><br>
+    Rye.post(settings, callback) <span>⇒ xhr</span><br>
+    Rye.post(settings) <span>⇒ xhr</span><br>
+</div>
+
+<h2 id="">@</h2>
+
+<div class="api">
+    request(url, callback) <span>⇒ xhr</span><br>
+    request(settings, callback) <span>⇒ xhr</span><br>
+    request(settings) <span>⇒ xhr</span><br>
+</div>
+
+<h2 id="request-@query">@query</h2>
+
+<div class="api">
+    request.query(obj) <span>⇒ string</span><br>
+</div>
+
+<h2 id="request-@appendquery">@appendQuery</h2>
+
+<div class="api">
+    request.appendQuery(url, query) <span>⇒ string</span><br>
+</div>
+
+<h2 id="request-@defaults">@defaults</h2>
+
+<h2 id="request-@get">@get</h2>
+
+<div class="api">
+    request.get(url, callback) <span>⇒ self</span><br>
+    request.get(settings, callback) <span>⇒ self</span><br>
+    request.get(settings) <span>⇒ self</span><br>
+</div>
+
+<h2 id="request-@post">@post</h2>
+
+<div class="api">
+    request.post(url, callback) <span>⇒ self</span><br>
+    request.post(settings, callback) <span>⇒ self</span><br>
+    request.post(settings) <span>⇒ self</span><br>
+</div></section>
 <section class="section-util"><h1 id="util">Util</h1>
 
 <p>Utility methods. Use with <code>var util = Rye.require('Util')</code>.</p>

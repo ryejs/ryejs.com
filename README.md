@@ -206,6 +206,16 @@ API
 
 ### Touch Events
 
+### Request
+- [`Rye.request()`](http://ryejs.com#request-ryerequest)
+- [`Rye.get()`](http://ryejs.com#request-ryeget)
+- [`Rye.post()`](http://ryejs.com#request-ryepost)
+- [`@query`](http://ryejs.com#request-@query)
+- [`@appendQuery`](http://ryejs.com#request-@appendquery)
+- [`@defaults`](http://ryejs.com#request-@defaults)
+- [`@get`](http://ryejs.com#request-@get)
+- [`@post`](http://ryejs.com#request-@post)
+
 ### Util
 - [`@extend`](http://ryejs.com#util-@extend)
 - [`@inherits`](http://ryejs.com#util-@inherits)

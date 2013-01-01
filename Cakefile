@@ -23,6 +23,7 @@ api = [
     'dom-event-emitter'
     'events'
     'touch-events'
+    'request'
     'util'
 ]
 
