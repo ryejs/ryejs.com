@@ -1,6 +1,15 @@
 Request
 ==================
 
+query
+------------------
+<div class="api">
+    .query() <span>⇒ string</span><br>
+</div>
+
+Encode a set of form elements as a string for request submission.
+
+
 Rye.request()
 ------------------
 <div class="api">

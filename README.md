@@ -209,6 +209,7 @@ API
 ### Touch Events
 
 ### Request
+- [`query`](http://ryejs.com#request-query)
 - [`Rye.request()`](http://ryejs.com#request-ryerequest)
 - [`Rye.get()`](http://ryejs.com#request-ryeget)
 - [`Rye.post()`](http://ryejs.com#request-ryepost)

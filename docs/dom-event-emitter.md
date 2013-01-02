@@ -9,24 +9,24 @@ To intanciate one emitter you do `var emitter = new DOMEventEmitter(element)`.
 addListener (on)
 ------------------
 <div class="api">
-    emitter.addListener(name, fn) <span>⇒ self</span><br>
-    emitter.on(element, name, fn) <span>⇒ self</span>
+    emitter.addListener(event, fn) <span>⇒ self</span><br>
+    emitter.on(element, event, fn) <span>⇒ self</span>
 </div>
 
 
 once (one)
 ------------------
 <div class="api">
-    emitter.once(name, fn) <span>⇒ self</span><br>
-    emitter.one(name, fn) <span>⇒ self</span>
+    emitter.once(event, fn) <span>⇒ self</span><br>
+    emitter.one(event, fn) <span>⇒ self</span>
 </div>
 
 
 removeListener (off)
 ------------------
 <div class="api">
-    emitter.removeListener(name[, fn]) <span>⇒ self</span><br>
-    emitter.off(name[, fn]) <span>⇒ self</span>
+    emitter.removeListener(event[, fn]) <span>⇒ self</span><br>
+    emitter.off(event[, fn]) <span>⇒ self</span>
 </div>
 
 
@@ -40,20 +40,20 @@ destroy
 trigger
 ------------------
 <div class="api">
-    emitter.trigger(name[, data]) <span>⇒ self</span>
+    emitter.trigger(event[, data]) <span>⇒ self</span>
 </div>
 
 
 emit
 ------------------
 <div class="api">
-    emitter.trigger(name[, data]) <span>⇒ self</span>
+    emitter.trigger(event[, data]) <span>⇒ self</span>
 </div>
 
 
 proxy
 ------------------
 <div class="api">
-    emitter.proxy(name) <span>⇒ function</span>
+    emitter.proxy(event) <span>⇒ function</span>
 </div>
 

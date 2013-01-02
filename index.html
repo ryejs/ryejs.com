@@ -126,7 +126,8 @@
 <li><a href="#events-ryepublish">Rye.publish</a></li></ul></li>
 <li><a href="#touchevents">Touch Events</a></li>
 <li><a href="#request">Request</a>
-<ul><li><a href="#request-ryerequest">Rye.request()</a></li>
+<ul><li><a href="#request-query">query</a></li>
+<li><a href="#request-ryerequest">Rye.request()</a></li>
 <li><a href="#request-ryeget">Rye.get()</a></li>
 <li><a href="#request-ryepost">Rye.post()</a></li>
 <li><a href="#request-@query" class="module" >@query</a></li>
@@ -810,22 +811,22 @@
 <h2 id="domeventemitter-addlisteneron">addListener (on)</h2>
 
 <div class="api">
-    emitter.addListener(name, fn) <span>⇒ self</span><br>
-    emitter.on(element, name, fn) <span>⇒ self</span>
+    emitter.addListener(event, fn) <span>⇒ self</span><br>
+    emitter.on(element, event, fn) <span>⇒ self</span>
 </div>
 
 <h2 id="domeventemitter-onceone">once (one)</h2>
 
 <div class="api">
-    emitter.once(name, fn) <span>⇒ self</span><br>
-    emitter.one(name, fn) <span>⇒ self</span>
+    emitter.once(event, fn) <span>⇒ self</span><br>
+    emitter.one(event, fn) <span>⇒ self</span>
 </div>
 
 <h2 id="domeventemitter-removelisteneroff">removeListener (off)</h2>
 
 <div class="api">
-    emitter.removeListener(name[, fn]) <span>⇒ self</span><br>
-    emitter.off(name[, fn]) <span>⇒ self</span>
+    emitter.removeListener(event[, fn]) <span>⇒ self</span><br>
+    emitter.off(event[, fn]) <span>⇒ self</span>
 </div>
 
 <h2 id="domeventemitter-destroy">destroy</h2>
@@ -837,19 +838,19 @@
 <h2 id="domeventemitter-trigger">trigger</h2>
 
 <div class="api">
-    emitter.trigger(name[, data]) <span>⇒ self</span>
+    emitter.trigger(event[, data]) <span>⇒ self</span>
 </div>
 
 <h2 id="domeventemitter-emit">emit</h2>
 
 <div class="api">
-    emitter.trigger(name[, data]) <span>⇒ self</span>
+    emitter.trigger(event[, data]) <span>⇒ self</span>
 </div>
 
 <h2 id="domeventemitter-proxy">proxy</h2>
 
 <div class="api">
-    emitter.proxy(name) <span>⇒ function</span>
+    emitter.proxy(event) <span>⇒ function</span>
 </div></section>
 <section class="section-events"><h1 id="events">Events</h1>
 
@@ -947,6 +948,14 @@
 <li><code>singletap</code></li>
 </ul></section>
 <section class="section-request"><h1 id="request">Request</h1>
+
+<h2 id="request-query">query</h2>
+
+<div class="api">
+    .query() <span>⇒ string</span><br>
+</div>
+
+<p>Encode a set of form elements as a string for request submission.</p>
 
 <h2 id="request-ryerequest">Rye.request()</h2>
 
