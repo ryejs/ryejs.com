@@ -68,7 +68,10 @@ nav {
     .open {
         background: @color1;
         a {
-            background: darken(#ffe780, 2);
+            background-color: darken(#ffe780, 2);
+            background-image: -webkit-linear-gradient(left, fade(black, 3), fade(black, 0) 10px);
+            background-image: -moz-linear-gradient(left, fade(black, 3), fade(black, 0) 10px);
+            background-image: linear-gradient(left, fade(black, 3), fade(black, 0) 10px);
         }
         ul {
             background: @color1;
@@ -81,7 +84,10 @@ nav {
             }
             .active, .open {
                 position: relative;
-                background: lighten(#ffe780, 6)
+                background-color: lighten(#ffe780, 6);
+                background-image: -webkit-linear-gradient(left, fade(black, 3), fade(black, 0) 10px);
+                background-image: -moz-linear-gradient(left, fade(black, 3), fade(black, 0) 10px);
+                background-image: linear-gradient(left, fade(black, 3), fade(black, 0) 10px);
             }
         }
     }
