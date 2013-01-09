@@ -7,8 +7,8 @@ html, body {
 }
 
 // 10, 12, 14, 16, 19, 23, 32, 48
-@text: Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif;
-@titles: Palatino, "Palatino Linotype", "Hoefler Text", Times, "Times New Roman", serif;
+//@text: Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif;
+//@titles: Palatino, "Palatino Linotype", "Hoefler Text", Times, "Times New Roman", serif;
 @sans: "Helvetica Neue", "Helvetica", Arial, sans-serif;
 @monospace: Monaco, Consolas, "Lucida Console", monospace;
 
@@ -18,10 +18,10 @@ html, body {
 html {
     height: 100%;
     background-color: @color1;
-    background-image: -webkit-linear-gradient(top, @color2 0, @color1 20%);
-    background-image: -moz-linear-gradient(top, @color2 0, @color1 20%);
-    background-image: linear-gradient(top, @color2 0, @color1 20%);
-    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(top, @color2 0, fade(@color1, 0) 20%), url(../images/pattern.png);
+    background-image: -moz-linear-gradient(top, @color2 0, fade(@color1, 0) 20%), url(../images/pattern.png);
+    background-image: linear-gradient(top, @color2 0, fade(@color1, 0) 20%), url(../images/pattern.png);
+    background-repeat: repeat-x, repeat;
 }
 
 body {
@@ -44,9 +44,12 @@ h1, h2, h3 {
 
 h1 {
     position: relative;
-    font-size: 1.6em;
-    padding-top: 1.6em;
-    border-bottom: 1px solid @color2;
+    font-size: 2.2em;
+    padding-top: 1em;
+    padding-bottom: .5em;
+    background-image: -webkit-linear-gradient(bottom, fade(black, 3), fade(black, 0) 8px);
+    background-image: -moz-linear-gradient(bottom, fade(black, 3), fade(black, 0) 8px);
+    background-image: linear-gradient(bottom, fade(black, 3), fade(black, 0) 8px);
 }
 
 h2 {
@@ -68,26 +71,25 @@ code {
 }
 
 table {
-    background: lighten(@color1, 2);
+    background: lighten(@color2, 2);
     font-size: 95%;
     th {
         text-align: left;
     }
     th, td {
         padding: 2px .5em;
-        border: 1px solid @color2;
+        border: 1px solid @color1;
     }
     th {
-        background: lighten(@color1, 1);
+        background: lighten(@color2, -1);
     }
 }
 
 .header {
     margin: 0 auto;
     position: relative;
-    padding-top: 20px;
     overflow: hidden;
-    padding: 30px 0;
+    padding: 30px 0 20px 0;
 }
 
 .logo {
@@ -95,18 +97,19 @@ table {
     .size(160px, 250px);
     background: url(../images/rye_v.png);
     float: left;
-    margin: 0 0 0 -30px;
+    margin: 0 0 0 -10px;
 }
 
 .download {
-    float: left;
-    margin: 40px 0 0 100px;
-    padding-left: 40px;
-    border-left: 1px solid @color2;
+    float: right;
+    margin: 40px 40px;
     ol {
         list-style: none;
         padding: 0;
         margin-top: 0;
+        li {
+            margin-bottom: .1em;
+        }
     }
     label {
         vertical-align: middle;
@@ -121,23 +124,19 @@ table {
     }
     button {
         font-size: 1.4em;
-        #gradient > .vertical(@color1, @color2);
-        border: 1px solid @color2;
-        border-bottom-color: darken(@color2, 8);
-        color: #555;
+        #gradient > .vertical(#666, #444);
+        border: 1px solid #333;
+        border-bottom-color: #111;
+        text-shadow: 1px 1px 2px #333;
+        color: @color1;
         padding: 10px 18px;
         border-radius: 3px;
         &:hover {
-            #gradient > .vertical(lighten(#ffe780, 10), #ffe780);
-            border-color: darken(#ffe780, 10);
-            border-bottom-color: darken(#ffe780, 20);
+            #gradient > .vertical(#555, #333);
+            border-color: #222;
+            border-bottom-color: #000;
         }
     }
-}
-
-.buttons {
-    height: 20px;
-    padding-top: 20px;
 }
 
 .version {
@@ -171,12 +170,24 @@ table {
     }
 }
 
-.intro {
+.manifesto {
+    p:first-child {
+        padding: 0 20px;
+        font-size: 1.2em;
+        text-align: center;
+    }
     table {
         display: inline-block;
         vertical-align: top;
         margin-right: 20px;
     }
+}
+
+.buttons {
+    height: 20px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 li {
@@ -196,7 +207,9 @@ footer {
     margin-top: 60px;
     padding-top: 20px;
     padding-bottom: 20px;
-    border-top: 1px solid @color2;
+    background-image: -webkit-linear-gradient(top, fade(black, 3), fade(black, 0) 8px);
+    background-image: -moz-linear-gradient(top, fade(black, 3), fade(black, 0) 8px);
+    background-image: linear-gradient(top, fade(black, 3), fade(black, 0) 8px);
     img {
         border-radius: 50%;
         vertical-align: middle;

@@ -19,7 +19,7 @@
     }
 }
 .navigation .content {
-    /* box-shadow: 0 0 0px 3px fade(@color1, 50%); */
+    box-shadow: -8px 1px 30px rgba(0, 0, 0, .04);
     position: fixed;
     top: 0;
     bottom: 0;
@@ -48,7 +48,7 @@ nav {
         line-height: 2;
         border-top: 1px solid @color1;
         &:hover {
-            background: lighten(@color2, 2);
+            background: lighten(@color2, -2);
         }
     }
     ul ul {
@@ -68,7 +68,10 @@ nav {
     .open {
         background: @color1;
         a {
-            background: #ffe780;
+            background-color: darken(#ffe780, 2);
+            background-image: -webkit-linear-gradient(left, fade(black, 3), fade(black, 0) 10px);
+            background-image: -moz-linear-gradient(left, fade(black, 3), fade(black, 0) 10px);
+            background-image: linear-gradient(left, fade(black, 3), fade(black, 0) 10px);
         }
         ul {
             background: @color1;
@@ -81,7 +84,10 @@ nav {
             }
             .active, .open {
                 position: relative;
-                background: lighten(#ffe780, 8)
+                background-color: lighten(#ffe780, 6);
+                background-image: -webkit-linear-gradient(left, fade(black, 3), fade(black, 0) 10px);
+                background-image: -moz-linear-gradient(left, fade(black, 3), fade(black, 0) 10px);
+                background-image: linear-gradient(left, fade(black, 3), fade(black, 0) 10px);
             }
         }
     }

@@ -78,19 +78,12 @@ Returns a standard *or* browser-prefixed methods (`moz`, `webkit`, `ms`, `o`) if
 @applier
 ------------------
 <div class="api">
-    util.applier(fn, context, args) <span>⇒ function</span>
+    util.applier(direction, fn, context, args) <span>⇒ function</span>
+    util.applier('left', fn, context, args) <span>⇒ function</span>
+    util.applier('right', fn, context, args) <span>⇒ function</span>
 </div>
 
-Returns a function that calls `fn.apply(context, ...)`. The `args` array is right-joined to the function call parameters.
-
-
-@applierLeft
-------------------
-<div class="api">
-    util.applierLeft(fn, context, args) <span>⇒ function</span>
-</div>
-
-The same as `applier` but `args` are left-joined to the function parameters.
+Returns a function that calls `fn.apply(context, ...)`. The `args` array is (right or left)-joined to the function call parameters.
 
 
 @curry
@@ -109,3 +102,18 @@ Returns a [curried](http://en.wikipedia.org/wiki/Currying)/partially-applied fun
 </div>
 
 Gets an unique identifier for an element.
+
+
+@type
+------------------
+<div class="api">
+    util.type(obj) <span>⇒ string</span>
+</div>
+
+
+@is
+------------------
+<div class="api">
+    util.is(obj, type) <span>⇒ boolean</span>
+</div>
+

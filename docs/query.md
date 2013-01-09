@@ -25,7 +25,8 @@ add
 ------------------
 <div class="api">
     .add(elements) <span>⇒ rye collection</span><br>
-    .add(selector, context) <span>⇒ rye collection</span>
+    .add(Rye) <span>⇒ rye collection</span><br>
+    .add(selector[, context]) <span>⇒ rye collection</span>
 </div>
 
 Add elements to the set and returns a new collection. 
@@ -120,11 +121,19 @@ Returns a new collection keeping elements those that match the `selector`, `elem
 
 Provide a truthy value to `inverse` makes that unmatch elements remains.
 
-
-has
+filter not
 ------------------
 <div class="api">
-    .has(selector) <span>⇒ rye collection</span>
+    .filter('!' + selector) <span>⇒ rye collection</span>
+</div>
+
+Just a wrap to inverse `.filter()`.
+
+
+contains
+------------------
+<div class="api">
+    .contains(selector) <span>⇒ rye collection</span>
 </div>
 
 Returns a new collection keeping elements those that have a descendant that matches the `selector`.
@@ -140,18 +149,6 @@ is
 </div>
 
 Peform a `.filter()` and checks if it return elements.
-
-
-not
-------------------
-<div class="api">
-    .not(selector[, inverse]) <span>⇒ rye collection</span><br>
-    .not(element[, inverse]) <span>⇒ rye collection</span><br>
-    .not(Rye[, inverse]) <span>⇒ rye collection</span><br>
-    .not(fn[, inverse]) <span>⇒ rye collection</span>
-</div>
-
-Just a wrap to inverse `.filter()`.
 
 
 first

@@ -44,9 +44,9 @@
 <li><a href="#traversal-children">children</a></li></ul></li>
 <li><a href="#filter">Filter</a>
 <ul><li><a href="#filter-filter">filter</a></li>
-<li><a href="#filter-has">has</a></li>
+<li><a href="#filter-filternot">filter not</a></li>
+<li><a href="#filter-contains">contains</a></li>
 <li><a href="#filter-is">is</a></li>
-<li><a href="#filter-not">not</a></li>
 <li><a href="#filter-first">first</a></li>
 <li><a href="#filter-last">last</a></li></ul></li>
 <li><a href="#query">Query</a>
@@ -100,21 +100,41 @@
 <ul><li><a href="#eventemitter-addlisteneron">addListener (on)</a></li>
 <li><a href="#eventemitter-once">once</a></li>
 <li><a href="#eventemitter-removelistener">removeListener</a></li>
-<li><a href="#eventemitter-emit">emit</a></li>
-<li><a href="#eventemitter-proxy">proxy</a></li>
-<li><a href="#eventemitter-ryesubscribe">Rye.subscribe</a></li>
-<li><a href="#eventemitter-ryeunsubscribe">Rye.unsubscribe</a></li>
-<li><a href="#eventemitter-ryepublish">Rye.publish</a></li></ul></li>
-<li><a href="#domevents">DOM Events</a>
-<ul><li><a href="#domevents-addeventlisteneron">addEventListener (on)</a></li>
-<li><a href="#domevents-removeeventlisteneroff">removeEventListener (off)</a></li>
-<li><a href="#domevents-trigger">trigger</a></li>
-<li><a href="#domevents-@getemitter" class="module" >@getEmitter</a></li>
-<li><a href="#domevents-@addlistener" class="module" >@addListener</a></li>
-<li><a href="#domevents-@removelisten" class="module" >@removeListen</a></li>
-<li><a href="#domevents-@trigger" class="module" >@trigger</a></li>
-<li><a href="#domevents-@createevent" class="module" >@createEvent</a></li></ul></li>
+<li><a href="#eventemitter-trigger">trigger</a></li>
+<li><a href="#eventemitter-proxy">proxy</a></li></ul></li>
+<li><a href="#domeventemitter">DOM Event Emitter</a>
+<ul><li><a href="#domeventemitter-addlisteneron">addListener (on)</a></li>
+<li><a href="#domeventemitter-onceone">once (one)</a></li>
+<li><a href="#domeventemitter-removelisteneroff">removeListener (off)</a></li>
+<li><a href="#domeventemitter-destroy">destroy</a></li>
+<li><a href="#domeventemitter-trigger">trigger</a></li>
+<li><a href="#domeventemitter-emit">emit</a></li>
+<li><a href="#domeventemitter-proxy">proxy</a></li></ul></li>
+<li><a href="#events">Events</a>
+<ul><li><a href="#events-addlisteneron">addListener (on)</a></li>
+<li><a href="#events-once">once</a></li>
+<li><a href="#events-removelistener">removeListener</a></li>
+<li><a href="#events-trigger">trigger</a></li>
+<li><a href="#events-@getemitter" class="module" >@getEmitter</a></li>
+<li><a href="#events-@createevent" class="module" >@createEvent</a></li>
+<li><a href="#events-@addlistener@on" class="module" >@addListener (@on)</a></li>
+<li><a href="#events-@once" class="module" >@once</a></li>
+<li><a href="#events-@removelistener" class="module" >@removeListener</a></li>
+<li><a href="#events-@trigger" class="module" >@trigger</a></li>
+<li><a href="#events-ryesubscribe">Rye.subscribe</a></li>
+<li><a href="#events-ryeunsubscribe">Rye.unsubscribe</a></li>
+<li><a href="#events-ryepublish">Rye.publish</a></li></ul></li>
 <li><a href="#touchevents">Touch Events</a></li>
+<li><a href="#request">Request</a>
+<ul><li><a href="#request-query">query</a></li>
+<li><a href="#request-ryerequest">Rye.request()</a></li>
+<li><a href="#request-ryeget">Rye.get()</a></li>
+<li><a href="#request-ryepost">Rye.post()</a></li>
+<li><a href="#request-@query" class="module" >@query</a></li>
+<li><a href="#request-@appendquery" class="module" >@appendQuery</a></li>
+<li><a href="#request-@defaults" class="module" >@defaults</a></li>
+<li><a href="#request-@get" class="module" >@get</a></li>
+<li><a href="#request-@post" class="module" >@post</a></li></ul></li>
 <li><a href="#util">Util</a>
 <ul><li><a href="#util-@extend" class="module" >@extend</a></li>
 <li><a href="#util-@inherits" class="module" >@inherits</a></li>
@@ -125,15 +145,16 @@
 <li><a href="#util-@put" class="module" >@put</a></li>
 <li><a href="#util-@prefix" class="module" >@prefix</a></li>
 <li><a href="#util-@applier" class="module" >@applier</a></li>
-<li><a href="#util-@applierleft" class="module" >@applierLeft</a></li>
 <li><a href="#util-@curry" class="module" >@curry</a></li>
-<li><a href="#util-@getuid" class="module" >@getUid</a></li></ul></li>
+<li><a href="#util-@getuid" class="module" >@getUid</a></li>
+<li><a href="#util-@type" class="module" >@type</a></li>
+<li><a href="#util-@is" class="module" >@is</a></li></ul></li>
 </ul>
             </nav>
         </div>
     </div>
 
-    <section class="intro">
+    <section class="manifesto">
 <p><strong>Rye</strong> is a lightweight javascript library for DOM manipulation and events with support for <strong>all modern browsers</strong> including IE9+. It has support for <strong>touch events/gestures</strong>, an <strong>even emitter</strong> which you can use to extend your own objects, and a <strong>jQuery-compatible</strong> API.</p>
 
 <div class="buttons">
@@ -320,7 +341,8 @@
 
 <div class="api">
     .add(elements) <span>⇒ rye collection</span><br>
-    .add(selector, context) <span>⇒ rye collection</span>
+    .add(Rye) <span>⇒ rye collection</span><br>
+    .add(selector[, context]) <span>⇒ rye collection</span>
 </div>
 
 <p>Add elements to the set and returns a new collection. </p>
@@ -404,10 +426,18 @@
 
 <p>Provide a truthy value to <code>inverse</code> makes that unmatch elements remains.</p>
 
-<h2 id="filter-has">has</h2>
+<h2 id="filter-filternot">filter not</h2>
 
 <div class="api">
-    .has(selector) <span>⇒ rye collection</span>
+    .filter('!' + selector) <span>⇒ rye collection</span>
+</div>
+
+<p>Just a wrap to inverse <code>.filter()</code>.</p>
+
+<h2 id="filter-contains">contains</h2>
+
+<div class="api">
+    .contains(selector) <span>⇒ rye collection</span>
 </div>
 
 <p>Returns a new collection keeping elements those that have a descendant that matches the <code>selector</code>.</p>
@@ -422,17 +452,6 @@
 </div>
 
 <p>Peform a <code>.filter()</code> and checks if it return elements.</p>
-
-<h2 id="filter-not">not</h2>
-
-<div class="api">
-    .not(selector[, inverse]) <span>⇒ rye collection</span><br>
-    .not(element[, inverse]) <span>⇒ rye collection</span><br>
-    .not(Rye[, inverse]) <span>⇒ rye collection</span><br>
-    .not(fn[, inverse]) <span>⇒ rye collection</span>
-</div>
-
-<p>Just a wrap to inverse <code>.filter()</code>.</p>
 
 <h2 id="filter-first">first</h2>
 
@@ -747,40 +766,174 @@
 <h2 id="style-@addclass">@addClass</h2>
 
 <h2 id="style-@removeclass">@removeClass</h2></section>
-<section class="section-events"><h1 id="eventemitter">Event Emitter</h1>
+<section class="section-event-emitter"><h1 id="eventemitter">Event Emitter</h1>
+
+<p>Standalone implementation of event emitter. Use with <code>var EventEmitter = Rye.require('Events').EventEmitter</code>.</p>
+
+<p>To intanciate one emitter you do <code>var emitter = new EventEmitter()</code>.</p>
 
 <h2 id="eventemitter-addlisteneron">addListener (on)</h2>
 
+<div class="api">
+    emitter.addListener(event, handler) <span>⇒ self</span><br>
+    emitter.on(event, handler) <span>⇒ self</span>
+</div>
+
 <h2 id="eventemitter-once">once</h2>
+
+<div class="api">
+    emitter.once(event, handler) <span>⇒ self</span>
+</div>
 
 <h2 id="eventemitter-removelistener">removeListener</h2>
 
-<h2 id="eventemitter-emit">emit</h2>
+<div class="api">
+    emitter.removeListener(event[, handler]) <span>⇒ self</span>
+</div>
+
+<h2 id="eventemitter-trigger">trigger</h2>
+
+<div class="api">
+    emitter.trigger(event[, data]) <span>⇒ self</span>
+</div>
 
 <h2 id="eventemitter-proxy">proxy</h2>
 
-<h2 id="eventemitter-ryesubscribe">Rye.subscribe</h2>
+<div class="api">
+    emitter.proxy(event) <span>⇒ function</span>
+</div></section>
+<section class="section-dom-event-emitter"><h1 id="domeventemitter">DOM Event Emitter</h1>
 
-<h2 id="eventemitter-ryeunsubscribe">Rye.unsubscribe</h2>
+<p>One heritage of event emitter, this handler native DOM events. Use with <code>var DOMEventEmitter = Rye.require('Events').DOMEventEmitter</code>.</p>
 
-<h2 id="eventemitter-ryepublish">Rye.publish</h2></section>
-<section class="section-dom-events"><h1 id="domevents">DOM Events</h1>
+<p>To intanciate one emitter you do <code>var emitter = new DOMEventEmitter(element)</code>.</p>
 
-<h2 id="domevents-addeventlisteneron">addEventListener (on)</h2>
+<h2 id="domeventemitter-addlisteneron">addListener (on)</h2>
 
-<h2 id="domevents-removeeventlisteneroff">removeEventListener (off)</h2>
+<div class="api">
+    emitter.addListener(event, fn) <span>⇒ self</span><br>
+    emitter.on(element, event, fn) <span>⇒ self</span>
+</div>
 
-<h2 id="domevents-trigger">trigger</h2>
+<h2 id="domeventemitter-onceone">once (one)</h2>
 
-<h2 id="domevents-@getemitter">@getEmitter</h2>
+<div class="api">
+    emitter.once(event, fn) <span>⇒ self</span><br>
+    emitter.one(event, fn) <span>⇒ self</span>
+</div>
 
-<h2 id="domevents-@addlistener">@addListener</h2>
+<h2 id="domeventemitter-removelisteneroff">removeListener (off)</h2>
 
-<h2 id="domevents-@removelisten">@removeListen</h2>
+<div class="api">
+    emitter.removeListener(event[, fn]) <span>⇒ self</span><br>
+    emitter.off(event[, fn]) <span>⇒ self</span>
+</div>
 
-<h2 id="domevents-@trigger">@trigger</h2>
+<h2 id="domeventemitter-destroy">destroy</h2>
 
-<h2 id="domevents-@createevent">@createEvent</h2></section>
+<div class="api">
+    emitter.destroy() <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-trigger">trigger</h2>
+
+<div class="api">
+    emitter.trigger(event[, data]) <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-emit">emit</h2>
+
+<div class="api">
+    emitter.trigger(event[, data]) <span>⇒ self</span>
+</div>
+
+<h2 id="domeventemitter-proxy">proxy</h2>
+
+<div class="api">
+    emitter.proxy(event) <span>⇒ function</span>
+</div></section>
+<section class="section-events"><h1 id="events">Events</h1>
+
+<h2 id="events-addlisteneron">addListener (on)</h2>
+
+<div class="api">
+    .addListener(name, handler) <span>⇒ self</span><br>
+    .on(name, handler) <span>⇒ self</span>
+</div>
+
+<h2 id="events-once">once</h2>
+
+<div class="api">
+    .once(name, handler) <span>⇒ self</span>
+</div>
+
+<h2 id="events-removelistener">removeListener</h2>
+
+<div class="api">
+    .removeListener(name[, handler]) <span>⇒ self</span>
+</div>
+
+<h2 id="events-trigger">trigger</h2>
+
+<div class="api">
+    .trigger(name[, data]) <span>⇒ self</span>
+</div>
+
+<h2 id="events-@getemitter">@getEmitter</h2>
+
+<div class="api">
+    events.getEmitter(element) <span>⇒ DOMEventEMitter</span>
+</div>
+
+<h2 id="events-@createevent">@createEvent</h2>
+
+<div class="api">
+    events.createEvent(type[, properties]) <span>⇒ Event</span><br>
+    events.createEvent(obj[, properties]) <span>⇒ Event</span>
+</div>
+
+<h2 id="events-@addlistener@on">@addListener (@on)</h2>
+
+<div class="api">
+    events.addListener(element, name, handler) <span>⇒ self</span><br>
+    events.on(element, name, handler) <span>⇒ self</span>
+</div>
+
+<h2 id="events-@once">@once</h2>
+
+<div class="api">
+    events.once(element, name, handler) <span>⇒ self</span>
+</div>
+
+<h2 id="events-@removelistener">@removeListener</h2>
+
+<div class="api">
+    events.removeListener(element, name[, handler]) <span>⇒ self</span>
+</div>
+
+<h2 id="events-@trigger">@trigger</h2>
+
+<div class="api">
+    events.trigger(element, name[, data]) <span>⇒ self</span>
+</div>
+
+<h2 id="events-ryesubscribe">Rye.subscribe</h2>
+
+<div class="api">
+    Rye.subscribe(event, handler) <span>⇒ self</span>
+</div>
+
+<h2 id="events-ryeunsubscribe">Rye.unsubscribe</h2>
+
+<div class="api">
+    Rye.unsubscribe(event[, handler]) <span>⇒ self</span>
+</div>
+
+<h2 id="events-ryepublish">Rye.publish</h2>
+
+<div class="api">
+    Rye.publish(event) <span>⇒ self</span>
+</div></section>
 <section class="section-touch-events"><h1 id="touchevents">Touch Events</h1>
 
 <ul>
@@ -794,6 +947,77 @@
 <li><code>longtap</code></li>
 <li><code>singletap</code></li>
 </ul></section>
+<section class="section-request"><h1 id="request">Request</h1>
+
+<h2 id="request-query">query</h2>
+
+<div class="api">
+    .query() <span>⇒ string</span><br>
+</div>
+
+<p>Encode a set of form elements as a string for request submission.</p>
+
+<h2 id="request-ryerequest">Rye.request()</h2>
+
+<div class="api">
+    Rye.request(url, callback) <span>⇒ xhr</span><br>
+    Rye.request(settings, callback) <span>⇒ xhr</span><br>
+    Rye.request(settings) <span>⇒ xhr</span><br>
+</div>
+
+<h2 id="request-ryeget">Rye.get()</h2>
+
+<div class="api">
+    Rye.get(url, callback) <span>⇒ xhr</span><br>
+    Rye.get(settings, callback) <span>⇒ xhr</span><br>
+    Rye.get(settings) <span>⇒ xhr</span><br>
+</div>
+
+<h2 id="request-ryepost">Rye.post()</h2>
+
+<div class="api">
+    Rye.post(url, callback) <span>⇒ xhr</span><br>
+    Rye.post(settings, callback) <span>⇒ xhr</span><br>
+    Rye.post(settings) <span>⇒ xhr</span><br>
+</div>
+
+<h2 id="">@</h2>
+
+<div class="api">
+    request(url, callback) <span>⇒ xhr</span><br>
+    request(settings, callback) <span>⇒ xhr</span><br>
+    request(settings) <span>⇒ xhr</span><br>
+</div>
+
+<h2 id="request-@query">@query</h2>
+
+<div class="api">
+    request.query(obj) <span>⇒ string</span><br>
+</div>
+
+<h2 id="request-@appendquery">@appendQuery</h2>
+
+<div class="api">
+    request.appendQuery(url, query) <span>⇒ string</span><br>
+</div>
+
+<h2 id="request-@defaults">@defaults</h2>
+
+<h2 id="request-@get">@get</h2>
+
+<div class="api">
+    request.get(url, callback) <span>⇒ self</span><br>
+    request.get(settings, callback) <span>⇒ self</span><br>
+    request.get(settings) <span>⇒ self</span><br>
+</div>
+
+<h2 id="request-@post">@post</h2>
+
+<div class="api">
+    request.post(url, callback) <span>⇒ self</span><br>
+    request.post(settings, callback) <span>⇒ self</span><br>
+    request.post(settings) <span>⇒ self</span><br>
+</div></section>
 <section class="section-util"><h1 id="util">Util</h1>
 
 <p>Utility methods. Use with <code>var util = Rye.require('Util')</code>.</p>
@@ -865,18 +1089,12 @@
 <h2 id="util-@applier">@applier</h2>
 
 <div class="api">
-    util.applier(fn, context, args) <span>⇒ function</span>
+    util.applier(direction, fn, context, args) <span>⇒ function</span>
+    util.applier('left', fn, context, args) <span>⇒ function</span>
+    util.applier('right', fn, context, args) <span>⇒ function</span>
 </div>
 
-<p>Returns a function that calls <code>fn.apply(context, ...)</code>. The <code>args</code> array is right-joined to the function call parameters.</p>
-
-<h2 id="util-@applierleft">@applierLeft</h2>
-
-<div class="api">
-    util.applierLeft(fn, context, args) <span>⇒ function</span>
-</div>
-
-<p>The same as <code>applier</code> but <code>args</code> are left-joined to the function parameters.</p>
+<p>Returns a function that calls <code>fn.apply(context, ...)</code>. The <code>args</code> array is (right or left)-joined to the function call parameters.</p>
 
 <h2 id="util-@curry">@curry</h2>
 
@@ -892,7 +1110,19 @@
     util.getUid(element) <span>⇒ number</span>
 </div>
 
-<p>Gets an unique identifier for an element.</p></section>
+<p>Gets an unique identifier for an element.</p>
+
+<h2 id="util-@type">@type</h2>
+
+<div class="api">
+    util.type(obj) <span>⇒ string</span>
+</div>
+
+<h2 id="util-@is">@is</h2>
+
+<div class="api">
+    util.is(obj, type) <span>⇒ boolean</span>
+</div></section>
     </div>
 
     <footer class="footer">
