@@ -155,7 +155,7 @@
     </div>
 
     <section class="manifesto">
-<p><strong>Rye</strong> is a lightweight javascript library for DOM manipulation and events with support for <strong>all modern browsers</strong> including IE9+. It has support for <strong>touch events/gestures</strong>, an <strong>even emitter</strong> which you can use to extend your own objects, and a <strong>jQuery-compatible</strong> API.</p>
+<p><strong>Rye</strong> is a lightweight javascript library for DOM manipulation and events with support for <strong>all modern browsers</strong>, including IE9+. It also has <strong>touch events/gestures</strong>, an <strong>event emitter</strong> constructor, and a <strong>jQuery-like</strong> API.</p>
 
 <div class="buttons">
     <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
@@ -507,7 +507,7 @@
     .get() <span>⇒ array</span>
 </div>
 
-<p>Returns the element that have the <code>index</code> in collection. If called without argument returns a copy of elements array.</p>
+<p>Return the element at <code>collection.elements[index]</code>. If no argument given, return a copy of the <code>.elements</code> array.</p>
 
 <h2 id="collection-eq">eq</h2>
 
@@ -516,7 +516,7 @@
     .eq() <span>⇒ empty rye collection</span>
 </div>
 
-<p>Performs <code>.get()</code> and wrap the element result in a <code>rye collection</code>. If called without argument returns empty <code>rye collection</code>.</p>
+<p>Same as <code>.get()</code>, but returns the element as a Rye collection. If no argument given, return an empty collection.</p>
 
 <h2 id="collection-foreach">forEach</h2>
 
@@ -524,7 +524,7 @@
     .forEach(callback[, thisArg]) <span>⇒ array</span>
 </div>
 
-<p>Performs <code>Array.prototype.forEach</code> in elements of collection. The <code>callback</code> is invoked with: <code>element value</code>, <code>element index</code> and <code>array</code>.</p>
+<p>Call <code>Array.prototype.forEach</code> on <code>collection.elements</code>. Callback receives <code>(value, index, array)</code>.</p>
 
 <h2 id="collection-reduce">reduce</h2>
 
@@ -532,7 +532,7 @@
     .reduce(callback[, initialValue]) <span>⇒ array</span>
 </div>
 
-<p>Performs <code>Array.prototype.reduce</code> in elements of collection. The <code>callback</code> is invoked with: <code>previous value returned</code>, <code>current element</code>, <code>element index</code> and <code>array</code>.</p>
+<p>Call <code>Array.prototype.reduce</code> on <code>collection.elements</code>. Callback receives <code>(previousValue, currentValue, index, array)</code>.</p>
 
 <h2 id="collection-reduceright">reduceRight</h2>
 
@@ -540,7 +540,7 @@
     .reduceRight(callback[, initialValue]) <span>⇒ array</span>
 </div>
 
-<p>Same as <code>.reduce()</code> except that performs in the right to left in array values.</p>
+<p>Same as <a href="#collection-reduce"><code>.reduce</code></a> but operates from right-to-left. Callback receives <code>(previousValue, currentValue, index, array)</code>.</p>
 
 <h2 id="collection-indexof">indexOf</h2>
 
@@ -548,7 +548,8 @@
     .indexOf(element[, fromIndex]) <span>⇒ array</span>
 </div>
 
-<p>Performs <code>Array.prototype.indexOf</code> in elements of collection. Returns the first index at which a given element can be found in elements, or -1 if it is not present.</p>
+<p>Call <code>Array.prototype.indexOf</code> on <code>collection.elements</code>. Returns the first index
+at which the element is found, or -1 if it is not present.</p>
 
 <h2 id="collection-map">map</h2>
 
@@ -556,7 +557,7 @@
     .map(callback[, thisArg]) <span>⇒ rye collection</span>
 </div>
 
-<p>Creates a new <code>rye collection</code> with the results of calling <code>callback</code> on every element in collection. The <code>callback</code> is invoked with: <code>element value</code>, <code>element index</code> and <code>array</code>.</p>
+<p>Calls <code>Array.prototype.map</code> on <code>collection.elements</code>. Returns a new array with the result of calling <code>callback</code> on each element of the array. Callback receives <code>(value, index, array)</code>.</p>
 
 <h2 id="collection-sort">sort</h2>
 
@@ -564,7 +565,7 @@
     .sort([fn]) <span>⇒ rye collection</span>
 </div>
 
-<p>Creates a sorted <code>rye collection</code>, optionally ordered by <code>fn</code>.</p>
+<p>Calls <code>Array.prototype.sort</code> on <code>collection.elements</code>, with <code>fn</code> as comparison function.</p>
 
 <h2 id="collection-each">each</h2>
 
@@ -572,7 +573,7 @@
     .each(callback) <span>⇒ self</span>
 </div>
 
-<p>Performs <code>Array.prototype.forEach</code> in elements of collection. The <code>callback</code> is invoked with: <code>element value</code>, <code>element index</code> and <code>array</code>.</p>
+<p>Alias for <a href="#collection-foreach"><code>.forEach</code></a>.</p>
 
 <h2 id="collection-iterate">iterate</h2>
 
@@ -580,7 +581,7 @@
     .iterate(fn, context) <span>⇒ function</span>
 </div>
 
-<p>Returns a funcion that will call <code>fn</code> in given <code>context</code> passing each one element of collection as first parameter follow by arguments.</p>
+<p>Returns a function that will call <code>fn</code> with <code>context</code> for every element in <code>collection.elements</code>. The function receives the current element plus the arguments given on invocation.</p>
 
 <h2 id="collection-push">push</h2>
 
@@ -588,7 +589,7 @@
     .push(element) <span>⇒ index</span>
 </div>
 
-<p>Add an element to collection and returns it <code>index</code>. This method changes the <code>rye collection</code>.</p>
+<p>Add an element to <code>collection.elements</code>. Returns the new element index.</p>
 
 <h2 id="collection-slice">slice</h2>
 
@@ -596,7 +597,7 @@
     .slice(start, end) <span>⇒ rye collection</span>
 </div>
 
-<p>Returns a new sliced <code>rye collection</code>.</p>
+<p>Calls <code>Array.prototype.slice</code> on <code>collection.elements</code>.</p>
 
 <h2 id="collection-concat">concat</h2>
 
@@ -604,7 +605,7 @@
     .concat(elements, ...) <span>⇒ rye collection</span>
 </div>
 
-<p>Concats array of elements or rye collections into a single <code>rye collection</code>.</p>
+<p>Concatenates an array to <code>collection.elements</code>. Accepts instances of Rye.</p>
 
 <h2 id="collection-pluck">pluck</h2>
 
@@ -612,7 +613,7 @@
     .pluck(property) <span>⇒ array</span>
 </div>
 
-<p>It is just a wrap to <code>util.pluck(elements, property)</code> that iterate over collection.</p>
+<p>Plucks the value of <code>property</code> for each element in <code>collection.elements</code>. Alias for <a href="#util-pluck"><code>util.pluck</code></a>.</p>
 
 <h2 id="collection-put">put</h2>
 
@@ -620,7 +621,7 @@
     .put(property, value) <span>⇒ array</span>
 </div>
 
-<p>It is just a wrap to <code>util.put(elements, property)</code> that iterate over collection.</p></section>
+<p>Sets <code>property</code> to <code>value</code> for each element in <code>collection.elements</code>. Alias for <a href="#util-put"><code>util.put</code></a>.</p></section>
 <section class="section-manipulation"><h1 id="manipulation">Manipulation</h1>
 
 <h2 id="manipulation-text">text</h2>
@@ -630,7 +631,7 @@
     .text() <span>⇒ text</span>
 </div>
 
-<p>Sets the text content of all elements. When no content is given, returns the text content of the first element in the collection.</p>
+<p>Sets or gets <code>textContent</code>. If no argument given it returns only the first element's value.</p>
 
 <h2 id="manipulation-html">html</h2>
 
@@ -639,7 +640,7 @@
     .html() <span>⇒ html</span>
 </div>
 
-<p>Sets the inner html of all elements. When no html is given, returns the inner html of the first element in the collection.</p>
+<p>Sets or gets <code>innerHTML</code>. If no argument given it returns only the first element's value.</p>
 
 <h2 id="manipulation-empty">empty</h2>
 
@@ -647,7 +648,7 @@
     .empty() <span>⇒ self</span>
 </div>
 
-<p>Sets to empty the inner html of all elements.</p>
+<p>Sets <code>innerHTML</code> to an empty string <code>''</code> for all elements.</p>
 
 <h2 id="manipulation-append">append</h2>
 
@@ -656,7 +657,7 @@
     .append(element) <span>⇒ self</span>
 </div>
 
-<p>Insert <code>html</code> or <code>element</code> to the end of each element in the collection.</p>
+<p>Appends <code>html</code> or <code>element</code> to each element in the collection. If the argument is an HTML element, it is cloned before appending.</p>
 
 <h2 id="manipulation-prepend">prepend</h2>
 
@@ -665,7 +666,7 @@
     .prepend(element) <span>⇒ self</span>
 </div>
 
-<p>Insert <code>html</code> or <code>element</code> to the beginning of each element in the collection.</p>
+<p>Prepends 'html' or 'element' to each element in the collection.</p>
 
 <h2 id="manipulation-after">after</h2>
 
@@ -674,7 +675,7 @@
     .after(element) <span>⇒ self</span>
 </div>
 
-<p>Insert <code>html</code> or <code>element</code> after each element in the collection.</p>
+<p>Inserts <code>html</code> or <code>element</code> after each element in the collection.</p>
 
 <h2 id="manipulation-before">before</h2>
 
@@ -683,15 +684,15 @@
     .before(element) <span>⇒ self</span>
 </div>
 
-<p>Insert <code>html</code> or <code>element</code> before each element in the collection.</p>
+<p>Inserts <code>html</code> or <code>element</code> before each element in the collection.</p>
 
 <h2 id="manipulation-clone">clone</h2>
 
 <div class="api">
-    .clone() <span>⇒ rye collection</span>
+    .clone(deep) <span>⇒ rye collection</span>
 </div>
 
-<p>Duplicate all elements in the collection via deep clone.</p>
+<p>Duplicate all elements with <a href="https://developer.mozilla.org/en-US/docs/DOM/Node.cloneNode"><code>cloneNode(deep)</code></a>. <code>deep</code> defaults to true (copy all child nodes).</p>
 
 <h2 id="manipulation-val">val</h2>
 
@@ -700,9 +701,7 @@
     .val(value) <span>⇒ self</span>
 </div>
 
-<p>When no value is given, return the value of the first element. For <code>&lt;select multiple&gt;</code>, an array of values is returend. </p>
-
-<p>When a <code>value</code> is given, set all elements to this value.</p>
+<p>Gets or sets the <code>value</code> property for all elements. If no argument given, returns value for the first element only. For a <code>&lt;select multiple&gt;</code> an array of values is returned.</p>
 
 <h2 id="manipulation-attr">attr</h2>
 

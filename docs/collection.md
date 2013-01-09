@@ -8,7 +8,7 @@ get
     .get() <span>⇒ array</span>
 </div>
 
-Returns the element that have the `index` in collection. If called without argument returns a copy of elements array.
+Return the element at `collection.elements[index]`. If no argument given, return a copy of the `.elements` array.
 
 
 eq
@@ -18,7 +18,7 @@ eq
     .eq() <span>⇒ empty rye collection</span>
 </div>
 
-Performs `.get()` and wrap the element result in a `rye collection`. If called without argument returns empty `rye collection`.
+Same as `.get()`, but returns the element as a Rye collection. If no argument given, return an empty collection.
 
 
 forEach
@@ -27,7 +27,7 @@ forEach
     .forEach(callback[, thisArg]) <span>⇒ array</span>
 </div>
 
-Performs `Array.prototype.forEach` in elements of collection. The `callback` is invoked with: `element value`, `element index` and `array`.
+Call `Array.prototype.forEach` on `collection.elements`. Callback receives `(value, index, array)`.
 
 
 reduce
@@ -36,7 +36,7 @@ reduce
     .reduce(callback[, initialValue]) <span>⇒ array</span>
 </div>
 
-Performs `Array.prototype.reduce` in elements of collection. The `callback` is invoked with: `previous value returned`, `current element`, `element index` and `array`.
+Call `Array.prototype.reduce` on `collection.elements`. Callback receives `(previousValue, currentValue, index, array)`.
 
 
 reduceRight
@@ -45,7 +45,7 @@ reduceRight
     .reduceRight(callback[, initialValue]) <span>⇒ array</span>
 </div>
 
-Same as `.reduce()` except that performs in the right to left in array values.
+Same as [`.reduce`](#collection-reduce) but operates from right-to-left. Callback receives `(previousValue, currentValue, index, array)`.
 
 
 indexOf
@@ -54,7 +54,8 @@ indexOf
     .indexOf(element[, fromIndex]) <span>⇒ array</span>
 </div>
 
-Performs `Array.prototype.indexOf` in elements of collection. Returns the first index at which a given element can be found in elements, or -1 if it is not present.
+Call `Array.prototype.indexOf` on `collection.elements`. Returns the first index
+at which the element is found, or -1 if it is not present.
 
 
 map
@@ -63,7 +64,7 @@ map
     .map(callback[, thisArg]) <span>⇒ rye collection</span>
 </div>
 
-Creates a new `rye collection` with the results of calling `callback` on every element in collection. The `callback` is invoked with: `element value`, `element index` and `array`.
+Calls `Array.prototype.map` on `collection.elements`. Returns a new array with the result of calling `callback` on each element of the array. Callback receives `(value, index, array)`.
 
 
 sort
@@ -72,7 +73,7 @@ sort
     .sort([fn]) <span>⇒ rye collection</span>
 </div>
 
-Creates a sorted `rye collection`, optionally ordered by `fn`.
+Calls `Array.prototype.sort` on `collection.elements`, with `fn` as comparison function.
 
 
 each
@@ -81,7 +82,7 @@ each
     .each(callback) <span>⇒ self</span>
 </div>
 
-Performs `Array.prototype.forEach` in elements of collection. The `callback` is invoked with: `element value`, `element index` and `array`.
+Alias for [`.forEach`](#collection-foreach).
 
 
 iterate
@@ -90,7 +91,7 @@ iterate
     .iterate(fn, context) <span>⇒ function</span>
 </div>
 
-Returns a funcion that will call `fn` in given `context` passing each one element of collection as first parameter follow by arguments.
+Returns a function that will call `fn` with `context` for every element in `collection.elements`. The function receives the current element plus the arguments given on invocation.
 
 
 push
@@ -99,7 +100,7 @@ push
     .push(element) <span>⇒ index</span>
 </div>
 
-Add an element to collection and returns it `index`. This method changes the `rye collection`.
+Add an element to `collection.elements`. Returns the new element index.
 
 
 slice
@@ -108,7 +109,7 @@ slice
     .slice(start, end) <span>⇒ rye collection</span>
 </div>
 
-Returns a new sliced `rye collection`.
+Calls `Array.prototype.slice` on `collection.elements`.
 
 
 concat
@@ -117,7 +118,7 @@ concat
     .concat(elements, ...) <span>⇒ rye collection</span>
 </div>
 
-Concats array of elements or rye collections into a single `rye collection`.
+Concatenates an array to `collection.elements`. Accepts instances of Rye.
 
 
 pluck
@@ -126,7 +127,7 @@ pluck
     .pluck(property) <span>⇒ array</span>
 </div>
 
-It is just a wrap to `util.pluck(elements, property)` that iterate over collection.
+Plucks the value of `property` for each element in `collection.elements`. Alias for [`util.pluck`](#util-pluck).
 
 
 put
@@ -135,4 +136,4 @@ put
     .put(property, value) <span>⇒ array</span>
 </div>
 
-It is just a wrap to `util.put(elements, property)` that iterate over collection.
+Sets `property` to `value` for each element in `collection.elements`. Alias for [`util.put`](#util-put).
