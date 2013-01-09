@@ -8,9 +8,11 @@
 Introduction
 ==================
 
-Rye's API is similar to jQuery but not totally compatible. Inconsistencies like `.map()` behavior, and `map/each()` argument ordering are fixed in Rye.
+Rye is a lightweight library designed for use in modern browsers. It includes utilities for DOM manipulation, events, XHR requests, data storage and touch events.
 
-It doesn't do any gymnastics to subclass `Array`, instead elements are stored in the `.elements` property. This means that array methods on a Rye instance return another `Rye` instance, but you can access the elements array directly with `.get()` or `.elements` and use all the native `Array` methods (ex: `$('li').each()` vs `$('li').get().forEach()`).
+The API should be familiar to everyone who's worked with jQuery. Some inconsistencies like `.map/.each` argument order and behavior have been fixed here, and follow the standard `map/forEach` specification.
+
+One important thing to note is that Rye doesn't try to subclass `Array` in any way. A `Rye` instance is just a standard object, with the current elements selection stored in the `.elements` array. All standard ES5 array methods are available and operate on the elements collection; querying and filtering methods you might know from other libraries like `.next()`, `.prev()`, etc, are also available.
 
 
 Browser compatibility
@@ -19,15 +21,15 @@ Browser compatibility
 {{browsers.md}}
 
 
-Not going to happen
-------------------
+Things Rye won't do
+-------------------
 
 - event aliases like `delegate`, `live`, `click`, `focus`
 - cancel bubbling and prevent default by returning `false`
-- effects and animation - do it with CSS
-- defining global `$`
-- traditional event namespacing
-- `end()` or other chain-aware methods
+- effects and animation - use CSS transitions
+- export a global `$` variable
+- event namespacing (use your own [`DOMEventEmitter`](#domeventemitter) instead)
+- chain-aware methods like `end()`
 
 
 

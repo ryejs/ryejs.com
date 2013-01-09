@@ -1,7 +1,7 @@
 Events
 ==================
 
-addListener (on)
+addListener
 ------------------
 <div class="api">
     .addListener(name, handler) <span>⇒ self</span><br>
@@ -45,7 +45,7 @@ trigger
 </div>
 
 
-@addListener (@on)
+@addListener
 ------------------
 <div class="api">
     events.addListener(element, name, handler) <span>⇒ self</span><br>
@@ -80,6 +80,8 @@ Rye.subscribe
     Rye.subscribe(event, handler) <span>⇒ self</span>
 </div>
 
+Listen for `event` on the global event bus.
+
 
 Rye.unsubscribe
 ------------------
@@ -87,10 +89,14 @@ Rye.unsubscribe
     Rye.unsubscribe(event[, handler]) <span>⇒ self</span>
 </div>
 
+Stop listening for `event` on the global event bus.
+
 
 Rye.publish
 ------------------
 <div class="api">
-    Rye.publish(event) <span>⇒ self</span>
+    Rye.publish(event[, args...]) <span>⇒ self</span>
 </div>
+
+Emit `event` on the global event bus. Extra arguments will be forwarded to event handlers.
 

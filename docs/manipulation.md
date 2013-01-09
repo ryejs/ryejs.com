@@ -8,7 +8,7 @@ text
     .text() <span>⇒ text</span>
 </div>
 
-Sets or gets `textContent`. If no argument given it returns only the first element's value.
+Set or get `textContent`. If no argument given, returns the first element's value.
 
 
 html
@@ -18,7 +18,7 @@ html
     .html() <span>⇒ html</span>
 </div>
 
-Sets or gets `innerHTML`. If no argument given it returns only the first element's value.
+Set or get `innerHTML`. If no argument given, returns the first element's value.
 
 
 empty
@@ -37,7 +37,7 @@ append
     .append(element) <span>⇒ self</span>
 </div>
 
-Appends `html` or `element` to each element in the collection. If the argument is an HTML element, it is cloned before appending.
+Append `html` or `element` to each element in the collection. If the argument is an HTML element, it is cloned before each operation.
 
 
 prepend
@@ -47,7 +47,7 @@ prepend
     .prepend(element) <span>⇒ self</span>
 </div>
 
-Prepends 'html' or 'element' to each element in the collection.
+Prepend 'html' or 'element' to each element in the collection.
 
 
 after
@@ -57,7 +57,7 @@ after
     .after(element) <span>⇒ self</span>
 </div>
 
-Inserts `html` or `element` after each element in the collection.
+Insert `html` or `element` *after* each element in the collection.
 
 
 before
@@ -67,7 +67,7 @@ before
     .before(element) <span>⇒ self</span>
 </div>
 
-Inserts `html` or `element` before each element in the collection.
+Insert `html` or `element` *before* each element in the collection.
 
 
 clone
@@ -76,7 +76,7 @@ clone
     .clone(deep) <span>⇒ rye collection</span>
 </div>
 
-Duplicate all elements with [`cloneNode(deep)`](https://developer.mozilla.org/en-US/docs/DOM/Node.cloneNode). `deep` defaults to true (copy all child nodes).
+Clone elements with [`cloneNode(deep)`](https://developer.mozilla.org/en-US/docs/DOM/Node.cloneNode). `deep` defaults to true (copy all child nodes). 
 
 
 val
@@ -86,7 +86,7 @@ val
     .val(value) <span>⇒ self</span>
 </div>
 
-Gets or sets the `value` property for all elements. If no argument given, returns value for the first element only. For a `<select multiple>` an array of values is returned.
+Get or set the `value` property for all elements. If no argument given, returns value for the first element only. For a `<select multiple>` an array of values is returned.
 
 
 attr
@@ -97,9 +97,9 @@ attr
     .attr({name: value, ...}) <span>⇒ self</span>
 </div>
 
-When no `value` is given, reads specified attribute from the first element in the collection. 
+When no `value` is given, reads specified attribute from the first element in the collection using `getAttribute`. 
 
-When `value` is given or an object with name as key is passing, sets the attribute to that `value` on each element in the collection.
+When `value` or an object with `key:value` pairs is given, set the attribute to `value` on each element in the collection using `setAttribute`.
 
 
 prop
@@ -110,7 +110,7 @@ prop
     .prop({name: value, ...}) <span>⇒ self</span>
 </div>
 
-It is just a wrap to `util.pluck(elements, property)` that iterate over collection.
+Get or set the *property* `name` for each element. Implemented as an alias to [`util.pluck`](#util-pluck) and [`util.put`](#util-put).
 
 
 @getValue
@@ -119,7 +119,7 @@ It is just a wrap to `util.pluck(elements, property)` that iterate over collecti
     manipulation.getValue(element) <span>⇒ string</span>
 </div>
 
-Gets a field `value` of a given `element`.
+Get the `value` property of `element`. Returns an array of values in case `element` is a `<select multiple>`.
 
 
 @getAttribute
@@ -128,9 +128,4 @@ Gets a field `value` of a given `element`.
     manipulation.getAttribute(element, name) <span>⇒ string</span>
 </div>
 
-Gets an attribute `name` of a given `element`. This method fallbacks to `getValue()` for value attribute.
-
-
-
-
-
+Get the value of `name` for a given `element`. Falls back to `getValue` for getting the `value` attribute.

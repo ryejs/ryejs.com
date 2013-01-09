@@ -7,7 +7,7 @@ find
     .find(selector) <span>⇒ rye collection</span>
 </div>
 
-Get the descendants of each element in collection, filtered by a string `selector`.
+Returns a new Rye collection containing the descendants of the current `collection.elements`, filtered by `selector`. Uses `.querySelectorAll` when available.
 
 
 index
@@ -16,9 +16,7 @@ index
     .index(selector) <span>⇒ number</span>
 </div>
 
-Search for a given `selector` from among the collection. 
-
-If no argument is passed, the return value is the position number of the first element in collection relative to its sibling.
+Returns the index at which an element matching `selector` can be found. If no argument given, returns the index of the first element in the collection relative to it's siblings.
 
 
 add
@@ -29,7 +27,7 @@ add
     .add(selector[, context]) <span>⇒ rye collection</span>
 </div>
 
-Add elements to the set and returns a new collection. 
+Add elements to `collection.elements` and return a new collection. Unlike `push` it doesn't modify the objects `.elements` array.
 
 
 pluckNode
@@ -38,7 +36,9 @@ pluckNode
     .pluckNode(property) <span>⇒ rye collection</span>
 </div>
 
-Using to create a new collection based in elements properties that returns a node. The method avoids return not elements and is called by `.next()` and `.prev()`.
+Uses DOM APIs to create a new set of elements. `property` should be a method of `HTMLElement`, ex. `parentNode` or `childNodes`. Filters nodes using [`util.isElement`](#util-iselement).
+
+Used internally by `next()` and `prev()`.
 
 
 next
@@ -65,7 +65,7 @@ siblings
     .siblings() <span>⇒ rye collection</span>
 </div>
 
-Get the siblings of each element in collection.
+Get all the siblings of each element in collection. Returns a unique set.
 
 
 parent
@@ -74,7 +74,7 @@ parent
     .parent([selector]) <span>⇒ rye collection</span>
 </div>
 
-Get the parent of each element in collection, optionally filtered by a `selector`.
+Get the parent of each element in collection, optionally filtered by `selector`.
 
 
 parents
@@ -83,7 +83,7 @@ parents
     .parents([selector]) <span>⇒ rye collection</span>
 </div>
 
-Get the ancestors of each element in collection, optionally filtered by a `selector`.
+Get the ancestors of each element in collection, optionally filtered by `selector`.
 
 
 closest
@@ -92,7 +92,7 @@ closest
     .closest(selector) <span>⇒ rye collection</span>
 </div>
 
-For each element in collection, get the first element that matches the `selector` by testing the element itself and traversing up through its ancestors.
+For each element in collection, get the first element that matches `selector` by testing the element itself then traversing up through its ancestors.
 
 
 children
@@ -101,7 +101,7 @@ children
     .children([selector]) <span>⇒ rye collection</span>
 </div>
 
-Get the children of each element in collection, optionally filtered by a `selector`.
+Get the children of each element in collection, optionally filtered by `selector`.
 
 
 
@@ -117,9 +117,9 @@ filter
     .filter(fn[, inverse]) <span>⇒ rye collection</span>
 </div>
 
-Returns a new collection keeping elements those that match the `selector`, `element`, `Rye` or pass the `function's` test.
+Returns a new collection keeping elements that match `selector`, `element`, `Rye` or for which `fn` returns `true`, as in `Array.prototype.filter`.
 
-Provide a truthy value to `inverse` makes that unmatch elements remains.
+Provide a truthy value to `inverse` to reverse the result set.
 
 filter not
 ------------------
@@ -127,7 +127,7 @@ filter not
     .filter('!' + selector) <span>⇒ rye collection</span>
 </div>
 
-Just a wrap to inverse `.filter()`.
+Aliast to `.filter(selector, inverse=true)`. Example: `collection.filter('!.someclass').
 
 
 contains
@@ -136,7 +136,7 @@ contains
     .contains(selector) <span>⇒ rye collection</span>
 </div>
 
-Returns a new collection keeping elements those that have a descendant that matches the `selector`.
+Returns a new collection containg elements where at least one descendant matches `seletor`.
 
 
 is
@@ -148,7 +148,7 @@ is
     .is(fn[, inverse]) <span>⇒ boolean</span>
 </div>
 
-Peform a `.filter()` and checks if it return elements.
+Check if the current collection matches `selector`, `element`, or the provided function.
 
 
 first
@@ -157,7 +157,7 @@ first
     .first() <span>⇒ rye collection</span>
 </div>
 
-Reduce the colletion to the first elements.
+Get the first element in the collection.
 
 
 last
@@ -166,14 +166,15 @@ last
     .last() <span>⇒ rye collection</span>
 </div>
 
-Reduce the colletion to the last elements.
-
+Get the last element in the collection.
 
 
 Query
 ==================
 
-Element query methods. Use with var query = Rye.require('Query').
+Stand-alone usage: `var query = Rye.require('Query')`
+
+Query utilities implemented using `querySelectorAll` and `matchesSelector` APIs.
 
 @matches
 ------------------
@@ -183,7 +184,7 @@ Element query methods. Use with var query = Rye.require('Query').
     query.matches(element, Rye) <span>⇒ boolean</span>
 </div>
 
-Checks if a element match with `selector`, is equal to `element` or with some element of `rye collection`.
+Check that element matches `selector`, `element` or another collection. Uses native `matchesSelector` when available.
 
 
 @qsa
@@ -192,7 +193,7 @@ Checks if a element match with `selector`, is equal to `element` or with some el
     query.qsa(element, selector) <span>⇒ array</span>
 </div>
 
-Performs and optimized `.querySelectorAll` and returns an array to ease after manipulation.
+Perform a CSS selector query using `element` as root. Uses `querySelectorAll`, returns a standard `Array`.
 
 
 @getClosestNode
@@ -201,5 +202,5 @@ Performs and optimized `.querySelectorAll` and returns an array to ease after ma
     query.getClosestNode(element, method[, selector]) <span>⇒ element</span>
 </div>
 
-The method avoids return not elements with traversing DOM methods, optionally filtered by a `selector`.
+Traversing helper. Recursively call `method` on `element` until `element` matches `selector`. Returns HTML nodes only.
 

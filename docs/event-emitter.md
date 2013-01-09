@@ -1,9 +1,7 @@
 Event Emitter
 ==================
 
-Standalone implementation of event emitter. Use with `var EventEmitter = Rye.require('Events').EventEmitter`.
-
-To intanciate one emitter you do `var emitter = new EventEmitter()`.
+Stand-alone event emitter implementation. Rye itself is an instance of `EventEmitter`, see [`Rye.publish`](#events-ryepublish) / [`Rye.subscribe`](#events-ryesubscribe).
 
 
 addListener (on)

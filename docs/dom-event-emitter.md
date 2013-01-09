@@ -1,9 +1,7 @@
 DOM Event Emitter
 ==================
 
-One heritage of event emitter, this handler native DOM events. Use with `var DOMEventEmitter = Rye.require('Events').DOMEventEmitter`.
-
-To intanciate one emitter you do `var emitter = new DOMEventEmitter(element)`.
+This inherits from `EventEmitter` while handling DOM events. The constructor receives an element as argument: `var emitter = new DOMEventEmitter(element)`.
 
 
 addListener (on)
