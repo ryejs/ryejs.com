@@ -18,10 +18,10 @@ html, body {
 html {
     height: 100%;
     background-color: @color1;
-    background-image: -webkit-linear-gradient(top, @color2 0, @color1 20%);
-    background-image: -moz-linear-gradient(top, @color2 0, @color1 20%);
-    background-image: linear-gradient(top, @color2 0, @color1 20%);
-    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(top, @color2 0, fade(@color1, 0) 20%), url(../images/pattern.png);
+    background-image: -moz-linear-gradient(top, @color2 0, fade(@color1, 0) 20%), url(../images/pattern.png);
+    background-image: linear-gradient(top, @color2 0, fade(@color1, 0) 20%), url(../images/pattern.png);
+    background-repeat: repeat-x, repeat;
 }
 
 body {
