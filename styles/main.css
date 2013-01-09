@@ -46,7 +46,7 @@ html,body{margin:0;padding:0;}
 html{height:100%;background-color:#fff5e3;background-image:-webkit-linear-gradient(top, #f3e6cf 0, rgba(255, 245, 227, 0) 20%),url(../images/pattern.png);background-image:-moz-linear-gradient(top, #f3e6cf 0, rgba(255, 245, 227, 0) 20%),url(../images/pattern.png);background-image:linear-gradient(top, #f3e6cf 0, rgba(255, 245, 227, 0) 20%),url(../images/pattern.png);background-repeat:repeat-x,repeat;}
 body{font-family:"Helvetica Neue","Helvetica",Arial,sans-serif;min-height:100%;color:#222;position:relative;overflow:hidden;padding:0 240px 0 20px;max-width:640px;min-width:400px;margin:0 auto;font-size:14px;line-height:1.5;}
 h1,h2,h3{margin-top:0;}
-h1{position:relative;font-size:2.2em;padding-top:1em;padding-bottom:.2em;border-bottom:1px dashed #666;}
+h1{position:relative;font-size:2.2em;padding-top:1em;padding-bottom:.5em;background-image:-webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0) 8px);background-image:-moz-linear-gradient(bottom, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0) 8px);background-image:linear-gradient(bottom, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0) 8px);}
 h2{font-size:1.4em;padding-top:1em;}
 h3{font-size:1em;padding-top:0.6em;}
 code{font-size:12px;line-height:18px;background:#fff9ed;outline:1px solid #f3e6cf;padding:0 4px;}
