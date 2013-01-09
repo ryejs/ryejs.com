@@ -78,4 +78,4 @@ nav .open ul .active,nav .open ul .open{position:relative;background-color:#ffed
 .manifesto table{display:inline-block;vertical-align:top;margin-right:20px;}
 .buttons{height:20px;padding-top:10px;margin-bottom:20px;text-align:center;}
 li code{background:#ffe780;outline:none;padding:2px 4px;margin-right:2px;}li code:hover{cursor:default;background:#ffeea6;}
-footer{margin-top:60px;padding-top:20px;padding-bottom:20px;border-top:1px dashed #666;}footer img{border-radius:50%;vertical-align:middle;margin:0 4px;}
+footer{margin-top:60px;padding-top:20px;padding-bottom:20px;background-image:-webkit-linear-gradient(top, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0) 8px);background-image:-moz-linear-gradient(top, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0) 8px);background-image:linear-gradient(top, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0) 8px);}footer img{border-radius:50%;vertical-align:middle;margin:0 4px;}
