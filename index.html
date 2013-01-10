@@ -1123,6 +1123,33 @@ at which the element is found, or -1 if it is not present.</p>
     util.is(obj, type) <span>⇒ boolean</span>
 </div></section>
     </div>
+    
+    <div id="sample">
+        <div class="wrapper">
+            <h1>Touch Events</h1>
+            <button type="button" class="close">×</button>
+            <div class="content">
+                <h2>All touch events</h2>
+                <ul>
+                    <li>Container that captures all touch events.</li>
+                    <li>Prevents default on touchmove, disabling scrolling.</li>
+                    <li>Captures swipes in all directions.</li>
+                    <li>Captures tap, singleTap (after delay), doubleTap, longTap</li>
+                </ul>
+                
+                <h2>Cancel all if scrolls</h2>
+                <ul>
+                    <li>Container that allows scrolling while capturing all events except swipes in the direction of scroll</li>
+                    <li>Prevents default on touchmove, disabling scrolling.</li>
+                    <li>Captures swipes in all directions.</li>
+                    <li>Captures tap, singleTap (after delay), doubleTap, longTap</li>
+                </ul>
+            </div>
+         
+            
+            <iframe src="samples/touch.html"></iframe>
+        </div>
+    </div>
 
     <footer class="footer">
         <p> 

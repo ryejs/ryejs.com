@@ -46,14 +46,11 @@ h1 {
     position: relative;
     font-size: 2.2em;
     padding-top: 1em;
-    padding-bottom: .5em;
-    background-image: -webkit-linear-gradient(bottom, fade(black, 3), fade(black, 0) 8px);
-    background-image: -moz-linear-gradient(bottom, fade(black, 3), fade(black, 0) 8px);
-    background-image: linear-gradient(bottom, fade(black, 3), fade(black, 0) 8px);
 }
 
 h2 {
     font-size: 1.4em;
+    line-height: 2;
     padding-top: 1em;
 }
 
@@ -98,6 +95,7 @@ table {
     background: url(../images/rye_v.png);
     float: left;
     margin: 0 0 0 -10px;
+    padding: 0;
 }
 
 .download {
@@ -139,19 +137,13 @@ table {
     }
 }
 
-.version {
-    position: absolute;
-    left: -40px;
-    top: 0;
-    .rotate(-45deg);
-    color: #333;
-    font-size: 1em;
-    font-weight: bold;
-    padding: 4px 50px;
-    background: #eee;
-}
-
 @import "nav";
+
+section h1 {
+    padding-bottom: 90px;
+    margin-bottom: -60px;
+    background: url(../images/radial.png) center bottom no-repeat;
+}
 
 .main {
     .api {
@@ -163,9 +155,6 @@ table {
         }
     }
     h2 {
-        font-family: @sans;
-        font-size: 18px;
-        line-height: 2;
         margin-bottom: 0;
     }
 }
@@ -203,16 +192,24 @@ li {
     }
 }
 
+@import "sample";
+
 footer {
     margin-top: 60px;
     padding-top: 20px;
     padding-bottom: 20px;
-    background-image: -webkit-linear-gradient(top, fade(black, 3), fade(black, 0) 8px);
-    background-image: -moz-linear-gradient(top, fade(black, 3), fade(black, 0) 8px);
-    background-image: linear-gradient(top, fade(black, 3), fade(black, 0) 8px);
-    img {
-        border-radius: 50%;
-        vertical-align: middle;
-        margin: 0 4px;
+    background: url(../images/radial.png) center top no-repeat;
+    a {
+        img {
+            border-radius: 50%;
+            vertical-align: middle;
+            margin: 0 4px;
+        }
+        &:hover img {
+            -webkit-transition: opacity .5s;
+            -moz-transition: opacity .5s;
+            transition: opacity .5s;
+            opacity: .5;
+        }
     }
 }
