@@ -1,7 +1,17 @@
+
+
 #sample {
+    -webkit-transition: .4s top ease-out;
+    -moz-transition: .4s top ease-out;
+    transition: .4s top ease-out;
+
+    &.hide {
+        top: 100%;
+    }
    
     position: fixed;
-    top: 40%; right: 0; bottom: 0; left: 0;
+    top: 40%; right: 0; left: 0;
+    height: 60%;
 
     background: rgba(0,0,0,.9);
     z-index: 1;
@@ -30,16 +40,20 @@
         right: 0;
         top: 2em;
     }
-    .content {
+    .content, .code {
         width: 40%;
-    }
-    iframe {
         position: absolute;
-        border: none;
-        background: white;
-        width: 40%;
-        height: 60%;
-        bottom: 10%;
+        top: 140px;
+        bottom: 20px;
+    }
+    .content {
+        overflow: auto;
+        padding-right: 10%;
+        h2:first-child {
+            padding-top: 0;
+        }
+    }
+    .code {
         right: 20px;
     }
 }

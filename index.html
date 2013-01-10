@@ -155,6 +155,7 @@
     </div>
 
     <section class="manifesto">
+        <a href="/samples#touch">touch</a>
 <p><strong>Rye</strong> is a lightweight javascript library for DOM manipulation and events with support for <strong>all modern browsers</strong>, including IE9+. It also has <strong>touch events/gestures</strong>, an <strong>event emitter</strong> constructor, and a <strong>jQuery-like</strong> API.</p>
 
 <div class="buttons">
@@ -1123,33 +1124,6 @@ at which the element is found, or -1 if it is not present.</p>
     util.is(obj, type) <span>⇒ boolean</span>
 </div></section>
     </div>
-    
-    <div id="sample">
-        <div class="wrapper">
-            <h1>Touch Events</h1>
-            <button type="button" class="close">×</button>
-            <div class="content">
-                <h2>All touch events</h2>
-                <ul>
-                    <li>Container that captures all touch events.</li>
-                    <li>Prevents default on touchmove, disabling scrolling.</li>
-                    <li>Captures swipes in all directions.</li>
-                    <li>Captures tap, singleTap (after delay), doubleTap, longTap</li>
-                </ul>
-                
-                <h2>Cancel all if scrolls</h2>
-                <ul>
-                    <li>Container that allows scrolling while capturing all events except swipes in the direction of scroll</li>
-                    <li>Prevents default on touchmove, disabling scrolling.</li>
-                    <li>Captures swipes in all directions.</li>
-                    <li>Captures tap, singleTap (after delay), doubleTap, longTap</li>
-                </ul>
-            </div>
-         
-            
-            <iframe src="samples/touch.html"></iframe>
-        </div>
-    </div>
 
     <footer class="footer">
         <p> 
@@ -1160,5 +1134,6 @@ at which the element is found, or -1 if it is not present.</p>
     
     <script src="rye.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/samples.js"></script>
 </body>
 </html>
