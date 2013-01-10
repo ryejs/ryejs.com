@@ -81,6 +81,7 @@
 <li><a href="#manipulation-val">val</a></li>
 <li><a href="#manipulation-attr">attr</a></li>
 <li><a href="#manipulation-prop">prop</a></li>
+<li><a href="#manipulation-ryecreate">Rye.create</a></li>
 <li><a href="#manipulation-@getvalue" class="module" >@getValue</a></li>
 <li><a href="#manipulation-@getattribute" class="module" >@getAttribute</a></li></ul></li>
 <li><a href="#style">Style</a>
@@ -111,13 +112,13 @@
 <li><a href="#domeventemitter-emit">emit</a></li>
 <li><a href="#domeventemitter-proxy">proxy</a></li></ul></li>
 <li><a href="#events">Events</a>
-<ul><li><a href="#events-addlisteneron">addListener (on)</a></li>
+<ul><li><a href="#events-addlistener">addListener</a></li>
 <li><a href="#events-once">once</a></li>
 <li><a href="#events-removelistener">removeListener</a></li>
 <li><a href="#events-trigger">trigger</a></li>
 <li><a href="#events-@getemitter" class="module" >@getEmitter</a></li>
 <li><a href="#events-@createevent" class="module" >@createEvent</a></li>
-<li><a href="#events-@addlistener@on" class="module" >@addListener (@on)</a></li>
+<li><a href="#events-@addlistener" class="module" >@addListener</a></li>
 <li><a href="#events-@once" class="module" >@once</a></li>
 <li><a href="#events-@removelistener" class="module" >@removeListener</a></li>
 <li><a href="#events-@trigger" class="module" >@trigger</a></li>
@@ -164,9 +165,11 @@
 
 <h1 id="introduction">Introduction</h1>
 
-<p>Rye's API is similar to jQuery but not totally compatible. Inconsistencies like <code>.map()</code> behavior, and <code>map/each()</code> argument ordering are fixed in Rye.</p>
+<p>Rye is a lightweight library designed for use in modern browsers. It includes utilities for DOM manipulation, events, XHR requests, data storage and touch events.</p>
 
-<p>It doesn't do any gymnastics to subclass <code>Array</code>, instead elements are stored in the <code>.elements</code> property. This means that array methods on a Rye instance return another <code>Rye</code> instance, but you can access the elements array directly with <code>.get()</code> or <code>.elements</code> and use all the native <code>Array</code> methods (ex: <code>$('li').each()</code> vs <code>$('li').get().forEach()</code>).</p>
+<p>The API should be familiar to everyone who's worked with jQuery. Some inconsistencies like <code>.map/.each</code> argument order and behavior have been fixed here, and follow the standard <code>map/forEach</code> specification.</p>
+
+<p>One important thing to note is that Rye doesn't try to subclass <code>Array</code> in any way. A <code>Rye</code> instance is just a standard object, with the current elements selection stored in the <code>.elements</code> array. All standard ES5 array methods are available and operate on the elements collection; querying and filtering methods you might know from other libraries like <code>.next()</code>, <code>.prev()</code>, etc, are also available.</p>
 
 <h2 id="browsercompatibility">Browser compatibility</h2>
 
@@ -211,53 +214,53 @@
 <thead>
 <tr>
 <th id="browser" style="text-align:left;"> Browser           </th>
-<th id="version" style="text-align:left;"> Version </th>
+<th id="version" style="text-align:left;"> Version      </th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
 <td style="text-align:left;"> iOS               </td>
-<td style="text-align:left;"> 4.1+    </td>
+<td style="text-align:left;"> 4.1+ (6.0.1) </td>
 </tr>
 
 <tr>
 <td style="text-align:left;"> Android           </td>
-<td style="text-align:left;"> 4.0+    </td>
+<td style="text-align:left;"> 4.0+         </td>
 </tr>
 
 <tr>
 <td style="text-align:left;"> Blackberry        </td>
-<td style="text-align:left;"> 10+     </td>
+<td style="text-align:left;"> 10+          </td>
 </tr>
 
 <tr>
 <td style="text-align:left;"> Opera Mobile      </td>
-<td style="text-align:left;"> 11.1+   </td>
+<td style="text-align:left;"> 11.1+ (12.1) </td>
 </tr>
 
 <tr>
 <td style="text-align:left;"> Chrome (Android)  </td>
-<td style="text-align:left;"> 18+     </td>
+<td style="text-align:left;"> 18+ (18)     </td>
 </tr>
 
 <tr>
 <td style="text-align:left;"> Firefox (Android) </td>
-<td style="text-align:left;"> 15+     </td>
+<td style="text-align:left;"> 15+ (18)     </td>
 </tr>
 
 </tbody>
 </table>
 
-<h2 id="notgoingtohappen">Not going to happen</h2>
+<h2 id="thingsryewontdo">Things Rye won't do</h2>
 
 <ul>
 <li>event aliases like <code>delegate</code>, <code>live</code>, <code>click</code>, <code>focus</code></li>
 <li>cancel bubbling and prevent default by returning <code>false</code></li>
-<li>effects and animation - do it with CSS</li>
-<li>defining global <code>$</code></li>
-<li>traditional event namespacing</li>
-<li><code>end()</code> or other chain-aware methods</li>
+<li>effects and animation - use CSS transitions</li>
+<li>export a global <code>$</code> variable</li>
+<li>event namespacing (use your own <a href="#domeventemitter"><code>DOMEventEmitter</code></a> instead)</li>
+<li>chain-aware methods like <code>end()</code></li>
 </ul>
     </section>
 
@@ -300,7 +303,7 @@
     .data({property: value, ...}) <span>⇒ self</span><br>
 </div>
 
-<p>Allows to attach and get data of any type to DOM elements.</p>
+<p>Get or set data attached to each element in the <code>.elements</code> array.</p>
 
 <h2 id="data-@set">@set</h2>
 
@@ -308,7 +311,7 @@
     data.set(element, key, value)
 </div>
 
-<p>Stores <code>value</code> in <code>key</code> of one <code>element</code>.</p>
+<p>Stores <code>value</code> in <code>key</code> for <code>element</code>.</p>
 
 <h2 id="data-@get">@get</h2>
 
@@ -316,7 +319,7 @@
     data.get(element, key) <span>⇒ mixed</span>
 </div>
 
-<p>Returns the value in <code>key</code> of one <code>element</code>.</p></section>
+<p>Returns the value in <code>key</code> for <code>element</code>.</p></section>
 <section class="section-query"><h1 id="traversal">Traversal</h1>
 
 <h2 id="traversal-find">find</h2>
@@ -325,7 +328,7 @@
     .find(selector) <span>⇒ rye collection</span>
 </div>
 
-<p>Get the descendants of each element in collection, filtered by a string <code>selector</code>.</p>
+<p>Returns a new Rye collection containing the descendants of the current <code>collection.elements</code>, filtered by <code>selector</code>. Uses <code>.querySelectorAll</code> when available.</p>
 
 <h2 id="traversal-index">index</h2>
 
@@ -333,9 +336,7 @@
     .index(selector) <span>⇒ number</span>
 </div>
 
-<p>Search for a given <code>selector</code> from among the collection. </p>
-
-<p>If no argument is passed, the return value is the position number of the first element in collection relative to its sibling.</p>
+<p>Returns the index at which an element matching <code>selector</code> can be found. If no argument given, returns the index of the first element in the collection relative to it's siblings.</p>
 
 <h2 id="traversal-add">add</h2>
 
@@ -345,7 +346,7 @@
     .add(selector[, context]) <span>⇒ rye collection</span>
 </div>
 
-<p>Add elements to the set and returns a new collection. </p>
+<p>Add elements to <code>collection.elements</code> and return a new collection. Unlike <code>push</code> it doesn't modify the objects <code>.elements</code> array.</p>
 
 <h2 id="traversal-plucknode">pluckNode</h2>
 
@@ -353,7 +354,9 @@
     .pluckNode(property) <span>⇒ rye collection</span>
 </div>
 
-<p>Using to create a new collection based in elements properties that returns a node. The method avoids return not elements and is called by <code>.next()</code> and <code>.prev()</code>.</p>
+<p>Uses DOM APIs to create a new set of elements. <code>property</code> should be a method of <code>HTMLElement</code>, ex. <code>parentNode</code> or <code>childNodes</code>. Filters nodes using <a href="#util-iselement"><code>util.isElement</code></a>.</p>
+
+<p>Used internally by <code>next()</code> and <code>prev()</code>.</p>
 
 <h2 id="traversal-next">next</h2>
 
@@ -377,7 +380,7 @@
     .siblings() <span>⇒ rye collection</span>
 </div>
 
-<p>Get the siblings of each element in collection.</p>
+<p>Get all the siblings of each element in collection. Returns a unique set.</p>
 
 <h2 id="traversal-parent">parent</h2>
 
@@ -385,7 +388,7 @@
     .parent([selector]) <span>⇒ rye collection</span>
 </div>
 
-<p>Get the parent of each element in collection, optionally filtered by a <code>selector</code>.</p>
+<p>Get the parent of each element in collection, optionally filtered by <code>selector</code>.</p>
 
 <h2 id="traversal-parents">parents</h2>
 
@@ -393,7 +396,7 @@
     .parents([selector]) <span>⇒ rye collection</span>
 </div>
 
-<p>Get the ancestors of each element in collection, optionally filtered by a <code>selector</code>.</p>
+<p>Get the ancestors of each element in collection, optionally filtered by <code>selector</code>.</p>
 
 <h2 id="traversal-closest">closest</h2>
 
@@ -401,7 +404,7 @@
     .closest(selector) <span>⇒ rye collection</span>
 </div>
 
-<p>For each element in collection, get the first element that matches the <code>selector</code> by testing the element itself and traversing up through its ancestors.</p>
+<p>For each element in collection, get the first element that matches <code>selector</code> by testing the element itself then traversing up through its ancestors.</p>
 
 <h2 id="traversal-children">children</h2>
 
@@ -409,7 +412,7 @@
     .children([selector]) <span>⇒ rye collection</span>
 </div>
 
-<p>Get the children of each element in collection, optionally filtered by a <code>selector</code>.</p>
+<p>Get the children of each element in collection, optionally filtered by <code>selector</code>.</p>
 
 <h1 id="filter">Filter</h1>
 
@@ -422,9 +425,9 @@
     .filter(fn[, inverse]) <span>⇒ rye collection</span>
 </div>
 
-<p>Returns a new collection keeping elements those that match the <code>selector</code>, <code>element</code>, <code>Rye</code> or pass the <code>function's</code> test.</p>
+<p>Returns a new collection keeping elements that match <code>selector</code>, <code>element</code>, <code>Rye</code> or for which <code>fn</code> returns <code>true</code>, as in <code>Array.prototype.filter</code>.</p>
 
-<p>Provide a truthy value to <code>inverse</code> makes that unmatch elements remains.</p>
+<p>Provide a truthy value to <code>inverse</code> to reverse the result set.</p>
 
 <h2 id="filter-filternot">filter not</h2>
 
@@ -432,7 +435,7 @@
     .filter('!' + selector) <span>⇒ rye collection</span>
 </div>
 
-<p>Just a wrap to inverse <code>.filter()</code>.</p>
+<p>Aliast to <code>.filter(selector, inverse=true)</code>. Example: `collection.filter('!.someclass').</p>
 
 <h2 id="filter-contains">contains</h2>
 
@@ -440,7 +443,7 @@
     .contains(selector) <span>⇒ rye collection</span>
 </div>
 
-<p>Returns a new collection keeping elements those that have a descendant that matches the <code>selector</code>.</p>
+<p>Returns a new collection containg elements where at least one descendant matches <code>seletor</code>.</p>
 
 <h2 id="filter-is">is</h2>
 
@@ -451,7 +454,7 @@
     .is(fn[, inverse]) <span>⇒ boolean</span>
 </div>
 
-<p>Peform a <code>.filter()</code> and checks if it return elements.</p>
+<p>Check if the current collection matches <code>selector</code>, <code>element</code>, or the provided function.</p>
 
 <h2 id="filter-first">first</h2>
 
@@ -459,7 +462,7 @@
     .first() <span>⇒ rye collection</span>
 </div>
 
-<p>Reduce the colletion to the first elements.</p>
+<p>Get the first element in the collection.</p>
 
 <h2 id="filter-last">last</h2>
 
@@ -467,11 +470,13 @@
     .last() <span>⇒ rye collection</span>
 </div>
 
-<p>Reduce the colletion to the last elements.</p>
+<p>Get the last element in the collection.</p>
 
 <h1 id="query">Query</h1>
 
-<p>Element query methods. Use with var query = Rye.require('Query').</p>
+<p>Stand-alone usage: <code>var query = Rye.require('Query')</code></p>
+
+<p>Query utilities implemented using <code>querySelectorAll</code> and <code>matchesSelector</code> APIs.</p>
 
 <h2 id="query-@matches">@matches</h2>
 
@@ -481,7 +486,7 @@
     query.matches(element, Rye) <span>⇒ boolean</span>
 </div>
 
-<p>Checks if a element match with <code>selector</code>, is equal to <code>element</code> or with some element of <code>rye collection</code>.</p>
+<p>Check that element matches <code>selector</code>, <code>element</code> or another collection. Uses native <code>matchesSelector</code> when available.</p>
 
 <h2 id="query-@qsa">@qsa</h2>
 
@@ -489,7 +494,7 @@
     query.qsa(element, selector) <span>⇒ array</span>
 </div>
 
-<p>Performs and optimized <code>.querySelectorAll</code> and returns an array to ease after manipulation.</p>
+<p>Perform a CSS selector query using <code>element</code> as root. Uses <code>querySelectorAll</code>, returns a standard <code>Array</code>.</p>
 
 <h2 id="query-@getclosestnode">@getClosestNode</h2>
 
@@ -497,7 +502,7 @@
     query.getClosestNode(element, method[, selector]) <span>⇒ element</span>
 </div>
 
-<p>The method avoids return not elements with traversing DOM methods, optionally filtered by a <code>selector</code>.</p></section>
+<p>Traversing helper. Recursively call <code>method</code> on <code>element</code> until <code>element</code> matches <code>selector</code>. Returns HTML nodes only.</p></section>
 <section class="section-collection"><h1 id="collection">Collection</h1>
 
 <h2 id="collection-get">get</h2>
@@ -631,7 +636,7 @@ at which the element is found, or -1 if it is not present.</p>
     .text() <span>⇒ text</span>
 </div>
 
-<p>Sets or gets <code>textContent</code>. If no argument given it returns only the first element's value.</p>
+<p>Set or get <code>textContent</code>. If no argument given, returns the first element's value.</p>
 
 <h2 id="manipulation-html">html</h2>
 
@@ -640,7 +645,7 @@ at which the element is found, or -1 if it is not present.</p>
     .html() <span>⇒ html</span>
 </div>
 
-<p>Sets or gets <code>innerHTML</code>. If no argument given it returns only the first element's value.</p>
+<p>Set or get <code>innerHTML</code>. If no argument given, returns the first element's value.</p>
 
 <h2 id="manipulation-empty">empty</h2>
 
@@ -657,7 +662,7 @@ at which the element is found, or -1 if it is not present.</p>
     .append(element) <span>⇒ self</span>
 </div>
 
-<p>Appends <code>html</code> or <code>element</code> to each element in the collection. If the argument is an HTML element, it is cloned before appending.</p>
+<p>Append <code>html</code> or <code>element</code> to each element in the collection. If the argument is an HTML element, it is cloned before each operation.</p>
 
 <h2 id="manipulation-prepend">prepend</h2>
 
@@ -666,7 +671,7 @@ at which the element is found, or -1 if it is not present.</p>
     .prepend(element) <span>⇒ self</span>
 </div>
 
-<p>Prepends 'html' or 'element' to each element in the collection.</p>
+<p>Prepend 'html' or 'element' to each element in the collection.</p>
 
 <h2 id="manipulation-after">after</h2>
 
@@ -675,7 +680,7 @@ at which the element is found, or -1 if it is not present.</p>
     .after(element) <span>⇒ self</span>
 </div>
 
-<p>Inserts <code>html</code> or <code>element</code> after each element in the collection.</p>
+<p>Insert <code>html</code> or <code>element</code> <em>after</em> each element in the collection.</p>
 
 <h2 id="manipulation-before">before</h2>
 
@@ -684,7 +689,7 @@ at which the element is found, or -1 if it is not present.</p>
     .before(element) <span>⇒ self</span>
 </div>
 
-<p>Inserts <code>html</code> or <code>element</code> before each element in the collection.</p>
+<p>Insert <code>html</code> or <code>element</code> <em>before</em> each element in the collection.</p>
 
 <h2 id="manipulation-clone">clone</h2>
 
@@ -692,7 +697,7 @@ at which the element is found, or -1 if it is not present.</p>
     .clone(deep) <span>⇒ rye collection</span>
 </div>
 
-<p>Duplicate all elements with <a href="https://developer.mozilla.org/en-US/docs/DOM/Node.cloneNode"><code>cloneNode(deep)</code></a>. <code>deep</code> defaults to true (copy all child nodes).</p>
+<p>Clone elements with <a href="https://developer.mozilla.org/en-US/docs/DOM/Node.cloneNode"><code>cloneNode(deep)</code></a>. <code>deep</code> defaults to true (copy all child nodes). </p>
 
 <h2 id="manipulation-val">val</h2>
 
@@ -701,7 +706,7 @@ at which the element is found, or -1 if it is not present.</p>
     .val(value) <span>⇒ self</span>
 </div>
 
-<p>Gets or sets the <code>value</code> property for all elements. If no argument given, returns value for the first element only. For a <code>&lt;select multiple&gt;</code> an array of values is returned.</p>
+<p>Get or set the <code>value</code> property for all elements. If no argument given, returns value for the first element only. For a <code>&lt;select multiple&gt;</code> an array of values is returned.</p>
 
 <h2 id="manipulation-attr">attr</h2>
 
@@ -711,9 +716,9 @@ at which the element is found, or -1 if it is not present.</p>
     .attr({name: value, ...}) <span>⇒ self</span>
 </div>
 
-<p>When no <code>value</code> is given, reads specified attribute from the first element in the collection. </p>
+<p>When no <code>value</code> is given, reads specified attribute from the first element in the collection using <code>getAttribute</code>. </p>
 
-<p>When <code>value</code> is given or an object with name as key is passing, sets the attribute to that <code>value</code> on each element in the collection.</p>
+<p>When <code>value</code> or an object with <code>key:value</code> pairs is given, set the attribute to <code>value</code> on each element in the collection using <code>setAttribute</code>.</p>
 
 <h2 id="manipulation-prop">prop</h2>
 
@@ -723,7 +728,15 @@ at which the element is found, or -1 if it is not present.</p>
     .prop({name: value, ...}) <span>⇒ self</span>
 </div>
 
-<p>It is just a wrap to <code>util.pluck(elements, property)</code> that iterate over collection.</p>
+<p>Get or set the <em>property</em> <code>name</code> for each element. Implemented as an alias to <a href="#util-pluck"><code>util.pluck</code></a> and <a href="#util-put"><code>util.put</code></a>.</p>
+
+<h2 id="manipulation-ryecreate">Rye.create</h2>
+
+<div class="api">
+    Rye.create(html) <span>⇒ rye collection</span>
+</div>
+
+<p>Turn a string containing HTML into a DOM element tree.</p>
 
 <h2 id="manipulation-@getvalue">@getValue</h2>
 
@@ -731,7 +744,7 @@ at which the element is found, or -1 if it is not present.</p>
     manipulation.getValue(element) <span>⇒ string</span>
 </div>
 
-<p>Gets a field <code>value</code> of a given <code>element</code>.</p>
+<p>Get the <code>value</code> property of <code>element</code>. Returns an array of values in case <code>element</code> is a <code>&lt;select multiple&gt;</code>.</p>
 
 <h2 id="manipulation-@getattribute">@getAttribute</h2>
 
@@ -739,7 +752,7 @@ at which the element is found, or -1 if it is not present.</p>
     manipulation.getAttribute(element, name) <span>⇒ string</span>
 </div>
 
-<p>Gets an attribute <code>name</code> of a given <code>element</code>. This method fallbacks to <code>getValue()</code> for value attribute.</p></section>
+<p>Get the value of <code>name</code> for a given <code>element</code>. Falls back to <code>getValue</code> for getting the <code>value</code> attribute.</p></section>
 <section class="section-style"><h1 id="style">Style</h1>
 
 <h2 id="style-show">show</h2>
@@ -767,9 +780,7 @@ at which the element is found, or -1 if it is not present.</p>
 <h2 id="style-@removeclass">@removeClass</h2></section>
 <section class="section-event-emitter"><h1 id="eventemitter">Event Emitter</h1>
 
-<p>Standalone implementation of event emitter. Use with <code>var EventEmitter = Rye.require('Events').EventEmitter</code>.</p>
-
-<p>To intanciate one emitter you do <code>var emitter = new EventEmitter()</code>.</p>
+<p>Stand-alone event emitter implementation. Rye itself is an instance of <code>EventEmitter</code>, see <a href="#events-ryepublish"><code>Rye.publish</code></a> / <a href="#events-ryesubscribe"><code>Rye.subscribe</code></a>.</p>
 
 <h2 id="eventemitter-addlisteneron">addListener (on)</h2>
 
@@ -803,9 +814,7 @@ at which the element is found, or -1 if it is not present.</p>
 </div></section>
 <section class="section-dom-event-emitter"><h1 id="domeventemitter">DOM Event Emitter</h1>
 
-<p>One heritage of event emitter, this handler native DOM events. Use with <code>var DOMEventEmitter = Rye.require('Events').DOMEventEmitter</code>.</p>
-
-<p>To intanciate one emitter you do <code>var emitter = new DOMEventEmitter(element)</code>.</p>
+<p>This inherits from <code>EventEmitter</code> while handling DOM events. The constructor receives an element as argument: <code>var emitter = new DOMEventEmitter(element)</code>.</p>
 
 <h2 id="domeventemitter-addlisteneron">addListener (on)</h2>
 
@@ -853,7 +862,7 @@ at which the element is found, or -1 if it is not present.</p>
 </div></section>
 <section class="section-events"><h1 id="events">Events</h1>
 
-<h2 id="events-addlisteneron">addListener (on)</h2>
+<h2 id="events-addlistener">addListener</h2>
 
 <div class="api">
     .addListener(name, handler) <span>⇒ self</span><br>
@@ -891,7 +900,7 @@ at which the element is found, or -1 if it is not present.</p>
     events.createEvent(obj[, properties]) <span>⇒ Event</span>
 </div>
 
-<h2 id="events-@addlistener@on">@addListener (@on)</h2>
+<h2 id="events-@addlistener">@addListener</h2>
 
 <div class="api">
     events.addListener(element, name, handler) <span>⇒ self</span><br>
@@ -922,17 +931,23 @@ at which the element is found, or -1 if it is not present.</p>
     Rye.subscribe(event, handler) <span>⇒ self</span>
 </div>
 
+<p>Listen for <code>event</code> on the global event bus.</p>
+
 <h2 id="events-ryeunsubscribe">Rye.unsubscribe</h2>
 
 <div class="api">
     Rye.unsubscribe(event[, handler]) <span>⇒ self</span>
 </div>
 
+<p>Stop listening for <code>event</code> on the global event bus.</p>
+
 <h2 id="events-ryepublish">Rye.publish</h2>
 
 <div class="api">
-    Rye.publish(event) <span>⇒ self</span>
-</div></section>
+    Rye.publish(event[, args...]) <span>⇒ self</span>
+</div>
+
+<p>Emit <code>event</code> on the global event bus. Extra arguments will be forwarded to event handlers.</p></section>
 <section class="section-touch-events"><h1 id="touchevents">Touch Events</h1>
 
 <ul>

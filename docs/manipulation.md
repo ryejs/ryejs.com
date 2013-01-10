@@ -113,6 +113,14 @@ prop
 Get or set the *property* `name` for each element. Implemented as an alias to [`util.pluck`](#util-pluck) and [`util.put`](#util-put).
 
 
+Rye.create
+----------
+<div class="api">
+    Rye.create(html) <span>⇒ rye collection</span>
+</div>
+
+Turn a string containing HTML into a DOM element tree.
+
 @getValue
 ------------------
 <div class="api">
