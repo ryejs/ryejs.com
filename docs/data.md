@@ -6,11 +6,11 @@ Store arbitrary data associated with the matched elements.
 data
 ------------------
 <div class="api">
-    .data(key[, value]) <span>⇒ self</span><br>
-    .data({property: value, ...}) <span>⇒ self</span><br>
+    .data(key[, value]) <span>⤳ self</span><br>
+    .data({property: value, ...}) <span>⤳ self</span><br>
 </div>
 
-Allows to attach and get data of any type to DOM elements.
+Get or set data attached to each element in the `.elements` array.
 
 @set
 ------------------
@@ -18,13 +18,13 @@ Allows to attach and get data of any type to DOM elements.
     data.set(element, key, value)
 </div>
 
-Stores `value` in `key` of one `element`.
+Stores `value` in `key` for `element`.
 
 
 @get
 ------------------
 <div class="api">
-    data.get(element, key) <span>⇒ mixed</span>
+    data.get(element, key) <span>⤳ mixed</span>
 </div>
 
-Returns the value in `key` of one `element`.
+Returns the value in `key` for `element`.
