@@ -155,6 +155,7 @@ API
 - [`after`](http://ryejs.com#manipulation-after)
 - [`before`](http://ryejs.com#manipulation-before)
 - [`clone`](http://ryejs.com#manipulation-clone)
+- [`remove`](http://ryejs.com#manipulation-remove)
 - [`val`](http://ryejs.com#manipulation-val)
 - [`attr`](http://ryejs.com#manipulation-attr)
 - [`prop`](http://ryejs.com#manipulation-prop)
