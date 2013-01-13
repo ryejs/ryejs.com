@@ -79,6 +79,15 @@ clone
 Clone elements with [`cloneNode(deep)`](https://developer.mozilla.org/en-US/docs/DOM/Node.cloneNode). `deep` defaults to true (copy all child nodes). 
 
 
+remove
+------------------
+<div class="api">
+    .remove() <span>⤳ rye collection</span>
+</div>
+
+Remove elements that are in the collection. 
+
+
 val
 ------------------
 <div class="api">
