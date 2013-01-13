@@ -771,27 +771,100 @@ at which the element is found, or -1 if it is not present.</p>
 
 <h2 id="style-show">show</h2>
 
+<div class="api">
+    .show() <span>⤳ self</span>
+</div>
+
+<p>Set <code>display: block</code> on each element; if the element has been hidden with <code>.hide()</code> before the <code>display</code> value is preserved.</p>
+
 <h2 id="style-hide">hide</h2>
+
+<div class="api">
+    .hide() <span>⤳ self</span>
+</div>
+
+<p>Set <code>display: none</code> on each element. Saves the <code>display</code> value for subsequent calls.</p>
 
 <h2 id="style-css">css</h2>
 
+<div class="api">
+    .css(prop) <span>⤳ string</span>
+    .css(prop, value) <span>⤳ self</span>
+</div>
+
+<p>Get or set <code>style</code> properties.</p>
+
 <h2 id="style-hasclass">hasClass</h2>
+
+<div class="api">
+    .hasClass(className) <span>⤳ boolean</span>
+</div>
+
+<p>Check that the elements' class list contains <code>className</code>.</p>
 
 <h2 id="style-addclass">addClass</h2>
 
+<div class="api">
+    .addClass(className) <span>⤳ self</span>
+</div>
+
+<p>Add <code>className</code> to the elements' class list.</p>
+
 <h2 id="style-removeclass">removeClass</h2>
+
+<div class="api">
+    .removeClass(className) <span>⤳ self</span>
+</div>
+
+<p>Remove <code>className</code> from the elements' class list.</p>
 
 <h2 id="style-toggleclass">toggleClass</h2>
 
+<div class="api">
+    .toggleClass(className, switch) <span>⤳ self</span>
+</div>
+
+<p>If <code>switch</code> is a truthy value, <em>add</em> <code>className</code> to the elements' class list, if it's falsy <em>remove</em> <code>className</code>.</p>
+
 <h2 id="style-@getcss">@getCSS</h2>
+
+<div class="api">
+    style.getCSS(element, property) <span>⤳ string</span>
+</div>
+
+<p>Return the value of <code>property</code> in <code>element.style</code>.</p>
 
 <h2 id="style-@setcss">@setCSS</h2>
 
+<div class="api">
+    style.setCSS(element, property, value) <span>⤳ element</span>
+</div>
+
+<p>Set <code>property</code> to <code>value</code> on <code>element.style</code>.</p>
+
 <h2 id="style-@hasclass">@hasClass</h2>
+
+<div class="api">
+    style.hasClass(element, className) <span>⤳ boolean</span>
+</div>
+
+<p>Returns <code>true</code> if <code>className</code> is contained in <code>element</code>'s class list, <code>false</code> otherwise.</p>
 
 <h2 id="style-@addclass">@addClass</h2>
 
-<h2 id="style-@removeclass">@removeClass</h2></section>
+<div class="api">
+    style.addClass(element, className) <span>⤳ element</span>
+</div>
+
+<p>Add <code>className</code> to <code>element</code>'s class list.</p>
+
+<h2 id="style-@removeclass">@removeClass</h2>
+
+<div class="api">
+    style.removeClass(element, className) <span>⤳ element</span>
+</div>
+
+<p>Remove <code>className</code> from <code>element</code>'s class list.</p></section>
 <section class="section-event-emitter"><h1 id="eventemitter">Event Emitter</h1>
 
 <p>Stand-alone event emitter implementation. Rye itself is an instance of <code>EventEmitter</code>, see <a href="#events-ryepublish"><code>Rye.publish</code></a> / <a href="#events-ryesubscribe"><code>Rye.subscribe</code></a>.</p>
