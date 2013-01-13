@@ -78,8 +78,8 @@ Returns a standard *or* browser-prefixed methods (`moz`, `webkit`, `ms`, `o`) if
 @applier
 ------------------
 <div class="api">
-    util.applier(direction, fn, context, args) <span>⤳ function</span>
-    util.applier('left', fn, context, args) <span>⤳ function</span>
+    util.applier(direction, fn, context, args) <span>⤳ function</span><br/>
+    util.applier('left', fn, context, args) <span>⤳ function</span><br/>
     util.applier('right', fn, context, args) <span>⤳ function</span>
 </div>
 
