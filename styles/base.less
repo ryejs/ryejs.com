@@ -85,6 +85,11 @@ table {
     }
 }
 
+.vhidden {
+    position: absolute;
+    left: -9999px;
+}
+
 .header {
     margin: 0 auto;
     position: relative;
@@ -102,27 +107,27 @@ table {
 
 .download {
     float: right;
-    margin: 40px 40px;
-    ol {
-        list-style: none;
-        padding: 0;
-        margin-top: 0;
-        li {
-            margin-bottom: .1em;
-        }
+    margin: 40px;
+    padding: 0;
+    list-style: none;
+    position: relative;
+
+    li {
+        margin-bottom: .1em;
+    }
+    input {
+        height: 1em;
+        margin-right: 4px;
+        vertical-align: middle;
     }
     label {
         vertical-align: middle;
-        input {
-            height: 1em;
-            margin-right: 4px;
-        }
         span {
             font-size: .8em;
             color: #777;
         }
     }
-    button {
+    .button {
         font-size: 1.4em;
         #gradient > .vertical(#666, #444);
         border: 1px solid #333;
@@ -131,11 +136,16 @@ table {
         color: @color1;
         padding: 10px 18px;
         border-radius: 3px;
+        text-decoration: none;
         &:hover {
             #gradient > .vertical(#555, #333);
             border-color: #222;
             border-bottom-color: #000;
         }
+    }
+    input:checked ~ .button {
+        left: 0;
+        top: 50px;
     }
 }
 
