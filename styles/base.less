@@ -82,6 +82,29 @@ table {
     }
 }
 
+
+.download button, .button {
+    font-size: 1.4em;
+    #gradient > .vertical(#666, #444);
+    border: 1px solid #333;
+    border-bottom-color: #111;
+    text-shadow: 1px 1px 2px #333;
+    color: @color1;
+    padding: 10px 18px;
+    border-radius: 3px;
+    &:hover {
+        #gradient > .vertical(#555, #333);
+        border-color: #222;
+        border-bottom-color: #000;
+    }
+}
+
+.button {
+    font-size: 1.0em;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
 .header {
     margin: 0 auto;
     position: relative;
@@ -118,21 +141,6 @@ table {
         span {
             font-size: .8em;
             color: #777;
-        }
-    }
-    button {
-        font-size: 1.4em;
-        #gradient > .vertical(#666, #444);
-        border: 1px solid #333;
-        border-bottom-color: #111;
-        text-shadow: 1px 1px 2px #333;
-        color: @color1;
-        padding: 10px 18px;
-        border-radius: 3px;
-        &:hover {
-            #gradient > .vertical(#555, #333);
-            border-color: #222;
-            border-bottom-color: #000;
         }
     }
 }

@@ -10,3 +10,6 @@ Touch Events
 - `swipedown`
 - `longtap`
 - `singletap`
+
+
+<a href="/samples#touch" class="button">touch events sample</a>
