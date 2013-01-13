@@ -119,7 +119,7 @@ prop
     .prop({name: value, ...}) <span>⤳ self</span>
 </div>
 
-Get or set the *property* `name` for each element. Implemented as an alias to [`util.pluck`](#util-pluck) and [`util.put`](#util-put).
+Get or set the *property* `name` for each element. Implemented as an alias to [`util.pluck`](#util-@pluck) and [`util.put`](#util-@put).
 
 
 Rye.create

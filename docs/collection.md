@@ -127,7 +127,7 @@ pluck
     .pluck(property) <span>⤳ array</span>
 </div>
 
-Plucks the value of `property` for each element in `collection.elements`. Alias for [`util.pluck`](#util-pluck).
+Plucks the value of `property` for each element in `collection.elements`. Alias for [`util.pluck`](#util-@pluck).
 
 
 put
@@ -136,4 +136,4 @@ put
     .put(property, value) <span>⤳ array</span>
 </div>
 
-Sets `property` to `value` for each element in `collection.elements`. Alias for [`util.put`](#util-put).
+Sets `property` to `value` for each element in `collection.elements`. Alias for [`util.put`](#util-@put).

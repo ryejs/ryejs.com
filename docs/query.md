@@ -36,7 +36,7 @@ pluckNode
     .pluckNode(property) <span>⤳ rye collection</span>
 </div>
 
-Uses DOM APIs to create a new set of elements. `property` should be a method of `HTMLElement`, ex. `parentNode` or `childNodes`. Filters nodes using [`util.isElement`](#util-iselement).
+Uses DOM APIs to create a new set of elements. `property` should be a method of `HTMLElement`, ex. `parentNode` or `childNodes`. Filters nodes using [`util.isElement`](#util-@iselement).
 
 Used internally by `next()` and `prev()`.
 

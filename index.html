@@ -360,7 +360,7 @@
     .pluckNode(property) <span>⤳ rye collection</span>
 </div>
 
-<p>Uses DOM APIs to create a new set of elements. <code>property</code> should be a method of <code>HTMLElement</code>, ex. <code>parentNode</code> or <code>childNodes</code>. Filters nodes using <a href="#util-iselement"><code>util.isElement</code></a>.</p>
+<p>Uses DOM APIs to create a new set of elements. <code>property</code> should be a method of <code>HTMLElement</code>, ex. <code>parentNode</code> or <code>childNodes</code>. Filters nodes using <a href="#util-@iselement"><code>util.isElement</code></a>.</p>
 
 <p>Used internally by <code>next()</code> and <code>prev()</code>.</p>
 
@@ -624,7 +624,7 @@ at which the element is found, or -1 if it is not present.</p>
     .pluck(property) <span>⤳ array</span>
 </div>
 
-<p>Plucks the value of <code>property</code> for each element in <code>collection.elements</code>. Alias for <a href="#util-pluck"><code>util.pluck</code></a>.</p>
+<p>Plucks the value of <code>property</code> for each element in <code>collection.elements</code>. Alias for <a href="#util-@pluck"><code>util.pluck</code></a>.</p>
 
 <h2 id="collection-put">put</h2>
 
@@ -632,7 +632,7 @@ at which the element is found, or -1 if it is not present.</p>
     .put(property, value) <span>⤳ array</span>
 </div>
 
-<p>Sets <code>property</code> to <code>value</code> for each element in <code>collection.elements</code>. Alias for <a href="#util-put"><code>util.put</code></a>.</p></section>
+<p>Sets <code>property</code> to <code>value</code> for each element in <code>collection.elements</code>. Alias for <a href="#util-@put"><code>util.put</code></a>.</p></section>
 <section class="section-manipulation"><h1 id="manipulation">Manipulation</h1>
 
 <h2 id="manipulation-text">text</h2>
@@ -742,7 +742,7 @@ at which the element is found, or -1 if it is not present.</p>
     .prop({name: value, ...}) <span>⤳ self</span>
 </div>
 
-<p>Get or set the <em>property</em> <code>name</code> for each element. Implemented as an alias to <a href="#util-pluck"><code>util.pluck</code></a> and <a href="#util-put"><code>util.put</code></a>.</p>
+<p>Get or set the <em>property</em> <code>name</code> for each element. Implemented as an alias to <a href="#util-@pluck"><code>util.pluck</code></a> and <a href="#util-@put"><code>util.put</code></a>.</p>
 
 <h2 id="manipulation-ryecreate">Rye.create</h2>
 
