@@ -19,7 +19,7 @@
             this.elements = util.unique(selector.filter(util.isElement))
 
         } else if (util.isNodeList(selector)) {
-            this.elements = Array.prototype.slice.call(selector)
+            this.elements = Array.prototype.slice.call(selector).filter(util.isElement)
 
         } else if (util.isElement(selector)) {
             this.elements = [selector]
@@ -554,6 +554,8 @@ Rye.define('Collection', function(){
 Rye.define('Manipulation', function(){
 
     var util = Rye.require('Util')
+      , query = Rye.require('Query')
+      , _slice = Array.prototype.slice
 
     function getValue(element) {
         if (element.multiple) {
@@ -569,6 +571,48 @@ Rye.define('Manipulation', function(){
             return getValue(element)
         }
         return element.getAttribute(name)
+    }
+
+    function append(element, attach) {
+        if (typeof attach === 'string') {
+            element.insertAdjacentHTML('beforeend', attach)
+        } else {
+            element.appendChild(attach)
+        }
+    }
+
+    function prepend(element, attach) {
+        if (typeof attach === 'string') {
+            element.insertAdjacentHTML('afterbegin', attach)
+        } else {
+            var first = element.childNodes[0]
+            if (first) {
+                element.insertBefore(attach, first)
+            } else {
+                element.appendChild(attach)
+            }
+        }
+    }
+
+    function after(element, attach) {
+        if (typeof attach === 'string') {
+            element.insertAdjacentHTML('afterend', attach)
+        } else {
+            var next = query.getClosestNode(element, 'nextSibling')
+            if (next) {
+                element.parentNode.insertBefore(attach, next)
+            } else {
+                element.parentNode.appendChild(attach)
+            }
+        }
+    }
+
+    function before(element, attach) {
+        if (typeof attach === 'string') {
+            element.insertAdjacentHTML('beforebegin', attach)
+        } else {
+            element.parentNode.insertBefore(attach, element)
+        }
     }
 
     this.text = function (text) {
@@ -593,85 +637,46 @@ Rye.define('Manipulation', function(){
         return this.put('innerHTML', '')
     }
 
-    this.append = function (html) {
-        if (typeof html === 'string') {
-            this.each(function(element){
-                element.insertAdjacentHTML('beforeend', html)
-            })
+    function exportAttach(method) {
+        function proxy(attach) {
+            // turn elements to array
+            if (attach instanceof Rye) {
+                attach = attach.elements
+            } else if (util.isNodeList(attach)) {
+                attach = _slice.call(attach)
+            }
 
-        } else if (util.isElement(html)) {
-            if (this.length == 1) {
-                this.elements[0].appendChild(html)
+            // call one-by-one
+            if (Array.isArray(attach)) {
+                attach.forEach(proxy.bind(this))
+            // single element collection
+            } else if (this.length === 1) {
+                method(this.elements[0], attach)
             } else {
-                this.each(function(element){
-                    element.appendChild(html.cloneNode(true))
+                this.each(function(element, i){
+                    var node = i > 0 ? attach.cloneNode(true) : attach
+                    method(element, node)
                 })
             }
+            return this
         }
-        return this
+        this[method.name] = proxy
     }
 
-    this.prepend = function (html) {
-        if (typeof html === 'string') {
-            this.each(function(element){
-                element.insertAdjacentHTML('afterbegin', html)
-            })
-        } else if (util.isElement(html)) {
-            this.each(function(element, i){
-                var first = new Rye(element).children().get(0)
-                  , node = i > 0 ? html.cloneNode(true) : html
-                if (first) {
-                    element.insertBefore(node, first)
-                } else {
-                    element.appendChild(node)
-                }
-            })
-        }
-        return this
-    }
+    ;[append, prepend, after, before].forEach(exportAttach.bind(this))
 
-    this.after = function (html) {
-        if (typeof html === 'string') {
-            this.each(function(element){
-                element.insertAdjacentHTML('afterend', html)
-            })
-
-        } else if (util.isElement(html)) {
-            this.each(function(element, i){
-                var next = new Rye(element).next().get(0)
-                  , node = i > 0 ? html.cloneNode(true) : html
-                if (next) {
-                    element.parentNode.insertBefore(node, next)
-                } else {
-                    element.parentNode.appendChild(node)
-                }
-            })
-
-        }
-        return this
-    }
-
-    this.before = function (html) {
-        if (typeof html === 'string') {
-            this.each(function(element){
-                element.insertAdjacentHTML('beforebegin', html)
-            })
-
-        } else if (util.isElement(html)) {
-            if (this.length == 1){
-                this.elements[0].parentNode.insertBefore(html, this.elements[0])
-            } else {
-                this.each(function(element){
-                    element.parentNode.insertBefore(html.cloneNode(true), element)
-                })
-            }
-        }
-        return this
-    }
 
     this.clone = function () {
         return this.map(function(element){
             return element.cloneNode(true)
+        })
+    }
+
+    this.remove = function () {
+        return this.each(function(element){
+            if (element.parentNode) {
+                element.parentNode.removeChild(element)
+            }
         })
     }
 
@@ -712,9 +717,26 @@ Rye.define('Manipulation', function(){
           : this.put(name, value)
     }
 
+    Rye.create = function (html) {
+        var temp = document.createElement('div')
+          , ret = new Rye()
+
+        temp.innerHTML = html
+        for (var child, i = 0, ln = temp.childNodes.length; i < ln; i++) {
+            if (child = temp.childNodes[i]) {
+                ret.push(temp.removeChild(child))
+            }
+        }
+        return ret
+    }
+
     return {
         getValue     : getValue
       , getAttribute : getAttribute
+      , append       : append
+      , prepend      : prepend
+      , after        : after
+      , before       : before
     }
 })
 Rye.define('Events', function(){
@@ -986,7 +1008,6 @@ Rye.define('TouchEvents', function(){
     }
     Gesture.all = []
     Gesture.cancelAll = function () {
-        console.log('cancel')
         Gesture.all.forEach(function(instance){
             instance.cancel()
         })
@@ -1082,7 +1103,6 @@ Rye.define('TouchEvents', function(){
 
             // swipe
             if (Math.abs(touch.x1 - touch.x2) > 30 || Math.abs(touch.y1 - touch.y2) > 30) {
-                console.log('swipe')
                 swipe.schedule()
             // normal tap
             } else if ('last' in touch) {
