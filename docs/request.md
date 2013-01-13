@@ -9,19 +9,7 @@ Rye.request()
     Rye.request(settings) <span>⤳ XMLHttpRequest</span><br>
 </div>
 
-Create and send a new XMLHttpRequest.
-
-Options:
-
-    method      : ['GET', 'POST', ...]
-    url         : [window.location]
-    async       : [true]
-    accepts     : [<a href="https://github.com/jcemer/rye/blob/master/lib/request.js#L7-L13">accepts</a>]
-    callback    : function (err, data, xhr)
-    timeout     : [0]
-    headers     : {}
-    contentType : ['application/x-www-form-urlencoded']
-    data        : {}
+Create and send a new XMLHttpRequest. See [default options](#request-@defaults) and the [XMLHttpRequest documentation](https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest).
 
 Rye.get()
 ------------------
@@ -51,15 +39,16 @@ serialize
 
 Encode the form elements in the collection as a string for request submission.
 
-@
+@request
 ------------------
 <div class="api">
+    var request = Rye.require('Request')<br>
     request(url, callback) <span>⤳ XMLHttpRequest</span><br>
     request(settings, callback) <span>⤳ XMLHttpRequest</span><br>
     request(settings) <span>⤳ XMLHttpRequest</span><br>
 </div>
 
-Same as [`.request()`](#rye-request).
+Same as [`.request()`](#request-ryerequest).
 
 @serialize
 ------------------
@@ -80,6 +69,19 @@ Appends `querystring` to `url` while preserving existing values.
 
 @defaults
 ------------------
+<div class="api">
+    <pre>
+    method       : ['GET', 'POST', ...]
+    url          : [window.location]
+    async        : [true]
+    callback     : function (err, data, xhr) { ... }
+    timeout      : [0]
+    headers      : {}
+    data         : {}
+    responseType : [json, xml, html, text, arraybuffer, blob, document]
+    contentType  : ['application/x-www-form-urlencoded']
+    </pre>
+</div>
 
 The object containing the default options for the `request()` method. Modifications affect all subsequent requests.
 
