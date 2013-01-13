@@ -133,11 +133,11 @@
 <li><a href="#events-ryepublish">Rye.publish</a></li></ul></li>
 <li><a href="#touchevents">Touch Events</a></li>
 <li><a href="#request">Request</a>
-<ul><li><a href="#request-query">query</a></li>
-<li><a href="#request-ryerequest">Rye.request()</a></li>
+<ul><li><a href="#request-ryerequest">Rye.request()</a></li>
 <li><a href="#request-ryeget">Rye.get()</a></li>
 <li><a href="#request-ryepost">Rye.post()</a></li>
-<li><a href="#request-@query" class="module" >@query</a></li>
+<li><a href="#request-serialize">serialize</a></li>
+<li><a href="#request-@serialize" class="module" >@serialize</a></li>
 <li><a href="#request-@appendquery" class="module" >@appendQuery</a></li>
 <li><a href="#request-@defaults" class="module" >@defaults</a></li>
 <li><a href="#request-@get" class="module" >@get</a></li>
@@ -1050,59 +1050,86 @@ at which the element is found, or -1 if it is not present.</p>
 </ul></section>
 <section class="section-request"><h1 id="request">Request</h1>
 
-<h2 id="request-query">query</h2>
-
-<div class="api">
-    .query() <span>⤳ string</span><br>
-</div>
-
-<p>Encode a set of form elements as a string for request submission.</p>
-
 <h2 id="request-ryerequest">Rye.request()</h2>
 
 <div class="api">
-    Rye.request(url, callback) <span>⤳ xhr</span><br>
-    Rye.request(settings, callback) <span>⤳ xhr</span><br>
-    Rye.request(settings) <span>⤳ xhr</span><br>
+    Rye.request(url, callback) <span>⤳ XMLHttpRequest</span><br>
+    Rye.request(settings, callback) <span>⤳ XMLHttpRequest</span><br>
+    Rye.request(settings) <span>⤳ XMLHttpRequest</span><br>
 </div>
+
+<p>Create and send a new XMLHttpRequest.</p>
+
+<p>Options:</p>
+
+<pre><code>method      : ['GET', 'POST', ...]
+url         : [window.location]
+async       : [true]
+accepts     : [&lt;a href="https://github.com/jcemer/rye/blob/master/lib/request.js#L7-L13"&gt;accepts&lt;/a&gt;]
+callback    : function (err, data, xhr)
+timeout     : [0]
+headers     : {}
+contentType : ['application/x-www-form-urlencoded']
+data        : {}
+</code></pre>
 
 <h2 id="request-ryeget">Rye.get()</h2>
 
 <div class="api">
-    Rye.get(url, callback) <span>⤳ xhr</span><br>
-    Rye.get(settings, callback) <span>⤳ xhr</span><br>
-    Rye.get(settings) <span>⤳ xhr</span><br>
+    Rye.get(url, callback) <span>⤳ XMLHttpRequest</span><br>
+    Rye.get(settings, callback) <span>⤳ XMLHttpRequest</span><br>
+    Rye.get(settings) <span>⤳ XMLHttpRequest</span><br>
 </div>
+
+<p>Calls <code>request()</code> with <code>method</code> set to <code>GET</code>.</p>
 
 <h2 id="request-ryepost">Rye.post()</h2>
 
 <div class="api">
-    Rye.post(url, callback) <span>⤳ xhr</span><br>
-    Rye.post(settings, callback) <span>⤳ xhr</span><br>
-    Rye.post(settings) <span>⤳ xhr</span><br>
+    Rye.post(url, callback) <span>⤳ XMLHttpRequest</span><br>
+    Rye.post(settings, callback) <span>⤳ XMLHttpRequest</span><br>
+    Rye.post(settings) <span>⤳ XMLHttpRequest</span><br>
 </div>
+
+<p>Calls <code>request()</code> with <code>method</code> set to <code>POST</code>.</p>
+
+<h2 id="request-serialize">serialize</h2>
+
+<div class="api">
+    .serialize() <span>⤳ string</span><br>
+</div>
+
+<p>Encode the form elements in the collection as a string for request submission.</p>
 
 <h2 id="">@</h2>
 
 <div class="api">
-    request(url, callback) <span>⤳ xhr</span><br>
-    request(settings, callback) <span>⤳ xhr</span><br>
-    request(settings) <span>⤳ xhr</span><br>
+    request(url, callback) <span>⤳ XMLHttpRequest</span><br>
+    request(settings, callback) <span>⤳ XMLHttpRequest</span><br>
+    request(settings) <span>⤳ XMLHttpRequest</span><br>
 </div>
 
-<h2 id="request-@query">@query</h2>
+<p>Same as <a href="#rye-request"><code>.request()</code></a>.</p>
+
+<h2 id="request-@serialize">@serialize</h2>
 
 <div class="api">
-    request.query(obj) <span>⤳ string</span><br>
+    request.serialize(obj) <span>⤳ string</span><br>
 </div>
+
+<p>Serializes <code>obj</code> to a querystring.</p>
 
 <h2 id="request-@appendquery">@appendQuery</h2>
 
 <div class="api">
-    request.appendQuery(url, query) <span>⤳ string</span><br>
+    request.appendQuery(url, querystring) <span>⤳ string</span><br>
 </div>
 
+<p>Appends <code>querystring</code> to <code>url</code> while preserving existing values.</p>
+
 <h2 id="request-@defaults">@defaults</h2>
+
+<p>The object containing the default options for the <code>request()</code> method. Modifications affect all subsequent requests.</p>
 
 <h2 id="request-@get">@get</h2>
 
@@ -1112,13 +1139,17 @@ at which the element is found, or -1 if it is not present.</p>
     request.get(settings) <span>⤳ self</span><br>
 </div>
 
+<p>Shortcut to <code>request()</code> with method set to <code>GET</code>.</p>
+
 <h2 id="request-@post">@post</h2>
 
 <div class="api">
     request.post(url, callback) <span>⤳ self</span><br>
     request.post(settings, callback) <span>⤳ self</span><br>
     request.post(settings) <span>⤳ self</span><br>
-</div></section>
+</div>
+
+<p>Shortcut to <code>request()</code> with method set to <code>POST</code>.</p></section>
 <section class="section-util"><h1 id="util">Util</h1>
 
 <p>Utility methods. Use with <code>var util = Rye.require('Util')</code>.</p>
