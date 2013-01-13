@@ -77,21 +77,6 @@
     /*
         Samples
      */
-    ;(function () {
-        var sample
-        Rye.subscribe('sample closed', function(){
-            sample = null
-        })
-
-        $(document).on('click a', function(event){
-            if (this.href.match(/\/samples#(.+)/)) {
-                event.preventDefault()
-                sample && sample.destroy()
-                sample = new Sample(RegExp.$1)
-            }
-        })
-    })()
-
     function Sample (name) {
         this.name = name
         this.create()
@@ -100,31 +85,29 @@
     }
 
     Sample.prototype.create = function () {
-        var element = document.createElement('article')
-        element.id = 'sample'
-        element.className = 'hide'
-        element.innerHTML = '<div class="wrapper"><button type="button" class="close">×</button></div>'
-        $(document.body).append(element)
-        this.container = $(element)
+        this.container = $.create('<article id="sample" class="hide">')
+        this.overlay   = $.create('<div id="overlay">')
+
+        this.container.html('<div class="wrapper"><button type="button" class="close">×</button></div>')
+        $(document.body).append([this.container, this.overlay])
     }
 
     Sample.prototype.addEventListener = function () {
-        this.container.on('click .close', function(){
-            this.destroy()
-        }.bind(this))
+        var self = this
+        this.container.on('click .close', this.destroy.bind(this))
+        this.overlay.on('click', this.destroy.bind(this))
     }
- 
+
     Sample.prototype.request = function () {
         this.xhr = $.request('samples', function(err, data){
+            console.log(this)
             this.container.removeClass('hide')
             !err && this.data(data)
         }.bind(this))
     }
 
     Sample.prototype.data = function (data) {
-        var dummy = $(document.createElement('div'))
-          , content = dummy.html(data).find('#' + this.name).get(0)
-
+        var content = $.create(data).filter('#' + this.name)
         this.container.children().prepend(content)
         this.behavior()
     }
@@ -135,19 +118,34 @@
         }
     }
 
-    Sample.prototype.removeContainer = function () {
-        document.body.removeChild(this.container.get(0))
-    }
-
     Sample.prototype.destroy = function () {
-        sample = null
+        var container = this.container
         if (this.xhr) {
             this.xhr.abort()
         }
-        this.container.addClass('hide')
-        setTimeout(this.removeContainer.bind(this), 500)
-        
-        Rye.publish('sample closed')
+        container.addClass('hide')
+        setTimeout(container.remove.bind(container), 500)
+        this.overlay.remove()
     }
+
+    Sample.init = function () {
+        this.addEventListener()
+    }
+
+    Sample.addEventListener = function () {
+        $(document).on('click a', function(event){
+            var name
+            if (this.href.match(/\/samples#(.+)/)) {
+                event.preventDefault()
+                name = RegExp.$1
+                if (Sample.current) {
+                    Sample.current.destroy()
+                }
+                Sample.current = new Sample(name)
+            }
+        })
+    }
+
+    Sample.init()
 
 })(Rye)

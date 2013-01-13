@@ -78,7 +78,8 @@ section h1{padding-bottom:90px;margin-bottom:-60px;background:url(../images/radi
 .manifesto table{display:inline-block;vertical-align:top;margin-right:20px;}
 .buttons{height:20px;padding-top:10px;margin-bottom:20px;text-align:center;}
 li code{background:#ffe780;outline:none;padding:2px 4px;margin-right:2px;}li code:hover{cursor:default;background:#ffeea6;}
-#sample{-webkit-transition:0.4s top ease-out;-moz-transition:0.4s top ease-out;transition:0.4s top ease-out;position:fixed;top:40%;right:0;left:0;height:60%;background:rgba(0, 0, 0, 0.9);z-index:1;color:#ccc;}#sample.hide{top:100%;}
+#overlay{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;}
+#sample{-webkit-transition:0.4s top ease-out;-moz-transition:0.4s top ease-out;transition:0.4s top ease-out;position:fixed;top:40%;right:0;left:0;height:60%;background:rgba(0, 0, 0, 0.9);z-index:200;color:#ccc;}#sample.hide{top:100%;}
 #sample .wrapper{padding:0 20px;max-width:860px;min-width:620px;height:100%;position:relative;margin:0 auto;}
 #sample h1{border-bottom:1px #333 solid;padding-bottom:.5em;background:none;}
 #sample .close{background:none;border:none;color:white;position:absolute;padding:20px;right:0;top:2em;}
