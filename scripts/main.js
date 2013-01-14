@@ -100,7 +100,6 @@
 
     Sample.prototype.request = function () {
         this.xhr = $.request('samples', function(err, data){
-            console.log(this)
             this.container.removeClass('hide')
             !err && this.data(data)
         }.bind(this))
@@ -113,9 +112,10 @@
     }
 
     Sample.prototype.behavior = function () {
-        if (SamplesBehavior) {
+        if (SamplesBehavior && SamplesBehavior[this.name]) {
             SamplesBehavior[this.name]()
         }
+        Rainbow.color()
     }
 
     Sample.prototype.destroy = function () {

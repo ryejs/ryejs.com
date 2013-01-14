@@ -3,7 +3,6 @@ Event Emitter
 
 Stand-alone event emitter implementation. Rye itself is an instance of `EventEmitter`, see [`Rye.publish`](#events-ryepublish) / [`Rye.subscribe`](#events-ryesubscribe).
 
-
 addListener (on)
 ------------------
 

@@ -6,6 +6,30 @@
     <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
+    <section id="custom-dom-event-emitter">
+        <h1>Using a custom DOMEventEmitter</h1>
+        <div class="content">
+            <p>When you are writing a plugin, or a feature that should be independent from other events in the application, use a new DOMEventEmitter to isolate your event handlers:</p>
+        </div>
+
+        <div class="sample">
+<pre><code data-language="javascript">var DOMEventEmitter = Rye.require('Events').DOMEventEmitter
+  , element = $('#mything').get(0)
+  , myEvents = new DOMEventEmitter(element)
+
+myEvents.on({
+    'click .button': function(){ ... }
+  , 'mouseover li': function(){ ... }
+})
+
+myEvents.on('mousedown .that', function(){ ... })
+
+// remove all events:
+myEvents.destroy()
+</code></pre>
+        </div>
+    </section>
+
     <section id="touch">
         <h1>Touch Events</h1>
         <div class="content">
@@ -33,7 +57,7 @@
             </ul>
         </div>
 
-        <div class="code">
+        <div class="sample">
             <style type="text/css">
                 .touch_test {
                     height: 26.33%;
