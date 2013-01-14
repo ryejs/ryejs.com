@@ -832,7 +832,26 @@ emitter.on(event, handler) <span>⤳ self</span>
 </code></pre></section>
 <section class="section-dom-event-emitter"><h1 id="domeventemitter">DOM Event Emitter</h1>
 
-<p>This inherits from <code>EventEmitter</code> while handling DOM events. The constructor receives an element as argument: <code>var emitter = new DOMEventEmitter(element)</code>.</p>
+<p>Inherits from <code>EventEmitter</code> while handling DOM events. The root <code>element</code> will receive all delegate event handlers. It's used internally to handle event binding.</p>
+
+<h3 id="domeventemitter-proxy-usingacustomdomeventemitter">Using a custom DOMEventEmitter</h3>
+
+<p>When you are writing a plugin, or a feature that should be independent from other events in the application, use a new <code>DOMEventEmitter</code> to isolate your event handlers:</p>
+
+<pre><code>var DOMEventEmitter = Rye.require('Events').DOMEventEmitter
+  , element = $('#mything').get(0)
+  , myEvents = new DOMEventEmitter(element)
+
+myEvents.on({
+    'click .button': function(){ ... }
+  , 'mouseover li': function(){ ... }
+})
+
+myEvents.on('mousedown .that', function(){ ... })
+
+// remove all events:
+myEvents.destroy()
+</code></pre>
 
 <h2 id="domeventemitter-addlisteneron">addListener (on)</h2>
 

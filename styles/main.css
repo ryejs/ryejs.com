@@ -50,6 +50,7 @@ h1{position:relative;font-size:2.2em;padding-top:1em;padding-bottom:.5em;backgro
 h2{font-size:1.4em;padding-top:1em;}
 h3{font-size:1em;padding-top:0.6em;}
 code{font-size:12px;line-height:18px;background:#fff9ed;outline:1px solid #f3e6cf;padding:0 4px;}
+pre code{display:block;padding:1em;font-family:Monaco,Consolas,"Lucida Console",monospace;color:#990066;}
 table{background:#f5ead7;font-size:95%;}table th{text-align:left;}
 table th,table td{padding:2px .5em;border:1px solid #fff5e3;}
 table th{background:#f2e4cb;}

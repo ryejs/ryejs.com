@@ -185,6 +185,7 @@ API
 - [`proxy`](http://ryejs.com#eventemitter-proxy)
 
 ### DOM Event Emitter
+- [`Using a custom DOMEventEmitter`](http://ryejs.com#domeventemitter-usingacustomdomeventemitter)
 - [`addListener (on)`](http://ryejs.com#domeventemitter-addlisteneron)
 - [`once (one)`](http://ryejs.com#domeventemitter-onceone)
 - [`removeListener (off)`](http://ryejs.com#domeventemitter-removelisteneroff)
