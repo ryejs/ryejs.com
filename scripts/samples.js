@@ -5,9 +5,14 @@
         'touch-events': function () {
             function listen_to (selector) {
                 var element = new Rye(selector)
+                  , events  = element.find('.events')
+                  , list    = Array.apply(null, new Array(5))
+
                 ;['tap', 'doubletap', 'swipe', 'swipeleft', 'swiperight', 'swipeup', 'swipedown', 'longtap', 'singletap'].forEach(function(type){
                     element.on(type, function(){
-                        $(this).append(' ' + type + ' ')
+                        list.push(type)
+                        events.text(list.join("\n"))
+                        list.shift()
                     })
                 })
             }

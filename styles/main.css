@@ -107,7 +107,7 @@ li code{background:#ffe780;outline:none;padding:2px 4px;margin-right:2px;}li cod
 #sample .sample code{overflow:auto;}
 #sample .touch_sample{height:30.33%;margin-top:3%;}
 @media all and (max-height:600px){#sample{height:100%;}}.touch-samples{text-align:center;display:-webkit-flex;-webkit-flex-direction:row;display:flex;flex-direction:row;}
-.touch-sample{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;color:#333;height:120px;width:27%;margin:1em 10px 0;padding:10px;overflow:hidden;display:inline-block;-webkit-flex:1 1 auto;flex:1 1 auto;}
-.touch-sample .name{font-weight:bold;font-size:1.1em;}
+.touch-sample{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;color:#333;height:120px;width:27%;margin:1em 10px 0;padding:10px;overflow:hidden;display:inline-block;-webkit-flex:1 1 auto;flex:1 1 auto;}.touch-sample .name{font-weight:bold;font-size:1.1em;}
+.touch-sample .events{font-size:0.9em;line-height:0.9;}
 footer{margin-top:60px;padding-top:20px;padding-bottom:20px;background:url(../images/radial.png) center top no-repeat;}footer a img{border-radius:50%;vertical-align:middle;margin:0 4px;}
 footer a:hover img{-webkit-transition:opacity .5s;-moz-transition:opacity .5s;transition:opacity .5s;opacity:.5;}
