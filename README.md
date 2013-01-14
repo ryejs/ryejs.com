@@ -5,7 +5,7 @@ Website and documentation http://ryejs.com
 
 [![Build Status](https://secure.travis-ci.org/ryejs/rye.png?branch=master)](http://travis-ci.org/ryejs/rye)
 
-**Rye** is a lightweight javascript library for DOM manipulation and events with support for **all modern browsers**, including IE9+. It also has **touch events/gestures**, an **event emitter** constructor, and a **jQuery-like** API.
+**Rye** is a lightweight javascript library for DOM manipulation and events with support for **all modern browsers**, including IE9+. It has support for **touch events**/gestures, an **event emitter**, **isolated DOM events** and more.
 
 Browser compatiblity
 --------------------
