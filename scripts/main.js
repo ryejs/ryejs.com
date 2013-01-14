@@ -93,21 +93,36 @@
     }
 
     Sample.prototype.addEventListener = function () {
-        var self = this
-        this.container.on('click .close', this.destroy.bind(this))
-        this.overlay.on('click', this.destroy.bind(this))
+        var destroy = this.destroy.bind(this)
+        this.container.on('click .close', destroy)
+        this.overlay.on('click', destroy)
+    }
+
+    Sample.prototype.preventParentScroll = function () {
+        var content = this.content
+        this.container.on('mousewheel', function(e, d){
+            var top = content.prop('scrollTop')
+              , height = parseInt(content.css('height'), 10)
+              , end = content.prop('scrollHeight') - height
+
+            if (e.wheelDeltaY > 0 && top <= 0 ||
+                e.wheelDeltaY < 0 && top >= end) {
+                e.preventDefault()
+            }
+        })
     }
 
     Sample.prototype.request = function () {
         this.xhr = $.request('samples/' + this.name + '.html', function(err, data){
             this.container.removeClass('hide')
             !err && this.data(data)
+            this.preventParentScroll()
         }.bind(this))
     }
 
     Sample.prototype.data = function (data) {
-        var content = $.create(data)
-        this.container.children().prepend(content)
+        this.content = $.create(data)
+        this.container.find('.wrapper').prepend(this.content)
         this.behavior()
     }
 
