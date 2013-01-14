@@ -624,6 +624,9 @@ Rye.define('Manipulation', function(){
                 }
                 // Also support arrays [el1, el2, ...]
                 if (Array.isArray(obj)) {
+                    if (/prepend|before/.test(method)){
+                        obj.reverse()
+                    }
                     return obj.forEach(this[method].bind(this))
                 }
             }
@@ -1149,9 +1152,9 @@ Rye.define('Request', function(){
        // , headers      : null
         }
 
-    function query (obj) {
+    function serialize (obj) {
         var params = []
-        ;(function serialize (obj, scope) {
+        ;(function fn (obj, scope) {
             util.each(obj, function(value, key){
                 value = obj[key]
                 if (scope) {
@@ -1159,7 +1162,7 @@ Rye.define('Request', function(){
                 }
 
                 if (util.is(['array', 'object'], value)) {
-                    serialize(value, key)
+                    fn(value, key)
                 } else {
                     params.push(escape(key) + '=' + escape(value))
                 }
@@ -1174,7 +1177,7 @@ Rye.define('Request', function(){
 
     function parseData (options) {
         if (options.data && (typeof options.data !== 'string')) {
-            options.data = query(options.data)
+            options.data = serialize(options.data)
         }
         if (options.data && options.method === 'GET') {
             options.url = appendQuery(options.url, options.data)
@@ -1315,7 +1318,7 @@ Rye.define('Request', function(){
 
     var hideTypes = 'fieldset submit reset button image radio checkbox'.split(' ')
 
-    this.query = function () {
+    this.serialize = function () {
         var form = this.get(0)
           , fields = {}
         new Rye(form && form.elements).forEach(function(field){
@@ -1327,7 +1330,7 @@ Rye.define('Request', function(){
                 fields[field.name] = manipulation.getValue(field)
             }
         })
-        return query(fields)
+        return serialize(fields)
     }
 
     // Exported methods
@@ -1341,7 +1344,7 @@ Rye.define('Request', function(){
     var exports = request.bind({})
 
     util.extend(exports, {
-        query       : query
+        serialize   : serialize
       , appendQuery : appendQuery
       , defaults    : defaults
       , get         : util.curry(requestProxy, 'GET')
