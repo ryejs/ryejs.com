@@ -4,23 +4,36 @@
     z-index: 100;
 }
 
-#sample {
-    -webkit-transition: .4s top ease-out;
-    -moz-transition: .4s top ease-out;
-    transition: .4s top ease-out;
+.touch_sample {
+    height: 30.33%;
+    margin-top: 3%;
+    .box-sizing(border-box);
+    color: #333;
+    padding: 10px;
+    overflow: hidden;
+}
+.touch_sample .name {
+    font-weight: bold;
+    font-size: 1.2em;
+}
 
-    &.hide {
-        top: 100%;
-    }
+#sample {
+    -webkit-transition: .4s bottom ease-out;
+    -moz-transition: .4s bottom ease-out;
+    transition: .4s bottom ease-out;
    
     position: fixed;
-    top: 40%; right: 0; left: 0;
+    bottom: 0%; right: 0; left: 0;
+    z-index: 200;
+
     height: 60%;
 
     background: rgba(0,0,0,.9);
-    z-index: 200;
-
-    color: #ccc;
+    color: #CCC;
+    
+    &.hide {
+        bottom: -100%;
+    }
 
     .wrapper {
         padding: 0 20px;
@@ -51,13 +64,30 @@
         bottom: 20px;
     }
     .content {
-        overflow: auto;
         padding-right: 10%;
+        overflow: auto;
         h2:first-child {
             padding-top: 0;
         }
     }
     .sample {
         right: 20px;
+        pre, code {
+            .box-sizing(border-box);
+            height: 100%;
+        }
+        pre {
+            margin: 0;
+            padding: 1em 0;
+        }
+        code {
+            overflow: auto;
+        }
+    }
+}
+
+@media all and (max-height: 600px) {
+    #sample {
+        height: 100%;
     }
 }
