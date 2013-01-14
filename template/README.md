@@ -1,4 +1,4 @@
-Rye
+Rye {{version}}
 ===
 
 Website and documentation http://ryejs.com

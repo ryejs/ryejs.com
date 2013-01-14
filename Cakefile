@@ -12,7 +12,27 @@ docs =
     text: (f) -> (docs.get f).replace /{{(\w+?)\.md}}/g, (m, f) -> docs.text f
     html: (f) -> converter.makeHtml docs.text f
 
-api = [
+
+api_sections = (header) ->
+    html = API.map((id) ->
+        """<section class="section-#{id}">#{docs.html id}</section>"""
+    ).join "\n"
+
+    section = []
+    html = html.replace /<h(\d)\s*id="(\w+)">(.+)<\/h\1>/g, (match, weight, id, title) ->
+        section[weight-1] = title.replace(/[^\w\@]/g, '').toLowerCase()
+        id = section.slice(0, weight).join '-'
+        header parseInt(weight, 10), id, title
+
+    html = html.replace /⤳.*$/gm, (m) -> "<span>#{m}</span>"
+    return html
+
+# Config
+# ===========
+
+VERSION = '0.0.1'
+
+API = [
     'rye'
     'data'
     'query'
@@ -27,25 +47,14 @@ api = [
     'util'
 ]
 
-samples = [
+SAMPLES = [
     'custom-dom-event-emitter'
     'touch-events'
 ]
 
-api_sections = (header) ->
-    html = api.map((id) ->
-        """<section class="section-#{id}">#{docs.html id}</section>"""
-    ).join "\n"
 
-    section = []
-    html = html.replace /<h(\d)\s*id="(\w+)">(.+)<\/h\1>/g, (match, weight, id, title) ->
-        section[weight-1] = title.replace(/[^\w\@]/g, '').toLowerCase()
-        id = section.slice(0, weight).join '-'
-        header parseInt(weight, 10), id, title
-
-    html = html.replace /⤳.*$/gm, (m) -> "<span>#{m}</span>"
-    return html
-
+# Builds
+# ===========
 
 task 'build:docs', ->
     menu = ''
@@ -61,6 +70,7 @@ task 'build:docs', ->
         .replace('{{manifesto}}', docs.html 'manifesto')
         .replace('{{content}}', content)
         .replace('{{menu}}', menu)
+        .replace(/{{version}}/, VERSION)
 
     put 'index.html', output
 
@@ -77,6 +87,7 @@ task 'build:readme', ->
         .replace('{{about}}', docs.get 'about')
         .replace('{{browsers}}', docs.html 'browsers')
         .replace('{{content}}', content)
+        .replace(/{{version}}/, VERSION)
 
     put 'README.md', output
 
@@ -87,7 +98,7 @@ task 'build:samples', ->
         - [Samples](#)
     """ + "\n"
 
-    content = samples.map((id) ->
+    content = SAMPLES.map((id) ->
         html = get "samples/#{id}.html"
         html = html.replace /<h1[^>]*>(.+)<\/h1>/, (match, title) ->
             menu += "   - [#{title}](##{id})\n"
@@ -100,6 +111,7 @@ task 'build:samples', ->
     output = (get 'template/samples.html')
         .replace('{{content}}', content)
         .replace('{{menu}}', menu)
+        .replace(/{{version}}/, VERSION)
 
     put 'samples/index.html', output
 
@@ -108,10 +120,18 @@ task 'build:less', ->
     compile 'styles/base.less', 'styles/main.css'
 
 
-task 'watch', ->
+# Build and watch
+# ===========
+
+task 'build', ->
     invoke 'build:less'
     invoke 'build:docs'
     invoke 'build:readme'
+    invoke 'build:samples'
+
+
+task 'watch', ->
+    invoke 'build'
 
     watch 'styles/', -> invoke 'build:less'
     watch [
@@ -120,3 +140,5 @@ task 'watch', ->
     ], -> 
         invoke 'build:docs'
         invoke 'build:readme'
+
+    watch 'samples/', -> invoke 'build:samples'

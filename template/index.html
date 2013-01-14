@@ -12,19 +12,19 @@
             <li>
                 <input type="radio" id="download-production" name="purpose" checked>
                 <label for="download-production">Production <span>(17.7KB, Minified)</span></label>
-                <a href="dist/rye-0.0.1.min.js" class="button">Download Rye 0.0.1 <span class="vhidden">for production</span></a>        
+                <a href="dist/rye-0.0.1.min.js" class="button">Download Rye {{version}} <span class="vhidden">for production</span></a>        
             </li>
             <li>
                 <input type="radio" id="download-development" name="purpose">
                 <label for="download-development">Development <span>(42.8KB, Uncompressed)</span></label>
-                <a href="dist/rye-0.0.1.js" class="button">Download Rye 0.0.1 <span class="vhidden">for development</span></a>
+                <a href="dist/rye-0.0.1.js" class="button">Download Rye {{version}} <span class="vhidden">for development</span></a>
             </li>
         </ol>
     </header>
     
     <div class="navigation">
         <div class="content">
-            <a href="/" class="home">rye.js <span>(0.0.1)</span></a>
+            <a href="/" class="home">rye.js <span>({{version}})</span></a>
             <nav>
 {{menu}}
             </nav>
