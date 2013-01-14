@@ -26,11 +26,10 @@
 
     <div class="main">
 <section class="section-custom-dom-event-emitter"><h1 id="custom-dom-event-emitter">Using a custom DOMEventEmitter</h1>
+
 <div class="content">
     <p>When you are writing a plugin, or a feature that should be independent from other events in the application, use a new DOMEventEmitter to isolate your event handlers:</p>
-</div>
-
-<pre class="sample"><code data-language="javascript">var DOMEventEmitter = Rye.require('Events').DOMEventEmitter
+    <pre class="sample"><code data-language="javascript">var DOMEventEmitter = Rye.require('Events').DOMEventEmitter
   , element = $('#mything').get(0)
   , myEvents = new DOMEventEmitter(element)
 
@@ -42,23 +41,24 @@ myEvents.on({
 myEvents.on('mousedown .that', function(){ ... })
 
 // remove all events:
-myEvents.destroy()
-</code></pre></section>
+myEvents.destroy()</code></pre>
+</div></section>
 <section class="section-touch-events"><h1 id="touch-events">Touch Events</h1>
-<div class="sample">
-    <div id="touch_sample" class="touch_sample" style="background: #cce">
-        <div class="name">All touch events</div>
-    </div>
-
-    <div id="touch_sample_scrollable" class="touch_sample" style="background: #cec">
-        <div class="name">Cancel all if scrolls</div>
-    </div>
-
-    <div id="touch_sample_single" class="touch_sample" style="background: #ecc">
-        <div class="name">Single tap only</div>
-    </div>
-</div>
 <div class="content">
+    <div class="touch-samples">
+        <div id="touch-sample" class="touch-sample" style="background: #cce">
+            <div class="name">All touch events</div>
+        </div>
+
+        <div id="touch-sample-scrollable" class="touch-sample" style="background: #cec">
+            <div class="name">Cancel all if scrolls</div>
+        </div>
+
+        <div id="touch_sample-single" class="touch-sample" style="background: #ecc">
+            <div class="name">Single tap only</div>
+        </div>
+    </div>
+
     <h2>All touch events</h2>
     <ul>
         <li>Container that captures all touch events.</li>
