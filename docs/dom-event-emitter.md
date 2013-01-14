@@ -6,52 +6,45 @@ This inherits from `EventEmitter` while handling DOM events. The constructor rec
 
 addListener (on)
 ------------------
-<div class="api">
-    emitter.addListener(event, fn) <span>⤳ self</span><br>
-    emitter.on(element, event, fn) <span>⤳ self</span>
-</div>
+
+    emitter.addListener(event, fn) ⤳ self
+    emitter.on(element, event, fn) ⤳ self
 
 
 once (one)
 ------------------
-<div class="api">
-    emitter.once(event, fn) <span>⤳ self</span><br>
-    emitter.one(event, fn) <span>⤳ self</span>
-</div>
+
+    emitter.once(event, fn) ⤳ self
+    emitter.one(event, fn) ⤳ self
 
 
 removeListener (off)
 ------------------
-<div class="api">
-    emitter.removeListener(event[, fn]) <span>⤳ self</span><br>
-    emitter.off(event[, fn]) <span>⤳ self</span>
-</div>
+
+    emitter.removeListener(event[, fn]) ⤳ self
+    emitter.off(event[, fn]) ⤳ self
 
 
 destroy
 ------------------
-<div class="api">
-    emitter.destroy() <span>⤳ self</span>
-</div>
+
+    emitter.destroy() ⤳ self
 
 
 trigger
 ------------------
-<div class="api">
-    emitter.trigger(event[, data]) <span>⤳ self</span>
-</div>
+
+    emitter.trigger(event[, data]) ⤳ self
 
 
 emit
 ------------------
-<div class="api">
-    emitter.trigger(event[, data]) <span>⤳ self</span>
-</div>
+
+    emitter.trigger(event[, data]) ⤳ self
 
 
 proxy
 ------------------
-<div class="api">
-    emitter.proxy(event) <span>⤳ function</span>
-</div>
+
+    emitter.proxy(event) ⤳ function
 

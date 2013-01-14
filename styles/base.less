@@ -166,19 +166,28 @@ table {
 @import "nav";
 
 .main {
-    .api {
-        font-size: 12px;
-        color: #990066;
-        font-family: @monospace;
-        span {
-            color: #999;
-        }
-    }
     h2 {
         font-family: @sans;
         font-size: 18px;
         line-height: 2;
         margin-bottom: 0;
+    }
+    h2 + pre {
+        margin-top: 0;
+        code {
+            font-size: 12px;
+            color: #990066;
+            font-family: @monospace;
+            background: none;
+            border: 0;
+            outline: 0;
+            white-space: pre;
+            margin: 0;
+            padding: 0;
+        }
+        span {
+            color: #999;
+        }
     }
 }
 

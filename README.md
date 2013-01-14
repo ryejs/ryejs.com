@@ -211,11 +211,12 @@ API
 ### Touch Events
 
 ### Request
-- [`query`](http://ryejs.com#request-query)
 - [`Rye.request()`](http://ryejs.com#request-ryerequest)
 - [`Rye.get()`](http://ryejs.com#request-ryeget)
 - [`Rye.post()`](http://ryejs.com#request-ryepost)
-- [`@query`](http://ryejs.com#request-@query)
+- [`serialize`](http://ryejs.com#request-serialize)
+- [`@request`](http://ryejs.com#request-@request)
+- [`@serialize`](http://ryejs.com#request-@serialize)
 - [`@appendQuery`](http://ryejs.com#request-@appendquery)
 - [`@defaults`](http://ryejs.com#request-@defaults)
 - [`@get`](http://ryejs.com#request-@get)

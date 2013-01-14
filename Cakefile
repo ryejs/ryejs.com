@@ -33,10 +33,13 @@ sections = (header) ->
     ).join "\n"
 
     section = []
-    html.replace /<h(\d)\s*id="(\w+)">(.+)<\/h\1>/g, (match, weight, id, title) ->
+    html = html.replace /<h(\d)\s*id="(\w+)">(.+)<\/h\1>/g, (match, weight, id, title) ->
         section[weight-1] = title.replace(/[^\w\@]/g, '').toLowerCase()
         id = section.slice(0, weight).join '-'
         header parseInt(weight, 10), id, title
+
+    html = html.replace /⤳.*$/gm, (m) -> "<span>#{m}</span>"
+    return html
 
 
 task 'build:docs', ->
