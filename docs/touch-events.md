@@ -12,4 +12,4 @@ Touch Events
 - `singletap`
 
 
-<a href="/samples#touch" class="button">touch events sample</a>
+<a href="/samples#touch-events" class="button">touch events sample</a>

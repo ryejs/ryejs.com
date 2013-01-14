@@ -27,9 +27,14 @@ api = [
     'util'
 ]
 
-sections = (header) ->
-    html = api.map((doc) ->
-        "<section class=\"section-#{doc}\">#{docs.html doc}</section>"
+samples = [
+    'custom-dom-event-emitter'
+    'touch-events'
+]
+
+api_sections = (header) ->
+    html = api.map((id) ->
+        """<section class="section-#{id}">#{docs.html id}</section>"""
     ).join "\n"
 
     section = []
@@ -44,11 +49,11 @@ sections = (header) ->
 
 task 'build:docs', ->
     menu = ''
-    content = sections (weight, id, title) ->
+    content = api_sections (weight, id, title) ->
         classAttr = ' class="module" ' if '@' in title
-        link = "<a href=\"##{id}\"#{[classAttr]}>#{title}</a>"
+        link = """<a href="##{id}"#{[classAttr]}>#{title}</a>"""
         menu += "#{['', '  '][weight-1]}- #{link}\n" if weight <= 2
-        return "<h#{weight} id=\"#{id}\">#{title}</h#{weight}>"
+        return """<h#{weight} id="#{id}">#{title}</h#{weight}>"""
 
     menu = converter.makeHtml menu
 
@@ -62,7 +67,7 @@ task 'build:docs', ->
 
 task 'build:readme', ->
     content = ''
-    sections (weight, id, title) ->
+    api_sections (weight, id, title) ->
         if weight is 1
             content += "\n### #{title}\n"
         else
@@ -74,6 +79,29 @@ task 'build:readme', ->
         .replace('{{content}}', content)
 
     put 'README.md', output
+
+
+task 'build:samples', ->
+    menu = """
+        - [Documentation](../)
+        - [Samples](#)
+    """ + "\n"
+
+    content = samples.map((id) ->
+        html = get "samples/#{id}.html"
+        html = html.replace /<h1[^>]*>(.+)<\/h1>/, (match, title) ->
+            menu += "   - [#{title}](##{id})\n"
+            """<h1 id="#{id}">#{title}</h1>"""
+        """<section class="section-#{id}">#{html}</section>"""
+    ).join "\n"
+
+    menu = converter.makeHtml menu
+
+    output = (get 'template/samples.html')
+        .replace('{{content}}', content)
+        .replace('{{menu}}', menu)
+
+    put 'samples/index.html', output
 
 
 task 'build:less', ->

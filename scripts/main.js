@@ -8,7 +8,7 @@
     }
 
     Content.prototype.getSections = function () {
-        return $('h1[id], h2[id]').elements.map(function(element){
+        return $('h1[id], h2[id], footer').elements.map(function(element){
             return {
                 id: element.id
               , offset: element.getBoundingClientRect().top - 20
@@ -99,21 +99,21 @@
     }
 
     Sample.prototype.request = function () {
-        this.xhr = $.request('samples', function(err, data){
+        this.xhr = $.request('samples/' + this.name + '.html', function(err, data){
             this.container.removeClass('hide')
             !err && this.data(data)
         }.bind(this))
     }
 
     Sample.prototype.data = function (data) {
-        var content = $.create(data).filter('#' + this.name)
+        var content = $.create(data)
         this.container.children().prepend(content)
         this.behavior()
     }
 
     Sample.prototype.behavior = function () {
-        if (SamplesBehavior && SamplesBehavior[this.name]) {
-            SamplesBehavior[this.name]()
+        if (window.samples && window.samples[this.name]) {
+            window.samples[this.name]()
         }
         Rainbow.color()
     }

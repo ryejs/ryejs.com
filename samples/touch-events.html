@@ -1,0 +1,38 @@
+<h1>Touch Events</h1>
+<div class="sample">
+    <div id="touch_sample" class="touch_sample" style="background: #cce">
+        <div class="name">All touch events</div>
+    </div>
+
+    <div id="touch_sample_scrollable" class="touch_sample" style="background: #cec">
+        <div class="name">Cancel all if scrolls</div>
+    </div>
+
+    <div id="touch_sample_single" class="touch_sample" style="background: #ecc">
+        <div class="name">Single tap only</div>
+    </div>
+</div>
+<div class="content">
+    <h2>All touch events</h2>
+    <ul>
+        <li>Container that captures all touch events.</li>
+        <li>Prevents default on touchmove, disabling scrolling.</li>
+        <li>Captures swipes in all directions.</li>
+        <li>Captures tap, singleTap (after delay), doubleTap, longTap</li>
+    </ul>
+
+    <h2>Cancel all if scrolls</h2>
+    <ul>
+        <li>Container that allows scrolling while capturing all events except swipes in the direction of scroll</li>
+        <li>Prevents default on touchmove, disabling scrolling.</li>
+        <li>Captures swipes in all directions.</li>
+        <li>Captures tap, singleTap (after delay), doubleTap, longTap</li>
+    </ul>
+
+    <h2>Single tap only</h2>
+    <ul>
+        <li>Container that allows scrolling and captures only simple, single taps. eg: a button or a tappable list item</li>
+        <li>Cancels touch after tap, disabling other touch events (singleTap, doubleTap)</li>
+        <li>Captures tap</li>
+    </ul>
+</div>

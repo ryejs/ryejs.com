@@ -2,18 +2,35 @@
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
-    <title>Rye Samples</title>
+    <title>Rye</title>
     <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
-    <section id="custom-dom-event-emitter">
-        <h1>Using a custom DOMEventEmitter</h1>
+    <header class="header">
+        <h1 class="logo">Rye</h1>
+    </header>
+    
+    <div class="navigation">
         <div class="content">
-            <p>When you are writing a plugin, or a feature that should be independent from other events in the application, use a new DOMEventEmitter to isolate your event handlers:</p>
+            <a href="/" class="home">rye.js <span>(0.0.1)</span></a>
+            <nav>
+<ul>
+<li><a href="../">Documentation</a></li>
+<li><a href="#">Samples</a>
+<ul><li><a href="#custom-dom-event-emitter">Using a custom DOMEventEmitter</a></li>
+<li><a href="#touch-events">Touch Events</a></li></ul></li>
+</ul>
+            </nav>
         </div>
+    </div>
 
-        <div class="sample">
-<pre><code data-language="javascript">var DOMEventEmitter = Rye.require('Events').DOMEventEmitter
+    <div class="main">
+<section class="section-custom-dom-event-emitter"><h1 id="custom-dom-event-emitter">Using a custom DOMEventEmitter</h1>
+<div class="content">
+    <p>When you are writing a plugin, or a feature that should be independent from other events in the application, use a new DOMEventEmitter to isolate your event handlers:</p>
+</div>
+
+<pre class="sample"><code data-language="javascript">var DOMEventEmitter = Rye.require('Events').DOMEventEmitter
   , element = $('#mything').get(0)
   , myEvents = new DOMEventEmitter(element)
 
@@ -26,54 +43,60 @@ myEvents.on('mousedown .that', function(){ ... })
 
 // remove all events:
 myEvents.destroy()
-</code></pre>
-        </div>
-    </section>
+</code></pre></section>
+<section class="section-touch-events"><h1 id="touch-events">Touch Events</h1>
+<div class="sample">
+    <div id="touch_sample" class="touch_sample" style="background: #cce">
+        <div class="name">All touch events</div>
+    </div>
 
-    <section id="touch">
-        <h1>Touch Events</h1>
-        <div class="content">
-            <h2>All touch events</h2>
-            <ul>
-                <li>Container that captures all touch events.</li>
-                <li>Prevents default on touchmove, disabling scrolling.</li>
-                <li>Captures swipes in all directions.</li>
-                <li>Captures tap, singleTap (after delay), doubleTap, longTap</li>
-            </ul>
+    <div id="touch_sample_scrollable" class="touch_sample" style="background: #cec">
+        <div class="name">Cancel all if scrolls</div>
+    </div>
 
-            <h2>Cancel all if scrolls</h2>
-            <ul>
-                <li>Container that allows scrolling while capturing all events except swipes in the direction of scroll</li>
-                <li>Prevents default on touchmove, disabling scrolling.</li>
-                <li>Captures swipes in all directions.</li>
-                <li>Captures tap, singleTap (after delay), doubleTap, longTap</li>
-            </ul>
+    <div id="touch_sample_single" class="touch_sample" style="background: #ecc">
+        <div class="name">Single tap only</div>
+    </div>
+</div>
+<div class="content">
+    <h2>All touch events</h2>
+    <ul>
+        <li>Container that captures all touch events.</li>
+        <li>Prevents default on touchmove, disabling scrolling.</li>
+        <li>Captures swipes in all directions.</li>
+        <li>Captures tap, singleTap (after delay), doubleTap, longTap</li>
+    </ul>
 
-            <h2>Single tap only</h2>
-            <ul>
-                <li>Container that allows scrolling and captures only simple, single taps. eg: a button or a tappable list item</li>
-                <li>Cancels touch after tap, disabling other touch events (singleTap, doubleTap)</li>
-                <li>Captures tap</li>
-            </ul>
-        </div>
+    <h2>Cancel all if scrolls</h2>
+    <ul>
+        <li>Container that allows scrolling while capturing all events except swipes in the direction of scroll</li>
+        <li>Prevents default on touchmove, disabling scrolling.</li>
+        <li>Captures swipes in all directions.</li>
+        <li>Captures tap, singleTap (after delay), doubleTap, longTap</li>
+    </ul>
 
-        <div class="sample">
-            <div id="touch_sample" class="touch_sample" style="background: #cce">
-                <div class="name">All touch events</div>
-            </div>
+    <h2>Single tap only</h2>
+    <ul>
+        <li>Container that allows scrolling and captures only simple, single taps. eg: a button or a tappable list item</li>
+        <li>Cancels touch after tap, disabling other touch events (singleTap, doubleTap)</li>
+        <li>Captures tap</li>
+    </ul>
+</div></section>
+    </div>
 
-            <div id="touch_sample_scrollable" class="touch_sample" style="background: #cec">
-                <div class="name">Cancel all if scrolls</div>
-            </div>
-
-            <div id="touch_sample_single" class="touch_sample" style="background: #ecc">
-                <div class="name">Single tap only</div>
-            </div>
-        </div>
-    </section>
+    <footer class="footer">
+        <p> 
+            by <a href="http://github.com/jcemer"><img src="http://gravatar.com/avatar/c5df370a883b65279af5a7ca94a5eed7?s=25" width="25" height="25" alt="Jean Carlo Emer">jcemer</a>
+            and <a href="http://github.com/ricardobeat"><img src="http://gravatar.com/avatar/47923b1f334d8e3f7a00506ac3c7a636?s=25" width="25" height="25" alt="Ricardo Tomasi">ricardobeat</a>
+        </p>
+    </footer>
     
     <script src="../rye.js"></script>
+    <script src="../scripts/main.js"></script>
     <script src="../scripts/samples.js"></script>
+    <script>
+        window.samples.all()
+    </script>
+    <script src="../scripts/rainbow.js"></script>
 </body>
 </html>
-    
