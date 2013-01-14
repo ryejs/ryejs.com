@@ -70,7 +70,7 @@ task 'build:docs', ->
         .replace('{{manifesto}}', docs.html 'manifesto')
         .replace('{{content}}', content)
         .replace('{{menu}}', menu)
-        .replace(/{{version}}/, VERSION)
+        .replace(/{{version}}/g, VERSION)
 
     put 'index.html', output
 
@@ -87,7 +87,7 @@ task 'build:readme', ->
         .replace('{{about}}', docs.get 'about')
         .replace('{{browsers}}', docs.html 'browsers')
         .replace('{{content}}', content)
-        .replace(/{{version}}/, VERSION)
+        .replace(/{{version}}/g, VERSION)
 
     put 'README.md', output
 
@@ -111,7 +111,7 @@ task 'build:samples', ->
     output = (get 'template/samples.html')
         .replace('{{content}}', content)
         .replace('{{menu}}', menu)
-        .replace(/{{version}}/, VERSION)
+        .replace(/{{version}}/g, VERSION)
 
     put 'samples/index.html', output
 
