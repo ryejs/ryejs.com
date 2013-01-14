@@ -12,13 +12,13 @@
                 })
             }
 
-            ['#touch_sample', '#touch_sample_scrollable', '#touch_sample_single'].map(listen_to)
+            ['#touch-sample', '#touch-sample-scrollable', '#touch-sample-single'].map(listen_to)
 
-            new Rye('#touch_sample').on('touchmove', function (event) {
+            new Rye('#touch-sample').on('touchmove', function (event) {
                 event.preventDefault()
             })
 
-            new Rye('#touch_sample_single').on('tap', function (event) {
+            new Rye('#touch-sample-single').on('tap', function (event) {
                 event.cancelTouch()
             })    
         }
