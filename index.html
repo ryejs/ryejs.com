@@ -8,13 +8,18 @@
 <body>
     <header class="header">
         <h1 class="logo">Rye</h1>
-        <div class="download">
-            <ol>
-                <li><label><input type="radio" name="purpose" checked> Production <span>(4.6KB, Minified)</span></label></li>
-                <li><label><input type="radio" name="purpose"> Development <span>(33KB, Uncompressed)</span></label></li>
-            </ol>
-            <button type="button">Download Rye 0.0.1</button>
-        </div>
+        <ol class="download">
+            <li>
+                <input type="radio" id="download-production" name="purpose" checked>
+                <label for="download-production">Production <span>(17.7KB, Minified)</span></label>
+                <a href="dist/rye-0.0.1.min.js" class="button">Download Rye 0.0.1 <span class="vhidden">for production</span></a>        
+            </li>
+            <li>
+                <input type="radio" id="download-development" name="purpose">
+                <label for="download-development">Development <span>(42.8KB, Uncompressed)</span></label>
+                <a href="dist/rye-0.0.1.js" class="button">Download Rye 0.0.1 <span class="vhidden">for development</span></a>
+            </li>
+        </ol>
     </header>
     
     <div class="navigation">
@@ -128,11 +133,12 @@
 <li><a href="#events-ryepublish">Rye.publish</a></li></ul></li>
 <li><a href="#touchevents">Touch Events</a></li>
 <li><a href="#request">Request</a>
-<ul><li><a href="#request-query">query</a></li>
-<li><a href="#request-ryerequest">Rye.request()</a></li>
+<ul><li><a href="#request-ryerequest">Rye.request()</a></li>
 <li><a href="#request-ryeget">Rye.get()</a></li>
 <li><a href="#request-ryepost">Rye.post()</a></li>
-<li><a href="#request-@query" class="module" >@query</a></li>
+<li><a href="#request-serialize">serialize</a></li>
+<li><a href="#request-@request" class="module" >@request</a></li>
+<li><a href="#request-@serialize" class="module" >@serialize</a></li>
 <li><a href="#request-@appendquery" class="module" >@appendQuery</a></li>
 <li><a href="#request-@defaults" class="module" >@defaults</a></li>
 <li><a href="#request-@get" class="module" >@get</a></li>
@@ -160,8 +166,8 @@
 <p><strong>Rye</strong> is a lightweight javascript library for DOM manipulation and events with support for <strong>all modern browsers</strong>, including IE9+. It also has <strong>touch events/gestures</strong>, an <strong>event emitter</strong> constructor, and a <strong>jQuery-like</strong> API.</p>
 
 <div class="buttons">
-    <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
-    <iframe src="http://ghbtns.com/github-btn.html?user=jcemer&amp;repo=rye&amp;type=fork&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+    <iframe src="http://ghbtns.com/github-btn.html?user=ryejs&amp;repo=rye&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+    <iframe src="http://ghbtns.com/github-btn.html?user=ryejs&amp;repo=rye&amp;type=fork&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
 </div>
 
 <h1 id="introduction">Introduction</h1>
@@ -271,9 +277,9 @@
 <h2 id="rye-constructor">Constructor</h2>
 
 <div class="api">
-    Rye(selector[, context]) <span>⤳ rye collection</span><br>
-    Rye(element) <span>⤳ rye collection</span><br>
-    Rye(elements) <span>⤳ rye collection</span>
+    Rye(selector[, context]) <span><span>⤳ rye collection</span><br></span>
+    Rye(element) <span><span>⤳ rye collection</span><br></span>
+    Rye(elements) <span><span>⤳ rye collection</span></span>
 </div>
 
 <p>Creates a Rye collection object.</p>
@@ -289,7 +295,7 @@
 <h2 id="rye-ryerequire">Rye.require</h2>
 
 <div class="api">
-    Rye.require(name) <span>⤳ function</span>
+    Rye.require(name) <span><span>⤳ function</span></span>
 </div>
 
 <p>Requires the function stored. All code in Rye is allocated as modules.</p></section>
@@ -299,119 +305,105 @@
 
 <h2 id="data-data">data</h2>
 
-<div class="api">
-    .data(key[, value]) <span>⤳ self</span><br>
-    .data({property: value, ...}) <span>⤳ self</span><br>
-</div>
+<pre><code>.data(key[, value]) <span>⤳ self</span>
+.data({property: value, ...}) <span>⤳ self</span>
+</code></pre>
 
 <p>Get or set data attached to each element in the <code>.elements</code> array.</p>
 
 <h2 id="data-@set">@set</h2>
 
-<div class="api">
-    data.set(element, key, value)
-</div>
+<pre><code>data.set(element, key, value)
+</code></pre>
 
 <p>Stores <code>value</code> in <code>key</code> for <code>element</code>.</p>
 
 <h2 id="data-@get">@get</h2>
 
-<div class="api">
-    data.get(element, key) <span>⤳ mixed</span>
-</div>
+<pre><code>data.get(element, key) <span>⤳ mixed</span>
+</code></pre>
 
 <p>Returns the value in <code>key</code> for <code>element</code>.</p></section>
 <section class="section-query"><h1 id="traversal">Traversal</h1>
 
 <h2 id="traversal-find">find</h2>
 
-<div class="api">
-    .find(selector) <span>⤳ rye collection</span>
-</div>
+<pre><code>.find(selector) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Returns a new Rye collection containing the descendants of the current <code>collection.elements</code>, filtered by <code>selector</code>. Uses <code>.querySelectorAll</code> when available.</p>
 
 <h2 id="traversal-index">index</h2>
 
-<div class="api">
-    .index(selector) <span>⤳ number</span>
-</div>
+<pre><code>.index(selector) <span>⤳ number</span>
+</code></pre>
 
 <p>Returns the index at which an element matching <code>selector</code> can be found. If no argument given, returns the index of the first element in the collection relative to it's siblings.</p>
 
 <h2 id="traversal-add">add</h2>
 
-<div class="api">
-    .add(elements) <span>⤳ rye collection</span><br>
-    .add(Rye) <span>⤳ rye collection</span><br>
-    .add(selector[, context]) <span>⤳ rye collection</span>
-</div>
+<pre><code>.add(elements) <span>⤳ rye collection</span>
+.add(Rye) <span>⤳ rye collection</span>
+.add(selector[, context]) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Add elements to <code>collection.elements</code> and return a new collection. Unlike <code>push</code> it doesn't modify the objects <code>.elements</code> array.</p>
 
 <h2 id="traversal-plucknode">pluckNode</h2>
 
-<div class="api">
-    .pluckNode(property) <span>⤳ rye collection</span>
-</div>
+<pre><code>.pluckNode(property) <span>⤳ rye collection</span>
+</code></pre>
 
-<p>Uses DOM APIs to create a new set of elements. <code>property</code> should be a method of <code>HTMLElement</code>, ex. <code>parentNode</code> or <code>childNodes</code>. Filters nodes using <a href="#util-iselement"><code>util.isElement</code></a>.</p>
+<p>Uses DOM APIs to create a new set of elements. <code>property</code> should be a method of <code>HTMLElement</code>, ex. <code>parentNode</code> or <code>childNodes</code>. Filters nodes using <a href="#util-@iselement"><code>util.isElement</code></a>.</p>
 
 <p>Used internally by <code>next()</code> and <code>prev()</code>.</p>
 
 <h2 id="traversal-next">next</h2>
 
-<div class="api">
-    .next() <span>⤳ rye collection</span>
-</div>
+<pre><code>.next() <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Get the immediately following sibling of each element in collection.</p>
 
 <h2 id="traversal-prev">prev</h2>
 
-<div class="api">
-    .prev() <span>⤳ rye collection</span>
-</div>
+<pre><code>.prev() <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Get the immediately preceding sibling of each element in collection.</p>
 
 <h2 id="traversal-siblings">siblings</h2>
 
-<div class="api">
-    .siblings() <span>⤳ rye collection</span>
-</div>
+<pre><code>.siblings() <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Get all the siblings of each element in collection. Returns a unique set.</p>
 
 <h2 id="traversal-parent">parent</h2>
 
-<div class="api">
-    .parent([selector]) <span>⤳ rye collection</span>
-</div>
+<pre><code>.parent([selector]) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Get the parent of each element in collection, optionally filtered by <code>selector</code>.</p>
 
 <h2 id="traversal-parents">parents</h2>
 
-<div class="api">
-    .parents([selector]) <span>⤳ rye collection</span>
-</div>
+<pre><code>.parents([selector]) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Get the ancestors of each element in collection, optionally filtered by <code>selector</code>.</p>
 
 <h2 id="traversal-closest">closest</h2>
 
-<div class="api">
-    .closest(selector) <span>⤳ rye collection</span>
-</div>
+<pre><code>.closest(selector) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>For each element in collection, get the first element that matches <code>selector</code> by testing the element itself then traversing up through its ancestors.</p>
 
 <h2 id="traversal-children">children</h2>
 
-<div class="api">
-    .children([selector]) <span>⤳ rye collection</span>
-</div>
+<pre><code>.children([selector]) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Get the children of each element in collection, optionally filtered by <code>selector</code>.</p>
 
@@ -419,12 +411,11 @@
 
 <h2 id="filter-filter">filter</h2>
 
-<div class="api">
-    .filter(selector[, inverse]) <span>⤳ rye collection</span><br>
-    .filter(element[, inverse]) <span>⤳ rye collection</span><br>
-    .filter(Rye[, inverse]) <span>⤳ rye collection</span><br>
-    .filter(fn[, inverse]) <span>⤳ rye collection</span>
-</div>
+<pre><code>.filter(selector[, inverse]) <span>⤳ rye collection</span>
+.filter(element[, inverse]) <span>⤳ rye collection</span>
+.filter(Rye[, inverse]) <span>⤳ rye collection</span>
+.filter(fn[, inverse]) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Returns a new collection keeping elements that match <code>selector</code>, <code>element</code>, <code>Rye</code> or for which <code>fn</code> returns <code>true</code>, as in <code>Array.prototype.filter</code>.</p>
 
@@ -432,44 +423,39 @@
 
 <h2 id="filter-filternot">filter not</h2>
 
-<div class="api">
-    .filter('!' + selector) <span>⤳ rye collection</span>
-</div>
+<pre><code>.filter('!' + selector) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Aliast to <code>.filter(selector, inverse=true)</code>. Example: `collection.filter('!.someclass').</p>
 
 <h2 id="filter-contains">contains</h2>
 
-<div class="api">
-    .contains(selector) <span>⤳ rye collection</span>
-</div>
+<pre><code>.contains(selector) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Returns a new collection containg elements where at least one descendant matches <code>seletor</code>.</p>
 
 <h2 id="filter-is">is</h2>
 
-<div class="api">
-    .is(selector) <span>⤳ boolean</span><br>
-    .is(element[, inverse]) <span>⤳ boolean</span><br>
-    .is(Rye[, inverse]) <span>⤳ boolean</span><br>
-    .is(fn[, inverse]) <span>⤳ boolean</span>
-</div>
+<pre><code>.is(selector) <span>⤳ boolean</span>
+.is(element[, inverse]) <span>⤳ boolean</span>
+.is(Rye[, inverse]) <span>⤳ boolean</span>
+.is(fn[, inverse]) <span>⤳ boolean</span>
+</code></pre>
 
 <p>Check if the current collection matches <code>selector</code>, <code>element</code>, or the provided function.</p>
 
 <h2 id="filter-first">first</h2>
 
-<div class="api">
-    .first() <span>⤳ rye collection</span>
-</div>
+<pre><code>.first() <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Get the first element in the collection.</p>
 
 <h2 id="filter-last">last</h2>
 
-<div class="api">
-    .last() <span>⤳ rye collection</span>
-</div>
+<pre><code>.last() <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Get the last element in the collection.</p>
 
@@ -481,249 +467,220 @@
 
 <h2 id="query-@matches">@matches</h2>
 
-<div class="api">
-    query.matches(element, selector) <span>⤳ boolean</span><br>
-    query.matches(element, element) <span>⤳ boolean</span><br>
-    query.matches(element, Rye) <span>⤳ boolean</span>
-</div>
+<pre><code>query.matches(element, selector) <span>⤳ boolean</span>
+query.matches(element, element) <span>⤳ boolean</span>
+query.matches(element, Rye) <span>⤳ boolean</span>
+</code></pre>
 
 <p>Check that element matches <code>selector</code>, <code>element</code> or another collection. Uses native <code>matchesSelector</code> when available.</p>
 
 <h2 id="query-@qsa">@qsa</h2>
 
-<div class="api">
-    query.qsa(element, selector) <span>⤳ array</span>
-</div>
+<pre><code>query.qsa(element, selector) <span>⤳ array</span>
+</code></pre>
 
 <p>Perform a CSS selector query using <code>element</code> as root. Uses <code>querySelectorAll</code>, returns a standard <code>Array</code>.</p>
 
 <h2 id="query-@getclosestnode">@getClosestNode</h2>
 
-<div class="api">
-    query.getClosestNode(element, method[, selector]) <span>⤳ element</span>
-</div>
+<pre><code>query.getClosestNode(element, method[, selector]) <span>⤳ element</span>
+</code></pre>
 
 <p>Traversing helper. Recursively call <code>method</code> on <code>element</code> until <code>element</code> matches <code>selector</code>. Returns HTML nodes only.</p></section>
 <section class="section-collection"><h1 id="collection">Collection</h1>
 
 <h2 id="collection-get">get</h2>
 
-<div class="api">
-    .get(index) <span>⤳ element</span><br>
-    .get() <span>⤳ array</span>
-</div>
+<pre><code>.get(index) <span>⤳ element&lt;br&gt;</span>
+.get() <span>⤳ array</span>
+</code></pre>
 
 <p>Return the element at <code>collection.elements[index]</code>. If no argument given, return a copy of the <code>.elements</code> array.</p>
 
 <h2 id="collection-eq">eq</h2>
 
-<div class="api">
-    .eq(index) <span>⤳ rye collection</span><br>
-    .eq() <span>⤳ empty rye collection</span>
-</div>
+<pre><code>.eq(index) <span>⤳ rye collection&lt;br&gt;</span>
+.eq() <span>⤳ empty rye collection</span>
+</code></pre>
 
 <p>Same as <code>.get()</code>, but returns the element as a Rye collection. If no argument given, return an empty collection.</p>
 
 <h2 id="collection-foreach">forEach</h2>
 
-<div class="api">
-    .forEach(callback[, thisArg]) <span>⤳ array</span>
-</div>
+<pre><code>.forEach(callback[, thisArg]) <span>⤳ array</span>
+</code></pre>
 
 <p>Call <code>Array.prototype.forEach</code> on <code>collection.elements</code>. Callback receives <code>(value, index, array)</code>.</p>
 
 <h2 id="collection-reduce">reduce</h2>
 
-<div class="api">
-    .reduce(callback[, initialValue]) <span>⤳ array</span>
-</div>
+<pre><code>.reduce(callback[, initialValue]) <span>⤳ array</span>
+</code></pre>
 
 <p>Call <code>Array.prototype.reduce</code> on <code>collection.elements</code>. Callback receives <code>(previousValue, currentValue, index, array)</code>.</p>
 
 <h2 id="collection-reduceright">reduceRight</h2>
 
-<div class="api">
-    .reduceRight(callback[, initialValue]) <span>⤳ array</span>
-</div>
+<pre><code>.reduceRight(callback[, initialValue]) <span>⤳ array</span>
+</code></pre>
 
 <p>Same as <a href="#collection-reduce"><code>.reduce</code></a> but operates from right-to-left. Callback receives <code>(previousValue, currentValue, index, array)</code>.</p>
 
 <h2 id="collection-indexof">indexOf</h2>
 
-<div class="api">
-    .indexOf(element[, fromIndex]) <span>⤳ array</span>
-</div>
+<pre><code>.indexOf(element[, fromIndex]) <span>⤳ array</span>
+</code></pre>
 
 <p>Call <code>Array.prototype.indexOf</code> on <code>collection.elements</code>. Returns the first index
 at which the element is found, or -1 if it is not present.</p>
 
 <h2 id="collection-map">map</h2>
 
-<div class="api">
-    .map(callback[, thisArg]) <span>⤳ rye collection</span>
-</div>
+<pre><code>.map(callback[, thisArg]) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Calls <code>Array.prototype.map</code> on <code>collection.elements</code>. Returns a new array with the result of calling <code>callback</code> on each element of the array. Callback receives <code>(value, index, array)</code>.</p>
 
 <h2 id="collection-sort">sort</h2>
 
-<div class="api">
-    .sort([fn]) <span>⤳ rye collection</span>
-</div>
+<pre><code>.sort([fn]) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Calls <code>Array.prototype.sort</code> on <code>collection.elements</code>, with <code>fn</code> as comparison function.</p>
 
 <h2 id="collection-each">each</h2>
 
-<div class="api">
-    .each(callback) <span>⤳ self</span>
-</div>
+<pre><code>.each(callback) <span>⤳ self</span>
+</code></pre>
 
 <p>Alias for <a href="#collection-foreach"><code>.forEach</code></a>.</p>
 
 <h2 id="collection-iterate">iterate</h2>
 
-<div class="api">
-    .iterate(fn, context) <span>⤳ function</span>
-</div>
+<pre><code>.iterate(fn, context) <span>⤳ function</span>
+</code></pre>
 
 <p>Returns a function that will call <code>fn</code> with <code>context</code> for every element in <code>collection.elements</code>. The function receives the current element plus the arguments given on invocation.</p>
 
 <h2 id="collection-push">push</h2>
 
-<div class="api">
-    .push(element) <span>⤳ index</span>
-</div>
+<pre><code>.push(element) <span>⤳ index</span>
+</code></pre>
 
 <p>Add an element to <code>collection.elements</code>. Returns the new element index.</p>
 
 <h2 id="collection-slice">slice</h2>
 
-<div class="api">
-    .slice(start, end) <span>⤳ rye collection</span>
-</div>
+<pre><code>.slice(start, end) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Calls <code>Array.prototype.slice</code> on <code>collection.elements</code>.</p>
 
 <h2 id="collection-concat">concat</h2>
 
-<div class="api">
-    .concat(elements, ...) <span>⤳ rye collection</span>
-</div>
+<pre><code>.concat(elements, ...) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Concatenates an array to <code>collection.elements</code>. Accepts instances of Rye.</p>
 
 <h2 id="collection-pluck">pluck</h2>
 
-<div class="api">
-    .pluck(property) <span>⤳ array</span>
-</div>
+<pre><code>.pluck(property) <span>⤳ array</span>
+</code></pre>
 
-<p>Plucks the value of <code>property</code> for each element in <code>collection.elements</code>. Alias for <a href="#util-pluck"><code>util.pluck</code></a>.</p>
+<p>Plucks the value of <code>property</code> for each element in <code>collection.elements</code>. Alias for <a href="#util-@pluck"><code>util.pluck</code></a>.</p>
 
 <h2 id="collection-put">put</h2>
 
-<div class="api">
-    .put(property, value) <span>⤳ array</span>
-</div>
+<pre><code>.put(property, value) <span>⤳ array</span>
+</code></pre>
 
-<p>Sets <code>property</code> to <code>value</code> for each element in <code>collection.elements</code>. Alias for <a href="#util-put"><code>util.put</code></a>.</p></section>
+<p>Sets <code>property</code> to <code>value</code> for each element in <code>collection.elements</code>. Alias for <a href="#util-@put"><code>util.put</code></a>.</p></section>
 <section class="section-manipulation"><h1 id="manipulation">Manipulation</h1>
 
 <h2 id="manipulation-text">text</h2>
 
-<div class="api">
-    .text(text) <span>⤳ self</span><br>
-    .text() <span>⤳ text</span>
-</div>
+<pre><code>.text(text) <span>⤳ self</span>
+.text() <span>⤳ text</span>
+</code></pre>
 
 <p>Set or get <code>textContent</code>. If no argument given, returns the first element's value.</p>
 
 <h2 id="manipulation-html">html</h2>
 
-<div class="api">
-    .html(html) <span>⤳ self</span><br>
-    .html() <span>⤳ html</span>
-</div>
+<pre><code>.html(html) <span>⤳ self</span>
+.html() <span>⤳ html</span>
+</code></pre>
 
 <p>Set or get <code>innerHTML</code>. If no argument given, returns the first element's value.</p>
 
 <h2 id="manipulation-empty">empty</h2>
 
-<div class="api">
-    .empty() <span>⤳ self</span>
-</div>
+<pre><code>.empty() <span>⤳ self</span>
+</code></pre>
 
 <p>Sets <code>innerHTML</code> to an empty string <code>''</code> for all elements.</p>
 
 <h2 id="manipulation-append">append</h2>
 
-<div class="api">
-    .append(html) <span>⤳ self</span><br>
-    .append(element) <span>⤳ self</span>
-</div>
+<pre><code>.append(html) <span>⤳ self</span>
+.append(element) <span>⤳ self</span>
+</code></pre>
 
 <p>Append <code>html</code> or <code>element</code> to each element in the collection. If the argument is an HTML element, it is cloned before each operation.</p>
 
 <h2 id="manipulation-prepend">prepend</h2>
 
-<div class="api">
-    .prepend(html) <span>⤳ self</span><br>
-    .prepend(element) <span>⤳ self</span>
-</div>
+<pre><code>.prepend(html) <span>⤳ self</span>
+.prepend(element) <span>⤳ self</span>
+</code></pre>
 
 <p>Prepend 'html' or 'element' to each element in the collection.</p>
 
 <h2 id="manipulation-after">after</h2>
 
-<div class="api">
-    .after(html) <span>⤳ self</span><br>
-    .after(element) <span>⤳ self</span>
-</div>
+<pre><code>.after(html) <span>⤳ self</span>
+.after(element) <span>⤳ self</span>
+</code></pre>
 
 <p>Insert <code>html</code> or <code>element</code> <em>after</em> each element in the collection.</p>
 
 <h2 id="manipulation-before">before</h2>
 
-<div class="api">
-    .before(html) <span>⤳ self</span><br>
-    .before(element) <span>⤳ self</span>
-</div>
+<pre><code>.before(html) <span>⤳ self</span>
+.before(element) <span>⤳ self</span>
+</code></pre>
 
 <p>Insert <code>html</code> or <code>element</code> <em>before</em> each element in the collection.</p>
 
 <h2 id="manipulation-clone">clone</h2>
 
-<div class="api">
-    .clone(deep) <span>⤳ rye collection</span>
-</div>
+<pre><code>.clone(deep) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Clone elements with <a href="https://developer.mozilla.org/en-US/docs/DOM/Node.cloneNode"><code>cloneNode(deep)</code></a>. <code>deep</code> defaults to true (copy all child nodes). </p>
 
 <h2 id="manipulation-remove">remove</h2>
 
-<div class="api">
-    .remove() <span>⤳ rye collection</span>
-</div>
+<pre><code>.remove() <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Remove elements that are in the collection. </p>
 
 <h2 id="manipulation-val">val</h2>
 
-<div class="api">
-    .val() <span>⤳ string</span><br>
-    .val(value) <span>⤳ self</span>
-</div>
+<pre><code>.val() <span>⤳ string</span>
+.val(value) <span>⤳ self</span>
+</code></pre>
 
 <p>Get or set the <code>value</code> property for all elements. If no argument given, returns value for the first element only. For a <code>&lt;select multiple&gt;</code> an array of values is returned.</p>
 
 <h2 id="manipulation-attr">attr</h2>
 
-<div class="api">
-    .attr(name) <span>⤳ string</span><br>
-    .attr(name, value) <span>⤳ self</span><br>
-    .attr({name: value, ...}) <span>⤳ self</span>
-</div>
+<pre><code>.attr(name) <span>⤳ string</span>
+.attr(name, value) <span>⤳ self</span>
+.attr({name: value, ...}) <span>⤳ self</span>
+</code></pre>
 
 <p>When no <code>value</code> is given, reads specified attribute from the first element in the collection using <code>getAttribute</code>. </p>
 
@@ -731,230 +688,281 @@ at which the element is found, or -1 if it is not present.</p>
 
 <h2 id="manipulation-prop">prop</h2>
 
-<div class="api">
-    .prop(name) <span>⤳ string</span><br>
-    .prop(name, value) <span>⤳ self</span><br>
-    .prop({name: value, ...}) <span>⤳ self</span>
-</div>
+<pre><code>.prop(name) <span>⤳ string</span>
+.prop(name, value) <span>⤳ self</span>
+.prop({name: value, ...}) <span>⤳ self</span>
+</code></pre>
 
-<p>Get or set the <em>property</em> <code>name</code> for each element. Implemented as an alias to <a href="#util-pluck"><code>util.pluck</code></a> and <a href="#util-put"><code>util.put</code></a>.</p>
+<p>Get or set the <em>property</em> <code>name</code> for each element. Implemented as an alias to <a href="#util-@pluck"><code>util.pluck</code></a> and <a href="#util-@put"><code>util.put</code></a>.</p>
 
 <h2 id="manipulation-ryecreate">Rye.create</h2>
 
-<div class="api">
-    Rye.create(html) <span>⤳ rye collection</span>
-</div>
+<pre><code>Rye.create(html) <span>⤳ rye collection</span>
+</code></pre>
 
 <p>Turn a string containing HTML into a DOM element tree.</p>
 
 <h2 id="manipulation-@getvalue">@getValue</h2>
 
-<div class="api">
-    manipulation.getValue(element) <span>⤳ string</span>
-</div>
+<pre><code>manipulation.getValue(element) <span>⤳ string</span>
+</code></pre>
 
 <p>Get the <code>value</code> property of <code>element</code>. Returns an array of values in case <code>element</code> is a <code>&lt;select multiple&gt;</code>.</p>
 
 <h2 id="manipulation-@getattribute">@getAttribute</h2>
 
-<div class="api">
-    manipulation.getAttribute(element, name) <span>⤳ string</span>
-</div>
+<pre><code>manipulation.getAttribute(element, name) <span>⤳ string</span>
+</code></pre>
 
 <p>Get the value of <code>name</code> for a given <code>element</code>. Falls back to <code>getValue</code> for getting the <code>value</code> attribute.</p></section>
 <section class="section-style"><h1 id="style">Style</h1>
 
 <h2 id="style-show">show</h2>
 
+<pre><code>.show() <span>⤳ self</span>
+</code></pre>
+
+<p>Set <code>display: block</code> on each element; if the element has been hidden with <code>.hide()</code> before the <code>display</code> value is preserved.</p>
+
 <h2 id="style-hide">hide</h2>
+
+<pre><code>.hide() <span>⤳ self</span>
+</code></pre>
+
+<p>Set <code>display: none</code> on each element. Saves the <code>display</code> value for subsequent calls.</p>
 
 <h2 id="style-css">css</h2>
 
+<pre><code>.css(prop) <span>⤳ string</span>
+.css(prop, value) <span>⤳ self</span>
+</code></pre>
+
+<p>Get or set <code>style</code> properties.</p>
+
 <h2 id="style-hasclass">hasClass</h2>
+
+<pre><code>.hasClass(className) <span>⤳ boolean</span>
+</code></pre>
+
+<p>Check that the elements' class list contains <code>className</code>.</p>
 
 <h2 id="style-addclass">addClass</h2>
 
+<pre><code>.addClass(className) <span>⤳ self</span>
+</code></pre>
+
+<p>Add <code>className</code> to the elements' class list.</p>
+
 <h2 id="style-removeclass">removeClass</h2>
+
+<pre><code>.removeClass(className) <span>⤳ self</span>
+</code></pre>
+
+<p>Remove <code>className</code> from the elements' class list.</p>
 
 <h2 id="style-toggleclass">toggleClass</h2>
 
+<pre><code>.toggleClass(className, switch) <span>⤳ self</span>
+</code></pre>
+
+<p>If <code>switch</code> is a truthy value, <em>add</em> <code>className</code> to the elements' class list, if it's falsy <em>remove</em> <code>className</code>.</p>
+
 <h2 id="style-@getcss">@getCSS</h2>
+
+<pre><code>style.getCSS(element, property) <span>⤳ string</span>
+</code></pre>
+
+<p>Return the value of <code>property</code> in <code>element.style</code>.</p>
 
 <h2 id="style-@setcss">@setCSS</h2>
 
+<pre><code>style.setCSS(element, property, value) <span>⤳ element</span>
+</code></pre>
+
+<p>Set <code>property</code> to <code>value</code> on <code>element.style</code>.</p>
+
 <h2 id="style-@hasclass">@hasClass</h2>
+
+<pre><code>style.hasClass(element, className) <span>⤳ boolean</span>
+</code></pre>
+
+<p>Returns <code>true</code> if <code>className</code> is contained in <code>element</code>'s class list, <code>false</code> otherwise.</p>
 
 <h2 id="style-@addclass">@addClass</h2>
 
-<h2 id="style-@removeclass">@removeClass</h2></section>
+<pre><code>style.addClass(element, className) <span>⤳ element</span>
+</code></pre>
+
+<p>Add <code>className</code> to <code>element</code>'s class list.</p>
+
+<h2 id="style-@removeclass">@removeClass</h2>
+
+<pre><code>style.removeClass(element, className) <span>⤳ element</span>
+</code></pre>
+
+<p>Remove <code>className</code> from <code>element</code>'s class list.</p></section>
 <section class="section-event-emitter"><h1 id="eventemitter">Event Emitter</h1>
 
 <p>Stand-alone event emitter implementation. Rye itself is an instance of <code>EventEmitter</code>, see <a href="#events-ryepublish"><code>Rye.publish</code></a> / <a href="#events-ryesubscribe"><code>Rye.subscribe</code></a>.</p>
 
 <h2 id="eventemitter-addlisteneron">addListener (on)</h2>
 
-<div class="api">
-    emitter.addListener(event, handler) <span>⤳ self</span><br>
-    emitter.on(event, handler) <span>⤳ self</span>
-</div>
+<pre><code>emitter.addListener(event, handler) <span>⤳ self</span>
+emitter.on(event, handler) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="eventemitter-once">once</h2>
 
-<div class="api">
-    emitter.once(event, handler) <span>⤳ self</span>
-</div>
+<pre><code>emitter.once(event, handler) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="eventemitter-removelistener">removeListener</h2>
 
-<div class="api">
-    emitter.removeListener(event[, handler]) <span>⤳ self</span>
-</div>
+<pre><code>emitter.removeListener(event[, handler]) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="eventemitter-trigger">trigger</h2>
 
-<div class="api">
-    emitter.trigger(event[, data]) <span>⤳ self</span>
-</div>
+<pre><code>emitter.trigger(event[, data]) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="eventemitter-proxy">proxy</h2>
 
-<div class="api">
-    emitter.proxy(event) <span>⤳ function</span>
-</div></section>
+<pre><code>emitter.proxy(event) <span>⤳ function</span>
+</code></pre></section>
 <section class="section-dom-event-emitter"><h1 id="domeventemitter">DOM Event Emitter</h1>
 
-<p>This inherits from <code>EventEmitter</code> while handling DOM events. The constructor receives an element as argument: <code>var emitter = new DOMEventEmitter(element)</code>.</p>
+<p>Inherits from <code>EventEmitter</code> while handling DOM events. The root <code>element</code> will receive all delegate event handlers. It's used internally to handle event binding.</p>
+
+<h3 id="domeventemitter-proxy-usingacustomdomeventemitter">Using a custom DOMEventEmitter</h3>
+
+<p>When you are writing a plugin, or a feature that should be independent from other events in the application, use a new <code>DOMEventEmitter</code> to isolate your event handlers:</p>
+
+<pre><code>var DOMEventEmitter = Rye.require('Events').DOMEventEmitter
+  , element = $('#mything').get(0)
+  , myEvents = new DOMEventEmitter(element)
+
+myEvents.on({
+    'click .button': function(){ ... }
+  , 'mouseover li': function(){ ... }
+})
+
+myEvents.on('mousedown .that', function(){ ... })
+
+// remove all events:
+myEvents.destroy()
+</code></pre>
 
 <h2 id="domeventemitter-addlisteneron">addListener (on)</h2>
 
-<div class="api">
-    emitter.addListener(event, fn) <span>⤳ self</span><br>
-    emitter.on(element, event, fn) <span>⤳ self</span>
-</div>
+<pre><code>emitter.addListener(event, fn) <span>⤳ self</span>
+emitter.on(element, event, fn) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="domeventemitter-onceone">once (one)</h2>
 
-<div class="api">
-    emitter.once(event, fn) <span>⤳ self</span><br>
-    emitter.one(event, fn) <span>⤳ self</span>
-</div>
+<pre><code>emitter.once(event, fn) <span>⤳ self</span>
+emitter.one(event, fn) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="domeventemitter-removelisteneroff">removeListener (off)</h2>
 
-<div class="api">
-    emitter.removeListener(event[, fn]) <span>⤳ self</span><br>
-    emitter.off(event[, fn]) <span>⤳ self</span>
-</div>
+<pre><code>emitter.removeListener(event[, fn]) <span>⤳ self</span>
+emitter.off(event[, fn]) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="domeventemitter-destroy">destroy</h2>
 
-<div class="api">
-    emitter.destroy() <span>⤳ self</span>
-</div>
+<pre><code>emitter.destroy() <span>⤳ self</span>
+</code></pre>
 
 <h2 id="domeventemitter-trigger">trigger</h2>
 
-<div class="api">
-    emitter.trigger(event[, data]) <span>⤳ self</span>
-</div>
+<pre><code>emitter.trigger(event[, data]) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="domeventemitter-emit">emit</h2>
 
-<div class="api">
-    emitter.trigger(event[, data]) <span>⤳ self</span>
-</div>
+<pre><code>emitter.trigger(event[, data]) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="domeventemitter-proxy">proxy</h2>
 
-<div class="api">
-    emitter.proxy(event) <span>⤳ function</span>
-</div></section>
+<pre><code>emitter.proxy(event) <span>⤳ function</span>
+</code></pre></section>
 <section class="section-events"><h1 id="events">Events</h1>
 
 <h2 id="events-addlistener">addListener</h2>
 
-<div class="api">
-    .addListener(name, handler) <span>⤳ self</span><br>
-    .on(name, handler) <span>⤳ self</span>
-</div>
+<pre><code>.addListener(name, handler) <span>⤳ self</span>
+.on(name, handler) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="events-once">once</h2>
 
-<div class="api">
-    .once(name, handler) <span>⤳ self</span>
-</div>
+<pre><code>.once(name, handler) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="events-removelistener">removeListener</h2>
 
-<div class="api">
-    .removeListener(name[, handler]) <span>⤳ self</span>
-</div>
+<pre><code>.removeListener(name[, handler]) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="events-trigger">trigger</h2>
 
-<div class="api">
-    .trigger(name[, data]) <span>⤳ self</span>
-</div>
+<pre><code>.trigger(name[, data]) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="events-@getemitter">@getEmitter</h2>
 
-<div class="api">
-    events.getEmitter(element) <span>⤳ DOMEventEMitter</span>
-</div>
+<pre><code>events.getEmitter(element) <span>⤳ DOMEventEMitter</span>
+</code></pre>
 
 <h2 id="events-@createevent">@createEvent</h2>
 
-<div class="api">
-    events.createEvent(type[, properties]) <span>⤳ Event</span><br>
-    events.createEvent(obj[, properties]) <span>⤳ Event</span>
-</div>
+<pre><code>events.createEvent(type[, properties]) <span>⤳ Event</span>
+events.createEvent(obj[, properties]) <span>⤳ Event</span>
+</code></pre>
 
 <h2 id="events-@addlistener">@addListener</h2>
 
-<div class="api">
-    events.addListener(element, name, handler) <span>⤳ self</span><br>
-    events.on(element, name, handler) <span>⤳ self</span>
-</div>
+<pre><code>events.addListener(element, name, handler) <span>⤳ self</span>
+events.on(element, name, handler) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="events-@once">@once</h2>
 
-<div class="api">
-    events.once(element, name, handler) <span>⤳ self</span>
-</div>
+<pre><code>events.once(element, name, handler) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="events-@removelistener">@removeListener</h2>
 
-<div class="api">
-    events.removeListener(element, name[, handler]) <span>⤳ self</span>
-</div>
+<pre><code>events.removeListener(element, name[, handler]) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="events-@trigger">@trigger</h2>
 
-<div class="api">
-    events.trigger(element, name[, data]) <span>⤳ self</span>
-</div>
+<pre><code>events.trigger(element, name[, data]) <span>⤳ self</span>
+</code></pre>
 
 <h2 id="events-ryesubscribe">Rye.subscribe</h2>
 
-<div class="api">
-    Rye.subscribe(event, handler) <span>⤳ self</span>
-</div>
+<pre><code>Rye.subscribe(event, handler) <span>⤳ self</span>
+</code></pre>
 
 <p>Listen for <code>event</code> on the global event bus.</p>
 
 <h2 id="events-ryeunsubscribe">Rye.unsubscribe</h2>
 
-<div class="api">
-    Rye.unsubscribe(event[, handler]) <span>⤳ self</span>
-</div>
+<pre><code>Rye.unsubscribe(event[, handler]) <span>⤳ self</span>
+</code></pre>
 
 <p>Stop listening for <code>event</code> on the global event bus.</p>
 
 <h2 id="events-ryepublish">Rye.publish</h2>
 
-<div class="api">
-    Rye.publish(event[, args...]) <span>⤳ self</span>
-</div>
+<pre><code>Rye.publish(event[, args...]) <span>⤳ self</span>
+</code></pre>
 
 <p>Emit <code>event</code> on the global event bus. Extra arguments will be forwarded to event handlers.</p></section>
 <section class="section-touch-events"><h1 id="touchevents">Touch Events</h1>
@@ -974,180 +982,188 @@ at which the element is found, or -1 if it is not present.</p>
 <p><a href="/samples#touch" class="button">touch events sample</a></p></section>
 <section class="section-request"><h1 id="request">Request</h1>
 
-<h2 id="request-query">query</h2>
-
-<div class="api">
-    .query() <span>⤳ string</span><br>
-</div>
-
-<p>Encode a set of form elements as a string for request submission.</p>
-
 <h2 id="request-ryerequest">Rye.request()</h2>
 
-<div class="api">
-    Rye.request(url, callback) <span>⤳ xhr</span><br>
-    Rye.request(settings, callback) <span>⤳ xhr</span><br>
-    Rye.request(settings) <span>⤳ xhr</span><br>
-</div>
+<pre><code>Rye.request(url, callback) <span>⤳ XMLHttpRequest</span>
+Rye.request(settings, callback) <span>⤳ XMLHttpRequest</span>
+Rye.request(settings) <span>⤳ XMLHttpRequest</span>
+</code></pre>
+
+<p>Create and send a new XMLHttpRequest. See <a href="#request-@defaults">default options</a> and the <a href="https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest">XMLHttpRequest documentation</a>.</p>
 
 <h2 id="request-ryeget">Rye.get()</h2>
 
-<div class="api">
-    Rye.get(url, callback) <span>⤳ xhr</span><br>
-    Rye.get(settings, callback) <span>⤳ xhr</span><br>
-    Rye.get(settings) <span>⤳ xhr</span><br>
-</div>
+<pre><code>Rye.get(url, callback) <span>⤳ XMLHttpRequest</span>
+Rye.get(settings, callback) <span>⤳ XMLHttpRequest</span>
+Rye.get(settings) <span>⤳ XMLHttpRequest</span>
+</code></pre>
+
+<p>Calls <code>request()</code> with <code>method</code> set to <code>GET</code>.</p>
 
 <h2 id="request-ryepost">Rye.post()</h2>
 
-<div class="api">
-    Rye.post(url, callback) <span>⤳ xhr</span><br>
-    Rye.post(settings, callback) <span>⤳ xhr</span><br>
-    Rye.post(settings) <span>⤳ xhr</span><br>
-</div>
+<pre><code>Rye.post(url, callback) <span>⤳ XMLHttpRequest</span>
+Rye.post(settings, callback) <span>⤳ XMLHttpRequest</span>
+Rye.post(settings) <span>⤳ XMLHttpRequest</span>
+</code></pre>
 
-<h2 id="">@</h2>
+<p>Calls <code>request()</code> with <code>method</code> set to <code>POST</code>.</p>
 
-<div class="api">
-    request(url, callback) <span>⤳ xhr</span><br>
-    request(settings, callback) <span>⤳ xhr</span><br>
-    request(settings) <span>⤳ xhr</span><br>
-</div>
+<h2 id="request-serialize">serialize</h2>
 
-<h2 id="request-@query">@query</h2>
+<pre><code>.serialize() <span>⤳ string</span>
+</code></pre>
 
-<div class="api">
-    request.query(obj) <span>⤳ string</span><br>
-</div>
+<p>Encode the form elements in the collection as a string for request submission.</p>
+
+<h2 id="request-@request">@request</h2>
+
+<pre><code>var request = Rye.require('Request')
+request(url, callback) <span>⤳ XMLHttpRequest</span>
+request(settings, callback) <span>⤳ XMLHttpRequest</span>
+request(settings) <span>⤳ XMLHttpRequest</span>
+</code></pre>
+
+<p>Same as <a href="#request-ryerequest"><code>.request()</code></a>.</p>
+
+<h2 id="request-@serialize">@serialize</h2>
+
+<pre><code>request.serialize(obj) <span>⤳ string</span>
+</code></pre>
+
+<p>Serializes <code>obj</code> to a querystring.</p>
 
 <h2 id="request-@appendquery">@appendQuery</h2>
 
-<div class="api">
-    request.appendQuery(url, query) <span>⤳ string</span><br>
-</div>
+<pre><code>request.appendQuery(url, querystring) <span>⤳ string</span>
+</code></pre>
+
+<p>Appends <code>querystring</code> to <code>url</code> while preserving existing values.</p>
 
 <h2 id="request-@defaults">@defaults</h2>
 
+<pre><code>method       : ['GET', 'POST', ...]
+url          : [window.location]
+async        : [true]
+callback     : function (err, data, xhr) { ... }
+timeout      : [0]
+headers      : {}
+data         : {}
+responseType : [json, xml, html, text, arraybuffer, blob, document]
+contentType  : ['application/x-www-form-urlencoded']
+</code></pre>
+
+<p>The object containing the default options for the <code>request()</code> method. Modifications affect all subsequent requests.</p>
+
 <h2 id="request-@get">@get</h2>
 
-<div class="api">
-    request.get(url, callback) <span>⤳ self</span><br>
-    request.get(settings, callback) <span>⤳ self</span><br>
-    request.get(settings) <span>⤳ self</span><br>
-</div>
+<pre><code>request.get(url, callback) &lt;span&gt;<span>⤳ self&lt;/span&gt;</span>
+request.get(settings, callback) &lt;span&gt;<span>⤳ self&lt;/span&gt;</span>
+request.get(settings) &lt;span&gt;<span>⤳ self&lt;/span&gt;</span>
+</code></pre>
+
+<p>Shortcut to <code>request()</code> with method set to <code>GET</code>.</p>
 
 <h2 id="request-@post">@post</h2>
 
-<div class="api">
-    request.post(url, callback) <span>⤳ self</span><br>
-    request.post(settings, callback) <span>⤳ self</span><br>
-    request.post(settings) <span>⤳ self</span><br>
-</div></section>
+<pre><code>request.post(url, callback) &lt;span&gt;<span>⤳ self&lt;/span&gt;</span>
+request.post(settings, callback) &lt;span&gt;<span>⤳ self&lt;/span&gt;</span>
+request.post(settings) &lt;span&gt;<span>⤳ self&lt;/span&gt;</span>
+</code></pre>
+
+<p>Shortcut to <code>request()</code> with method set to <code>POST</code>.</p></section>
 <section class="section-util"><h1 id="util">Util</h1>
 
 <p>Utility methods. Use with <code>var util = Rye.require('Util')</code>.</p>
 
 <h2 id="util-@extend">@extend</h2>
 
-<div class="api">
-    util.extend(destination, source) <span>⤳ destination</span>
-</div>
+<pre><code>util.extend(destination, source) <span>⤳ destination</span>
+</code></pre>
 
 <p>Merge the contents of two objects together.</p>
 
 <h2 id="util-@inherits">@inherits</h2>
 
-<div class="api">
-    util.inherits(child, parent) <span>⤳ child</span>
-</div>
+<pre><code>util.inherits(child, parent) <span>⤳ child</span>
+</code></pre>
 
 <p>Sets up prototypal inheritance through a ghost constructor.</p>
 
 <h2 id="util-@iselement">@isElement</h2>
 
-<div class="api">
-    util.isElement(element) <span>⤳ boolean</span>
-</div>
+<pre><code>util.isElement(element) <span>⤳ boolean</span>
+</code></pre>
 
 <p>Checks if <code>element</code> is a <code>NODE_ELEMENT</code> or <code>DOCUMENT_ELEMENT</code>.</p>
 
 <h2 id="util-@isnodelist">@isNodeList</h2>
 
-<div class="api">
-    util.isNodeList(elements) <span>⤳ boolean</span>
-</div>
+<pre><code>util.isNodeList(elements) <span>⤳ boolean</span>
+</code></pre>
 
 <p>Checks if <code>elements</code> is a <code>NodeList</code> or <code>HTMLCollection</code>.</p>
 
 <h2 id="util-@unique">@unique</h2>
 
-<div class="api">
-    util.unique(array) <span>⤳ array</span>
-</div>
+<pre><code>util.unique(array) <span>⤳ array</span>
+</code></pre>
 
 <p>Produces a duplicate-free version of the array.</p>
 
 <h2 id="util-@pluck">@pluck</h2>
 
-<div class="api">
-    util.pluck(array, property) <span>⤳ array</span>
-</div>
+<pre><code>util.pluck(array, property) <span>⤳ array</span>
+</code></pre>
 
 <p>Pluck an attribute from each item in <code>array</code>.</p>
 
 <h2 id="util-@put">@put</h2>
 
-<div class="api">
-    util.put(array, property, value) <span>⤳ array</span>
-</div>
+<pre><code>util.put(array, property, value) <span>⤳ array</span>
+</code></pre>
 
 <p>Opposite of pluck. Set <code>property</code> for each item in <code>array</code>.</p>
 
 <h2 id="util-@prefix">@prefix</h2>
 
-<div class="api">
-    util.prefix(property, obj) <span>⤳ mixed</span>
-</div>
+<pre><code>util.prefix(property, obj) <span>⤳ mixed</span>
+</code></pre>
 
 <p>Returns a standard <em>or</em> browser-prefixed methods (<code>moz</code>, <code>webkit</code>, <code>ms</code>, <code>o</code>) if found.</p>
 
 <h2 id="util-@applier">@applier</h2>
 
-<div class="api">
-    util.applier(direction, fn, context, args) <span>⤳ function</span>
-    util.applier('left', fn, context, args) <span>⤳ function</span>
-    util.applier('right', fn, context, args) <span>⤳ function</span>
-</div>
+<pre><code>util.applier(direction, fn, context, args) <span>⤳ function</span>
+util.applier('left', fn, context, args) <span>⤳ function</span>
+util.applier('right', fn, context, args) <span>⤳ function</span>
+</code></pre>
 
 <p>Returns a function that calls <code>fn.apply(context, ...)</code>. The <code>args</code> array is (right or left)-joined to the function call parameters.</p>
 
 <h2 id="util-@curry">@curry</h2>
 
-<div class="api">
-    util.curry(fn, ...) <span>⤳ function</span>
-</div>
+<pre><code>util.curry(fn, ...) <span>⤳ function</span>
+</code></pre>
 
 <p>Returns a <a href="http://en.wikipedia.org/wiki/Currying">curried</a>/partially-applied function with the rest of the arguments.</p>
 
 <h2 id="util-@getuid">@getUid</h2>
 
-<div class="api">
-    util.getUid(element) <span>⤳ number</span>
-</div>
+<pre><code>util.getUid(element) <span>⤳ number</span>
+</code></pre>
 
 <p>Gets an unique identifier for an element.</p>
 
 <h2 id="util-@type">@type</h2>
 
-<div class="api">
-    util.type(obj) <span>⤳ string</span>
-</div>
+<pre><code>util.type(obj) <span>⤳ string</span>
+</code></pre>
 
 <h2 id="util-@is">@is</h2>
 
-<div class="api">
-    util.is(obj, type) <span>⤳ boolean</span>
-</div></section>
+<pre><code>util.is(obj, type) <span>⤳ boolean</span>
+</code></pre></section>
     </div>
 
     <footer class="footer">

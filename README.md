@@ -3,7 +3,7 @@ Rye
 
 Website and documentation http://ryejs.com
 
-[![Build Status](https://secure.travis-ci.org/jcemer/rye.png?branch=master)](http://travis-ci.org/jcemer/rye)
+[![Build Status](https://secure.travis-ci.org/ryejs/rye.png?branch=master)](http://travis-ci.org/ryejs/rye)
 
 **Rye** is a lightweight javascript library for DOM manipulation and events with support for **all modern browsers**, including IE9+. It also has **touch events/gestures**, an **event emitter** constructor, and a **jQuery-like** API.
 
@@ -185,6 +185,7 @@ API
 - [`proxy`](http://ryejs.com#eventemitter-proxy)
 
 ### DOM Event Emitter
+- [`Using a custom DOMEventEmitter`](http://ryejs.com#domeventemitter-proxy-usingacustomdomeventemitter)
 - [`addListener (on)`](http://ryejs.com#domeventemitter-addlisteneron)
 - [`once (one)`](http://ryejs.com#domeventemitter-onceone)
 - [`removeListener (off)`](http://ryejs.com#domeventemitter-removelisteneroff)
@@ -211,11 +212,12 @@ API
 ### Touch Events
 
 ### Request
-- [`query`](http://ryejs.com#request-query)
 - [`Rye.request()`](http://ryejs.com#request-ryerequest)
 - [`Rye.get()`](http://ryejs.com#request-ryeget)
 - [`Rye.post()`](http://ryejs.com#request-ryepost)
-- [`@query`](http://ryejs.com#request-@query)
+- [`serialize`](http://ryejs.com#request-serialize)
+- [`@request`](http://ryejs.com#request-@request)
+- [`@serialize`](http://ryejs.com#request-@serialize)
 - [`@appendQuery`](http://ryejs.com#request-@appendquery)
 - [`@defaults`](http://ryejs.com#request-@defaults)
 - [`@get`](http://ryejs.com#request-@get)

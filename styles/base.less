@@ -67,6 +67,13 @@ code {
     padding: 0 4px;
 }
 
+pre code {
+    display: block;
+    padding: 1em;
+    font-family: @monospace;
+    color: #990066;
+}
+
 table {
     background: lighten(@color2, 2);
     font-size: 95%;
@@ -82,16 +89,15 @@ table {
     }
 }
 
-
-.download button, .button {
-    font-size: 1.4em;
+.button {
     #gradient > .vertical(#666, #444);
     border: 1px solid #333;
     border-bottom-color: #111;
     text-shadow: 1px 1px 2px #333;
     color: @color1;
-    padding: 10px 18px;
+    padding: 5px 10px;
     border-radius: 3px;
+    text-decoration: none;
     &:hover {
         #gradient > .vertical(#555, #333);
         border-color: #222;
@@ -99,10 +105,9 @@ table {
     }
 }
 
-.button {
-    font-size: 1.0em;
-    padding: 5px 10px;
-    text-decoration: none;
+.vhidden {
+    position: absolute;
+    left: -9999px;
 }
 
 .header {
@@ -123,25 +128,36 @@ table {
 
 .download {
     float: right;
-    margin: 40px 40px;
-    ol {
-        list-style: none;
-        padding: 0;
-        margin-top: 0;
-        li {
-            margin-bottom: .1em;
-        }
+    margin: 40px;
+    padding: 0;
+    list-style: none;
+    position: relative;
+
+    li {
+        margin-bottom: .1em;
+    }
+    input {
+        height: 1em;
+        margin-right: 4px;
+        vertical-align: middle;
     }
     label {
         vertical-align: middle;
-        input {
-            height: 1em;
-            margin-right: 4px;
-        }
         span {
             font-size: .8em;
             color: #777;
         }
+    }
+
+    .button {
+        font-size: 1.4em;
+        position: absolute;
+        left: -9000px;
+        padding: 10px 18px;
+    }
+    input:checked ~ .button {
+        left: 0;
+        top: 50px;
     }
 }
 
@@ -154,16 +170,25 @@ section h1 {
 }
 
 .main {
-    .api {
-        font-size: 12px;
-        color: #990066;
-        font-family: @monospace;
+    h2 {
+        margin-bottom: 0;
+    }
+    h2 + pre {
+        margin-top: 0;
+        code {
+            font-size: 12px;
+            color: #990066;
+            font-family: @monospace;
+            background: none;
+            border: 0;
+            outline: 0;
+            white-space: pre;
+            margin: 0;
+            padding: 0;
+        }
         span {
             color: #999;
         }
-    }
-    h2 {
-        margin-bottom: 0;
     }
 }
 

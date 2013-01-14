@@ -6,35 +6,30 @@ Stand-alone event emitter implementation. Rye itself is an instance of `EventEmi
 
 addListener (on)
 ------------------
-<div class="api">
-    emitter.addListener(event, handler) <span>⤳ self</span><br>
-    emitter.on(event, handler) <span>⤳ self</span>
-</div>
+
+    emitter.addListener(event, handler) ⤳ self
+    emitter.on(event, handler) ⤳ self
 
 
 once
 ------------------
-<div class="api">
-    emitter.once(event, handler) <span>⤳ self</span>
-</div>
+
+    emitter.once(event, handler) ⤳ self
 
 
 removeListener
 ------------------
-<div class="api">
-    emitter.removeListener(event[, handler]) <span>⤳ self</span>
-</div>
+
+    emitter.removeListener(event[, handler]) ⤳ self
 
 
 trigger
 ------------------
-<div class="api">
-    emitter.trigger(event[, data]) <span>⤳ self</span>
-</div>
+
+    emitter.trigger(event[, data]) ⤳ self
 
 
 proxy
 ------------------
-<div class="api">
-    emitter.proxy(event) <span>⤳ function</span>
-</div>
+
+    emitter.proxy(event) ⤳ function
