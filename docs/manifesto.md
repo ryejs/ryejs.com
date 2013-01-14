@@ -8,11 +8,13 @@
 Introduction
 ==================
 
-Rye is a lightweight library designed for use in modern browsers. It includes utilities for DOM manipulation, events, XHR requests, data storage and touch events.
+Rye is a browser library written from the ground-up with modern browsers in mind. It is an attempt to bring together the best practices in javascript, borrowing from both browser and node.js code patterns. 
 
-The API should be familiar to everyone who's worked with jQuery. Some inconsistencies like `.map/.each` argument order and behavior have been fixed here, and follow the standard `map/forEach` specification.
+It also tries to be as minimal as possible, using standard browser APIs and ES5 methods whenever possible. Reading the [source code](https://github.com/ryejs/rye/tree/master/lib) is encouraged.
 
-One important thing to note is that Rye doesn't try to subclass `Array` in any way. A `Rye` instance is just a standard object, with the current elements selection stored in the `.elements` array. All standard ES5 array methods are available and operate on the elements collection; querying and filtering methods you might know from other libraries like `.next()`, `.prev()`, etc, are also available.
+Rye is built as a collection of modules. You can use it whole, or just import specific modules you need. The API should be familiar to everyone who has worked with jQuery or Zepto, but not totally compatible; inconsistencies like `.map/.each` argument order and behavior have been fixed, and follow the native `map/forEach` methods.
+
+One important thing to note is that Rye doesn't try to subclass `Array` in any way. A `Rye` instance is just a standard object, with the current elements selection stored in the `.elements` array. All standard ES5 array methods are available and operate on the elements collection; while still providing traversing methods you might know from other libraries like `.next`, `.prev`, `.children`, etc.
 
 
 Browser compatibility

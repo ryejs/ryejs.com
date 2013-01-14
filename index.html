@@ -163,7 +163,7 @@
     </div>
 
     <section class="manifesto">
-<p><strong>Rye</strong> is a lightweight javascript library for DOM manipulation and events with support for <strong>all modern browsers</strong>, including IE9+. It also has <strong>touch events/gestures</strong>, an <strong>event emitter</strong> constructor, and a <strong>jQuery-like</strong> API.</p>
+<p><strong>Rye</strong> is a lightweight javascript library for DOM manipulation and events with support for <strong>all modern browsers</strong>, including IE9+. It has support for <strong>touch events</strong>/gestures, an <strong>event emitter</strong>, <strong>isolated DOM events</strong> and more.</p>
 
 <div class="buttons">
     <iframe src="http://ghbtns.com/github-btn.html?user=ryejs&amp;repo=rye&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
@@ -172,11 +172,13 @@
 
 <h1 id="introduction">Introduction</h1>
 
-<p>Rye is a lightweight library designed for use in modern browsers. It includes utilities for DOM manipulation, events, XHR requests, data storage and touch events.</p>
+<p>Rye is a browser library written from the ground-up with modern browsers in mind. It is an attempt to bring together the best practices in javascript, borrowing from both browser and node.js code patterns. </p>
 
-<p>The API should be familiar to everyone who's worked with jQuery. Some inconsistencies like <code>.map/.each</code> argument order and behavior have been fixed here, and follow the standard <code>map/forEach</code> specification.</p>
+<p>It also tries to be as minimal as possible, using standard browser APIs and ES5 methods whenever possible. Reading the <a href="https://github.com/ryejs/rye/tree/master/lib">source code</a> is encouraged.</p>
 
-<p>One important thing to note is that Rye doesn't try to subclass <code>Array</code> in any way. A <code>Rye</code> instance is just a standard object, with the current elements selection stored in the <code>.elements</code> array. All standard ES5 array methods are available and operate on the elements collection; querying and filtering methods you might know from other libraries like <code>.next()</code>, <code>.prev()</code>, etc, are also available.</p>
+<p>Rye is built as a collection of modules. You can use it whole, or just import specific modules you need. The API should be familiar to everyone who has worked with jQuery or Zepto, but not totally compatible; inconsistencies like <code>.map/.each</code> argument order and behavior have been fixed, and follow the native <code>map/forEach</code> methods.</p>
+
+<p>One important thing to note is that Rye doesn't try to subclass <code>Array</code> in any way. A <code>Rye</code> instance is just a standard object, with the current elements selection stored in the <code>.elements</code> array. All standard ES5 array methods are available and operate on the elements collection; while still providing traversing methods you might know from other libraries like <code>.next</code>, <code>.prev</code>, <code>.children</code>, etc.</p>
 
 <h2 id="browsercompatibility">Browser compatibility</h2>
 
