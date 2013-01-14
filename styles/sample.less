@@ -4,19 +4,6 @@
     z-index: 100;
 }
 
-.touch_sample {
-    .box-sizing(border-box);
-    color: #333;
-    height: 100px;
-    margin-top: 1em;
-    padding: 10px;
-    overflow: hidden;
-}
-.touch_sample .name {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
 #sample {
     -webkit-transition: .4s bottom ease-out;
     -moz-transition: .4s bottom ease-out;
@@ -37,7 +24,7 @@
 
     .wrapper {
         padding: 0 20px;
-        max-width: 860px;
+        max-width: 720px;
         min-width: 620px;
         height: 100%;
         position: relative;
@@ -57,15 +44,17 @@
         right: 0;
         top: 2em;
     }
-    .content, .sample {
-        width: 40%;
-        position: absolute;
-        top: 140px;
-        bottom: 20px;
+    .grid-two {
+        width: 50%;
+        .box-sizing(border-box);
     }
     .content {
-        padding-right: 10%;
+        position: absolute;
+        padding-right: 20px;
+        top: 100px;
+        bottom: 20px;
         overflow: auto;
+        overflow-y: scroll;
         h2:first-child {
             padding-top: 0;
         }
@@ -96,4 +85,30 @@
     #sample {
         height: 100%;
     }
+}
+
+.touch-samples {
+    text-align: center;
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    display: flex;
+    flex-direction: row;
+}
+
+.touch-sample {
+    .box-sizing(border-box);
+    color: #333;
+    height: 120px;
+    width: 27%;
+    margin: 1em 10px 0;
+    padding: 10px;
+    overflow: hidden;
+    display: inline-block;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+.touch-sample .name {
+    font-weight: bold;
+    font-size: 1.1em;
+    line-height: 100px;
 }

@@ -1,9 +1,8 @@
 <h1>Using a custom DOMEventEmitter</h1>
+
 <div class="content">
     <p>When you are writing a plugin, or a feature that should be independent from other events in the application, use a new DOMEventEmitter to isolate your event handlers:</p>
-</div>
-
-<pre class="sample"><code data-language="javascript">var DOMEventEmitter = Rye.require('Events').DOMEventEmitter
+    <pre class="sample"><code data-language="javascript">var DOMEventEmitter = Rye.require('Events').DOMEventEmitter
   , element = $('#mything').get(0)
   , myEvents = new DOMEventEmitter(element)
 
@@ -15,5 +14,5 @@ myEvents.on({
 myEvents.on('mousedown .that', function(){ ... })
 
 // remove all events:
-myEvents.destroy()
-</code></pre>
+myEvents.destroy()</code></pre>
+</div>
