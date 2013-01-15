@@ -625,7 +625,7 @@ Rye.define('Manipulation', function(){
                 // Also support arrays [el1, el2, ...]
                 if (Array.isArray(obj)) {
                     if (/prepend|before/.test(method)){
-                        obj.reverse()
+                        obj = obj.slice(0).reverse()
                     }
                     return obj.forEach(this[method].bind(this))
                 }

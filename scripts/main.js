@@ -98,15 +98,36 @@
         this.overlay.on('click', destroy)
     }
 
-    Sample.prototype.preventParentScroll = function (status) {
-        $('html').toggleClass('sample', status)
+    Sample.prototype.preventParentScroll = function () {
+        var content = this.content.slice(1) // removes the h1
+          , scrollable = false
+        
+        content.on({ 
+            mouseover: function(){ scrollable = true }
+          , mouseout: function(){ scrollable = false }
+        })
+        this.container.on('mousewheel', function(e, d){
+            if (!scrollable) {
+                e.preventDefault()
+            }
+            var top = content.prop('scrollTop')
+              , height = content.get(0).getBoundingClientRect().height
+              , end = content.prop('scrollHeight') - height
+
+            if (
+                (e.wheelDeltaY > 0 && top <= 0)
+             || (e.wheelDeltaY < 0 && top >= end - 5)
+            ) {
+                e.preventDefault()
+            }
+        })
     }
 
     Sample.prototype.request = function () {
         this.xhr = $.request('samples/' + this.name + '.html', function(err, data){
             this.container.removeClass('hide')
             !err && this.data(data)
-            this.preventParentScroll(true)
+            this.preventParentScroll()
         }.bind(this))
     }
 
@@ -131,7 +152,6 @@
         container.addClass('hide')
         setTimeout(container.remove.bind(container), 500)
         this.overlay.remove()
-        this.preventParentScroll(false)
     }
 
     Sample.init = function () {
