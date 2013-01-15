@@ -95,7 +95,8 @@ li code{background:#ffe780;outline:none;padding:2px 4px;margin-right:2px;}li cod
 .rainbow .attribute,.rainbow .variable{color:teal;}
 .rainbow .string,.rainbow .support.value{font-weight:normal;color:#d14;}
 .rainbow .regexp{color:#009926;}
-#overlay{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;}
+html.sample{overflow:hidden;}
+#overlay{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background:rgba(0, 0, 0, 0.2);}
 #sample{-webkit-transition:0.4s bottom ease-out;-moz-transition:0.4s bottom ease-out;transition:0.4s bottom ease-out;position:fixed;bottom:0%;right:0;left:0;z-index:200;height:60%;background:rgba(0, 0, 0, 0.9);color:#CCC;}#sample.hide{bottom:-100%;}
 #sample .wrapper{padding:0 20px;max-width:720px;min-width:620px;height:100%;position:relative;margin:0 auto;}
 #sample h1{border-bottom:1px #333 solid;padding-bottom:.5em;background:none;}
