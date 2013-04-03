@@ -1159,10 +1159,14 @@ util.applier('right', fn, context, args) <span>⤳ function</span>
 <pre><code>util.type(obj) <span>⤳ string</span>
 </code></pre>
 
+<p>Returns one of [<code>object</code>, <code>function</code>, <code>array</code>, <code>date</code>, <code>string</code>, <code>number</code>, <code>boolean</code>, <code>null</code>, <code>undefined</code>, <code>math</code>, <code>global</code>] by calling <code>Object.prototype.toString</code> on <code>obj</code>.</p>
+
 <h2 id="util-@is">@is</h2>
 
-<pre><code>util.is(obj, type) <span>⤳ boolean</span>
-</code></pre></section>
+<pre><code>util.is(type, obj) <span>⤳ boolean</span>
+</code></pre>
+
+<p>Checks that obj is of type <code>type</code> (calling <code>util.type</code>). <code>type</code> can contain multiple values, i.e. <code>util.is('string number boolean', foo)</code>.</p></section>
     </div>
 
     <footer class="footer">

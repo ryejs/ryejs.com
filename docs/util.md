@@ -98,9 +98,11 @@ Gets an unique identifier for an element.
 
     util.type(obj) ⤳ string
 
+Returns one of [`object`, `function`, `array`, `date`, `string`, `number`, `boolean`, `null`, `undefined`, `math`, `global`] by calling `Object.prototype.toString` on `obj`.
 
 @is
 ------------------
 
-    util.is(obj, type) ⤳ boolean
+    util.is(type, obj) ⤳ boolean
 
+Checks that obj is of type `type` (calling `util.type`). `type` can contain multiple values, i.e. `util.is('string number boolean', foo)`.
