@@ -30,7 +30,7 @@ api_sections = (header) ->
 # Config
 # ===========
 
-VERSION = '0.1.0'
+VERSION = require('./package.json').version;
 
 API = [
     'rye'
@@ -85,7 +85,7 @@ task 'build:readme', ->
 
     output = (get 'template/README.md')
         .replace('{{about}}', docs.get 'about')
-        .replace('{{browsers}}', docs.html 'browsers')
+        .replace('{{browsers}}', docs.get 'browsers')
         .replace('{{content}}', content)
         .replace(/{{version}}/g, VERSION)
 

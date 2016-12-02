@@ -100,6 +100,14 @@ When no `value` is given, reads specified attribute from the first element in th
 When `value` or an object with `key:value` pairs is given, set the attribute to `value` on each element in the collection using `setAttribute`.
 
 
+removeAttr
+------------------
+
+    .removeAttr(name) ⤳ self
+
+Remove `name` attribute on each element in the collection using `removeAttribute`.
+
+
 prop
 ------------------
 

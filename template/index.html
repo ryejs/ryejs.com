@@ -2,6 +2,9 @@
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
+    <meta property="og:title" content="Rye">
+    <meta property="og:image" content="http://ryejs.com/images/rye-share.png">
+    <meta property="og:description" content="Rye is a lightweight (6k only!) JS library for DOM manipulation and events for the modern web. Touch events/gestures, event emitter, isolated DOM events and more!">
     <title>Rye</title>
     <link rel="stylesheet" href="styles/main.css">
     <script>
@@ -25,13 +28,13 @@
         <ol class="download">
             <li>
                 <input type="radio" id="download-production" name="purpose" checked>
-                <label for="download-production">Production <span>(6.2KB, Minified + GZip)</span></label>
-                <a href="dist/rye-0.0.1.min.js" class="button">Download Rye {{version}} <span class="vhidden">for production</span></a>        
+                <label for="download-production">Production <span>(6.3KB, Minified + GZip)</span></label>
+                <a href="dist/rye-{{version}}.min.js" class="button">Download Rye {{version}} <span class="vhidden">for production</span></a>        
             </li>
             <li>
                 <input type="radio" id="download-development" name="purpose">
-                <label for="download-development">Development <span>(42.8KB, Uncompressed)</span></label>
-                <a href="dist/rye-0.0.1.js" class="button">Download Rye {{version}} <span class="vhidden">for development</span></a>
+                <label for="download-development">Development <span>(44.4KB, Uncompressed)</span></label>
+                <a href="dist/rye-{{version}}.js" class="button">Download Rye {{version}} <span class="vhidden">for development</span></a>
             </li>
         </ol>
     </header>
@@ -55,13 +58,14 @@
 
     <footer class="footer">
         <p> 
-            by <a href="http://github.com/jcemer"><img src="http://gravatar.com/avatar/c5df370a883b65279af5a7ca94a5eed7?s=25" width="25" height="25" alt="Jean Carlo Emer">jcemer</a>
-            and <a href="http://github.com/ricardobeat"><img src="http://gravatar.com/avatar/47923b1f334d8e3f7a00506ac3c7a636?s=25" width="25" height="25" alt="Ricardo Tomasi">ricardobeat</a>
+            by <a href="http://github.com/jcemer"><img src="http://gravatar.com/avatar/c5df370a883b65279af5a7ca94a5eed7?s=25" width="25" height="25" alt="Jean Carlo Emer">jcemer</a>,
+            <a href="http://github.com/ricardobeat"><img src="http://gravatar.com/avatar/47923b1f334d8e3f7a00506ac3c7a636?s=25" width="25" height="25" alt="Ricardo Tomasi">ricardobeat</a> and
+            <a href="http://github.com/WesleydeSouza"><img src="http://gravatar.com/avatar/9e145ca6c91b082bc139062b56a5d529?s=25" width="25" height="25" alt="Wesley de Souza">Wesleyde Souza</a>
         </p>
     </footer>
     
     <script src="scripts/es5-shim.min.js"></script>
-    <script src="dist/rye-0.0.1.js"></script>
+    <script src="dist/rye-{{version}}.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/samples.js"></script>
     <script src="scripts/rainbow.js"></script>

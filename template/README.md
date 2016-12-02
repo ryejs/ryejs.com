@@ -3,7 +3,7 @@ Rye {{version}}
 
 Website and documentation http://ryejs.com
 
-[![Build Status](https://secure.travis-ci.org/ryejs/rye.png?branch=master)](http://travis-ci.org/ryejs/rye)
+<!-- [![Build Status](https://secure.travis-ci.org/ryejs/rye.png?branch=master)](http://travis-ci.org/ryejs/rye) -->
 
 {{about}}
 
@@ -17,8 +17,8 @@ API
 
 {{content}}
 
-<hr>
+---
 
 Loosely based on Zepto and Ender.
 
-by [jcemer](http://github.com/jcemer) and [ricardobeat](http://github.com/ricardobeat)
+by [jcemer](http://github.com/jcemer), [ricardobeat](http://github.com/ricardobeat) and [WesleydeSouza](http://github.com/WesleydeSouza)
