@@ -58,7 +58,8 @@
             // the navigation header
             if (event.target.parentNode === this) {
                 setTimeout(function () {
-                    $(this).find('li:first-child > a').get(0).focus();
+                    var a = $(this).find('li:first-child > a').get(0)
+                    a && a.focus();
                 }.bind(this));
             }
         })
