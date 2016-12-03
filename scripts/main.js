@@ -8,16 +8,17 @@
     }
 
     Content.prototype.getSections = function () {
+        var scroll = document.body.scrollTop || document.documentElement.scrollTop
         return $('h1[id], h2[id], footer').elements.map(function(element){
             return {
                 id: element.id
-              , offset: element.getBoundingClientRect().top - 20
+              , offset: element.getBoundingClientRect().top + scroll - 20
             }
         })
     }
 
     Content.prototype.getActive = function () {
-        var scroll = window.scrollY
+        var scroll = document.body.scrollTop || document.documentElement.scrollTop
           , id = null
 
         for (var i = 0, l = this.sections.length; i < l; i++) {
@@ -39,6 +40,7 @@
         this.content = new Content()
         this.nav = $('nav')
         this.active = $()
+        this.menu()
     }
 
     Page.prototype.init = function () {
