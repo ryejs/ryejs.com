@@ -1,6 +1,6 @@
 {{about.md}}
 
-<div class="buttons">
+<div class="buttons" aria-hidden="true">
     <iframe src="http://ghbtns.com/github-btn.html?user=ryejs&amp;repo=rye&amp;type=watch&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
     <iframe src="http://ghbtns.com/github-btn.html?user=ryejs&amp;repo=rye&amp;type=fork&amp;count=true&amp;size=small" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
 </div>

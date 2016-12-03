@@ -18,8 +18,7 @@
     var tables = {}, style = 'text-align:left;', filter; 
     tables.th = function(header){
       if (header.trim() === "") { return "";}
-      var id = header.trim().replace(/ /g, '_').toLowerCase();
-      return '<th id="' + id + '" style="'+style+'">' + header + '</th>';
+      return '<th style="'+style+'">' + header + '</th>';
     };
     tables.td = function(cell) {
       return '<td style="'+style+'">' + cell + '</td>';

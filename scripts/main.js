@@ -48,8 +48,17 @@
 
     Page.prototype.addEventListeners = function () {
         $(document).on('scroll', this.onScroll.bind(this))
-        this.nav.find('ul:first-child > li').on('click', function(){
+        this.nav.find('nav > ul > li').on('click', function(event){
             $(this).toggleClass('open')
+
+            // For accessibility reasons, let's move the focus to the first item
+            // of the navigation category, in case the element being clicked is
+            // the navigation header
+            if (event.target.parentNode === this) {
+                setTimeout(function () {
+                    $(this).find('li:first-child > a').get(0).focus();
+                }.bind(this));
+            }
         })
     }
 
@@ -58,13 +67,13 @@
           , item = this.nav.find('a[href="#' + id + '"]')
 
         this.active.removeClass('active open')
-        
+
         item.addClass('active')
         this.active = item.parents('li').addClass('open')
         this.active.push(item.get(0))
     }
 
-    Page.prototype.onScroll = function (event) {
+    Page.prototype.onScroll = function () {
         if ((Date.now() - this.scrollLast) > 50) {
             this.scrollLast = Date.now()
             this.menu()
@@ -101,7 +110,7 @@
     Sample.prototype.preventParentScroll = function () {
         var content = this.content.slice(1) // removes the h1
           , scrollable = false
-        
+
         content.on({ 
             mouseover: function(){ scrollable = true }
           , mouseout: function(){ scrollable = false }

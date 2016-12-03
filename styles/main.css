@@ -63,11 +63,10 @@ table th{background:#f2e4cb;}
 .download label{vertical-align:middle;}.download label span{font-size:.8em;color:#777;}
 .download .button{font-size:1.4em;position:absolute;left:-9000px;padding:10px 18px;}
 .download input:checked~.button{left:0;top:50px;}
-.navigation{position:absolute;right:0;width:200px;}.navigation .home{padding-left:20px;font-family:"Helvetica Neue","Helvetica",Arial,sans-serif;display:block;line-height:3;color:#000;font-weight:700;text-decoration:none;font-size:1.2em;}.navigation .home span{font-size:.6em;font-weight:normal;color:#999;}
+.navigation{position:absolute;right:0;width:200px;}.navigation .home{padding-left:20px;font-family:"Helvetica Neue","Helvetica",Arial,sans-serif;display:block;line-height:3;color:#000;font-weight:700;text-decoration:none;font-size:1.2em;}.navigation .home span{font-size:.6em;font-weight:normal;color:#666;}
 .navigation .content{box-shadow:-4px 1px 20px rgba(0, 0, 0, 0.06);position:fixed;top:0;bottom:0;z-index:1;width:198px;overflow:auto;background:#f3e6cf;}
 nav ul{padding:0;margin:0;}
 nav a{padding-left:20px;display:block;font-family:"Helvetica Neue","Helvetica",Arial,sans-serif;font-weight:700;color:#454 !important;text-decoration:none;}
-nav .module{color:#898 !important;}
 nav li{line-height:2;border-top:1px solid #fff5e3;}nav li:hover{background:#f1e2c7;}
 nav ul ul{display:none;}nav ul ul a{font-weight:normal;padding-left:24px;}
 nav ul ul li{border:0;line-height:1.6;}nav ul ul li:hover{background:#faf0de;}
