@@ -12,7 +12,7 @@
         return $('h1[id], h2[id], footer').elements.map(function(element){
             return {
                 id: element.id
-              , offset: element.getBoundingClientRect().top + scroll - 20
+              , offset: element.getBoundingClientRect().top + scroll - 30
             }
         })
     }

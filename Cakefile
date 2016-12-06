@@ -74,6 +74,7 @@ task 'build:docs', ->
     output = (get 'template/index.html')
         .replace('{{manifesto}}', docs.html 'manifesto')
         .replace('{{cssHash}}', md5hash 'styles/main.css')
+        .replace('{{jsHash}}', md5hash 'scripts/main.js')
         .replace('{{content}}', content)
         .replace('{{menu}}', menu)
         .replace(/{{version}}/g, VERSION)
