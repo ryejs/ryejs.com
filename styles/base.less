@@ -12,15 +12,12 @@ html, body {
 @sans: "Helvetica Neue", "Helvetica", Arial, sans-serif;
 @monospace: Monaco, Consolas, "Lucida Console", monospace;
 
-@color1: #fff5e3;
-@color2: #f3e6cf;
+@color1: #fff;
+@color2: #fff5e3;
 
 html {
     height: 100%;
     background-color: @color1;
-    background-image: -webkit-linear-gradient(top, @color2 0, fade(@color1, 0) 20%), url(../images/pattern.png);
-    background-image: -moz-linear-gradient(top, @color2 0, fade(@color1, 0) 20%), url(../images/pattern.png);
-    background-image: linear-gradient(top, @color2 0, fade(@color1, 0) 20%), url(../images/pattern.png);
     background-repeat: repeat-x, repeat;
 }
 
@@ -62,7 +59,7 @@ h3 {
 code {
     font-size: 12px;
     line-height: 18px;
-    background: lighten(@color1, 2);
+    background: @color2;
     padding: 0 4px;
 }
 
@@ -144,7 +141,6 @@ table {
         vertical-align: middle;
         span {
             font-size: .8em;
-            color: #777;
         }
     }
 
@@ -184,7 +180,7 @@ section h1 {
             padding: 0;
         }
         span {
-            color: #999;
+            color: #666;
         }
     }
 }
@@ -211,14 +207,9 @@ section h1 {
 
 li {
     code {
-        background: #ffe780;
         outline: none;
         padding: 2px 4px;
         margin-right: 2px;
-        &:hover {
-            cursor: default;
-            background: mix(#ffe780, #fff, 70);
-        }
     }
 }
 
