@@ -1,4 +1,5 @@
 fs             = require 'fs'
+crypto         = require 'crypto'
 showdown       = require 'showdown'
 showdown.table = require './extensions/table.js'
 flour          = require 'flour'
@@ -26,6 +27,10 @@ api_sections = (header) ->
 
     html = html.replace /⤳.*$/gm, (m) -> "<span>#{m}</span>"
     return html
+
+md5hash = (fileName) ->
+    contents = get fileName
+    return crypto.createHash('md5').update(contents).digest('hex')
 
 # Config
 # ===========
@@ -68,6 +73,7 @@ task 'build:docs', ->
 
     output = (get 'template/index.html')
         .replace('{{manifesto}}', docs.html 'manifesto')
+        .replace('{{cssHash}}', md5hash 'styles/main.css')
         .replace('{{content}}', content)
         .replace('{{menu}}', menu)
         .replace(/{{version}}/g, VERSION)
